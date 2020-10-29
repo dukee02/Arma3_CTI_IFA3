@@ -1,0 +1,27 @@
+/*
+	BECTI: By Benny (benny_boy66@hotmail.fr)
+	  "Praise the bugs!"
+*/
+
+#include "Rsc\Game.hpp"
+#include "Rsc\Resources.hpp"
+#include "Rsc\Dialogs.hpp"
+#include "Rsc\Notifications.hpp"
+#include "Rsc\Sounds.hpp"
+#include "Rsc\Debriefing.hpp"
+#include "Rsc\Parameters.hpp"
+#include "Rsc\titles.hpp"
+
+#include "AFAR\ui\defines.hpp"
+#include "AFAR\ui\dialogs.hpp"
+
+//class CfgTitles {
+//#include "AFAR\ui\titles.hpp"
+//};
+
+//class CfgSounds {
+//#include "AFAR\f\SFX.hpp"
+//sounds[]={};
+//};
+
+enableDebugConsole = 1;
