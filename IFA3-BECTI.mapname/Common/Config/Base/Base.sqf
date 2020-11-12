@@ -357,6 +357,32 @@ if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 	};
+	if(CTI_IFA3_NEW == 1) then {
+		_headers pushBack 		"Maxim M30 low";
+		_classes pushBack 		format["%1LIB_Maxim_M30_Deployed", _sid];
+		_prices pushBack 		500;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		
+		_headers pushBack 		"Maxim M30 low";
+		_classes pushBack 		format["%1LIB_Maxim_M30_Trench_Deployed", _sid];
+		_prices pushBack 		500;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+	} else {
+		_headers pushBack 		"Maxim base";
+		_classes pushBack 		format["%1LIB_Maxim_M30_base", _sid];
+		_prices pushBack 		1000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		
+		_headers pushBack 		"Maxim Trench";
+		_classes pushBack 		format["%1LIB_Maxim_M30_Trench", _sid];
+		_prices pushBack 		1000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+	};
+	
 	_headers pushBack 		"SearchLight";
 	_classes pushBack 		format["%1LIB_SU_SearchLight", _sid];
 	_prices pushBack 		200;
@@ -368,6 +394,7 @@ if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_prices pushBack 		2000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
+	
 };
 if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	
@@ -432,19 +459,7 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 };
-if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	_headers pushBack 		"Maxim base";
-	_classes pushBack 		format["%1LIB_Maxim_M30_base", _sid];
-	_prices pushBack 		1000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	
-	_headers pushBack 		"Maxim Trench";
-	_classes pushBack 		format["%1LIB_Maxim_M30_Trench", _sid];
-	_prices pushBack 		1000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	
+if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {	
 	_headers pushBack 		"61k (AA)";
 	_classes pushBack 		format["%1LIB_61k", _sid];
 	_prices pushBack 		2000;
@@ -1704,9 +1719,10 @@ if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	//};
 	_classes_town pushBack 		format["%1LIB_SU_SearchLight", _sid];
 	_categories_town pushBack 	"View";
-	
-	_classes_town pushBack 		format["%1IFA3_DSHkM_Mini_TriPod", _sid];
-	_categories_town pushBack 	"MG";
+	if(CTI_IFA3_NEW == 1) then {
+		_classes_town pushBack 		format["%1LIB_Maxim_M30_Deployed", _sid];
+		_categories_town pushBack 	"MG";
+	};
 	
 	_classes_town pushBack 		format["%1LIB_BM37", _sid];
 	_categories_town pushBack 	"Mortar";
@@ -1742,9 +1758,6 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_classes_town pushBack 		format["%1LIB_FlaK_30", _sid];
 	_categories_town pushBack 	"AA";
 	
-	_classes_town pushBack 		format["%1Ifa3_p27G", _sid];
-	_categories_town pushBack 	"Artillery";
-	
 	_classes_town pushBack 		format["%1LIB_leFH18", _sid];
 	_categories_town pushBack 	"Artillery";
 	
@@ -1752,31 +1765,21 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_categories_town pushBack 	"AT";
 };
 if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	_classes_town pushBack 		format["%1LIB_Maxim_M30_base", _sid];
-	_categories_town pushBack 	"MG";
-	
-	_classes_town pushBack 		format["%1LIB_Maxim_M30_Trench", _sid];
-	_categories_town pushBack 	"MG";
-	
-	_classes_town pushBack 		format["%1Ifa3_p27", _sid];
-	_categories_town pushBack 	"Artillery";
-	
+	if(CTI_IFA3_NEW == 0) then {
+		_classes_town pushBack 		format["%1LIB_Maxim_M30_base", _sid];
+		_categories_town pushBack 	"MG";
+		
+		_classes_town pushBack 		format["%1LIB_Maxim_M30_Trench", _sid];
+		_categories_town pushBack 	"MG";
+	};
 	_classes_town pushBack 		format["%1LIB_61k", _sid];
 	_categories_town pushBack 	"AA";	
 };
-if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	
-	_classes_town pushBack 		format["%1Ifa3_p27", _sid];
-	_categories_town pushBack 	"Artillery";
-	
+if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {	
 	_classes_town pushBack 		format["%1LIB_61k", _sid];
 	_categories_town pushBack 	"AA";
 };
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	
-	_classes_town pushBack 		format["%1Ifa3_p27", _sid];
-	_categories_town pushBack 	"Artillery";
-	
 	_classes_town pushBack 		format["%1LIB_61k", _sid];
 	_categories_town pushBack 	"AA";
 };
@@ -1823,31 +1826,16 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	
 	_classes_town pushBack 		format["%1LIB_FlaK_38", _sid];
 	_categories_town pushBack 	"AA";
-	
-	_classes_town pushBack 		format["%1IFA3_Pak38", _sid];
-	_categories_town pushBack 	"AT";
 };
 if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	_classes_town pushBack 		format["%1IFA3_53K", _sid];
-	_categories_town pushBack 	"AT";
 };
 if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_IFA3_NEW == 0) then {
-		_classes_town pushBack 		format["%1IFA3_53K", _sid];
-		_categories_town pushBack 	"AT";
-	}else {
-		_classes_town pushBack 		format["%1LIB_57mm_M1", _sid];
-		_categories_town pushBack 	"AT";
-	};
+	_classes_town pushBack 		format["%1LIB_57mm_M1", _sid];
+	_categories_town pushBack 	"AT";
 };
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_IFA3_NEW == 0) then {
-		_classes_town pushBack 		format["%1IFA3_53K", _sid];
-		_categories_town pushBack 	"AT";
-	}else {
-		_classes_town pushBack 		format["%1LIB_QF6_pdr", _sid];
-		_categories_town pushBack 	"AT";
-	};
+	_classes_town pushBack 		format["%1LIB_QF6_pdr", _sid];
+	_categories_town pushBack 	"AT";
 };
 
 
@@ -1882,21 +1870,21 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_classes_town pushBack 		format["%1LIB_Zis3_w", _sid];
-		_categories_town pushBack 	"Artillery";
+		_categories_town pushBack 	"AT";
 	};
 	_classes_town pushBack 		format["%1LIB_Zis3", _sid];
-	_categories_town pushBack 	"Artillery";
+	_categories_town pushBack 	"AT";
 };
 if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_classes_town pushBack 		format["%1LIB_Zis3", _sid];
-	_categories_town pushBack 	"Artillery";
+	_categories_town pushBack 	"AT";
 	
 	_classes_town pushBack 		format["%1LIB_M45_Quadmount", _sid];
 	_categories_town pushBack 	"AA";
 };
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_classes_town pushBack 		format["%1LIB_Zis3", _sid];
-	_categories_town pushBack 	"Artillery";
+	_categories_town pushBack 	"AT";
 	
 	_classes_town pushBack 		format["%1LIB_M45_Quadmount_UK", _sid];
 	_categories_town pushBack 	"AA";
