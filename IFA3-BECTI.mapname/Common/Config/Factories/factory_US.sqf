@@ -122,7 +122,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 	_c pushBack format["%1LIB_US_Pilot", _sid];
 	_c pushBack format["%1LIB_US_tank_crew", _sid];
 	_c pushBack format["%1LIB_US_smgunner", _sid];
-				
 };
 //Level 1
 if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {

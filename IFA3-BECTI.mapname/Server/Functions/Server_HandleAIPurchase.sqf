@@ -70,7 +70,11 @@ if (typeName (_var_classname select CTI_UNIT_SCRIPTS) == "ARRAY") then {
 };
 
 //--- Then we check if the buyer has enough funds to perform this operation
-_cost = _var_classname select 2;
+//_cost = _var_classname select 2;
+//-----------------------------
+//for testing we set all costs depending on type 
+_cost = switch (true) do { case (_model isKindOf "Man"): {1}; case (_model isKindOf "Tank"): {100}; case (_model isKindOf "Air"): {200}; default {10}};
+//-----------------------------
 if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 	_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];

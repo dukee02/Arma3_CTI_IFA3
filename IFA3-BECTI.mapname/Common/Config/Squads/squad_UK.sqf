@@ -38,13 +38,62 @@ missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["Air"]];
 
 //Infantry setup for the AI groups
 units_infantry = [];
+units_to_add = [];
 
-units_infantry = [[format["%1LIB_UK_Rifleman", _sid], 1],[format["%1LIB_UK_Medic", _sid], 1, 40],[format["%1LIB_UK_Rifleman", _sid], 1, 60],[format["%1LIB_UK_Grenadier", _sid], 1, 40],[format["%1LIB_UK_Corporal", _sid], 1, 40],[format["%1LIB_UK_LanceCorporal", _sid], 1, 40],[format["%1LIB_UK_AT_Soldier", _sid], 1, 60]];
-if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-	units_infantry = [[format["%1LIB_UK_Rifleman_w", _sid], 1],[format["%1LIB_UK_Medic_w", _sid], 1, 40],[format["%1LIB_UK_Rifleman_w", _sid], 1, 60],[format["%1LIB_UK_Grenadier_w", _sid], 1, 40],[format["%1LIB_UK_Corporal_w", _sid], 1, 40],[format["%1LIB_UK_LanceCorporal_w", _sid], 1, 40],[format["%1LIB_UK_AT_Soldier_w", _sid], 1, 60]];
+if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
+	units_to_add = [format["%1LIB_UK_Rifleman", _sid], 1, 60];
+	units_to_add pushBack [format["%1LIB_UK_Medic", _sid], 1, 20];
+	units_to_add pushBack [format["%1LIB_UK_Engineer", _sid], 1, 30];
+	units_to_add pushBack [format["%1LIB_UK_Grenadier", _sid], 1, 30];
+	units_to_add pushBack [format["%1LIB_UK_Grenadier_Jerkins", _sid], 1, 20];
+	units_to_add pushBack [format["%1LIB_UK_Rifleman_Jerkins", _sid], 1, 20];
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		units_to_add = [format["%1LIB_UK_Rifleman_w", _sid], 1, 60];	
+		units_to_add pushBack [format["%1LIB_UK_Medic_w", _sid], 1, 20];
+		units_to_add pushBack [format["%1LIB_UK_Engineer_w", _sid], 1, 30];
+		units_to_add pushBack [format["%1LIB_UK_Grenadier_w", _sid], 1, 30];
+		units_to_add pushBack [format["%1LIB_UK_Radioman_w", _sid], 1, 10];
+	};
+	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
+		units_to_add = [format["%1LIB_UK_DR_Rifleman", _sid], 1, 60];	
+		units_to_add pushBack [format["%1LIB_UK_DR_Medic", _sid], 1, 20];
+		units_to_add pushBack [format["%1LIB_UK_DR_Engineer", _sid], 1, 30];
+		units_to_add pushBack [format["%1LIB_UK_DR_Grenadier", _sid], 1, 30];
+		units_to_add pushBack [format["%1LIB_UK_DR_Radioman", _sid], 1, 10];
+	};
+	units_infantry pushBack units_to_add;
 };
-if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-	units_infantry = [[format["%1LIB_UK_DR_Rifleman", _sid], 1],[format["%1LIB_UK_DR_Medic", _sid], 1, 40],[format["%1LIB_UK_DR_Rifleman", _sid], 1, 60],[format["%1LIB_UK_DR_Grenadier", _sid], 1, 40],[format["%1LIB_UK_DR_Corporal", _sid], 1, 40],[format["%1LIB_UK_DR_LanceCorporal", _sid], 1, 40],[format["%1LIB_UK_DR_AT_Soldier", _sid], 1, 60]];
+if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
+	units_to_add = [format["%1LIB_UK_LanceCorporal", _sid], 1, 30];
+	units_to_add pushBack [format["%1LIB_UK_Corporal", _sid], 1, 20];
+	units_to_add pushBack [format["%1LIB_UK_AT_Soldier", _sid], 1, 40];
+	units_to_add pushBack [format["%1LIB_UK_Sergeant", _sid], 1, 10];
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		units_to_add = [format["%1LIB_UK_LanceCorporal_w", _sid], 1, 30];	
+		units_to_add pushBack [format["%1LIB_UK_Corporal_w", _sid], 1, 20];
+		units_to_add pushBack [format["%1LIB_UK_AT_Soldier_w", _sid], 1, 40];
+		units_to_add pushBack [format["%1LIB_UK_Sergeant_w", _sid], 1, 10];
+	};
+	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
+		units_to_add = [format["%1LIB_UK_DR_LanceCorporal", _sid], 1, 60];	
+		units_to_add pushBack [format["%1LIB_UK_DR_Corporal", _sid], 1, 20];
+		units_to_add pushBack [format["%1LIB_UK_DR_AT_Soldier", _sid], 1, 40];
+		units_to_add pushBack [format["%1LIB_UK_DR_Sergeant", _sid], 1, 10];
+	};
+	units_infantry pushBack units_to_add;
+};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= 2) then {
+	units_to_add = [format["%1LIB_UK_Sniper", _sid], 1, 10];
+	units_to_add pushBack [format["%1LIB_UK_Officer", _sid], 1, 5];
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		units_to_add = [format["%1LIB_UK_Sniper_w", _sid], 1, 10];	
+		units_to_add pushBack [format["%1LIB_UK_Officer_w", _sid], 1, 5];
+	};
+	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
+		units_to_add = [format["%1LIB_UK_DR_Sniper", _sid], 1, 1];	
+		units_to_add pushBack [format["%1LIB_UK_DR_Officer", _sid], 1, 5];
+	};
+	units_infantry pushBack units_to_add;
 };
 
 _v pushBack "Infantry";
@@ -63,7 +112,9 @@ _s pushBack [];
 units_wheeled = [];
 units_to_add = [];
 
-
+if(CTI_ECONOMY_LEVEL_WHEELED < 0) then {
+	units_wheeled = units_infantry;
+};
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	units_to_add = [format["%1LIB_UK_Willys_MB_Hood", _sid], 1, 20];
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
@@ -102,14 +153,15 @@ _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
 
-
-
 //***************************************************************************************************************************************
 //														Armored																			*
 //***************************************************************************************************************************************
 //Tracked setup for the AI groups
 units_tracked = [];
 
+if(CTI_ECONOMY_LEVEL_TRACKED < 0) then {
+	units_tracked = units_infantry;
+};
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	units_to_add = [format["%1LIB_UniversalCarrier", _sid], 1, 10];	
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
@@ -218,6 +270,9 @@ _s pushBack [];
 //AntiAir setup for the AI groups
 units_antiair = [];
 
+if(CTI_ECONOMY_LEVEL_WHEELED < 0) then {
+	units_antiair = units_infantry;
+};
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	units_antiair = [[format["%1LIB_UK_Willys_MB_M1919", _sid], 1, 30]];
 	if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
@@ -247,8 +302,11 @@ _s pushBack [];
 //***************************************************************************************************************************************
 //Air setup for the AI groups
 units_air = [];
-
 _level = 0;
+
+if(CTI_ECONOMY_LEVEL_AIR < 0) then {
+	units_air = units_infantry;
+};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	units_air pushBack [format["%1LIB_RAF_P39", _sid], 1, 60];
 	_level = _level + 1;

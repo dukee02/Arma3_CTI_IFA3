@@ -122,7 +122,8 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 		_c pushBack format["%1LIB_DAK_Sentry_2", _sid];
 		_c pushBack format["%1LIB_DAK_Sentry", _sid];
 	};
-		
+	
+	_c pushBack format["%1LIB_GER_AT_grenadier", _sid];
 	_c pushBack format["%1LIB_GER_ober_rifleman", _sid];
 	_c pushBack format["%1LIB_GER_tank_crew", _sid];
 	_c pushBack format["%1LIB_GER_gun_crew", _sid];
@@ -158,6 +159,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
 		_c pushBack format["%1LIB_DAK_spg_lieutenant", _sid];
 	};
 
+	_c pushBack format["%1LIB_GER_AT_soldier", _sid];
 	_c pushBack format["%1LIB_GER_mgunner", _sid];
 	_c pushBack format["%1LIB_GER_tank_unterofficer", _sid];
 	_c pushBack format["%1LIB_GER_tank_lieutenant", _sid];
@@ -165,7 +167,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
 	_c pushBack format["%1LIB_GER_unterofficer", _sid];
 	_c pushBack format["%1LIB_GER_lieutenant", _sid];
 	_c pushBack format["%1LIB_GER_ober_lieutenant", _sid];
-	_c pushBack format["%1LIB_GER_AT_grenadier", _sid];
 	_c pushBack format["%1LIB_GER_stggunner", _sid];
 };
 //Level 2
@@ -192,7 +193,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 2) then {
 		_c pushBack format["%1LIB_DAK_Sniper", _sid];
 	};
 
-	_c pushBack format["%1LIB_GER_AT_soldier", _sid];
 	_c pushBack format["%1LIB_GER_scout_smgunner", _sid];
 	_c pushBack format["%1LIB_GER_scout_lieutenant", _sid];
 	_c pushBack format["%1LIB_GER_scout_mgunner", _sid];

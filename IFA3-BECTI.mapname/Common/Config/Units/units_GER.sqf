@@ -296,6 +296,16 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 	
 	};
 	
+	_c pushBack format["%1LIB_GER_AT_grenadier", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack (CTI_ECONOMY_PRIZE_INFANTRY*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+	_t pushBack _building_time;
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_f pushBack CTI_FACTORY_BARRACKS;
+	_s pushBack "";
+	_d pushBack 0;
+	
 	_c pushBack format["%1LIB_GER_ober_rifleman", _sid];
 	_p pushBack '';
 	_n pushBack '';
@@ -577,6 +587,16 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
 		_d pushBack 0;
 	
 	};
+
+	_c pushBack format["%1LIB_GER_AT_soldier", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack (CTI_ECONOMY_PRIZE_INFANTRY*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+	_t pushBack _building_time;
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_f pushBack CTI_FACTORY_BARRACKS;
+	_s pushBack "";
+	_d pushBack 0;
 	
 	_c pushBack format["%1LIB_GER_mgunner", _sid];
 	_p pushBack '';
@@ -639,16 +659,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
 	_d pushBack 0;
 	
 	_c pushBack format["%1LIB_GER_ober_lieutenant", _sid];
-	_p pushBack '';
-	_n pushBack '';
-	_o pushBack (CTI_ECONOMY_PRIZE_INFANTRY*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-	_t pushBack _building_time;
-	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-	_f pushBack CTI_FACTORY_BARRACKS;
-	_s pushBack "";
-	_d pushBack 0;
-	
-	_c pushBack format["%1LIB_GER_AT_grenadier", _sid];
 	_p pushBack '';
 	_n pushBack '';
 	_o pushBack (CTI_ECONOMY_PRIZE_INFANTRY*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
@@ -839,16 +849,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 2) then {
 		_d pushBack 0;
 	
 	};
-
-	_c pushBack format["%1LIB_GER_AT_soldier", _sid];
-	_p pushBack '';
-	_n pushBack '';
-	_o pushBack (CTI_ECONOMY_PRIZE_INFANTRY*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-	_t pushBack _building_time;
-	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-	_f pushBack CTI_FACTORY_BARRACKS;
-	_s pushBack "";
-	_d pushBack 0;
 	
 	_c pushBack format["%1LIB_GER_scout_smgunner", _sid];
 	_p pushBack '';
