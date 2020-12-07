@@ -597,7 +597,7 @@ class Params {
 		title = "TOWNS: Equipment Purchase";
 		values[] = {0,1,2,3};
 		texts[] = {"Disabled","Camps","Depot","Camps and Depot"};
-		default = 0;
+		default = 2;
 	};
 	class CTI_TOWNS_BUILD_PROTECTION_RANGE {
 		title = "TOWNS: Protection Range";
