@@ -90,54 +90,16 @@ CTI_CO_FNC_SetCommanderVotes = compileFinal preprocessFileLineNumbers "Common\Fu
 CTI_CO_CustomIterator = 0;
 
 call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
-/*switch (CTI_TOWNS_RESISTANCE_UNITS) do {
-    case 1: {
-		call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance.sqf";
-	};
-    case 2: {
-		call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance_3rd_Party.sqf";
-	};
-    default {
-		call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_Resistance_Polish.sqf";
-	};
-};
-call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_West.sqf";
-call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
-
-call compile preprocessFileLineNumbers "Common\Config\Defenses\Defenses_Resistance.sqf";
-call compile preprocessFileLineNumbers "Common\Config\Defenses\Defenses_West.sqf";
-call compile preprocessFileLineNumbers "Common\Config\Defenses\Defenses_East.sqf";
-
-//--- Upgrade goes before the base definition so that we may construct the commander's logical path
-(west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_East.sqf";
-
-(west) call compile preprocessFileLineNumbers "Common\Config\Base\Base_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Base\Base_East.sqf";
-
-(resistance) call compile preprocessFileLineNumbers "Common\Config\Units\Units_Resistance.sqf";
-(west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_East.sqf";
-(civilian) call compile preprocessFileLineNumbers "Common\Config\Units\Units_Civilian.sqf";
-
-(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_Resistance.sqf";
-(west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_East.sqf";
-
-(west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_West.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_East.sqf"; */
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
 
-//(west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_West.sqf";
-//(east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades_East.sqf";
-
 (west) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
 
-//(west) call compile preprocessFileLineNumbers "Common\Config\Base\Base_West.sqf";
-//(east) call compile preprocessFileLineNumbers "Common\Config\Base\Base_East.sqf";
+(west) call compile preprocessFileLineNumbers "Common\Config\Base\Town_Defenses.sqf";
+(east) call compile preprocessFileLineNumbers "Common\Config\Base\Town_Defenses.sqf";
+(resistance) call compile preprocessFileLineNumbers "Common\Config\Base\Town_Defenses.sqf";
 
 //CTI_UK_SIDE declaration
 if(CTI_UK_SIDE >= 0) then {
