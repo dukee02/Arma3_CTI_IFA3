@@ -12,8 +12,8 @@
 #include "Rsc\Parameters.hpp"
 #include "Rsc\titles.hpp"
 
-#include "AFAR\ui\defines.hpp"
-#include "AFAR\ui\dialogs.hpp"
+//#include "AFAR\ui\defines.hpp"
+//#include "AFAR\ui\dialogs.hpp"
 
 //class CfgTitles {
 //#include "AFAR\ui\titles.hpp"
