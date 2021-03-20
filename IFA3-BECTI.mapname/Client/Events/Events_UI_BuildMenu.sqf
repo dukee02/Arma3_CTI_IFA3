@@ -71,7 +71,7 @@ switch (_action) do {
 	};
 	case "onBuildStructure": {
 		_selected = _this select 1;
-		CTI_VAR_DestroyCam = false;
+		//CTI_VAR_DestroyCam = false;
 		if (_selected != -1) then {
 			_selected = lnbData[100006, [_selected, 0]];
 			
@@ -83,12 +83,13 @@ switch (_action) do {
 			_currency = if (_supplyActive) then {_supply} else {_funds};
 			
 			if (_currency >= _cost) then { //--- Check if we have enough funds to go in the construction mode.
+				CTI_VAR_DestroyCam = false;
 				CTI_VAR_StructurePlaced = false;
 				[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
 				closeDialog 0;
 			} else {
 				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that building.";
-				closeDialog 0;
+				//closeDialog 0;
 			};
 		};
 	};
@@ -109,7 +110,7 @@ switch (_action) do {
 				closeDialog 0;
 			} else {
 				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that defense.";
-				closeDialog 0;
+				//closeDialog 0;
 			};
 		};
 	};
