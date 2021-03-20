@@ -32,7 +32,7 @@ class Params {
 	class CTI_GUER_TOWNS {
 		title = "INDEPENDENT Town Nation (change for easyer town defending or all nations are seperated into EAST and WEST)";
 		values[] = {0,1,2};
-		texts[] = {"FFI (Infantry with unarmed cars - difficulty very easy)","Polish Units (Infantry with unarmed cars - difficulty very easy)","3rd Party (needs one Side on GUER - difficulty normal)"};
+		texts[] = {"FFI (Infantry with unarmed cars - difficulty very easy)","Polish Units (Infantry with armed trucks - difficulty easy)","3rd Party (needs one Side on GUER - difficulty normal)"};
 		default = 2;
 	};
 	class CTI_WEST_TOWNS {
@@ -109,21 +109,21 @@ class Params {
 	};
 	class CTI_ECONOMY_LEVEL_NAVAL {
 		title = "UPGRADE: Max Level Naval";
-		values[] = {-1,0};
-		texts[] = {"Disable this units","0"};
-		default = 0; 
+		values[] = {-1,0,1,2,3};
+		texts[] = {"Disable this units","0","1","2","3"};
+		default = -1; //3
 	};
 	class CTI_ECONOMY_LEVEL_AIR {
 		title = "UPGRADE: Max Level Air";
-		values[] = {-1,0,1,2};
-		texts[] = {"Disable this units","0","1","2"};
-		default = 2; 
+		values[] = {-1,0,1,2,3,4,5};
+		texts[] = {"Disable this units","0","1","2","3","4","5"};
+		default = 2; //5
 	};
 	class CTI_ECONOMY_TIME_MULTI {
-		title = "UPGRADE: Time multiplyer (max times: Inf:150s|Light:300s|Heavy,Air,Ship:600s)";
+		title = "UPGRADE: Time multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
 		values[] = {1,2,3,4,5,6,8,10};
 		texts[] = {"1","2","3","4","5","6","8","10"};
-		default = 4; //5
+		default = 2; //5
 	};
 	class SEPERATOR_AI {
 		title = "============ AI ============";
@@ -577,8 +577,8 @@ class Params {
 	};
 	class CTI_TOWNS_AMOUNT {
 		title = "TOWNS: Amount";
-		values[] = {6}; //values[] = {0,1,2,3,4,5,6};
-		texts[] = {"Full"}; //texts[] = {"Extra Small","Small","Medium","Large","West","East","Full"};
+		values[] = {0,1,2,3,6}; //values[] = {0,1,2,3,4,5,6};
+		texts[] = {"Extra Small","Small","Medium","Large","Full"}; //texts[] = {"Extra Small","Small","Medium","Large","West","East","Full"};
 		default = 6;
 	};
 	class CTI_TOWNS_CAMPS_CREATE {
@@ -637,6 +637,8 @@ class Params {
 	};
 	class CTI_TOWNS_STARTING_MODE {
 		title = "TOWNS: Starting Mode";
+		//values[] = {-1,0,1,2,3,4,5};
+		//texts[] = {"pre defined","Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
 		values[] = {0,1,2,3,4,5};
 		texts[] = {"Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
 		default = 0;
@@ -719,6 +721,36 @@ class Params {
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM","4.5 KM","5 KM"};
 		default = 5000;
 	};
+	class SEPARATOR_ADDONS {
+		title = "=========================== ADDONS ============================";
+		values[] = {1};
+		texts[] = {""};
+		default = 1;
+	};
+	class CTI_IFA3LIB_ADDON {
+		title = "ADDON: IFA3 Liberation";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
+	class CTI_CSA38_ADDON {
+		title = "ADDON: CSA38";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
+	class CTI_FOW_ADDON {
+		title = "ADDON: FOW";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
+	class CTI_SAB_ADDON {
+		title = "ADDON: Secret Weapons (adds Ships and more Planes)";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
 	class SEPARATOR_LOG {
 		title = "=========================== LOG ============================";
 		values[] = {1};
@@ -741,6 +773,6 @@ class Params {
 		title = "LOG: Set level of Logging";
 		values[] = {0,1,2,3};
 		texts[] = {"Error","Warning","Information","Debug"};
-		default = 3;
+		default = 0;
 	};
 };

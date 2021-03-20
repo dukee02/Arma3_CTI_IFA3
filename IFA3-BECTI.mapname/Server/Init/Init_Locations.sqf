@@ -4,6 +4,17 @@ waitUntil {!isNil 'CTI_InitTowns'};
 
 //--- Special Towns mode.
 switch (missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") do {
+	//All resistance
+	case 0: {
+		{
+			_x setVariable ['cti_town_sideID',CTI_RESISTANCE_ID,true];
+			_camps = _x getVariable "cti_town_camps";
+			{
+				_x setVariable ['cti_camp_sideID',CTI_RESISTANCE_ID,true];
+				_x setVariable ["cti_camp_lastSideID", CTI_RESISTANCE_ID, true];
+			} forEach _camps;
+		} forEach CTI_Towns;
+	};
 	//--- 50-50.
 	case 1: {
 		_half = round(count CTI_Towns)/2;
@@ -41,6 +52,15 @@ switch (missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") do {
 	
 	//--- Nearby Towns.
 	case 2: {
+		{
+			_x setVariable ['cti_town_sideID',CTI_RESISTANCE_ID,true];
+			_camps = _x getVariable "cti_town_camps";
+			{
+				_x setVariable ['cti_camp_sideID',CTI_RESISTANCE_ID,true];
+				_x setVariable ["cti_camp_lastSideID", CTI_RESISTANCE_ID, true];
+			} forEach _camps;
+		} forEach CTI_Towns;
+		
 		_total = count CTI_Towns;
 		_wStart = (west Call CTI_CO_FNC_GetSideLogic) getVariable "cti_start_pos";
 		_eStart = (east Call CTI_CO_FNC_GetSideLogic) getVariable "cti_start_pos";
@@ -76,6 +96,15 @@ switch (missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") do {
 	
 	//--- Random Towns (25% East, 25% West, 50% Res).
 	case 3: {
+		{
+			_x setVariable ['cti_town_sideID',CTI_RESISTANCE_ID,true];
+			_camps = _x getVariable "cti_town_camps";
+			{
+				_x setVariable ['cti_camp_sideID',CTI_RESISTANCE_ID,true];
+				_x setVariable ["cti_camp_lastSideID", CTI_RESISTANCE_ID, true];
+			} forEach _camps;
+		} forEach CTI_Towns;
+		
 		_total = count CTI_Towns;
 		_half = round(count CTI_Towns)/4;
 		_minus = round(count CTI_Towns)/2;
@@ -101,7 +130,7 @@ switch (missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") do {
 					_x setVariable ['cti_camp_sideID',CTI_EAST_ID,true];
 				} forEach _camps;
 			};
-		};	
+		};
 	};
 	//--- Coop at East side, "Distance of precaptured Towns" affects starting border
 	case 4: {

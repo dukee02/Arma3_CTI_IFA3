@@ -82,7 +82,8 @@ if (CTI_IsServer) then {
 		
 		waitUntil {!isNil 'CTI_Init_TownMode'};
 		
-		if (isNil {_town getVariable "cti_town_sideID"}) then {_town setVariable ["cti_town_sideID", 2, true]};
+		//if (isNil {_town getVariable "cti_town_sideID"}) then {_town setVariable ["cti_town_sideID", 2, true]};
+		if (isNil {_town getVariable "cti_town_sideID"}) then {_town setVariable ["cti_town_sideID", _town_side call CTI_CO_FNC_GetSideID, true]};
 		_sideID = _town getVariable "cti_town_sideID";
 		_town_side = _sideID call CTI_CO_FNC_GetSideFromID;
 
