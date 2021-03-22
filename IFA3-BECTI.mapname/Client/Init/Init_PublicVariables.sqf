@@ -13,6 +13,8 @@ with missionNamespace do {
 	CTI_PVF_Client_OnMissionEnding = { _this spawn CTI_CL_FNC_OnMissionEnding };
 	CTI_PVF_Client_OnMessageReceived = { _this spawn CTI_CL_FNC_DisplayMessage };
 	CTI_PVF_Client_OnStructureKilled = { _this spawn CTI_CL_FNC_OnFriendlyStructureDestroyed };
+	CTI_PVF_Client_OnEnemyStructureKilled = { _this spawn CTI_CL_FNC_OnEnemyStructureDestroyed };
+	
 	CTI_PVF_Client_OnWorkerBuilt = { 
 		_hq = CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ;
 		_pos = getPos _hq;
