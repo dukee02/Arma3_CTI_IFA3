@@ -74,10 +74,10 @@ while { alive _factory } do {
 		};
 	};
 	
+	_factory setVariable ["cti_processing_end", time+_req_time];
 	while { true } do {
 		//--- the request is no longer in queu, the client has ended it's job.
 		_is_present = false;
-			
 		{
 			if ((_x select 0) == _req_seed && (_x select 1) == _req_classname && (_x select 2) == _req_time) exitWith {_is_present = true};
 		} forEach (_factory getVariable "cti_queue_processing");

@@ -2,6 +2,8 @@ _last_size = -1;
 _last_funds = -1;
 _show_inuse = false;
 _lb_queued_content = [];
+_time_end = 0;
+_time_remain = 0;
 
 // ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "<t>Producing: Soldier</t>";
 while { true } do {
@@ -14,7 +16,13 @@ while { true } do {
 		if !(_in_use) then {
 			if (_show_inuse) then {	_show_inuse = false; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "" };
 		} else {
-			if !(_show_inuse) then { _show_inuse = true; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "Factory in use" };
+			if !(_show_inuse) then { 
+				_show_inuse = true; 
+				_time_end = _factory getVariable "cti_processing_end";
+				_time_remain = round(_time_end - time);
+				//((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "Factory in use" ;
+				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText format["Factory in use %1s", _time_remain];
+			};
 		};
 	} else {
 		if (_show_inuse) then {	_show_inuse = false; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "" };
