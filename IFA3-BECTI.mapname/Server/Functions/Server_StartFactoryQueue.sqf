@@ -74,7 +74,7 @@ while { alive _factory } do {
 		};
 	};
 	
-	_factory setVariable ["cti_processing_end", time+_req_time];
+	_factory setVariable ["cti_processing_end", serverTime+_req_time, true];
 	while { true } do {
 		//--- the request is no longer in queu, the client has ended it's job.
 		_is_present = false;
