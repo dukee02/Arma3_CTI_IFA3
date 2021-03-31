@@ -53,14 +53,36 @@ call compile preprocessFileLineNumbers "Server\Functions\Server_TownMortars.sqf"
 execVM "Server\Init\Init_Prison.sqf";
 
 //--- Get the starting locations.
-_startup_locations = [];
-for '_i' from 0 to 30 do {
+_startup_locations_west = [];
+for '_i' from 0 to 30 step +2 do {
 	_location = getMarkerPos format ["cti-spawn%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
-	_startup_locations pushBack _location;
+	_startup_locations_west pushBack _location;
+};
+_startup_locations_east = [];
+for '_i' from 1 to 30 step +2 do {
+	_location = getMarkerPos format ["cti-spawn%1", _i];
+	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
+	_startup_locations_east pushBack _location;
 };
 
 //--- Select whether the spawn restriction is enabled or not.
+/*if ((missionNamespace getVariable "CTI_BASE_START_TOWN") > 0) then {
+	waitUntil {!isNil 'CTI_InitTowns'};
+	_adjusted_positions = [];
+	{
+		_town = _x;
+		{ 
+			_range = _x distance _town;
+			if (_range <= 2500 && !(_x in _adjusted_positions)) then {
+				_adjusted_positions = _adjusted_positions + [_x];
+			};
+		} forEach _startup_locations_west;
+
+	} forEach CTI_Towns;
+	if (count _adjusted_positions >= 2) then {_startup_locations_west = _adjusted_positions};
+	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Spawn locations west were refined [%1].", count _startup_locations_west]] Call CTI_CO_FNC_Log};
+};
 if ((missionNamespace getVariable "CTI_BASE_START_TOWN") > 0) then {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	_adjusted_positions = [];
@@ -71,12 +93,12 @@ if ((missionNamespace getVariable "CTI_BASE_START_TOWN") > 0) then {
 			if (_range <= 2500 && !(_x in _adjusted_positions)) then {
 				_adjusted_positions = _adjusted_positions + [_x];
 			};
-		} forEach _startup_locations;
+		} forEach _startup_locations_east;
 
 	} forEach CTI_Towns;
-	if (count _adjusted_positions >= 2) then {_startup_locations = _adjusted_positions};
-	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Spawn locations were refined [%1].", count _startup_locations]] Call CTI_CO_FNC_Log};
-};
+	if (count _adjusted_positions >= 2) then {_startup_locations_east = _adjusted_positions};
+	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Spawn locations east were refined [%1].", count _startup_locations_east]] Call CTI_CO_FNC_Log};
+};*/
 
 //--- Place both sides.
 _range = missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
@@ -85,17 +107,20 @@ _westLocation = getMarkerPos "cti-spawn0";
 _eastLocation = getMarkerPos "cti-spawn0";
 
 _attempts = 0;
-_total = count _startup_locations;
-
-while {_eastLocation distance _westLocation < _range && _attempts <= 500} do {
-	_eastLocation = _startup_locations select floor(random _total);
-	_westLocation = _startup_locations select floor(random _total);
+_total_west = count _startup_locations_west;
+_total_east = count _startup_locations_east;
+while {_eastLocation distance _westLocation < _range &&_attempts <= 500} do {
+	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: [%1] / [%2] ", _westLocation, _eastLocation]] call CTI_CO_FNC_Log;};
+	_westLocation = _startup_locations_west select floor(random _total_west);
+	_eastLocation = _startup_locations_east select floor(random _total_east);
 	_attempts = _attempts + 1;
 };
 
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: [%1] / [%2] ", _westLocation, _eastLocation]] call CTI_CO_FNC_Log;};
+
 if (_attempts >= 500) then {
-	_westLocation = getMarkerPos "cti-spawn0";//N
-	_eastLocation = getMarkerPos "cti-spawn1";//S
+	_westLocation = getMarkerPos "cti-spawn0";//W
+	_eastLocation = getMarkerPos "cti-spawn1";//E
 };
 
 {

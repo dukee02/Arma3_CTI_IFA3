@@ -203,12 +203,12 @@ class Params {
 		texts[] = {"Disabled","1","2","3","4","5","6","7","8","9","10"};
 		default = 6;
 	};
-	class CTI_BASE_START_TOWN {
+	/*class CTI_BASE_START_TOWN {
 		title = "BASE: Start Near towns";
 		values[] = {0,1};
 		texts[] = {"No","Yes"};//{"Disabled","Enabled"};
 		default = 1;
-	};
+	};*/
 	class CTI_BASE_STARTUP_PLACEMENT {
 		title = "BASE: Start-up Placement";
 		values[] = {1000,2000,4000,6000,8000,10000};
