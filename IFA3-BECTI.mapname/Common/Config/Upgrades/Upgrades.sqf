@@ -1,23 +1,12 @@
-private ["_side"];
+private ["_side, _cost_level"];
 
 _side = _this;
+_cost_level = 1000;
 
-/*
-missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], [
-	true, //--- Barracks
-	true, //--- Light
-	true, //--- Heavy
-	true, //--- Air
-	false, //--- Satellite
-	(missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") == 1, //--- Air FFAR
-	(missionNamespace getVariable "CTI_VEHICLES_AIR_AT") == 1, //--- Air AT
-	(missionNamespace getVariable "CTI_VEHICLES_AIR_AA") == 1, //--- Air AA
-	(missionNamespace getVariable "CTI_VEHICLES_AIR_CM") == 1, //--- Air CM
-	(missionNamespace getVariable "CTI_TOWNS_OCCUPATION") > 0, //--- Towns Occupation
-	(missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 0, //--- Supply
-	true //--- Gear
-]];
-*/
+/************************************************************************************************************************************************
+ *															UPGRADES_ENABLED																	*
+ *													enable or disable the upgrades																*
+ ************************************************************************************************************************************************/
 _upgrades_enabled = [];
 _upgrades_enabled pushBack true; //(CTI_NO_UPGRADE_MODE == 0); 	//--- Barracks
 _upgrades_enabled pushBack true; //(CTI_NO_UPGRADE_MODE == 0); 	//--- Light
@@ -34,23 +23,10 @@ _upgrades_enabled pushBack ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_
 _upgrades_enabled pushBack true; //(CTI_NO_UPGRADE_MODE == 0); 	//--- Gear
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], _upgrades_enabled];
 
-/*
-missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], [
-	[[1000,2000],[1000,2000]], //--- Barracks
-	[[1500,3000],[2500,5000]], //--- Light
-	[[2000,5000],[2000,5000],[2000,5000],[5000,10000]], //--- Heavy
-	[[2000,5000],[2000,5000],[2000,5000],[2000,5000],[5000,10000],[5000,10000]], //--- Air
-	[[30000,250000]], //--- Satellite
-	[[1500,10000]], //--- Air FFAR
-	[[5000,20000]], //--- Air AT
-	[[7500,30000]], //--- Air AA
-	[[4500,8000]], //--- Air CM
-	[[2000,5000],[2000,5000],[5000,10000]], //--- Towns Occupation
-	[[2000,5000],[5000,10000],[10000,20000],[20000,40000]], //--- Supply
-	[[1000,2000],[1000,2000],[1000,2000]] //--- Gear
-]];
-*/
-
+/************************************************************************************************************************************************
+ *															UPGRADES_COSTS																		*
+ *											calculate the costs for every upgrade per level														*
+ ************************************************************************************************************************************************/
 //values[] = {50,100,200,300,400,500,600,700,800,900,1000,1500,2000};
 //texts[] = {"half","normal","double","tripled","4x","5x","6x","7x","8x","9x","10x","15x","20x"};
 _upgrade_cost = [];
@@ -105,22 +81,10 @@ for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_GEAR}, {_i = _i + 1}] do {
 _upgrade_cost pushBack _cost;															//--- Gear
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], _upgrade_cost];
 
-/*
-missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], [
-	2, //--- Barracks
-	2, //--- Light
-	4, //--- Heavy
-	6, //--- Air
-	1, //--- Satellite
-	1, //--- Air FFAR
-	1, //--- Air AT
-	1, //--- Air AA
-	1, //--- Air CM
-	3, //--- Towns Occupation
-	4, //--- Supply
-	2 //--- Gear
-]];
-*/
+/************************************************************************************************************************************************
+ *															UPGRADES_LEVELS																		*
+ *													setup the activated max upgrade level														*
+ ************************************************************************************************************************************************/
 _upgrade_levels = [];
 _upgrade_levels pushBack CTI_ECONOMY_LEVEL_INFANTRY; 	//--- Barracks
 _upgrade_levels pushBack CTI_ECONOMY_LEVEL_WHEELED; 	//--- Light
@@ -137,24 +101,10 @@ _upgrade_levels pushBack 4; 							//--- Supply
 _upgrade_levels pushBack CTI_ECONOMY_LEVEL_GEAR;		//--- Gear
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], _upgrade_levels];
 
-
-/*
-missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], [
-	[[CTI_UPGRADE_BARRACKS,1],[CTI_UPGRADE_BARRACKS,2]], //--- Gear
-	[[],[]], //--- Barracks
-	[[],[]], //--- Light
-	[[],[],[],[]], //--- Heavy
-	[[],[],[],[],[],[]], //--- Air
-	[[CTI_UPGRADE_BARRACKS,1],[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_HEAVY,2]], //--- Towns Occupation
-	[[],[],[],[]], //---Supply
-	[[]], //--- Air FFAR
-	[[CTI_UPGRADE_AIR, 1]], //--- Air AT
-	[[CTI_UPGRADE_AIR, 1]], //--- Air AA
-	[[]], //--- Air CM
-	[[CTI_UPGRADE_AIR, 1]] //--- Satellite
-]];
-*/
-
+/************************************************************************************************************************************************
+ *															UPGRADES_LINKS																		*
+ *													requirement setup for upgrades																*
+ ************************************************************************************************************************************************/
 _upgrade_links = [];
 _links = [];
 for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_INFANTRY}, {_i = _i + 1}] do {
@@ -195,29 +145,16 @@ for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_GEAR}, {_i = _i + 1}] do {
 _upgrade_links pushBack _links;				//--- Gear
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], _upgrade_links];
 
-
-/*
-missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], [
-	[20, 40], //--- Gear
-	[20,30], //--- Barracks
-	[30,50], //--- Light
-	[50,70,90,120], //--- Heavy
-	[90,90,90,120,120,120], //--- Air
-	[60, 70, 80], //--- Towns Occupation
-	[60,120,180,240], //--- Supply
-	[90], //--- Air FFAR
-	[90], //--- Air AT
-	[90], //--- Air AA
-	[60], //--- Air CM
-	[120] //--- Satellite
-]];
-*/
-
+/************************************************************************************************************************************************
+ *															UPGRADES_TIMES																		*
+ *													setup the time needed to finish the upgrade													*
+ ************************************************************************************************************************************************/
 _upgrade_time = [];
 _time = [];
 _time_level_base = 30;
 for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_INFANTRY}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<30): {30}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Barracks
@@ -225,6 +162,7 @@ _time = [];
 _time_level_base = 60;
 for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_WHEELED}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<60): {60}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Light
@@ -232,12 +170,14 @@ _time = [];
 _time_level_base = 90;
 for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_TRACKED}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<90): {90}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Heavy
 _time = [];
-_time_level_base = 120;
+_time_level_base = 90;
 for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_AIR}, {_i = _i + 1}] do {
+	_time_level = switch(true) do {case (_time_level<90): {90}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time_level = _time_level_base*(_i+1)*(_i+1);
 	_time pushBack _time_level;
 }; 
@@ -260,6 +200,7 @@ _time = [];
 _time_level_base = 30;
 for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_GEAR}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<30): {30}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Gear

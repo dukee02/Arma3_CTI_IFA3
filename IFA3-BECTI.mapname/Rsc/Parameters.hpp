@@ -119,8 +119,14 @@ class Params {
 		texts[] = {"Disable this units","0","1","2","3","4","5"};
 		default = 2; //5
 	};
+	class CTI_ECONOMY_UPGRADE_TIMECAP {
+		title = "UPGRADE: Max Time needed for upgrades (concerns higher tier upgrades)";
+		values[] = {300,400,500,600,700,800,900,1000,1100,1200};
+		texts[] = {"300s","400s","500s","600s","700s","800s","900s","1000s","1100s","1200s"};
+		default = 600; //600
+	};
 	class CTI_ECONOMY_TIME_MULTI {
-		title = "UPGRADE: Time multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
+		title = "BASE: Buildtime multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
 		values[] = {1,2,3,4,5,6,8,10};
 		texts[] = {"1","2","3","4","5","6","8","10"};
 		default = 2; //5
