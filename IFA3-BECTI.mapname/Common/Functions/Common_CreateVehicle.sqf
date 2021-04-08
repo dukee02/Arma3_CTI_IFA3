@@ -60,10 +60,10 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 _vehicle = createVehicle [_type, _position, [], 7, _special];
 _vehicle setDir _direction;
+
 clearMagazineCargo _vehicle;
 clearWeaponCargo _vehicle;
-//_truck addWeaponCargo ["M16", 5];
-//_truck addMagazineCargo ["M16", 5];
+clearItemCargo _vehicle;
 
 //if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format ["type: <%1> special: <%2>",  _type, _special]] call CTI_CO_FNC_Log;};
 if (_special != "FLY") then {
