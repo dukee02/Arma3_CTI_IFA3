@@ -81,9 +81,9 @@ _var = missionNamespace getVariable _variable;
  *		2 = reconstruction for full price
  *		3 = reconstruction for half price
  */
- 
+
+private _reconstruct = false;
 if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 || _sell == false) then {
-	private _reconstruct = false;
 	if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 1) then {
 		
 		_supplyActive = if (missionNameSpace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM" == 0) then {true} else {false};
@@ -122,6 +122,8 @@ if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 || _sell == false) then {
 
 		_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull], true];
 	};
+} else {
+	if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed <reconstruct? %2>", _variable, _reconstruct]] call CTI_CO_FNC_Log;};
 }; 
  
 sleep 5;

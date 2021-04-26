@@ -70,11 +70,7 @@ if (typeName (_var_classname select CTI_UNIT_SCRIPTS) == "ARRAY") then {
 };
 
 //--- Then we check if the buyer has enough funds to perform this operation
-//_cost = _var_classname select 2;
-//-----------------------------
-//for testing we set all costs depending on type 
-_cost = switch (true) do { case (_model isKindOf "Man"): {1}; case (_model isKindOf "Tank"): {100}; case (_model isKindOf "Air"): {200}; default {10}};
-//-----------------------------
+_cost = _var_classname select 2;
 if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 	_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];
@@ -82,6 +78,9 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	_var_crew_classname = missionNamespace getVariable _crew;
 	if !(isNil '_var_crew_classname') then { _cost = _cost + ((count(_model call CTI_CO_FNC_GetVehicleTurrets)+1) * (_var_crew_classname select 2)) };
 };
+
+//AI will pay now less than a player (factor 100 or 10?)
+_cost = round(_cost/100);
 
 _funds = [_req_buyer, _req_side] call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };

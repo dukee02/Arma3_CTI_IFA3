@@ -25,7 +25,7 @@ item20[] = {"",7,210,696.000000,896.000000,704.000000,904.000000,0.000000,""};
 item21[] = {"",7,210,696.000000,-279.000000,704.000000,-271.000000,0.000000,""};
 item22[] = {"Construction",4,218,50.000000,400.000000,150.000000,450.000000,2.000000,"Construction"};
 item23[] = {"Management",4,218,-250.000000,400.000000,-150.000000,450.000000,1.000000,"Management"};
-item24[] = {"Determine",2,250,50.000000,500.000000,150.000000,550.000000,0.000000,"Determine"};
+item24[] = {"Determine",2,4346,50.000000,500.000000,150.000000,550.000000,0.000000,"Determine"};
 item25[] = {"Determine_1",2,250,-250.000000,500.000000,-150.000000,550.000000,0.000000,"Determine"};
 item26[] = {"Nil",8,218,-100.000000,600.000000,0.000000,650.000000,0.000000,"Nil"};
 item27[] = {"Skip",2,250,-100.000000,700.000000,0.000000,750.000000,0.000000,"Skip"};
@@ -38,7 +38,7 @@ item33[] = {"Skip_1",2,250,-500.000000,0.000000,-400.000000,50.000000,0.000000,"
 item34[] = {"",7,210,-454.000000,-279.000000,-446.000000,-271.000000,0.000000,""};
 item35[] = {"Salvagers",4,218,425.000000,600.000000,525.000000,650.000000,1.000000,"Salvagers"};
 item36[] = {"Update_Salvagers",2,250,425.000000,700.000000,525.000000,750.000000,0.000000,"Update" \n "Salvagers"};
-item37[] = {"Phase_III_HQ",2,4346,-100.000000,200.000000,0.000000,250.000000,0.000000,"Phase III" \n "HQ"};
+item37[] = {"Phase_III_HQ",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Phase III" \n "HQ"};
 item38[] = {"Ready",4,218,-100.000000,300.000000,0.000000,350.000000,1.000000,"Ready"};
 item39[] = {"Deploy",4,218,50.000000,125.000000,150.000000,175.000000,1.000000,"Deploy"};
 item40[] = {"Repair",4,218,50.000000,275.000000,150.000000,325.000000,1.000000,"Repair"};
@@ -112,8 +112,8 @@ link59[] = {44,45};
 link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
-globals[] = {25.000000,1,0,0,0,640,480,1,240,6316128,1,-578.715271,595.992126,805.992554,-580.497437,997,910,1};
-window[] = {2,-1,-1,-32000,-32000,1040,483,1862,210,3,1015};
+globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-510.543121,801.041626,1061.856934,-101.072792,997,884,1};
+window[] = {2,-1,-1,-1,-1,856,26,1405,26,3,1015};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -723,11 +723,13 @@ class FSM
                          "	if (_funds >= CTI_VEHICLES_SALVAGER_PRICE && !isNull _factory_repair && count(_sideLogic getVariable ""cti_salvagers"") < CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX && time - _commander_lastsalvager_addin > 300) then {_action = ""hire-salvager""};" \n
                          "};" \n
                          "" \n
-                         "//--- The commander could not build in time" \n
-                         "if (count _build > 0) then {if (time - _commander_buildorderstart > 240) then {_build = []}};" \n
+                         "if (alive _hq) then {" \n
+                         "	//--- The commander could not build in time" \n
+                         "	if (count _build > 0) then {if (time - _commander_buildorderstart > 240) then {_build = []}};" \n
                          "" \n
-                         "//--- The commander is still building something" \n
-                         "if (count _build > 0) then {_action = ""build-structures""};" \n
+                         "	//--- The commander is still building something" \n
+                         "	if (count _build > 0) then {_action = ""build-structures""};" \n
+                         "};" \n
                          "" \n
                          "//--- We check the workers last" \n
                          "if (count (_sideLogic getVariable ""cti_workers"") < 4 && _funds >= CTI_BASE_WORKERS_PRICE) then {_action = ""hire-workers""};"/*%FSM</STATEINIT""">*/;
