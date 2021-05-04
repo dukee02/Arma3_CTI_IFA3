@@ -112,14 +112,11 @@ if (_special != "FLY") then {
 		//_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
 	} else {
 		//place on a save Pos on the ground
-		_save_pos = [_position, 0, 50, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+		//_save_pos = [_position, 0, 50, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+		_save_pos = [_position, 0, 10, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
 		_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
 		//_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1]; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	};
-	//_vehicle setPos _save_pos;
-	//_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
-	
-	//_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1]; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	_vehicle setVelocity [0,0,1];
 } else {
 	_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 200]; //--- Make the vehicle spawn in the sky
