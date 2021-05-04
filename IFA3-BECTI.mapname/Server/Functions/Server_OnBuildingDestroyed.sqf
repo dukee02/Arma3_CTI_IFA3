@@ -82,8 +82,10 @@ _var = missionNamespace getVariable _variable;
  *		3 = reconstruction for half price
  */
 
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building demage System: %1 | sell: %2", CTI_BASE_BUILDING_DAMAGE_SYSTEM, _sell]] call CTI_CO_FNC_Log;};
+
 private _reconstruct = false;
-if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 || _sell == false) then {
+if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 && _sell == false) then {
 	if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 1) then {
 		
 		_supplyActive = if (missionNameSpace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM" == 0) then {true} else {false};
@@ -95,14 +97,14 @@ if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 || _sell == false) then {
 
 		if (_currency >= _cost) then { //--- Check if we have enough funds to reconstruct.
 			_reconstruct = true;
-			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed <reconstruct? %2> with cost: <%3>", _variable, _reconstruct, _cost]] call CTI_CO_FNC_Log;};
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["4)Building %1 gets destroyed <reconstruct? %2> with cost: <%3>", _variable, _reconstruct, _cost]] call CTI_CO_FNC_Log;};
 		} else {
-			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed. No reconstruct! needed supply.money: <%2>", _variable, _cost]] call CTI_CO_FNC_Log;};
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["3)Building %1 gets destroyed. No reconstruct! needed supply.money: <%2>", _variable, _cost]] call CTI_CO_FNC_Log;};
 		};
 		
 	} else {
 		_reconstruct = true;
-		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed <reconstruct? %2>", _variable, _reconstruct]] call CTI_CO_FNC_Log;};
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["2)Building %1 gets destroyed <reconstruct? %2>", _variable, _reconstruct]] call CTI_CO_FNC_Log;};
 	};
 	
 	if(_reconstruct) then {
@@ -123,7 +125,7 @@ if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 || _sell == false) then {
 		_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull], true];
 	};
 } else {
-	if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed <reconstruct? %2>", _variable, _reconstruct]] call CTI_CO_FNC_Log;};
+	if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["1)Building %1 gets destroyed <reconstruct? %2>", _variable, _reconstruct]] call CTI_CO_FNC_Log;};
 }; 
  
 sleep 5;
@@ -158,15 +160,16 @@ if (_need_update) then {
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed <selled? %2>", _variable, _sell]] call CTI_CO_FNC_Log;};
 
-private _enemy = "civil";
-if(_sideID == 0) then {
-	_enemy = (1) call CTI_CO_FNC_GetSideFromID;
-} else {
-	_enemy = (0) call CTI_CO_FNC_GetSideFromID;
+if(_sell == false) then {
+	private _enemy = "civil";
+	if(_sideID == 0) then {
+		_enemy = (1) call CTI_CO_FNC_GetSideFromID;
+	} else {
+		_enemy = (0) call CTI_CO_FNC_GetSideFromID;
+	};
+	[["CLIENT", _side], "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
+	[["CLIENT", _enemy], "Client_OnEnemyStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
 };
-
-[["CLIENT", _side], "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
-[["CLIENT", _enemy], "Client_OnEnemyStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
 
 //[["CLIENT", _side], "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
 //["CLIENT", "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
