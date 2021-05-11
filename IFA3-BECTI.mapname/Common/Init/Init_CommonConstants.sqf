@@ -620,7 +620,6 @@ with missionNamespace do {
 //-----------------------------------------------------------------------------------------------------------------------//
 
 CTI_ARTILLERY_FILTER = 0; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
-CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 0; //--- Keep values of 10
 
@@ -693,6 +692,7 @@ with missionNamespace do {
 	if (isNil 'CTI_CAMO_ACTIVATION') then {CTI_CAMO_ACTIVATION = 0};	//--- "Standard", "Winter", "Desert", "All active (Main = Standard)"
 	
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 0}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
+	if (isNil 'CTI_ARTILLERY_TIMEOUT') then {CTI_ARTILLERY_TIMEOUT = 300}; //--- Delay between each fire mission
 	
 	CTI_ECONOMY_INCOME_COEF = 10; //--- Town Multiplicator Coefficient (SV * x)
 	//CTI_ECONOMY_INCOME_DIVIDED = 2.75; //--- Prevent commander from being a millionaire, and add the rest to the players pool.

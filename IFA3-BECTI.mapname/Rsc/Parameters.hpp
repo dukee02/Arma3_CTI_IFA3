@@ -167,12 +167,6 @@ class Params {
 		texts[] = {"",""};
 		default = 0;
 	};
-	class CTI_ARTILLERY_SETUP {
-		title = "ARTILLERY: Setup";
-		values[] = {-2,-1,0,1,2,3};
-		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
-		default = -1;
-	};
 	class CTI_BASE_AREA_MAX {
 		title = "BASE: Areas Limit";
 		values[] = {0,1,2,3,4,5,6,7,8};
@@ -388,6 +382,18 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"",""};
 		default = 0;
+	};
+	class CTI_ARTILLERY_SETUP {
+		title = "ARTILLERY: Setup";
+		values[] = {-2,-1,0,1,2,3};
+		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
+		default = -1;
+	};
+	class CTI_ARTILLERY_TIMEOUT {
+		title = "ARTILLERY: Delay between each fire mission";
+		values[] = {0,60,120,180,240,300,600};
+		texts[] = {"Disabled","0","60","120","180","240","300","600"};
+		default = 180;
 	};
 	class CTI_GAMEPLAY_TEAMSTACK_DISABLE {
 		title = "GAMEPLAY: Kick Team Stackers";
