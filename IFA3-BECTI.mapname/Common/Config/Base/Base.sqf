@@ -135,7 +135,7 @@ _classes = _classes 		+ [["LIB_Static_opelblitz_radio", "LIB_OpelBlitz_2_Wreck"]
 _prices = _prices 			+ [CTI_BASE_HQ_DEPLOY_COST];
 _times = _times 			+ [1];
 _placements = _placements 	+ [[0, 25]];
-_specials = _specials		+ [[["DMG_Reduce", 5]]];*/
+_specials = _specials		+ [[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]]];*/
 
 _headers pushBack 		[CTI_HQ_DEPLOYED, "HQ", "HQdeployed"];
 if (!isClass(configFile >> "CfgVehicles" >> "LIB_Static_opelblitz_radio")) then {
@@ -160,7 +160,7 @@ _prices pushBack 		CTI_BASE_HQ_DEPLOY_COST;
 _times pushBack			1;
 _placements pushBack 	[0, 25];
 _helper pushBack		[""];
-_specials pushBack 		[["DMG_Reduce", 4]];
+_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
 _headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
 if (isClass(configFile >> "CfgVehicles" >> "CDF_WarfareBBarracks")) then {
@@ -176,7 +176,7 @@ _prices pushBack		2000;
 _times pushBack			60;
 _placements pushBack 	[270, 35];
 _helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
-_specials pushBack 		[["DMG_Reduce", 1]];
+_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	_headers pushBack		[CTI_LIGHT, "Light Vehicle Factory", "Light"];
@@ -193,7 +193,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	_times pushBack 		80;
 	_placements pushBack 	[180, 30];
 	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
-	_specials pushBack 		[["DMG_Reduce", 1]];
+	_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 };
 
 _headers pushBack 		[CTI_CONTROLCENTER, "Control Center", "CC"];
@@ -210,7 +210,7 @@ _prices pushBack 		4000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25];
 _helper pushBack		[""];
-_specials pushBack 		[["DMG_Reduce", 1]];
+_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
 
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
@@ -228,7 +228,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	_times pushBack 		120;
 	_placements pushBack 	[90, 25];
 	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
-	_specials pushBack 		[["DMG_Reduce", 1]];
+	_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 };
 
 if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
@@ -245,7 +245,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
 	_times pushBack 		140;
 	_placements pushBack 	[180, 40];
 	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
-	_specials pushBack 		[["DMG_Reduce", 1]]; 
+	_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]]; 
 };
 
 _headers pushBack 		[CTI_AMMO, "Ammo Depot", "Ammo"];
@@ -261,7 +261,7 @@ _prices pushBack 		2000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25];
 _helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
-_specials pushBack 		[["DMG_Reduce", 1]];
+_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
 _headers pushBack 		[CTI_REPAIR, "Repair Depot", "Repair"];
 if (isClass(configFile >> "CfgVehicles" >> "TK_GUE_WarfareBContructionSite_Base_EP1")) then {
@@ -276,7 +276,7 @@ _prices pushBack 		4000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25];
 _helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
-_specials pushBack 		[["DMG_Reduce", 1]];
+_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
 if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 	_headers pushBack 		[CTI_NAVAL, "Naval Yard", "Naval"];
@@ -292,7 +292,7 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 	_times pushBack 		80;
 	_placements pushBack 	[180, 60];
 	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
-	_specials pushBack 		[["DMG_Reduce", 1]];
+	_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 };
 
 [_side, _headers, _classes, _prices, _times, _placements, _helper, _specials] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
