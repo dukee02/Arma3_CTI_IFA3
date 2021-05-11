@@ -365,138 +365,6 @@ class Params {
 		texts[] = {"12 AM","1 AM","2 AM","3 AM","4 AM","5 AM","6 AM","7 AM","8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM","6 PM","7 PM","8 PM","9 PM","10 PM","11 PM","Random"};
 		default = -1;
 	};
-	class CTI_WEATHER_RAIN {
-		title = "WEATHER: Rain (Rain Requires Overcast Greater High)";
-		values[] = {-1,0,30,50,75,100};
-		texts[] = {"Random","Clear","Light","Medium","High","Max"};
-		default = 0;
-	};
-	class CTI_WEATHER_RAIN_COEF {
-		title = "WEATHER: Rain Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = 0;
-	};
-	class CTI_WEATHER_SNOW {
-		title = "WEATHER: Snow Storms";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Clear","Light","Medium","High","Max"};
-		default = 0;
-	};
-	class CTI_WEATHER_SNOW_COEF {
-		title = "WEATHER: Snow Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = 0;
-	};
-	class CTI_WEATHER_DUST {
-		title = "WEATHER: Dust Storms";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Clear","Light","Medium - Adds Wall of Dust","High - Adds Effect on Objects","Max - Adds Lethal Wall"};
-		default = 0;
-	};
-	class CTI_WEATHER_DUST_COEF {
-		title = "WEATHER: Dust Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = 0;
-	};
-	class CTI_WEATHER_MONSOON {
-		title = "WEATHER: Monsoon Storms";
-		values[] = {0,1,2};
-		texts[] = {"Clear","No Damage","Damage Objects"};
-		default = 0;
-	};
-	class CTI_WEATHER_MONSOON_COEF {
-		title = "WEATHER: Monsoon Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = 0;
-	};
-	class CTI_WEATHER_OVERCAST {
-		title = "WEATHER: Overcast";
-		values[] = {-1,0,30,50,75,100};
-		texts[] = {"Random","Clear","Light","Medium","High","Max"};
-		default = -1;
-	};
-	class CTI_WEATHER_OVERCAST_COEF {
-		title = "WEATHER: Overcast Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = -1;
-	};
-	class CTI_WEATHER_FOG {
-		title = "WEATHER: Fog value";
-		values[] = {-1,0,10,20,30,40,50,60,70,80,90,100};
-		texts[] = {"Random","Clear","10","20","30","40","50","60","70","80","90","MAX"};
-		default = -1;
-	};
-	class CTI_WEATHER_FOG_COEF {
-		title = "WEATHER: Fog Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = 0.1;
-	};
-	class CTI_WEATHER_FOG_DECAY {
-		title = "WEATHER: Fog decay level";
-		values[] = {-1,0,0.02,0.04,0.06,0.08,0.1,0.15,0.20,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","0.02","0.04","0.06","0.08","0.1","0.15","0.20","0.25","0.5","0.75","1"};
-		default = -1;
-	};
-	class CTI_WEATHER_FOG_DECAY_COEF {
-		title = "WEATHER: Fog decay Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = -1;
-	};
-	class CTI_WEATHER_FOG_ALT {
-		title = "WEATHER: Fog altitude";
-		values[] = {-1,0,1,5,25,50,100,200,300,400,500,600,700,800,900,1000};
-		texts[] = {"Random","0m","1m","5m","25m","50m","100m","200m","300m","400m","500m","600m","700m","800m","900m","1km"};
-		default = -1;
-	};
-	class CTI_WEATHER_FOG_ALT_COEF {
-		title = "WEATHER: Fog altitude Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = -1;
-	};
-	class CTI_WEATHER_WIND {
-		title = "WEATHER: Wind";
-		values[] = {-1,0,30,50,75,100};
-		texts[] = {"Random","Clear","Light","Medium","High","Max"};
-		default = -1;
-	};
-	class CTI_WEATHER_WIND_COEF {
-		title = "WEATHER: Wind Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = -1;
-	};
-	class CTI_WEATHER_WAVES {
-		title = "WEATHER: Waves";
-		values[] = {-1,0,30,50,75,100};
-		texts[] = {"Random","Clear","Light","Medium","High","Max"};
-		default = -1;
-	};
-	class CTI_WEATHER_WAVES_COEF {
-		title = "WEATHER: Waves Variance";
-		values[] = {-1,0,0.1,0.25,0.5,0.75,1};
-		texts[] = {"Random","None","10%","25%","50%","75%","Chaos"};
-		default = -1;
-	};
-	class CTI_WEATHER_VARIANCE_TIME {
-		title = "WEATHER: Frequency of weather changes (or between of storms)";
-		values[] = {-1,0,60,120,300,600,900,1800,2700,3600,5400,7200};
-		texts[] = {"Random","No Change","1min","2min","5min","10min","15min","30min","45min","60min","90min","120min"};
-		default = 1800;
-	};
-	class CTI_WEATHER_STORM_TIME {
-		title = "WEATHER: Duration of Storms (dust storms and monsoons)";
-		values[] = {-1,60,120,300,600,900,1800,2700,3600,5400,7200,14400};
-		texts[] = {"Random","1min","2min","5min","10min","15min","30min","45min","60min","90min","120min","240min"};
-		default = 900;
-	};
   	class CTI_WEATHER_FAST {
 		title = "WEATHER: Day Duration";
 		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
@@ -508,6 +376,12 @@ class Params {
 		values[] = {0.25,0.5,0.75,1,2,3,4,5,6,7,8,9,10,11,12};
 		texts[] = {"15 min","30 min","45 min","1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
 		default = 1;
+	};
+  	class CTI_WEATHER_CHANGES {
+		title = "WEATHER: Simple presets";
+		values[] = {0,1,2};
+		texts[] = {"Sunny start, random normal weather","Sunny", "complete random"};
+		default = 0;
 	};
 	class SEPERATOR_GAMEPLAY {
 		title = "============ Gameplay ============";
@@ -738,36 +612,6 @@ class Params {
 		values[] = {1000,1500,2000,2500,3000,3500,4000,4500,5000};
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM","4.5 KM","5 KM"};
 		default = 5000;
-	};
-	class SEPARATOR_ADDONS {
-		title = "=========================== ADDONS ============================";
-		values[] = {1};
-		texts[] = {""};
-		default = 1;
-	};
-	class CTI_IFA3LIB_ADDON {
-		title = "ADDON: IFA3 Liberation";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
-	class CTI_CSA38_ADDON {
-		title = "ADDON: CSA38";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
-	class CTI_FOW_ADDON {
-		title = "ADDON: FOW";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
-	class CTI_SAB_ADDON {
-		title = "ADDON: Secret Weapons (adds Ships and more Planes)";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
 	};
 	class SEPARATOR_LOG {
 		title = "=========================== LOG ============================";
