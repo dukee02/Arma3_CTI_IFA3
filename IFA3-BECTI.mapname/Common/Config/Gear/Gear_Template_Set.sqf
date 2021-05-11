@@ -1,3 +1,16 @@
+/*
+Gear saves like:
+[[[""arifle_spar_01_blk_f"",["""","""","""",""""],[""30rnd_556x45_stanag_tracer_green""]],
+[""launch_nlaw_f"",["""","""","""",""""],[]],
+["""",["""","""","""",""""],[]]],
+[[""u_b_combatuniform_mcam"",
+[""firstaidkit"",""firstaidkit"",""handgrenade"",""handgrenade""]],
+[""v_chestrig_rgr"",[""30rnd_556x45_stanag_tracer_green"",""30rnd_556x45_stanag_tracer_green"",""30rnd_556x45_stanag_tracer_green""]],
+[""b_assaultpack_mcamo"",[]]],
+[""h_helmetb_light"",""g_goggles_vr""],
+[["""",""binocular""],
+[""itemmap"","""",""itemradio"",""itemcompass"",""itemwatch""]]]
+*/
 private ["_faction", "_templates"];
 
 _faction = _this select 0;
@@ -34,7 +47,7 @@ _formated = [];
 		} forEach (_x select 0);
 		
 		_formated pushBack [_label, _picture, _cost, _x, _upgrade];
-		if (CTI_Log_Level >= CTI_Log_Error) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Template_Set.sqf", format ["Template [%1] has been set with name [%2], cost [%3] and upgrade level [%4].", _forEachIndex, _label, _cost, _upgrade]] call CTI_CO_FNC_Log };
+		if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Template_Set.sqf", format ["Template [%1] has been set with name [%2], cost [%3] and upgrade level [%4].", _forEachIndex, _label, _cost, _upgrade]] call CTI_CO_FNC_Log };
 	} else {
 		//todo diaglog error
 		if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: Common\Config\Gear\Gear_Template_Set.sqf", format ["Template [%1] contains nil items [%2].", _forEachIndex, _nils]] call CTI_CO_FNC_Log };

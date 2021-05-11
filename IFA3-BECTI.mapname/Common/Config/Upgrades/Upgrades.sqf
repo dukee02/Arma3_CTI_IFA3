@@ -177,8 +177,8 @@ _upgrade_time pushBack _time;													//--- Heavy
 _time = [];
 _time_level_base = 90;
 for [{private _i = 0}, {_i < CTI_ECONOMY_LEVEL_AIR}, {_i = _i + 1}] do {
-	_time_level = switch(true) do {case (_time_level<90): {90}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<90): {90}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Air
