@@ -363,7 +363,9 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 	};
 	_c pushBack format["%1LIB_StuG_III_G", _sid];
-	_c pushBack format["%1LIB_SdKfz124", _sid];
+	if(CTI_IFA3_NEW > 0) then {
+		_c pushBack format["%1LIB_SdKfz124", _sid];
+	};
 	_level = _level + 1;
 };
 //Level 1

@@ -166,11 +166,7 @@ _headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
 if (isClass(configFile >> "CfgVehicles" >> "CDF_WarfareBBarracks")) then {
 	_classes pushBack		["CDF_WarfareBBarracks", "Land_Scaffolding_New_F"];
 } else {
-	switch (CTI_BUILDING_FALLBACK) do {
-		case 1;
-		case 2: {_classes pushBack 		["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"];};					//Altis Military Buildings
-		default {_classes pushBack		["Land_i_House_Small_03_V1_F", "Land_House_Small_03_V1_ruins_F"];};		//Altis Housing
-	};
+	_classes pushBack 		["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"];					//Altis Military Buildings
 };
 _prices pushBack		2000;
 _times pushBack			60;
@@ -183,11 +179,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if (isClass(configFile >> "CfgVehicles" >> "CDF_WarfareBLightFactory")) then {
 		_classes pushBack		["CDF_WarfareBLightFactory", "Land_Scaffolding_New_F"];
 	} else {
-		switch (CTI_BUILDING_FALLBACK) do {
-			case 1;
-			case 2: {_classes pushBack 		["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"];};				//Altis Military Buildings
-			default {_classes pushBack		["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F"];};					//Altis Housing
-		};
+		_classes pushBack 		["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"];				//Altis Military Buildings
 	};
 	_prices pushBack 		4000;
 	_times pushBack 		80;
@@ -200,11 +192,7 @@ _headers pushBack 		[CTI_CONTROLCENTER, "Control Center", "CC"];
 if (isClass(configFile >> "CfgVehicles" >> "GUE_WarfareBUAVterminal")) then {
 	_classes pushBack 		["GUE_WarfareBUAVterminal", "Land_PowGen_Big_ruins"];
 } else {
-	switch (CTI_BUILDING_FALLBACK) do {
-		case 1: {_classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F"];};					//Altis Military Buildings
-		case 2: {_classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F"];};					//Best mixed Buildings
-		default {_classes pushBack 		["Land_Radar_Small_F", "Land_Radar_Small_ruins_F"];};					//Altis Housing
-	};
+	_classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F"];					//Altis Military Buildings
 };
 _prices pushBack 		4000;
 _times pushBack 		90;
@@ -218,11 +206,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	if (isClass(configFile >> "CfgVehicles" >> "RU_WarfareBHeavyFactory")) then {
 		_classes pushBack 		["RU_WarfareBHeavyFactory", "Land_Scaffolding_New_F"];
 	} else {
-		switch (CTI_BUILDING_FALLBACK) do {
-			case 1;
-			case 2: {_classes pushBack 		["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"];};				//Altis Military Buildings
-			default {_classes pushBack 		["Land_CarService_F", "Land_House_Small_03_V1_ruins_F"];};			//Altis Housing
-		};
+		_classes pushBack 		["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"];				//Altis Military Buildings
 	};
 	_prices pushBack 		6000;
 	_times pushBack 		120;
@@ -236,10 +220,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
 	if (isClass(configFile >> "CfgVehicles" >> "RU_WarfareBAircraftFactory")) then {
 		_classes pushBack 		["RU_WarfareBAircraftFactory", "Land_Scaffolding_New_F"];
 	} else {
-		switch (CTI_BUILDING_FALLBACK) do {
-			case 1: {_classes pushBack 		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];};			//Altis Military Buildings
-			default {_classes pushBack 		["Land_Airport_Tower_F", "Land_Airport_Tower_ruins_F"];};			//Altis Housing
-		};
+		_classes pushBack 		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];			//Altis Military Buildings
 	};
 	_prices pushBack 		8000;
 	_times pushBack 		140;
@@ -252,10 +233,7 @@ _headers pushBack 		[CTI_AMMO, "Ammo Depot", "Ammo"];
 if (isClass(configFile >> "CfgVehicles" >> "RU_WarfareBVehicleServicePoint")) then {
 	_classes pushBack 		["RU_WarfareBVehicleServicePoint", "Land_PowGen_Big_ruins"];
 } else {
-	switch (CTI_BUILDING_FALLBACK) do {
-		case 1: {_classes pushBack		["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"];};				//Altis Military Buildings
-		default {_classes pushBack 		["B_Slingload_01_Ammo_F", "Land_Cargo20_military_ruins_F"];};			//Altis Housing
-	};
+	_classes pushBack		["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"];				//Altis Military Buildings
 };
 _prices pushBack 		2000;
 _times pushBack 		90;
@@ -267,10 +245,7 @@ _headers pushBack 		[CTI_REPAIR, "Repair Depot", "Repair"];
 if (isClass(configFile >> "CfgVehicles" >> "TK_GUE_WarfareBContructionSite_Base_EP1")) then {
 	_classes pushBack 		["TK_GUE_WarfareBContructionSite_Base_EP1", "Land_PowGen_Big_ruins"];
 } else {
-	switch (CTI_BUILDING_FALLBACK) do {
-		case 1: {_classes pushBack 		["Land_Cargo_House_V3_F", "Land_Cargo_House_V3_ruins_F"];};				//Altis Military Buildings
-		default {_classes pushBack 		["Land_FuelStation_Build_F", "Land_FuelStation_Build_ruins_F"];};		//Altis Housing
-	};
+	_classes pushBack 		["Land_Cargo_House_V3_F", "Land_Cargo_House_V3_ruins_F"];				//Altis Military Buildings
 };
 _prices pushBack 		4000;
 _times pushBack 		90;
@@ -280,14 +255,7 @@ _specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
 if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 	_headers pushBack 		[CTI_NAVAL, "Naval Yard", "Naval"];
-	if (isClass(configFile >> "CfgVehicles" >> "CDF_WarfareBBarracks")) then {
-		_classes pushBack 		["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"];
-	} else {
-		switch (CTI_BUILDING_FALLBACK) do {
-			case 1: {_classes pushBack 		["Land_Cargo_House_V2_F", "Land_Cargo_House_V2_ruins_F"];};			//Altis Military Buildings
-			default {_classes pushBack 		["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"];};		//Altis Housing
-		};
-	};
+	_classes pushBack 		["Land_Cargo_House_V2_F", "Land_Cargo_House_V2_ruins_F"];			//Altis Military Buildings
 	_prices pushBack 		3000;
 	_times pushBack 		80;
 	_placements pushBack 	[180, 60];

@@ -277,9 +277,11 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
 //Winter
-_i pushBack "U_LIB_UK_P37_w";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+if(CTI_IFA3_NEW == 0) then {
+	_i pushBack "U_LIB_UK_P37_w";
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+};
 
 //Level 1
 _tech_level = _tech_level + 1;
@@ -300,9 +302,11 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
 //Winter
-_i pushBack "U_LIB_UK_P37Jerkins_w";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+if(CTI_IFA3_NEW == 0) then {
+	_i pushBack "U_LIB_UK_P37Jerkins_w";
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+};
 
 //Level 1
 _tech_level = _tech_level + 1;
@@ -475,29 +479,31 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
 //Winter
-_i pushBack "H_LIB_UK_Helmet_Mk2_w";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+if(CTI_IFA3_NEW == 0) then {
+	_i pushBack "H_LIB_UK_Helmet_Mk2_w";
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
-_i pushBack "H_LIB_UK_Helmet_Mk2_Cover_w";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+	_i pushBack "H_LIB_UK_Helmet_Mk2_Cover_w";
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
-_i pushBack "H_LIB_UK_Helmet_Mk2_Net_w";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+	_i pushBack "H_LIB_UK_Helmet_Mk2_Net_w";
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
-_i pushBack "H_LIB_UK_Para_Helmet_Mk2_w";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+	_i pushBack "H_LIB_UK_Para_Helmet_Mk2_w";
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
-_i pushBack "H_LIB_UK_Para_Helmet_Mk2_Net_w";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+	_i pushBack "H_LIB_UK_Para_Helmet_Mk2_Net_w";
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
-_i pushBack "H_LIB_UK_Helmet_Mk3_w";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+	_i pushBack "H_LIB_UK_Helmet_Mk3_w";
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+};
 
 //camo
 _tech_level = 2;

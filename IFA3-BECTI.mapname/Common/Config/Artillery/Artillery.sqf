@@ -58,10 +58,12 @@ if(CTI_VIO_ADDON == 0) then {
 	_b pushBack [1, 2, 4, 6, 8, 10];
 	_r pushBack [[800,3000], [800,4000], [800,6000], [800,8000]];
 	
-	_c pushBack format["%1LIB_FlaK_36_ARTY_w", _x];
-	_m pushBack ["LIB_21x_SprGr_KwK36_HE","LIB_45x_SprGr_KwK36_HE","LIB_SprGr_KwK36_HE"];
-	_b pushBack [1, 2, 4, 6, 8, 10];
-	_r pushBack [[800,3000], [800,4000], [800,6000], [800,8000]];
+	if(CTI_IFA3_NEW <= 0) then {
+		_c pushBack format["%1LIB_FlaK_36_ARTY_w", _x];
+		_m pushBack ["LIB_21x_SprGr_KwK36_HE","LIB_45x_SprGr_KwK36_HE","LIB_SprGr_KwK36_HE"];
+		_b pushBack [1, 2, 4, 6, 8, 10];
+		_r pushBack [[800,3000], [800,4000], [800,6000], [800,8000]];
+	};
 	
 	_c pushBack format["%1LIB_DAK_FlaK_36_ARTY", _x];
 	_m pushBack ["LIB_21x_SprGr_KwK36_HE","LIB_45x_SprGr_KwK36_HE","LIB_SprGr_KwK36_HE"];
@@ -80,17 +82,6 @@ if(CTI_VIO_ADDON == 0) then {
 	_b pushBack [1, 2, 4, 6, 8, 10];
 	_r pushBack [[300,2000], [300,3000], [300,4000], [300,5000]];
 
-	/*if(CTI_IFA3LIB_ADDON > 0) then {
-		_c pushBack format["%1Ifa3_p27", _x];
-		_m pushBack ["ifa3_50xUOF353","ifa3_40xUBR353"];
-		_b pushBack [1, 2, 4];
-		_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
-		
-		_c pushBack format["%1Ifa3_p27G", _x];
-		_m pushBack ["ifa3_50xUOF353","ifa3_40xUBR353"];
-		_b pushBack [1, 2, 4];
-		_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
-	};*/
 
 	if(CTI_IFA3_NEW > 0) then {
 		_c pushBack format["%1LIB_SdKfz251_2", _x];
@@ -98,10 +89,10 @@ if(CTI_VIO_ADDON == 0) then {
 		_b pushBack [1, 2, 4];
 		_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
 		
-		_c pushBack format["%1LIB_SdKfz251_2_w", _x];
-		_m pushBack ["LIB_8Rnd_81mmHE_GRWR34"];
-		_b pushBack [1, 2, 4];
-		_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
+		//_c pushBack format["%1LIB_SdKfz251_2_w", _x];		//winter disabled atm?
+		//_m pushBack ["LIB_8Rnd_81mmHE_GRWR34"];
+		//_b pushBack [1, 2, 4];
+		//_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
 	};
 } forEach _sid;
 

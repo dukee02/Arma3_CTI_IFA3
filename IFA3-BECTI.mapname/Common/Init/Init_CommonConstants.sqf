@@ -682,6 +682,32 @@ CTI_GC_DELAY_STATIC = 80;
 CTI_GC_DELAY_BUILDING = 30;
 
 with missionNamespace do {
+	if (isNil 'CTI_IFA3_NEW') then {CTI_IFA3_NEW = 1};
+	if (!isClass(configFile >> "CfgVehicles" >> "LIB_M4T34_Calliope")) then {
+		//check if the IFA3_beta version is loaded or the stable
+		CTI_IFA3_NEW = 0;
+	};
+	if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 beta? <%1> ", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+	
+	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 0};
+	if (isClass(configFile >> "CfgVehicles" >> "VIOC_I_FFI_soldier")) then {
+		//check if the IFA3_beta version is loaded or the stable
+		CTI_VIO_ADDON = 1;
+	};
+	if (isClass(configFile >> "CfgVehicles" >> "VIOC_B_LIB_GER_rifleman")) then {
+		//check if the IFA3_beta version is loaded or the stable
+		CTI_VIO_ADDON = 1;
+	};
+	if (isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
+		//check if the IFA3_beta version is loaded or the stable
+		CTI_VIO_ADDON = 1;
+	};
+	if (isClass(configFile >> "CfgVehicles" >> "VIOC_I_LIB_GER_rifleman")) then {
+		//check if the IFA3_beta version is loaded or the stable
+		CTI_VIO_ADDON = 1;
+	};
+	if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\init\Init_CommonConstants.sqf", format["VIO addon loaded? <%1> ", CTI_VIO_ADDON]] call CTI_CO_FNC_Log; };
+	
 	if (isNil 'CTI_GER_SIDE') then {CTI_GER_SIDE = 0};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
 	if (isNil 'CTI_SOV_SIDE') then {CTI_SOV_SIDE = 1};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
 	if (isNil 'CTI_US_SIDE') then {CTI_US_SIDE = -1};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
@@ -690,6 +716,7 @@ with missionNamespace do {
 	if (isNil 'CTI_WEST_AI') then {CTI_WEST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
 	if (isNil 'CTI_EAST_AI') then {CTI_EAST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
 	if (isNil 'CTI_CAMO_ACTIVATION') then {CTI_CAMO_ACTIVATION = 0};	//--- "Standard", "Winter", "Desert", "All active (Main = Standard)"
+	if(CTI_IFA3_NEW > 0 && CTI_CAMO_ACTIVATION == 1) then {CTI_CAMO_ACTIVATION=0};	//IFA3 beta has no winter camo!
 	
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 0}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
 	if (isNil 'CTI_ARTILLERY_TIMEOUT') then {CTI_ARTILLERY_TIMEOUT = 300}; //--- Delay between each fire mission
@@ -763,32 +790,7 @@ with missionNamespace do {
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
 	
-	if (isNil 'CTI_IFA3_NEW') then {CTI_IFA3_NEW = 1};
-	if (!isClass(configFile >> "CfgVehicles" >> "LIB_M4T34_Calliope")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_IFA3_NEW = 0;
-	};
-	
-	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 0};
-	if (isClass(configFile >> "CfgVehicles" >> "VIOC_I_FFI_soldier")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_VIO_ADDON = 1;
-	};
-	if (isClass(configFile >> "CfgVehicles" >> "VIOC_B_LIB_GER_rifleman")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_VIO_ADDON = 1;
-	};
-	if (isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_VIO_ADDON = 1;
-	};
-	if (isClass(configFile >> "CfgVehicles" >> "VIOC_I_LIB_GER_rifleman")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_VIO_ADDON = 1;
-	};
-	if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\init\Init_CommonConstants.sqf", format["addon loaded? <%1> ", CTI_VIO_ADDON]] call CTI_CO_FNC_Log; };
-	
-	if (isNil 'CTI_BUILDING_FALLBACK') then {CTI_BUILDING_FALLBACK = 2};	//--- Fallback Buildings. (0: Altis Housing, 1: Altis Military Buildings, 2: Best Mixed).
+	//if (isNil 'CTI_BUILDING_FALLBACK') then {CTI_BUILDING_FALLBACK = 2};	//--- Fallback Buildings. (0: Altis Housing, 1: Altis Military Buildings, 2: Best Mixed).
 	if (isNil 'CTI_NO_UPGRADE_MODE') then {CTI_NO_UPGRADE_MODE = 0};
 		
 };

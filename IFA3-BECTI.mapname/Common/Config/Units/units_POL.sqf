@@ -151,7 +151,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
 	_s pushBack "";
 	_d pushBack 0;
 	
-	if(CTI_VIO_ADDON == 0) then {
+	if(CTI_VIO_ADDON > 0) then {
 		_c pushBack format["%1WP_HAT_soldier", _sid];
 		_p pushBack '';
 		_n pushBack '';
@@ -190,7 +190,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 2) then {
 	_s pushBack "";
 	_d pushBack 0;
 	
-	if(CTI_VIO_ADDON == 0) then {
+	if(CTI_VIO_ADDON > 0) then {
 		_c pushBack format["%1WP_HAT_soldier2", _sid];
 		_p pushBack '';
 		_n pushBack '';
