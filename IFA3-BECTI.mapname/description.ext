@@ -12,16 +12,24 @@
 #include "Rsc\Parameters.hpp"
 #include "Rsc\titles.hpp"
 
-//#include "AFAR\ui\defines.hpp"
-//#include "AFAR\ui\dialogs.hpp"
-
-//class CfgTitles {
-//#include "AFAR\ui\titles.hpp"
-//};
-
-//class CfgSounds {
-//#include "AFAR\f\SFX.hpp"
-//sounds[]={};
-//};
-
 enableDebugConsole = 1;
+
+//Config for Pylon Manager
+class CfgPylonManager
+{
+//Blacklisted Magazines
+//blacklistedMagazines[] = {"PylonMissile_Missile_AMRAAM_D_INT_x1","PylonRack_Bomb_SDB_x4"};
+
+//Nothing is rearm everywhere
+rearmObjects[] = {
+	"B_Truck_01_ammo_F",
+	"B_T_Truck_01_ammo_F",
+	"O_Truck_02_Ammo_F",
+	"O_T_Truck_02_Ammo_F",
+	"O_Truck_03_ammo_F",
+	"I_Truck_02_ammo_F"
+	};
+
+//Distance needed from rearmObjects[]
+rearmRange = 50;
+};
