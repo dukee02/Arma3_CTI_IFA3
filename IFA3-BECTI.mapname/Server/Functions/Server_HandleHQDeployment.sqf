@@ -115,4 +115,6 @@ if (_deployed) then {
 	};
 	_logic setVariable ["cti_structures", (_logic getVariable "cti_structures") + [_newHQ], true];
 };
-
+//if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["TESTING", "FILE: Server\Functions\Server_HandleHQDeployment.sqf", Format["HQ deployed, at pos: [%1]", _position]] Call CTI_CO_FNC_Log;
+//	};

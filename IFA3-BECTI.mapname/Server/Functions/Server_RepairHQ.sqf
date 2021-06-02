@@ -109,3 +109,6 @@ if (_deployed) then {
 [["CLIENT", _side], "Client_OnMessageReceived", ["hq-repair"]] call CTI_CO_FNC_NetSend;
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_RepairHQ.sqf", Format["[%1] HQ has been Repaired", _side]] Call CTI_CO_FNC_Log};
+//if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["TESTING", "FILE: Server\Functions\Server_RepairHQ.sqf", Format["HQ repaired, at pos: [%1]", _position]] Call CTI_CO_FNC_Log;
+//	};

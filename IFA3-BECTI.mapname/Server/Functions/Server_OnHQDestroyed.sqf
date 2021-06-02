@@ -68,3 +68,10 @@ if (_deployed) then {
 
 [["CLIENT", _side], "Client_OnMessageReceived", ["hq-destroyed"]] call CTI_CO_FNC_NetSend;
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnHQKilled.sqf", Format["[%1] HQ has been destroyed by [%2] on side [%3], Teamkill? [%4]", _side, name _killer, side _killer, _teamkill]] Call CTI_CO_FNC_Log};
+//if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["TESTING", "FILE: Server\Functions\Server_OnHQKilled.sqf", Format["HQ destroyed, last pos: [%1]", _position]] Call CTI_CO_FNC_Log;
+//	};
+sleep 60;
+//if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["TESTING", "FILE: Server\Functions\Server_OnHQKilled.sqf", Format["HQ destroyed, last pos after 60s: [%1]", _position]] Call CTI_CO_FNC_Log;
+//	};
