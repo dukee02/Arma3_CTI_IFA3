@@ -1520,7 +1520,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_s pushBack "";
 	_d pushBack 0;
 	
-	if(CTI_IFA3_NEW > 0) then {
+	if(CTI_IFA3_NEW == 0) then {
 		_c pushBack format["%1LIB_SdKfz124", _sid];
 		_p pushBack '';
 		_n pushBack '';
