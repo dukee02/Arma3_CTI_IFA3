@@ -86,7 +86,7 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_categories_town pushBack 	"AT";
 };
 if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_IFA3_NEW == 0) then {
+	if(CTI_IFA3_NEW == 1) then {
 		_classes_town pushBack 		format["%1LIB_Maxim_M30_base", _sid];
 		_categories_town pushBack 	"MG";
 		
@@ -155,8 +155,10 @@ if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_categories_town pushBack 	"AT";
 };
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	_classes_town pushBack 		format["%1LIB_QF6_pdr", _sid];
-	_categories_town pushBack 	"AT";
+	if(CTI_IFA3_NEW == 1) then {
+		_classes_town pushBack 		format["%1LIB_QF6_pdr", _sid];
+		_categories_town pushBack 	"AT";
+	};
 };
 
 
@@ -200,15 +202,19 @@ if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_classes_town pushBack 		format["%1LIB_Zis3", _sid];
 	_categories_town pushBack 	"AT";
 	
-	_classes_town pushBack 		format["%1LIB_M45_Quadmount", _sid];
-	_categories_town pushBack 	"AA";
+	if(CTI_IFA3_NEW == 1) then {
+		_classes_town pushBack 		format["%1LIB_M45_Quadmount", _sid];
+		_categories_town pushBack 	"AA";
+	};
 };
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_classes_town pushBack 		format["%1LIB_Zis3", _sid];
 	_categories_town pushBack 	"AT";
 	
-	_classes_town pushBack 		format["%1LIB_M45_Quadmount_UK", _sid];
-	_categories_town pushBack 	"AA";
+	if(CTI_IFA3_NEW == 1) then {
+		_classes_town pushBack 		format["%1LIB_M45_Quadmount_UK", _sid];
+		_categories_town pushBack 	"AA";
+	};
 };
 
 
