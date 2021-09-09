@@ -115,7 +115,7 @@ units_wheeled = [];
 units_to_add = [];
 
 if(CTI_ECONOMY_LEVEL_WHEELED < 0) then {
-	units_wheeled = units_infantry;
+	units_wheeled = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	units_to_add = [[format["%1LIB_US_Willys_MB_Hood", _sid], 1, 20]];
@@ -125,7 +125,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		units_to_add = [[format["%1LIB_US_NAC_Willys_MB_Hood", _sid], 1, 20]];	
 	};
-	units_wheeled append units_to_add;
+	units_wheeled = units_to_add;
 };
 //Level 1
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
@@ -136,8 +136,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		units_to_add = [[format["%1LIB_US_NAC_Willys_MB_M1919", _sid], 1, 20]];	
 	};
-	units_wheeled = [];
-	units_wheeled append units_to_add;
+	units_wheeled = units_to_add;
 };
 //Level 2
 if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
@@ -163,8 +162,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 3) then {
 };
 //Level 4
 if(CTI_ECONOMY_LEVEL_WHEELED >= 4) then {
-	units_to_add = [[format["%1LIB_M8_Greyhound", _sid], 1, 80]];
-	units_wheeled append units_to_add;
+	units_wheeled pushBack [format["%1LIB_M8_Greyhound", _sid], 1, 80];
 };
 
 _v pushBack "Motorized";
@@ -184,11 +182,11 @@ units_tracked = [];
 _level = 0;
 
 if(CTI_ECONOMY_LEVEL_TRACKED < 0) then {
-	units_tracked = units_infantry;
+	units_tracked = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	units_to_add = [[format["%1LIB_M3A3_Stuart", _sid], 1, 20]];
-	units_tracked append units_to_add;
+	units_tracked = units_to_add;
 	_level = _level + 1;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
@@ -204,7 +202,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		units_to_add = [[format["%1LIB_US_NAC_M4A3_75", _sid], 1, 40]];
 	};
-	units_to_add pushBack [format["%1LIB_M4A3_75_Tubes", _sid], 1, 30];
+	units_to_add pushBack [[format["%1LIB_M4A3_75_Tubes", _sid], 1, 30]];
 	units_tracked append units_to_add;
 	_level = _level + 1;
 };
@@ -249,7 +247,7 @@ _s pushBack [];
 units_antiair = [];
 
 if(CTI_ECONOMY_LEVEL_WHEELED < 0) then {
-	units_antiair = units_infantry;
+	units_antiair = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	units_antiair = [[format["%1LIB_US_Willys_MB_M1919", _sid], 1]];
@@ -276,15 +274,14 @@ _s pushBack [];
 units_air = [];
 
 if(CTI_ECONOMY_LEVEL_AIR < 0) then {
-	units_air = units_infantry;
+	units_air = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
 	units_to_add = [[format["%1LIB_US_P39", _sid], 1, 50]];
-	units_air append units_to_add;
+	units_air = units_to_add;
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 3) then {
-	units_to_add = [[format["%1LIB_P47", _sid], 1, 50]];
-	units_air append units_to_add;
+	units_air pushBack [format["%1LIB_P47", _sid], 1, 50];
 };
 
 _v pushBack "Air";

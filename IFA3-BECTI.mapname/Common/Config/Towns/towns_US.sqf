@@ -253,15 +253,16 @@ switch (CTI_ECONOMY_LEVEL_AIR) do {
 		};
 	};
 	case 1;
-	case 2: {
+	case 2;
+	case 3;
+	case 4;
+	case 5: {
 		AIR_FIGHTER = [[format["%1LIB_US_P39", _sid],1]];
 		AIR_BOMBER = [[format["%1LIB_P47", _sid],1]];
 	};
 	default {
-		if(CTI_SAB_ADDON == 1) then {
-			AIR_FIGHTER = INFANTRY;
-			AIR_BOMBER = INFANTRY;
-		};
+		AIR_FIGHTER = INFANTRY;
+		AIR_BOMBER = INFANTRY;
 	};
 };
 

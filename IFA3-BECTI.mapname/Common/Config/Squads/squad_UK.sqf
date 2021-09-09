@@ -113,7 +113,7 @@ units_wheeled = [];
 units_to_add = [];
 
 if(CTI_ECONOMY_LEVEL_WHEELED < 0) then {
-	units_wheeled = units_infantry;
+	units_wheeled = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	units_to_add = [[format["%1LIB_UK_Willys_MB_Hood", _sid], 1, 20]];
@@ -123,7 +123,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		units_to_add = [[format["%1LIB_UK_DR_Willys_MB_Hood", _sid], 1, 20]];		
 	};
-	units_wheeled append units_to_add;
+	units_wheeled = units_to_add;
 };
 //Level 1
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
@@ -132,10 +132,9 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 		units_to_add = [[format["%1LIB_UK_Willys_MB_M1919_w", _sid], 1, 40]];
 	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-		units_to_add = [[format["%1LIB_UK_DR_Willys_MB_M1919", _sid], 1, 40]];	
+		units_to_add = [format["%1LIB_UK_DR_Willys_MB_M1919", _sid], 1, 40]];	
 	};
-	units_wheeled = [];
-	units_wheeled append units_to_add;
+	units_wheeled = units_to_add;
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 3) then {
 	units_to_add = [[format["%1LIB_UK_M3_Halftrack", _sid], 1, 60]];
@@ -160,7 +159,7 @@ _s pushBack [];
 units_tracked = [];
 
 if(CTI_ECONOMY_LEVEL_TRACKED < 0) then {
-	units_tracked = units_infantry;
+	units_tracked = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	units_to_add = [[format["%1LIB_UniversalCarrier", _sid], 1, 10]];	
@@ -170,7 +169,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		units_to_add = [[format["%1LIB_UniversalCarrier_desert", _sid], 1, 10]];
 	};
-	units_tracked append units_to_add;
+	units_tracked = units_to_add;
 };
 //Level 1
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
@@ -190,8 +189,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
 		units_to_add pushBack [format["%1LIB_Churchill_Mk7_desert", _sid], 1, 30];
 		units_to_add pushBack [format["%1LIB_Churchill_Mk7_Crocodile_desert", _sid], 1, 30];
 	};
-	units_tracked = [];
-	units_tracked append units_to_add;
+	units_tracked = units_to_add;
 };
 //Level 2
 if(CTI_ECONOMY_LEVEL_TRACKED >= 2) then {
@@ -271,7 +269,7 @@ _s pushBack [];
 units_antiair = [];
 
 if(CTI_ECONOMY_LEVEL_WHEELED < 0) then {
-	units_antiair = units_infantry;
+	units_antiair = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	units_antiair = [[format["%1LIB_UK_Willys_MB_M1919", _sid], 1, 30]];
@@ -305,7 +303,7 @@ units_air = [];
 _level = 0;
 
 if(CTI_ECONOMY_LEVEL_AIR < 0) then {
-	units_air = units_infantry;
+	units_air = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	units_air = [[format["%1LIB_RAF_P39", _sid], 1, 60]];
@@ -321,6 +319,6 @@ _c pushBack "Air";
 _s pushBack [];
 
 
-if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\squads\squad_SOV.sqf", format["generated squads: [%1] ", count _v]] call CTI_CO_FNC_Log};
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\squads\squad_UK.sqf", format["generated squads: [%1] ", count _v]] call CTI_CO_FNC_Log};
 
 [_side, _v, _t, _p, _f, _m, _c, _s] call compile preprocessFileLineNumbers "Common\Config\Squads\Squads_Set.sqf";

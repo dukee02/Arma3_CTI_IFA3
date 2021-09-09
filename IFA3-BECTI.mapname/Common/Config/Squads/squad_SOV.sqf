@@ -116,11 +116,11 @@ units_wheeled = [];
 units_to_add = [];
 
 if(CTI_ECONOMY_LEVEL_WHEELED < 0) then {
-	units_wheeled = units_infantry;
+	units_wheeled = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	units_to_add = [[format["%1LIB_GazM1_SOV", _sid], 1, 10]];	
-	units_wheeled append units_to_add;
+	units_wheeled = units_to_add;
 };
 //Level 2
 if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
@@ -130,7 +130,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 		units_to_add = [[format["%1LIB_SOV_M3_Halftrack_w", _sid], 1, 40]];
 		units_to_add pushBack [format["%1LIB_Scout_m3_w", _sid], 1, 40];
 	};
-	units_wheeled append units_to_add;
+	units_wheeled = units_to_add;
 };
 //Level 3
 if(CTI_ECONOMY_LEVEL_WHEELED >= 3) then {
@@ -142,7 +142,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 3) then {
 };
 //Level 4
 if(CTI_ECONOMY_LEVEL_WHEELED >= 4) then {
-	units_wheeled append [[format["%1LIB_US6_BM13", _sid], 1, 20]];
+	units_wheeled pushBack [format["%1LIB_US6_BM13", _sid], 1, 20];
 };
 
 _v pushBack "Motorized";
@@ -162,13 +162,13 @@ units_tracked = [];
 _level = 0;
 
 if(CTI_ECONOMY_LEVEL_TRACKED < 0) then {
-	units_tracked = units_infantry;
+	units_tracked = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_IFA3_NEW > 0) then {
 		units_to_add = [[format["%LIB_UniversalCarrier_SOV", _sid], 1, 10]];
+		units_tracked = units_to_add;
 	};
-	units_tracked append units_to_add;
 	_level = _level + 1;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
@@ -182,7 +182,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 			units_to_add pushBack [format["%1LIB_M3A3_Stuart_SOV_w", _sid], 1, 30];
 		};
 	};
-	units_tracked append units_to_add;
+	units_tracked = units_to_add;
 	_level = _level + 1;
 };
 //Level 2
@@ -199,7 +199,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	units_to_add = [[format["%1LIB_T34_85", _sid], 1, 40]];
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		units_to_add = [format["%1LIB_T34_85_w", _sid], 1, 40];
+		units_to_add = [[format["%1LIB_T34_85_w", _sid], 1, 40]];
 	};
 	units_to_add pushBack [format["%1LIB_M4A2_SOV", _sid], 1, 30];
 	units_tracked append units_to_add;
@@ -211,7 +211,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		units_to_add = [[format["%1LIB_JS2_43_w", _sid], 1, 60]];
 	};
-	units_tracked pushBack units_to_add;
+	units_tracked append units_to_add;
 };
 
 _v pushBack "ArmoredMBT";
@@ -230,14 +230,14 @@ _s pushBack [];
 units_antiair = [];
 
 if(CTI_ECONOMY_LEVEL_WHEELED < 0) then {
-	units_antiair = units_infantry;
+	units_antiair = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	units_antiair pushBack [[format["%1LIB_Zis5v_61K", _sid], 1, 30]];
+	units_antiair = [[format["%1LIB_Zis5v_61K", _sid], 1, 30]];
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 4) then {
 	if(CTI_IFA3_NEW > 0) then {
-		units_antiair pushBack [[format["%1LIB_SOV_M16_Halftrack", _sid], 1, 40]];
+		units_antiair pushBack [format["%1LIB_SOV_M16_Halftrack", _sid], 1, 40];
 	};
 };
 
@@ -258,14 +258,14 @@ units_air = [];
 _level = 0;
 
 if(CTI_ECONOMY_LEVEL_AIR < 0) then {
-	units_air = units_infantry;
+	units_air = +units_infantry;
 };
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	//if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 	//	_c pushBack [format["%1LIB_Pe2_2_w", _sid], 1, 40];
 	//	_c pushBack [format["%1LIB_Pe2_w", _sid], 1, 40];
 	//};
-	units_air pushBack [[format["%1LIB_Pe2", _sid], 1, 50]];
+	units_air = [[format["%1LIB_Pe2", _sid], 1, 50]];
 	_level = _level + 2;
 };
 //Level 3
