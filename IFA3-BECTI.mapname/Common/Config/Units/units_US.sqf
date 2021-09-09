@@ -1243,7 +1243,7 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 	_c pushBack format["%1LIB_LCA", _sid];
 	_p pushBack '';
 	_n pushBack '';
-	_o pushBack (5*((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1))));
+	_o pushBack (5*((CTI_ECONOMY_PRIZE_NAVAL*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1))));
 	_t pushBack (30*(_tech_level+1));
 	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 	_f pushBack CTI_FACTORY_NAVAL;
@@ -1253,7 +1253,7 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 	_c pushBack format["%1LIB_LCI", _sid];
 	_p pushBack '';
 	_n pushBack '';
-	_o pushBack (5*((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1))));
+	_o pushBack (5*((CTI_ECONOMY_PRIZE_NAVAL*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1))));
 	_t pushBack (30*(_tech_level+1));
 	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 	_f pushBack CTI_FACTORY_NAVAL;
@@ -1263,7 +1263,7 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 	_c pushBack format["%1LIB_LCM3_Armed", _sid];
 	_p pushBack '';
 	_n pushBack '';
-	_o pushBack (5*((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1))));
+	_o pushBack (5*((CTI_ECONOMY_PRIZE_NAVAL*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1))));
 	_t pushBack (30*(_tech_level+1));
 	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 	_f pushBack CTI_FACTORY_NAVAL;
@@ -1273,7 +1273,7 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 	_c pushBack format["%1LIB_LCVP", _sid];
 	_p pushBack '';
 	_n pushBack '';
-	_o pushBack (5*((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1))));
+	_o pushBack (5*((CTI_ECONOMY_PRIZE_NAVAL*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1))));
 	_t pushBack (30*(_tech_level+1));
 	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 	_f pushBack CTI_FACTORY_NAVAL;
