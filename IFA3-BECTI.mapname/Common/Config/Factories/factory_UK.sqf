@@ -430,7 +430,7 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 		_c pushBack format["%1LIB_UK_Medic", _sid];
 	};
 };
-if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
+if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_UK_Willys_MB_w", _sid];
 		_c pushBack format["%1LIB_UK_Willys_MB_Hood_w", _sid];				
