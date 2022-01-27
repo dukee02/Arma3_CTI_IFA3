@@ -48,9 +48,13 @@ _special = if (count _this > 5) then {_this select 5} else {"FORM"};
 if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
-try {
-	if (isNil '_team' || isNil '_classname' || _classname == "") throw "Error: can't create unit";
-	
+_spawn_unit = true;
+
+if(isNull _team) then {_spawn_unit = false};
+if(isNil "_classname") then {_spawn_unit = false};
+if(_classname == "") then {_spawn_unit = false};
+
+if(_spawn_unit == true) then {
 	if (CTI_Log_Level >= CTI_Log_Debug) then {
 		["DEBUG", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Attempting to create a [%1] unit on team [%2] at [%3] on side [%4], net? [%5] special? [%6]", _classname, _team, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;
 	};
@@ -64,6 +68,10 @@ try {
 	_side = side _team;
 	_dummyGroup = createGroup _side;
 	_unit = _dummyGroup createUnit [_classname, _position, [], 0, _special];
+	if(speaker _unit == "") then {
+		_unit setSpeaker "Male01ENG";
+		//if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_CreateUnit.sqf", format["units speaker is [%1]", speaker _unit]] call CTI_CO_FNC_Log;};
+	};
 	//_unit setSkill (0.5 + (random 0.3));//tbd tweak
 	_unit setSkill (CTI_AI_SKILL_BASE + (random CTI_AI_SKILL_SPAN));
 	[_unit] joinSilent _team;
@@ -75,9 +83,8 @@ try {
 
 	//--- Add a Killed EH.
 	_unit addEventHandler ["killed", Format["[_this select 0, _this select 1, %1, 'vehicle'] Spawn CTI_CO_FNC_OnUnitKilled;", _sideID]];
-} catch {
-	["ERROR", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Can't create unit [%1] on team [%2] at [%3] on side [%4], net? [%5] _exception? [%6]", _classname, _team, _position, _sideID, _net, _exception]] call CTI_CO_FNC_Log;
-	//hint str _exception;
+	
+	_unit
+} else {
+	["ERROR", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Can't create unit [%1] on team [%2] at [%3] on side [%4], net? [%5] special? [%6]", _classname, _team, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;
 };
-
-_unit

@@ -67,57 +67,57 @@ class Params {
 	};
 	class CTI_WEST_FLAG {
 		title = "FLAG: Flagtexture of the West-Side";
-		values[] = {0,1,2,3,4,5,6,7,/*8,9,*/10,11,12,13,/*14,15,16,17,18,19,20,*/21,22,23,24,25,26,27,28};
-		texts[] = {"Standard Blue","German Wehrmacht","USSR","USA","Great Britain","Polish Armia Krajowa","France","France Libre",/*"Japain (Nippon)","Japain War (Nippon)",*/"USSR: Soviet Union","USSR: icon large","USSR: icon medium","USSR: icon small",/*"14","15","16","17","18","19","20",*/"GERMAN2","German Cross1","German Cross2","German Cross3","German Cross4","GERMAN Wehrmacht2","3rd Reich","3rd Reich Wehrmacht"};
-		default = 0; //0
+		values[] = {0,1,2,3,4};
+		texts[] = {"Standard Blue","German Wehrmacht","USSR","USA","Great Britain"};
+		default = 0;
 	};
 	class CTI_EAST_FLAG {
 		title = "FLAG: Flagtexture of the East-Side";
-		values[] = {0,1,2,3,4,5,6,7,/*8,9,*/10,11,12,13,/*14,15,16,17,18,19,20,*/21,22,23,24,25,26,27,28};
-		texts[] = {"Standard Red","German Wehrmacht","USSR","USA","Great Britain","Polish Armia Krajowa","France","France Libre",/*"Japain (Nippon)","Japain War (Nippon)",*/"USSR: Soviet Union","USSR: icon large","USSR: icon medium","USSR: icon small",/*"14","15","16","17","18","19","20",*/"GERMAN2","German Cross1","German Cross2","German Cross3","German Cross4","GERMAN Wehrmacht2","3rd Reich","3rd Reich Wehrmacht"};
-		default = 0; //0
+		values[] = {0,1,2,3,4};
+		texts[] = {"Standard Red","German Wehrmacht","USSR","USA","Great Britain"};
+		default = 0;
 	};
 	class CTI_GUER_FLAG {
 		title = "FLAG: Flagtexture of the Independent-Side";
-		values[] = {0,1,2,3,4,5,6,7,/*8,9,*/10,11,12,13,/*14,15,16,17,18,19,20,*/21,22,23,24,25,26,27,28};
-		texts[] = {"Standard Green","German Wehrmacht","USSR","USA","Great Britain","Polish Armia Krajowa","France","France Libre",/*"Japain (Nippon)","Japain War (Nippon)",*/"USSR: Soviet Union","USSR: icon large","USSR: icon medium","USSR: icon small",/*"14","15","16","17","18","19","20",*/"GERMAN2","German Cross1","German Cross2","German Cross3","German Cross4","GERMAN Wehrmacht2","3rd Reich","3rd Reich Wehrmacht"};
-		default = 0; //0
+		values[] = {0,1,2,3,4};
+		texts[] = {"Standard Green","German Wehrmacht","USSR","USA","Great Britain"};
+		default = 0;
 	};
 	class CTI_ECONOMY_LEVEL_GEAR {
-		title = "UPGRADE: Max Level Gear";
-		values[] = {-1,0,1,2};
-		texts[] = {"Disable all gear","0","1","2"};
-		default = 2; //2
+		title = "UPGRADE: Max Level Gear (depends on activated stuff, gets adjust to lower)";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_INFANTRY {
-		title = "UPGRADE: Max Level Infantry";
-		values[] = {-1,0,1,2};
-		texts[] = {"Disable this units","0","1","2"};
-		default = 2; //2
+		title = "UPGRADE: Max Level Infantry (depends on activated stuff, gets adjust to lower)";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_WHEELED {
-		title = "UPGRADE: Max Level Wheeled";
-		values[] = {-1,0,1,2,3,4};
-		texts[] = {"Disable this units","0","1","2","3","4"};
-		default = 4; //4
+		title = "UPGRADE: Max Level Wheeled (depends on activated stuff, gets adjust to lower)";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_TRACKED {
-		title = "UPGRADE: Max Level Tracked";
-		values[] = {-1,0,1,2,3,4};
-		texts[] = {"Disable this units","0","1","2","3","4"};
-		default = 4; //4
+		title = "UPGRADE: Max Level Tracked (depends on activated stuff, gets adjust to lower)";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_NAVAL {
-		title = "UPGRADE: Max Level Naval";
-		values[] = {-1,0,1,2,3};
-		texts[] = {"Disable this units","0","1","2","3"};
-		default = -1; //3
+		title = "UPGRADE: Max Level Naval (depends on activated stuff, gets adjust to lower)";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_AIR {
-		title = "UPGRADE: Max Level Air";
-		values[] = {-1,0,1,2,3,4,5};
-		texts[] = {"Disable this units","0","1","2","3","4","5"};
-		default = 2; //5
+		title = "UPGRADE: Max Level Air (depends on activated stuff, gets adjust to lower)";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		default = 10;
 	};
 	class CTI_ECONOMY_UPGRADE_TIMECAP {
 		title = "UPGRADE: Max Time needed for upgrades (concerns higher tier upgrades)";
@@ -392,7 +392,7 @@ class Params {
 	class CTI_ARTILLERY_TIMEOUT {
 		title = "ARTILLERY: Delay between each fire mission (if Arty not Disabled or with Ballistic Computer)";
 		values[] = {0,60,120,180,240,300,600};
-		texts[] = {"Disabled","0","60","120","180","240","300","600"};
+		texts[] = {"Disabled","60","120","180","240","300","600"};
 		default = 180;
 	};
 	class CTI_GAMEPLAY_TEAMSTACK_DISABLE {
@@ -418,6 +418,22 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"",""};
 		default = 0;
+	};
+	class REVIVE_MODE {
+		title = $STR_A3_ReviveMode;
+		isGlobal = 1;
+		values[] = {0,1};
+		texts[] = {$STR_A3_Disabled,$STR_A3_EnabledForAllPlayers};
+		default = 0;
+		function = "bis_fnc_paramReviveMode";
+	};
+	class UNCONSCIOUS_STATE_MODE {
+		title = $STR_A3_IncapacitationMode;
+		isGlobal = 1;
+		values[] = {0,1};
+		texts[] = {$STR_A3_Basic,$STR_A3_Advanced};
+		default = 0;
+		function = "bis_fnc_paramReviveUnconsciousStateMode";
 	};
 	class CTI_RESPAWN_AI {
 		title = "RESPAWN: AI Members";

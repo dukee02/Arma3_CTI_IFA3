@@ -25,7 +25,7 @@ CTI_Log_Warning = 1;
 CTI_Log_Error = 0;
 
 //--- Log level to use
-CTI_Log_Level = CTI_Log_Error;
+CTI_Log_Level = CTI_Log_Debug;
 
 //--- We define the log function early so that we can use it
 CTI_CO_FNC_Log = compile preprocessFileLineNumbers "Common\Functions\Common_Log.sqf";

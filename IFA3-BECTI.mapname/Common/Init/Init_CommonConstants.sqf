@@ -27,6 +27,16 @@ CTI_EAST_COLOR = "ColorRed";
 CTI_RESISTANCE_COLOR = "ColorGreen";
 CTI_UNKNOWN_COLOR = "ColorBlack";
 
+//--- National IDs
+CTI_GER_ID = 0;
+CTI_SOV_ID = 1;
+CTI_UK_ID = 2;
+CTI_US_ID = 3;
+
+//--- Mod IDs
+CTI_IFA_ID = 0;
+CTI_IFA_NEW_ID = 1;
+
 CTI_GEAR_TAB_PRIMARY = 0;
 CTI_GEAR_TAB_SECONDARY = 1;
 CTI_GEAR_TAB_HANDGUN = 2;
@@ -238,27 +248,35 @@ CTI_UPGRADE_BARRACKS = 0;
 CTI_UPGRADE_LIGHT = 1;
 CTI_UPGRADE_HEAVY = 2;
 CTI_UPGRADE_AIR = 3;
-CTI_UPGRADE_SATELLITE = 4;
-CTI_UPGRADE_AIR_FFAR = 5;
-CTI_UPGRADE_AIR_AT = 6;
-CTI_UPGRADE_AIR_AA = 7;
-CTI_UPGRADE_AIR_CM = 8;
-CTI_UPGRADE_TOWNS = 9;
-CTI_UPGRADE_SUPPLY = 10;
-CTI_UPGRADE_GEAR = 11;
+CTI_UPGRADE_NAVAL = 4;
+CTI_UPGRADE_SATELLITE = 5;
+CTI_UPGRADE_AIR_FFAR = 6;
+CTI_UPGRADE_AIR_AT = 7;
+CTI_UPGRADE_AIR_AA = 8;
+CTI_UPGRADE_AIR_CM = 9;
+CTI_UPGRADE_TOWNS = 10;
+CTI_UPGRADE_SUPPLY = 11;
+CTI_UPGRADE_GEAR = 12;
 
-/*CTI_UPGRADE_GEAR = 0;
-CTI_UPGRADE_BARRACKS = 1;
-CTI_UPGRADE_LIGHT = 2;
-CTI_UPGRADE_HEAVY = 3;
-CTI_UPGRADE_AIR = 4;
-CTI_UPGRADE_TOWNS = 5;
-CTI_UPGRADE_SUPPLY = 6;
-CTI_UPGRADE_AIR_FFAR = 7;
-CTI_UPGRADE_AIR_AT = 8;
-CTI_UPGRADE_AIR_AA = 9;
-CTI_UPGRADE_AIR_CM = 10;
-CTI_UPGRADE_SATELLITE = 11;*/
+with missionNamespace do {	
+	//Global max levels and multiplicators
+	if (isNil 'CTI_ECONOMY_LEVEL_MULTI') then {CTI_ECONOMY_LEVEL_MULTI = 100};
+	if (isNil 'CTI_ECONOMY_LEVEL_MULTI') then {CTI_ECONOMY_RESEARCH_MULTI = 100};
+	if (isNil 'CTI_ECONOMY_LEVEL_GEAR') then {CTI_ECONOMY_LEVEL_GEAR = 2};
+	if (isNil 'CTI_ECONOMY_LEVEL_INFANTRY') then {CTI_ECONOMY_LEVEL_INFANTRY = 2};
+	if (isNil 'CTI_ECONOMY_LEVEL_WHEELED') then {CTI_ECONOMY_LEVEL_WHEELED = 4};
+	if (isNil 'CTI_ECONOMY_LEVEL_TRACKED') then {CTI_ECONOMY_LEVEL_TRACKED = 4};
+	if (isNil 'CTI_ECONOMY_LEVEL_AIR') then {CTI_ECONOMY_LEVEL_AIR = 4};
+	if (isNil 'CTI_ECONOMY_LEVEL_NAVAL') then {CTI_ECONOMY_LEVEL_NAVAL = 3};
+	if (isNil 'CTI_ECONOMY_UPGRADE_TIMECAP') then {CTI_ECONOMY_UPGRADE_TIMECAP = 600};
+	if (isNil 'CTI_ECONOMY_TIME_MULTI') then {CTI_ECONOMY_TIME_MULTI = 2};
+	
+	//setup the default values for the tech tree
+	//It gets changed in the factory.sqf and used in Upgrades.sqf
+	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", west], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
+	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", east], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
+};
+
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -378,6 +396,10 @@ CTI_TOWNS_RESISTANCE_SPAWN_RANGE = 300; //--- Determine how far the units may sp
 CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR = 50; //--- Determine how high a threat is considered aerial
 CTI_TOWNS_RESISTANCE_INACTIVE_MAX = 300; //--- Determine how long a town may remain active when triggered
 CTI_TOWNS_RESISTANCE_MIN_ACTIVE = 5; //--- When the town is not held by the side and when no enemy is near, at least x enemies need to be alive for the town to be considered active
+	
+//--- Towns: Spawn delay	---		to prevent units to spawn into each other
+CTI_TOWNS_SPAWNDELAY_MIN = 5;		//--- min time in seconds to wait
+CTI_TOWNS_SPAWNDELAY_MAX = 30;		//--- max time in seconds to wait
 	
 //--- Towns: Mortars
 CTI_TOWNS_MORTARS_SCAN = 60; //--- Scan the area around a target for friends and enemies.	
@@ -515,6 +537,15 @@ with missionNamespace do {
  * - Server\Functions\FSM\Functions_FSM_RepairTruck.sqf: Contains the functions related to the Repair Truck FSM
  */
 
+CTI_GC_DELAY = 90;
+CTI_GC_DELAY_AIR = 360;
+CTI_GC_DELAY_CAR = 240;
+CTI_GC_DELAY_MAN = 120;
+CTI_GC_DELAY_TANK = 300;
+CTI_GC_DELAY_SHIP = 60;
+CTI_GC_DELAY_STATIC = 80;
+CTI_GC_DELAY_BUILDING = 30;
+
 //--- Vehicles: Misc
 CTI_VEHICLES_BOUNTY = 0.45; //--- Bounty upon entity killed.
 CTI_VEHICLES_EMPTY_SCAN_PERIOD = 15; //--- Scan for a crew member in a vehicle each x seconds
@@ -558,6 +589,9 @@ with missionNamespace do {
 	if (isNil 'CTI_VEHICLES_EMPTY_TIMEOUT') then {CTI_VEHICLES_EMPTY_TIMEOUT = 900};
 	if (isNil 'CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX') then {CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX = 2}; //--- Maximum amount of Independent Salvage Trucks which may be present per side
 };
+
+
+
 //----------------------------------------------WEATHER-------------------------------------------------------//
 
 CTI_WEATHER_RAIN = 0;				//Rain (Rain Requires Overcast Greater High {-1,0,30,50,75,100} texts = {"Random","Clear","Light","Medium","High","Max"}
@@ -619,6 +653,7 @@ with missionNamespace do {
 		default{};
 	};
 };
+
 //-----------------------------------------------------------------------------------------------------------------------//
 
 CTI_ARTILLERY_FILTER = 0; //--- Toggle artillery magazines like mines and AT mines (0: Disabled, 1: Enabled)
@@ -674,51 +709,16 @@ CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
 CTI_SCORE_TOWN_VALUE_PERPOINT = 100; //--- Town value / x
 CTI_SCORE_CAMP_VALUE = 2; //--- Camp value
 
-CTI_GC_DELAY = 90;
-CTI_GC_DELAY_AIR = 360;
-CTI_GC_DELAY_CAR = 240;
-CTI_GC_DELAY_MAN = 120;
-CTI_GC_DELAY_TANK = 300;
-CTI_GC_DELAY_SHIP = 60;
-CTI_GC_DELAY_STATIC = 80;
-CTI_GC_DELAY_BUILDING = 30;
 
 with missionNamespace do {
-	if (isNil 'CTI_IFA3_NEW') then {CTI_IFA3_NEW = 1};
-	if (!isClass(configFile >> "CfgVehicles" >> "LIB_M4T34_Calliope")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_IFA3_NEW = 0;
-	};
-	if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 beta? <%1> ", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
-	
-	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 0};
-	if (isClass(configFile >> "CfgVehicles" >> "VIOC_I_FFI_soldier")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_VIO_ADDON = 1;
-	};
-	if (isClass(configFile >> "CfgVehicles" >> "VIOC_B_LIB_GER_rifleman")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_VIO_ADDON = 1;
-	};
-	if (isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_VIO_ADDON = 1;
-	};
-	if (isClass(configFile >> "CfgVehicles" >> "VIOC_I_LIB_GER_rifleman")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_VIO_ADDON = 1;
-	};
-	if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\init\Init_CommonConstants.sqf", format["VIO addon loaded? <%1> ", CTI_VIO_ADDON]] call CTI_CO_FNC_Log; };
-	
 	if (isNil 'CTI_GER_SIDE') then {CTI_GER_SIDE = 0};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
 	if (isNil 'CTI_SOV_SIDE') then {CTI_SOV_SIDE = 1};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
 	if (isNil 'CTI_US_SIDE') then {CTI_US_SIDE = -1};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
 	if (isNil 'CTI_UK_SIDE') then {CTI_UK_SIDE = -1};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
-	
+		
 	if (isNil 'CTI_WEST_AI') then {CTI_WEST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
 	if (isNil 'CTI_EAST_AI') then {CTI_EAST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
 	if (isNil 'CTI_CAMO_ACTIVATION') then {CTI_CAMO_ACTIVATION = 0};	//--- "Standard", "Winter", "Desert", "All active (Main = Standard)"
-	if(CTI_IFA3_NEW > 0 && CTI_CAMO_ACTIVATION == 1) then {CTI_CAMO_ACTIVATION=0};	//IFA3 beta has no winter camo!
 	
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 0}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
 	if (isNil 'CTI_ARTILLERY_TIMEOUT') then {CTI_ARTILLERY_TIMEOUT = 300}; //--- Delay between each fire mission
@@ -741,7 +741,7 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER = 9000};
 	if (isNil 'CTI_ECONOMY_STARTUP_SUPPLY_WEST') then {CTI_ECONOMY_STARTUP_SUPPLY_WEST = 1200};
 	if (isNil 'CTI_ECONOMY_TOWNS_OCCUPATION') then {CTI_ECONOMY_TOWNS_OCCUPATION = 1}; //--- Determine if towns need to be occupied to bring more resources
-	
+		
 	// CTI_ECONOMY_STARTUP_FUNDS_EAST = 80000;
 	// CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 400000;
 	// CTI_ECONOMY_STARTUP_FUNDS_WEST = 80000;
@@ -754,20 +754,10 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_PRIZE_TRACKED') then {CTI_ECONOMY_PRIZE_TRACKED = 5000};
 	if (isNil 'CTI_ECONOMY_PRIZE_AIR') then {CTI_ECONOMY_PRIZE_AIR = 10000};
 	if (isNil 'CTI_ECONOMY_PRIZE_NAVAL') then {CTI_ECONOMY_PRIZE_NAVAL = 2000};
-	if (isNil 'CTI_ECONOMY_LEVEL_MULTI') then {CTI_ECONOMY_LEVEL_MULTI = 100};
-	if (isNil 'CTI_ECONOMY_LEVEL_MULTI') then {CTI_ECONOMY_RESEARCH_MULTI = 100};
 	if (isNil 'CTI_ECONOMY_PRIZE_ARMED') then {CTI_ECONOMY_PRIZE_ARMED = 300};
-	if (isNil 'CTI_ECONOMY_LEVEL_GEAR') then {CTI_ECONOMY_LEVEL_GEAR = 2};
-	if (isNil 'CTI_ECONOMY_LEVEL_INFANTRY') then {CTI_ECONOMY_LEVEL_INFANTRY = 2};
-	if (isNil 'CTI_ECONOMY_LEVEL_WHEELED') then {CTI_ECONOMY_LEVEL_WHEELED = 4};
-	if (isNil 'CTI_ECONOMY_LEVEL_TRACKED') then {CTI_ECONOMY_LEVEL_TRACKED = 4};
-	if (isNil 'CTI_ECONOMY_LEVEL_AIR') then {CTI_ECONOMY_LEVEL_AIR = 4};
-	if (isNil 'CTI_ECONOMY_LEVEL_NAVAL') then {CTI_ECONOMY_LEVEL_NAVAL = 3};
-	if (isNil 'CTI_ECONOMY_UPGRADE_TIMECAP') then {CTI_ECONOMY_UPGRADE_TIMECAP = 600};
-	if (isNil 'CTI_ECONOMY_TIME_MULTI') then {CTI_ECONOMY_TIME_MULTI = 2};
 	
 	CTI_VEHICLES_SALVAGER_PRICE = ((CTI_ECONOMY_PRIZE_WHEELED*((CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED)); //--- Determine the cost of the salvage trucks
-	
+		
 	CTI_GAMEPLAY_VOTE_TIME = if (CTI_Debug) then {8} else {60};
 	
 	if (isNil 'CTI_GAMEPLAY_TEAMSTACK_DISABLE') then {CTI_GAMEPLAY_TEAMSTACK_DISABLE = 1}; //--- Teamstacking script. (0: Disabled, 1: +1 Player Advantage, 2: +2 Player Advantage, 3: +3 Player Advantage, 4: +4 Player Advantage, 5: +5 Player Advantage).
@@ -791,6 +781,29 @@ with missionNamespace do {
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
+	
+	if (isNil 'CTI_IFA3_NEW') then {CTI_IFA3_NEW = 0};
+	//if they want to play with ifa3 chack the modversion
+	if (!isClass(configFile >> "CfgVehicles" >> "LIB_M4T34_Calliope")) then {
+		//check if the IFA3_beta version is loaded or the stable
+		CTI_IFA3_NEW = 0;
+		if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 found! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+	} else {
+		CTI_IFA3_NEW = 1;
+		if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 beta Version found! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+	};
+	if (!isClass(configFile >> "CfgVehicles" >> "LIB_US_Willys_MB")) then {
+		//check if the IFA3 version is loaded or no IFA3 is found
+		CTI_IFA3_NEW = -1;
+		if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 not loaded! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+	};
+	
+	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 1};
+	//Check when IFA is loaded VIO patch is loaded too
+	if !(isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
+		CTI_VIO_ADDON = 0;
+	};
+	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["VIO addon loaded? <%1> ", CTI_VIO_ADDON]] call CTI_CO_FNC_Log; };
 	
 	//if (isNil 'CTI_BUILDING_FALLBACK') then {CTI_BUILDING_FALLBACK = 2};	//--- Fallback Buildings. (0: Altis Housing, 1: Altis Military Buildings, 2: Best Mixed).
 	if (isNil 'CTI_NO_UPGRADE_MODE') then {CTI_NO_UPGRADE_MODE = 0};

@@ -154,8 +154,9 @@ CTI_UI_Purchase_UpdateVehicleIcons = {
 				if !(_displayName in _removedTextures) then {_displayNames pushBack _displayName};
 				
 			};
-
+			
 			lbClear ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104);
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) lbAdd "default";
 			
 			{
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) lbAdd Format ["%1", _x];

@@ -1,6 +1,7 @@
 _side = _this;
 _sid = "";
 _tag = "";
+_level = -1;
 
 if(_side == west) then {
 	_sid = "VIOC_B_";
@@ -29,54 +30,71 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 INFANTRY = [];
 INFANTRY_MG = [];
 INFANTRY_AT = [];
+_matrix_full = [_side, CTI_UPGRADE_BARRACKS] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_GER_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
-switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
-	case 1: {
-		INFANTRY = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1]];
-		INFANTRY_MG = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1]];
-		INFANTRY_AT = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_AT_grenadier", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_sapper", _sid],1],[format["%1LIB_GER_sapper_gefr", _sid],1]];
-
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {		//Winter camo active
 			INFANTRY = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_Smgunner_w", _sid],1],[format["%1LIB_GER_Mgunner_w", _sid],1],[format["%1LIB_GER_Mgunner_w", _sid],1],[format["%1LIB_GER_Mgunner_w", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_AT_grenadier_w", _sid],1],[format["%1LIB_GER_LAT_Rifleman_w", _sid],1],[format["%1LIB_GER_AT_soldier_w", _sid],1],[format["%1LIB_GER_AT_soldier_w", _sid],1]];
 		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+		case 2: {		//Desert camo active
 			INFANTRY = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_Soldier_2", _sid],1],[format["%1LIB_DAK_Soldier_3", _sid],1],[format["%1LIB_DAK_Soldier_4", _sid],1],[format["%1LIB_DAK_Soldier_4", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_AT_grenadier", _sid],1],[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_AT_soldier", _sid],1],[format["%1LIB_DAK_AT_soldier", _sid],1]];
 		};
+		default {
+			INFANTRY = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1]];
+			INFANTRY_MG = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1]];
+			INFANTRY_AT = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_AT_grenadier", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_sapper", _sid],1],[format["%1LIB_GER_sapper_gefr", _sid],1]];
+		};
 	};
-	case 2: {
-		INFANTRY = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1]];
-		INFANTRY_MG = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1],[format["%1LIB_GER_stggunner", _sid],1]];
-		INFANTRY_AT = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_AT_grenadier", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_sapper", _sid],1],[format["%1LIB_GER_sapper_gefr", _sid],1]];
+};
 
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {		//Winter camo active
 			INFANTRY = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_Smgunner_w", _sid],1],[format["%1LIB_GER_Mgunner_w", _sid],1],[format["%1LIB_GER_Mgunner_w", _sid],1],[format["%1LIB_GER_Stggunner_w", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_AT_grenadier_w", _sid],1],[format["%1LIB_GER_LAT_Rifleman_w", _sid],1],[format["%1LIB_GER_AT_soldier_w", _sid],1],[format["%1LIB_GER_AT_soldier_w", _sid],1]];
 		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+		case 2: {		//Desert camo active
 			INFANTRY = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_Soldier_2", _sid],1],[format["%1LIB_DAK_Soldier_3", _sid],1],[format["%1LIB_DAK_Soldier_4", _sid],1],[format["%1LIB_DAK_Soldier_4", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_AT_grenadier", _sid],1],[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_AT_soldier", _sid],1],[format["%1LIB_DAK_AT_soldier", _sid],1]];
 		};
+		default {
+			INFANTRY = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1]];
+			INFANTRY_MG = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1],[format["%1LIB_GER_stggunner", _sid],1]];
+			INFANTRY_AT = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_AT_grenadier", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_sapper", _sid],1],[format["%1LIB_GER_sapper_gefr", _sid],1]];
+		};
 	};
-	default {
-		INFANTRY = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1]];
-		INFANTRY_MG = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1]];
-		INFANTRY_AT = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_AT_grenadier", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_sapper", _sid],1],[format["%1LIB_GER_sapper_gefr", _sid],1]];
+};
 
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {		//Winter camo active
 			INFANTRY = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1],[format["%1LIB_GER_Recruit_w", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Smgunner_w", _sid],1],[format["%1LIB_GER_Smgunner_w", _sid],1],[format["%1LIB_GER_Smgunner_w", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_GER_Rifleman_w", _sid],1],[format["%1LIB_GER_Medic_w", _sid],1],[format["%1LIB_GER_AT_grenadier_w", _sid],1],[format["%1LIB_GER_LAT_Rifleman_w", _sid],1],[format["%1LIB_GER_Sapper_w", _sid],1],[format["%1LIB_GER_Sapper_gefr_w", _sid],1]];
 		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+		case 2: {		//Desert camo active
 			INFANTRY = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1],[format["%1LIB_DAK_Sentry", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_Soldier_2", _sid],1],[format["%1LIB_DAK_Soldier_2", _sid],1],[format["%1LIB_DAK_Soldier_3", _sid],1],[format["%1LIB_DAK_Soldier_3", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_medic", _sid],1],[format["%1LIB_DAK_AT_grenadier", _sid],1],[format["%1LIB_DAK_Soldier", _sid],1],[format["%1LIB_DAK_sapper", _sid],1],[format["%1LIB_DAK_sapper_gefr", _sid],1]];
+		};
+		default {
+			INFANTRY = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1],[format["%1LIB_GER_Recruit", _sid],1]];
+			INFANTRY_MG = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_smgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1],[format["%1LIB_GER_mgunner", _sid],1]];
+			INFANTRY_AT = [[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_medic", _sid],1],[format["%1LIB_GER_AT_grenadier", _sid],1],[format["%1LIB_GER_rifleman", _sid],1],[format["%1LIB_GER_sapper", _sid],1],[format["%1LIB_GER_sapper_gefr", _sid],1]];
 		};
 	};
 };
@@ -101,47 +119,67 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 //***************************************************************************************************************************************
 WHEELED_LIGHT = [];
 WHEELED_HEAVY = [];
+_matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_GER_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
-switch (CTI_ECONOMY_LEVEL_WHEELED) do {
-	case 0: {
-		WHEELED_LIGHT = [[format["%1LIB_Kfz1", _sid],1],[format["%1LIB_Kfz1", _sid],1]];
-		WHEELED_HEAVY = [[format["%1LIB_Kfz1", _sid],1],[format["%1LIB_Kfz1", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
 			WHEELED_LIGHT = [[format["%1LIB_Kfz1_w", _sid],1],[format["%1LIB_Kfz1_w", _sid],1]];
 			WHEELED_HEAVY = [[format["%1LIB_Kfz1_w", _sid],1],[format["%1LIB_Kfz1_w", _sid],1]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+			};
+		case 2: {
 			WHEELED_LIGHT = [[format["%1LIB_DAK_Kfz1", _sid],1],[format["%1LIB_DAK_Kfz1", _sid],1]];
 			WHEELED_HEAVY = [[format["%1LIB_DAK_Kfz1", _sid],1],[format["%1LIB_DAK_Kfz1", _sid],1]];
+			};
+		default {
+			WHEELED_LIGHT = [[format["%1LIB_Kfz1", _sid],1],[format["%1LIB_Kfz1", _sid],1]];
+			WHEELED_HEAVY = [[format["%1LIB_Kfz1", _sid],1],[format["%1LIB_Kfz1", _sid],1]];
 		};
 	};
-	case 1: {
-		WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Kfz1_MG42", _sid],1]];
-		WHEELED_HEAVY = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Kfz1_MG42", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 2: {
 			WHEELED_LIGHT = [[format["%1LIB_DAK_Kfz1_MG42", _sid],1],[format["%1LIB_DAK_Kfz1_MG42", _sid],1]];
 			WHEELED_HEAVY = [[format["%1LIB_DAK_Kfz1_MG42", _sid],1],[format["%1LIB_DAK_Kfz1_MG42", _sid],1]];
+			};
+		default {
+			WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Kfz1_MG42", _sid],1]];
+			WHEELED_HEAVY = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Kfz1_MG42", _sid],1]];
 		};
 	};
-	case 2: {
-		WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Kfz1_MG42", _sid],1]];
-		WHEELED_HEAVY = [[format["%1LIB_SdKfz251", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Kfz1_MG42", _sid],1]];
 			WHEELED_HEAVY = [[format["%1LIB_Sdkfz251_w", _sid],1],[format["%1LIB_Sdkfz251_w", _sid],1]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+			};
+		case 2: {
 			WHEELED_LIGHT = [[format["%1LIB_DAK_Kfz1_MG42", _sid],1],[format["%1LIB_DAK_Kfz1_MG42", _sid],1]];
 			WHEELED_HEAVY = [[format["%1LIB_DAK_SdKfz251", _sid],1],[format["%1LIB_DAK_SdKfz251", _sid],1]];
-		};
-	};
-	case 3: {
-		WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
-		if(CTI_IFA3_NEW > 0) then {
-			WHEELED_HEAVY = [[format["%1LIB_SdKfz251_22", _sid],1],[format["%1LIB_SdKfz251_23", _sid],1]];
-		} else {
+			};
+		default {
+			WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Kfz1_MG42", _sid],1]];
 			WHEELED_HEAVY = [[format["%1LIB_SdKfz251", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
 		};
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
 			WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Sdkfz251_w", _sid],1]];
 			if(CTI_IFA3_NEW > 0) then {
 				WHEELED_HEAVY = [[format["%1LIB_SdKfz251_22_w", _sid],1],[format["%1LIB_SdKfz251_23_w", _sid],1]];
@@ -149,7 +187,7 @@ switch (CTI_ECONOMY_LEVEL_WHEELED) do {
 				WHEELED_HEAVY = [[format["%1LIB_Sdkfz251_w", _sid],1],[format["%1LIB_Sdkfz251_w", _sid],1]];
 			};
 		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+		case 2: {
 			WHEELED_LIGHT = [[format["%1LIB_DAK_Kfz1_MG42", _sid],1],[format["%1LIB_DAK_SdKfz251", _sid],1]];
 			if(CTI_IFA3_NEW > 0) then {
 				WHEELED_HEAVY = [[format["%1LIB_DAK_SdKfz251_22", _sid],1],[format["%1LIB_DAK_SdKfz251_22", _sid],1]];
@@ -157,15 +195,22 @@ switch (CTI_ECONOMY_LEVEL_WHEELED) do {
 				WHEELED_HEAVY = [[format["%1LIB_DAK_SdKfz251", _sid],1],[format["%1LIB_DAK_SdKfz251", _sid],1]];
 			};
 		};
-	};
-	case 4: {
-		WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
-		if(CTI_IFA3_NEW > 0) then {
-			WHEELED_HEAVY = [[format["%1LIB_SdKfz251_22", _sid],1],[format["%1LIB_SdKfz251_23", _sid],1]];
-		} else {
-			WHEELED_HEAVY = [[format["%1LIB_SdKfz251", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
+		default {
+			WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
+			if(CTI_IFA3_NEW > 0) then {
+				WHEELED_HEAVY = [[format["%1LIB_SdKfz251_22", _sid],1],[format["%1LIB_SdKfz251_23", _sid],1]];
+			} else {
+				WHEELED_HEAVY = [[format["%1LIB_SdKfz251", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
+			};
 		};
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
 			WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_Sdkfz251_w", _sid],1]];
 			if(CTI_IFA3_NEW > 0) then {
 				WHEELED_HEAVY = [[format["%1LIB_SdKfz251_22_w", _sid],1],[format["%1LIB_SdKfz251_23_w", _sid],1]];
@@ -173,7 +218,7 @@ switch (CTI_ECONOMY_LEVEL_WHEELED) do {
 				WHEELED_HEAVY = [[format["%1LIB_Sdkfz251_w", _sid],1],[format["%1LIB_Sdkfz251_w", _sid],1]];
 			};
 		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+		case 2: {
 			WHEELED_LIGHT = [[format["%1LIB_DAK_Kfz1_MG42", _sid],1],[format["%1LIB_DAK_SdKfz251", _sid],1]];
 			if(CTI_IFA3_NEW > 0) then {
 				WHEELED_HEAVY = [[format["%1LIB_DAK_SdKfz251_22", _sid],1],[format["%1LIB_DAK_SdKfz251_22", _sid],1]];
@@ -181,10 +226,14 @@ switch (CTI_ECONOMY_LEVEL_WHEELED) do {
 				WHEELED_HEAVY = [[format["%1LIB_DAK_SdKfz251", _sid],1],[format["%1LIB_DAK_SdKfz251", _sid],1]];
 			};
 		};
-	};
-	default {
-		WHEELED_LIGHT = INFANTRY;
-		WHEELED_HEAVY = INFANTRY_MG;
+		default {
+			WHEELED_LIGHT = [[format["%1LIB_Kfz1_MG42", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
+			if(CTI_IFA3_NEW > 0) then {
+				WHEELED_HEAVY = [[format["%1LIB_SdKfz251_22", _sid],1],[format["%1LIB_SdKfz251_23", _sid],1]];
+			} else {
+				WHEELED_HEAVY = [[format["%1LIB_SdKfz251", _sid],1],[format["%1LIB_SdKfz251", _sid],1]];
+			};
+		};
 	};
 };
 
@@ -206,95 +255,123 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 TRACKED_LIGHT = [];
 TRACKED_MEDIUM = [];
 TRACKED_HEAVY = [];
+_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_GER_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
-switch (CTI_ECONOMY_LEVEL_TRACKED) do {
-	case 0: {
-		if(CTI_IFA3LIB_ADDON == 0 && CTI_CSA38_ADDON == 0) then {
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G_w", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_StuG_III_G_WS_w", _sid],1]];
+		};
+		default {
 			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
 			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G", _sid],1]];
 			TRACKED_HEAVY = [[format["%1LIB_StuG_III_G", _sid],1]];
-			if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-				TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1]];
-				TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G_w", _sid],1]];
-				TRACKED_HEAVY = [[format["%1LIB_StuG_III_G_WS_w", _sid],1]];
-			};
 		};
 	};
-	case 1: {
-		if(CTI_IFA3LIB_ADDON == 0 && CTI_CSA38_ADDON == 0) then {
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G_w", _sid],1],[format["%1LIB_StuG_III_G_WS_w", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwIV_H_w", _sid],1],[format["%1LIB_PzKpfwIV_H_w", _sid],1]];};
+		case 2: {
 			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G", _sid],1]];
-			TRACKED_HEAVY = [[format["%1LIB_StuG_III_G", _sid],1]];
-			if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-				TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1]];
-				TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G_w", _sid],1]];
-				TRACKED_HEAVY = [[format["%1LIB_StuG_III_G_WS_w", _sid],1]];
-			};
-		} else {
-			TRACKED_LIGHT = [[format["%1LIB_PzKpfwIV_H", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H", _sid],1]];
-			TRACKED_HEAVY = [[format["%1LIB_PzKpfwIV_H", _sid],1]];
-			if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-				TRACKED_LIGHT = [[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
-				TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
-				TRACKED_HEAVY = [[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
-			};
-			if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-				TRACKED_LIGHT = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-				TRACKED_MEDIUM = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-				TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-			};
+			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G", _sid],1],[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1],[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];};
+		default {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G", _sid],1],[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwIV_H", _sid],1],[format["%1LIB_PzKpfwIV_H", _sid],1]];
 		};
 	};
-	case 2: {
-		TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
-		TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H", _sid],1]];
-		TRACKED_HEAVY = [[format["%1LIB_PzKpfwIV_H", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
 			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
-			TRACKED_HEAVY = [[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			TRACKED_LIGHT = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-			TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-		};
-	};
-	case 3: {
-		TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
-		TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H", _sid],1]];
-		TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
-			TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E_w", _sid],1]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			TRACKED_LIGHT = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-			TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwVI_E", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G_WS_w", _sid],1],[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwIV_H_w", _sid],1],[format["%1LIB_PzKpfwIV_H_w", _sid],1]];};
+		case 2: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G", _sid],1],[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1],[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];};
+		default {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_StuG_III_G", _sid],1],[format["%1LIB_PzKpfwIV_H", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwIV_H", _sid],1],[format["%1LIB_PzKpfwIV_H", _sid],1]];
 		};
 	};
-	case 4: {
-		TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
-		TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H", _sid],1]];
-		TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E", _sid],1],[format["%1LIB_PzKpfwVI_B", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
-			TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E_w", _sid],1],[format["%1LIB_PzKpfwVI_B_w", _sid],1]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			TRACKED_LIGHT = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
-			TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwVI_E", _sid],1],[format["%1LIB_PzKpfwVI_B", _sid],1]];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1],[format["%1LIB_StuG_III_G_WS_w", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H_w", _sid],1],[format["%1LIB_PzKpfwIV_H_w", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E_w", _sid],1]];};
+		case 2: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1],[format["%1LIB_DAK_PzKpfwIV_H", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwVI_E", _sid],1]];};
+		default {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H", _sid],1],[format["%1LIB_PzKpfwIV_H", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E", _sid],1]];
 		};
 	};
-	default {
-		TRACKED_LIGHT = INFANTRY;
-		TRACKED_MEDIUM = INFANTRY_MG;
-		TRACKED_HEAVY = INFANTRY_AT;
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1],[format["%1LIB_StuG_III_G_WS_w", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H_w", _sid],1],[format["%1LIB_PzKpfwV_w", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E_w", _sid],1]];};
+		case 2: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1],[format["%1LIB_PzKpfwV", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwVI_E", _sid],1]];};
+		default {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H", _sid],1],[format["%1LIB_PzKpfwV", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E", _sid],1]];
+		};
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G_w", _sid],1],[format["%1LIB_StuG_III_G_WS_w", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H_w", _sid],1],[format["%1LIB_PzKpfwV_w", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E_w", _sid],1],[format["%1LIB_PzKpfwVI_B_w", _sid],1]];};
+		case 2: {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_DAK_PzKpfwIV_H", _sid],1],[format["%1LIB_PzKpfwV", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_DAK_PzKpfwVI_E", _sid],1],[format["%1LIB_PzKpfwVI_B", _sid],1]];};
+		default {
+			TRACKED_LIGHT = [[format["%1LIB_StuG_III_G", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1LIB_PzKpfwIV_H", _sid],1],[format["%1LIB_PzKpfwV", _sid],1]];
+			TRACKED_HEAVY = [[format["%1LIB_PzKpfwVI_E", _sid],1],[format["%1LIB_PzKpfwVI_B", _sid],1]];
+		};
 	};
 };
 
@@ -318,45 +395,44 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 //***************************************************************************************************************************************
 AIR_FIGHTER = [];
 AIR_BOMBER = [];
+_matrix_full = [_side, CTI_UPGRADE_AIR] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_GER_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
-switch (CTI_ECONOMY_LEVEL_AIR) do {
-	case 0: {
-		AIR_FIGHTER = [[format["%1LIB_Ju87", _sid],1]];
-		AIR_BOMBER = [[format["%1LIB_Ju87", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+_matrix_cnt = [2, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
 			AIR_FIGHTER = [[format["%1LIB_Ju87_w", _sid],1]];
 			AIR_BOMBER = [[format["%1LIB_Ju87_w", _sid],1]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+			};
+		case 2: {
 			AIR_FIGHTER = [[format["%1LIB_DAK_Ju87", _sid],1]];
 			AIR_BOMBER = [[format["%1LIB_DAK_Ju87", _sid],1]];
+			};
+		default {
+			AIR_FIGHTER = [[format["%1LIB_Ju87", _sid],1]];
+			AIR_BOMBER = [[format["%1LIB_Ju87", _sid],1]];
 		};
 	};
-	case 1: {
-		AIR_FIGHTER = [[format["%1LIB_Ju87_G2", _sid],1]];
-		AIR_BOMBER = [[format["%1LIB_Ju87", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
-			AIR_BOMBER = [[format["%1LIB_Ju87_w", _sid],1]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
-			AIR_BOMBER = [[format["%1LIB_DAK_Ju87", _sid],1]];
-		};
-	};
-	case 2: {
-		AIR_FIGHTER = [[format["%1LIB_FW190F8", _sid],1]];
-		AIR_BOMBER = [[format["%1LIB_Ju87", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
+};
+
+_matrix_cnt = [4, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
 			AIR_FIGHTER = [[format["%1LIB_FW190F8_w", _sid],1]];
 			AIR_BOMBER = [[format["%1LIB_Ju87_w", _sid],1]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2) then {		//Desert camo active
+			};
+		case 2: {
 			AIR_FIGHTER = [[format["%1LIB_DAK_FW190F8", _sid],1]];
 			AIR_BOMBER = [[format["%1LIB_DAK_Ju87", _sid],1]];
+			};
+		default {
+			AIR_FIGHTER = [[format["%1LIB_FW190F8", _sid],1]];
+			AIR_BOMBER = [[format["%1LIB_Ju87", _sid],1]];
 		};
-	};
-	default {
-		AIR_FIGHTER = INFANTRY;
-		AIR_BOMBER = INFANTRY;
 	};
 };
 

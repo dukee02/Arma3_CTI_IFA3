@@ -291,7 +291,7 @@ switch (_action) do {
 		_haspic = false;
 		_upgrade = 0;
 		_has_nil = false;
-		_dontbelong = false;
+		//_dontbelong = false;
 		_maxUGgear = [];
 		_templates = [];
 		
@@ -310,12 +310,11 @@ switch (_action) do {
 			} else {
 				_has_nil = true;
 			};
-			//if !(_x in _side_gear) then {
-			//	_dontbelong = true;
-			//	_maxUGgear = _x;
-			//};
+			if !(_x in _side_gear) then {
+				//_dontbelong = true;
+				_maxUGgear = _x;
+			};
 			//if (_has_nil || _dontbelong) exitWith {};
-			if (_has_nil) exitWith {};
 		} forEach (_gear call CTI_CO_FNC_ConvertGearToFlat);
 		
 		if (_upgrade > _upgrade_gear) exitWith {

@@ -1,6 +1,9 @@
-private "_faction", "_i", "_p", "_side", "_u", "_tech_level_no_upgrade_inv", "_tech_level";
+private ["_faction", "_i", "_p", "_side", "_u", "_tech_level_no_upgrade_inv", "_tech_level", "_upgrade_levels"];
 
 _side = _this;
+_upgrade_levels = [];
+_tech_level_no_upgrade_inv = 1;
+_tech_level = 0;
 
 if(_side == west) then {
 	_faction = "West";
@@ -14,11 +17,13 @@ else {
 	};
 };
 
-_tech_level_no_upgrade_inv = 1;
-_tech_level = 0;
-
 if(CTI_NO_UPGRADE_MODE == 1) then {	
 	_tech_level_no_upgrade_inv = 0;
+};
+
+_upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
+if (isNil "_upgrade_levels") then { 
+	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,1,1,1,1,1,3,4,CTI_ECONOMY_LEVEL_GEAR]; 
 };
 
 _i = [];
@@ -39,8 +44,8 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((rnds*caliber)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 */
 
-_tech_level=0;
 //---------------------------Grenades and mines-----------------------------------------
+_tech_level=0;
 _i pushBack "LIB_Rpg6"; //Ind
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round 50*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
@@ -97,6 +102,10 @@ _i pushBack "ClaymoreDirectionalMine_Remote_Mag"; //All
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round 30*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
+	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
+};
 
 //----------------------Flares and Smokes------------------------------
 _tech_level = 0;
@@ -164,6 +173,10 @@ _i pushBack "FlareYellow_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round 2*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
+	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
+};
 
 //-------------Ammo----------------------------------------------
 _tech_level = 0;
@@ -174,7 +187,6 @@ _p pushBack round ((6*1160*45)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+
 _i pushBack "LIB_10Rnd_770x56";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((10*770*56)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
-
 
 //Level 1
 _tech_level = _tech_level + 1;
@@ -204,6 +216,10 @@ _i pushBack "LIB_1Rnd_60mm_M6";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))/2);
 
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
+	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
+};
 
 //-------------------------------------Weapons------------------------------------------------------
 _tech_level = 0;
@@ -218,7 +234,6 @@ _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL
 _i pushBack "LIB_LeeEnfield_No4";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-
 
 //Level 1
 _tech_level = _tech_level + 1;
@@ -252,6 +267,10 @@ _i pushBack "LIB_M1A1_Bazooka";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
+	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
+};
 
 //------------------------------------Uniforms------------------------------------
 _tech_level = 0;
@@ -318,6 +337,10 @@ _i pushBack "U_LIB_UK_DenisonSmock_w";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
+	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
+};
 
 //-----------------------------------------Vests----------------------------------------------------
 _tech_level = 0;
@@ -374,6 +397,10 @@ _i pushBack "V_LIB_UK_P37_Sten";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100)*3);
 
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
+	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
+};
 
 //-------------------------------------------Backpacks----------------------------------------------------------
 _tech_level = 0;
@@ -402,6 +429,10 @@ _i pushBack "B_LIB_UK_HSack_Tea";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100)*2);
 
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
+	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
+};
 
 //--------------------------------------------Helms-------------------------------------------
 _tech_level = 0;
@@ -527,6 +558,10 @@ _i pushBack "H_LIB_UK_Helmet_Mk3_Camo";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
+	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
+};
 
 //-------------------------------------------Glasses------------------------------------------------
 _tech_level = 0;
@@ -605,5 +640,11 @@ _i pushBack "Medikit";
 _u pushBack 0;
 _p pushBack round 1500;
 
-
-[_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
+//all units are declared, we update the possible upgrades if this script
+//runns on the server, if on client we setup the gear config.
+if(!isNil 'CTI_Init_Common') then {
+	[_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
+} else {
+	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], _upgrade_levels];
+	if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\gear\gear_UK.sqf", format["calculated upgrade levels for %1: [%2] ", _side, _upgrade_levels]] call CTI_CO_FNC_Log};
+};

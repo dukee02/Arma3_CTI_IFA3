@@ -15,10 +15,11 @@ _created_units = [];
 _created_vehicles = [];
 _crews = [];
 
-//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateTeam.sqf", format ["Units: <%1>",  _units]] call CTI_CO_FNC_Log;};
-
 {
-	//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateTeam.sqf", format ["Unit: <%1>",  _x]] call CTI_CO_FNC_Log;};
+	if (isNil "_x") then { 
+		_x = missionNamespace getVariable format["CTI_%1_Soldier", _side];
+		if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Common\Functions\Common_CreateTeam.sqf", format ["Unit is NULL changed to: <%1>",  _x]] call CTI_CO_FNC_Log;};
+	};
 	if (_x isKindOf "Man") then {
 		_unit = [_x, _group, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, _sideID] call CTI_CO_FNC_CreateUnit;
 		_created_units pushBack _unit;
@@ -43,6 +44,7 @@ _crews = [];
 		_vehicle_crew = [_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;
 		_crews = _crews + _vehicle_crew;
 	};
+	
 } forEach _units;
 
 {_group addVehicle _x} forEach _created_vehicles;

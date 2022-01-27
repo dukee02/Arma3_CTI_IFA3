@@ -92,7 +92,17 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 	_s pushBack "";
 	_d pushBack 0;
 	
-	if(CTI_VIO_ADDON > 0) then {
+	_c pushBack format["%1LIB_WP_AT_grenadier", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack (CTI_ECONOMY_PRIZE_INFANTRY*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+	_t pushBack _building_time;
+	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+	_f pushBack CTI_FACTORY_BARRACKS;
+	_s pushBack "";
+	_d pushBack 0;
+	
+	if(CTI_VIO_ADDON > 0) then {	
 		_c pushBack format["%1WP_AT_soldier", _sid];
 		_p pushBack '';
 		_n pushBack '';
@@ -201,36 +211,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 2) then {
 		_s pushBack "";
 		_d pushBack 0;
 	};
-};
-
-
-//--- Below is classnames for Units and AI avaiable to puchase from Light Factory.
-//Level start
-_tech_level = 0;
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	_time = (5*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<5): {5}; case (_time>150): {150}; default {_time}};
-		
-	_c pushBack format["%1LIB_GazM1_FFI_sand", _sid];
-	_p pushBack '';
-	_n pushBack '';
-	_o pushBack (CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-	_t pushBack _building_time;
-	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-	_f pushBack CTI_FACTORY_LIGHT;
-	_s pushBack "";
-	_d pushBack 0;
-	
-	_c pushBack format["%1LIB_GazM1_FFI_camo_sand", _sid];
-	_p pushBack '';
-	_n pushBack '';
-	_o pushBack (CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-	_t pushBack _building_time;
-	_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-	_f pushBack CTI_FACTORY_LIGHT;
-	_s pushBack "";
-	_d pushBack 0;
-	
 };
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\units\units_POL.sqf", format["units declared: [%1] | [%2]", count _c, count _n]] call CTI_CO_FNC_Log};

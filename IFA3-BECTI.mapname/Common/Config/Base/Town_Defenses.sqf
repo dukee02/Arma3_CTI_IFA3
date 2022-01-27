@@ -58,11 +58,11 @@ if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 };
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	
-	if(CTI_IFA3_NEW == 0) then {
-		_classes_town pushBack 		format["%1LIB_M1919_M2", _sid];
+	if(CTI_IFA3_NEW > 0) then {
+		_classes_town pushBack 		format["%1LIB_Vickers_MMG", _sid];
 		_categories_town pushBack 	"MG";
 	} else {
-		_classes_town pushBack 		format["%1LIB_Vickers_MMG", _sid];
+		_classes_town pushBack 		format["%1LIB_M1919_M2", _sid];
 		_categories_town pushBack 	"MG";
 	};
 	
@@ -151,8 +151,10 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 };
 if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	_classes_town pushBack 		format["%1LIB_57mm_M1", _sid];
-	_categories_town pushBack 	"AT";
+	if(CTI_IFA3_NEW > 0) then {
+		_classes_town pushBack 		format["%1LIB_57mm_M1", _sid];
+		_categories_town pushBack 	"AT";
+	};
 };
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	if(CTI_IFA3_NEW == 1) then {

@@ -1,4 +1,4 @@
-private ["_side", "_c", "_sid", "_priorUnits", "_ai"];
+private ["_side", "_c", "_sid", "_priorUnits", "_ai", "_level", "_matrix_cnt", "_matrix_full", "_matrix_nation"];
 _side = _this;
 _ai = -1;
 
@@ -23,7 +23,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\fa
 
 //check if the CTI SIDE base units are set. If not or this side is set as AI, setup the variable.
 _priorUnits = missionNamespace getVariable format ["CTI_%1_Commander", _side, CTI_BARRACKS];
-if (isNil "_priorUnits" || _ai == 1) then { 
+if (isNil "_priorUnits" || _ai == 1) then {
 	//We setup the standard units before the camo check to get secure
 	missionNamespace setVariable [format["CTI_%1_Commander", _side], format["%1LIB_SOV_captain_summer", _sid]];
 	missionNamespace setVariable [format["CTI_%1_Worker", _side], format["%1LIB_SOV_unequip", _sid]];
@@ -90,8 +90,12 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\fa
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Barracks Factory.
 _c = [];
-//Level start
-if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
+_matrix_full = [_side, CTI_UPGRADE_BARRACKS] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SOV_LC_rifleman_w", _sid];
 		_c pushBack format["%1LIB_SOV_Rifleman_w", _sid];
@@ -126,8 +130,10 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 	_c pushBack format["%1LIB_SOV_pilot", _sid];
 	_c pushBack format["%1LIB_SOV_tank_overall_crew", _sid];
 };
-//Level 1
-if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SOV_Assault_sergeant_w", _sid];
 		_c pushBack format["%1LIB_SOV_AT_M1A1_soldier_w", _sid];
@@ -151,8 +157,10 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
 	_c pushBack format["%1LIB_SOV_operator", _sid];
 	_c pushBack format["%1LIB_SOV_tank_overall_sergeant", _sid];
 };
-//Level 2
-if(CTI_ECONOMY_LEVEL_INFANTRY >= 2) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SOV_Scout_smgunner_w", _sid];
 		_c pushBack format["%1LIB_SOV_Scout_mgunner_w", _sid];
@@ -210,13 +218,25 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _c
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Light Factory.
 _c = [];
-//Level start
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+_matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		_c pushBack format["%1LIB_Willys_MB_w", _sid];
+		_c pushBack format["%1LIB_Willys_MB_Hood_w", _sid];
+	};
 	_c pushBack format["%1LIB_GazM1_SOV", _sid];	
 	_c pushBack format["%1LIB_GazM1_SOV_camo_sand", _sid];
+	_c pushBack format["%1LIB_Willys_MB", _sid];
+	_c pushBack format["%1LIB_Willys_MB_Hood", _sid];
 };
-//Level 1
-if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_Zis5v_w", _sid];
 		_c pushBack format["%1LIB_Zis5v_med_w", _sid];					//medic
@@ -229,25 +249,25 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	//_c pushBack format["%1LIB_Zis6_Parm", _sid];				//repairtruck
 	//_c pushBack format["%1LIB_Zis5v_Fuel", _sid];				//fueltruck
 };
-//Level 2
-if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SOV_M3_Halftrack_w", _sid];
 		_c pushBack format["%1LIB_Scout_M3_FFV_w", _sid];
 		_c pushBack format["%1LIB_Scout_m3_w", _sid];
-		_c pushBack format["%1LIB_Willys_MB_w", _sid];
-		_c pushBack format["%1LIB_Willys_MB_Hood_w", _sid];
 		_c pushBack format["%1LIB_Willys_MB_Ambulance_w", _sid];	//medic
 	};
 	_c pushBack format["%1LIB_SOV_M3_Halftrack", _sid];
 	_c pushBack format["%1LIB_Scout_M3", _sid];
 	_c pushBack format["%1LIB_Scout_M3_FFV", _sid];
-	_c pushBack format["%1LIB_Willys_MB", _sid];
-	_c pushBack format["%1LIB_Willys_MB_Hood", _sid];
 	_c pushBack format["%1LIB_Willys_MB_Ambulance", _sid];			//medic
 };
-//Level 3
-if(CTI_ECONOMY_LEVEL_WHEELED >= 3) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SdKfz251_captured_w", _sid];
 		_c pushBack format["%1LIB_SdKfz251_captured_FFV_w", _sid];
@@ -260,8 +280,10 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 3) then {
 	//_c pushBack format["%1LIB_US6_Open", _sid];
 	//_c pushBack format["%1LIB_US6_Ammo", _sid];					//ammotruck
 };
-//Level 4
-if(CTI_ECONOMY_LEVEL_WHEELED >= 4) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_IFA3_NEW > 0) then {
 		_c pushBack format["%1LIB_SOV_M16_Halftrack", _sid];
 	};
@@ -282,45 +304,67 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _c];
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
 _c = [];
-_level = 0;
-if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%LIB_UniversalCarrier_SOV", _sid];
+_matrix_cnt = 0;
+if(CTI_IFA3_NEW > 0) then {
+	_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
+	_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
+
+	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+		_c pushBack format["%1LIB_UniversalCarrier_SOV", _sid];
 	};
-	_level = _level + 1;
+
+	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+			_c pushBack format["%1LIB_M3A3_Stuart_SOV_w", _sid];
+		};
+		_c pushBack format["%1LIB_M3A3_Stuart_SOV", _sid];
+	};
 };
+_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_T34_76_w", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_M3A3_Stuart_SOV_w", _sid];
-		};
 	};
 	_c pushBack format["%1LIB_T34_76", _sid];
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_M3A3_Stuart_SOV", _sid];
-	};
-	_level = _level + 1;
 };
-//Level 2
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		_c pushBack format["%1LIB_M4A2_SOV_w", _sid];
 		_c pushBack format["%1LIB_SU85_w", _sid];
 	};
 	_c pushBack format["%1LIB_SU85", _sid];
-	_level = _level + 1;
 };
-//Level 3
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		_c pushBack format["%1LIB_M4A2_SOV_w", _sid];
+	};
+	_c pushBack format["%1LIB_M4A2_SOV", _sid];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_T34_85_w", _sid];
 	};
 	_c pushBack format["%1LIB_T34_85", _sid];
-	_c pushBack format["%1LIB_M4A2_SOV", _sid];
-	_level = _level + 1;
 };
-//Level 4
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_JS2_43_w", _sid];
@@ -342,22 +386,27 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _c];
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Air Factory.
 _c = [];
-//Level 0
-_level = 0;
+_matrix_full = [_side, CTI_UPGRADE_AIR] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	_c pushBack format["%1LIB_Li2", _sid];
-	_level = _level + 1;
 };
-//Level 2
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	//if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 	//	_c pushBack format["%1LIB_Pe2_2_w", _sid];
 	//	_c pushBack format["%1LIB_Pe2_w", _sid];
 	//};
 	_c pushBack format["%1LIB_Pe2", _sid];
-	_level = _level + 1;
 };
-//Level 3
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_P39_w", _sid];
@@ -365,7 +414,6 @@ if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	_c pushBack format["%1LIB_P39", _sid];
 	//_c pushBack format["%1LIB_RA_P39_3", _sid];
 	//_c pushBack format["%1LIB_RA_P39_2", _sid];
-	_level = _level + 1;
 };
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_AIR];
@@ -388,6 +436,9 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 		_c pushBack format["%1LIB_Zis6_parm_w", _sid];					//repairtruck
 	};
 	_c pushBack format["%1LIB_Zis6_Parm", _sid];						//repairtruck
+};
+if(CTI_IFA3_NEW >= 0) then {
+	_c pushBack format["CTI_Salvager_%1", _side];
 };
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_REPAIR];
 if (isNil "_priorUnits") then { 
@@ -474,6 +525,13 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _c];
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Naval Factory.
 _c = [];
+/*
+_matrix_full = [_side, CTI_UPGRADE_NAVAL] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_NAVAL, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+*/
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_NAVAL];
 if (isNil "_priorUnits") then { 
