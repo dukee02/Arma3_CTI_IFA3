@@ -32,14 +32,13 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
-	"A3_Modules_F",
-	"A3_Structures_F_Mil_Fortification"
+	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=4;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -58,13 +57,6 @@ class AddonsMetaData
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item3
-		{
-			className="A3_Structures_F_Mil";
-			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -3140,7 +3132,7 @@ class Mission
 						};
 					};
 					id=1908;
-					atlOffset=1.1469347;
+					atlOffset=1.286216;
 				};
 				class Item22
 				{

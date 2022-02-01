@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1614;
+		nextID=1602;
 	};
 	class Camera
 	{
-		pos[]={3237.4292,29.198347,1933.7783};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={2399.3425,27.184006,2696.9255};
+		dir[]={-0.12981038,-0.42719385,-0.89487767};
+		up[]={-0.061332975,0.90412551,-0.4228161};
+		aside[]={-0.9897123,-3.3302967e-007,0.14356148};
 	};
 };
 binarizationWanted=0;
@@ -32,14 +32,13 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
-	"WW2_Core_c_IF_Gui_c",
 	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=4;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -55,11 +54,6 @@ class AddonsMetaData
 			url="https://www.arma3.com";
 		};
 		class Item2
-		{
-			className="WW2_Core_c_IF_Gui_c";
-			name="WW2_Core_c_IF_Gui_c";
-		};
-		class Item3
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
@@ -147,7 +141,6 @@ class CustomAttributes
 };
 class Mission
 {
-	assetType="Free";
 	class Intel
 	{
 		briefingName="VIO-BECTI-IFA3 V2.0";
@@ -173,7 +166,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=47;
+		items=48;
 		class Item0
 		{
 			dataType="Group";
@@ -4063,6 +4056,23 @@ class Mission
 			id=636;
 			type="Land_HBarrier_5_F";
 			atlOffset=0.0030403137;
+		};
+		class Item47
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3237.3906,4.2205005,1959.1337};
+				angles[]={6.2551923,0,0.043970551};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=845;
+			type="LIB_Zis3";
+			atlOffset=-2.0924835;
 		};
 	};
 	class Connections

@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={987.88,64.864746,2277.386};
-		dir[]={0,-0.70710677,0.70710683};
-		up[]={0,0.70710677,0.70710671};
-		aside[]={0.99999994,0,-0};
+		pos[]={989.07581,73.080032,2270.6133};
+		dir[]={-1.2363448e-007,-0.70710671,0.70710683};
+		up[]={-1.2363445e-007,0.70710683,0.70710659};
+		aside[]={0.99999988,7.1054274e-015,1.7484552e-007};
 	};
 };
 binarizationWanted=0;
@@ -32,14 +32,13 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
-	"WW2_Core_c_IF_Gui_c",
 	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=4;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -55,11 +54,6 @@ class AddonsMetaData
 			url="https://www.arma3.com";
 		};
 		class Item2
-		{
-			className="WW2_Core_c_IF_Gui_c";
-			name="WW2_Core_c_IF_Gui_c";
-		};
-		class Item3
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
@@ -142,7 +136,6 @@ class CustomAttributes
 };
 class Mission
 {
-	assetType="Free";
 	class Intel
 	{
 		briefingName="VIO-BECTI-IFA3 V2.0";

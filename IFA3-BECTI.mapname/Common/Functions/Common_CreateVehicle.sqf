@@ -123,7 +123,8 @@ if (_special != "FLY") then {
 	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 };
 
-//{player reveal _vehicle} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
+player reveal _vehicle; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
+//{player reveal _vehicle} forEach allUnits; 
 
 if (_locked) then {_vehicle lock 2} else {_vehicle lock 0};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};

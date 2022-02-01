@@ -13,7 +13,7 @@ _t = [];
 // no Vanilla gear its WW2!
 //_t = _t 	+ [[[["arifle_SPAR_01_blk_F",[],["30Rnd_556x45_Stanag_Tracer_Yellow"]]],[["U_B_T_Soldier_F",["Medikit","Medikit"]],["V_BandollierB_rgr",["HandGrenade","HandGrenade"]],["B_AssaultPack_mcamo",["30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow"]]],["H_HelmetB_light",""],[[],["itemmap","","itemradio","ItemCompass","ItemWatch"]]]];
 
-["DEBUG", "FILE: Common\Config\Gear\Gear_Template.sqf", format ["_side [%1] _faction [%2]. CTI_GER_SIDE %3", _side, _faction, CTI_GER_SIDE]] call CTI_CO_FNC_Log; 
+if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Config\Gear\Gear_Template.sqf", format ["_side [%1] _faction [%2]. CTI_GER_SIDE %3", _side, _faction, CTI_GER_SIDE]] call CTI_CO_FNC_Log};
 
 if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	//German Gear active

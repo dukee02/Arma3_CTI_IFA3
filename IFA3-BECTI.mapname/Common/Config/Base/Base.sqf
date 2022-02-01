@@ -15,16 +15,29 @@ else {
 if(CTI_VIO_ADDON == 0) then {_sid = "";};
 
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	missionNamespace setVariable [format["CTI_%1_HQ", _side], "LIB_US_GMC_Tent"];
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Parm_w", _sid]];};		//Winter camo
+		default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Tent", _sid]];};		//default/woodland camo
+	};
 };
 if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	missionNamespace setVariable [format["CTI_%1_HQ", _side], "LIB_US_GMC_Tent"];
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Parm_w", _sid]];};		//Winter camo
+		default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Tent", _sid]];};		//default/woodland camo
+	};
 };
 if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	missionNamespace setVariable [format["CTI_%1_HQ", _side], "LIB_Zis6_Parm"];
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_Zis6_parm_w", _sid]];};		//Winter camo
+		default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_Zis6_Parm", _sid]];};		//default/woodland camo
+	};
 };
 if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	missionNamespace setVariable [format["CTI_%1_HQ", _side], "LIB_OpelBlitz_Parm"];
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_OpelBlitz_Parm_w", _sid]];};		//Winter camo
+		case 2: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_DAK_OpelBlitz_Parm", _sid]];};		//Desert camo
+		default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_OpelBlitz_Parm", _sid]];};		//default/woodland camo
+	};
 };
 
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: Common\Config\Base\Base.sqf", format ["Set HQ Vehicle [%1] for side [%2]", missionNamespace getVariable format["CTI_%1_HQ", _side], _side]] call CTI_CO_FNC_Log };

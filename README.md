@@ -8,6 +8,10 @@ Added: adjustable CTI-Arty timeout (0-600s)
 Added: automaticly tech tree and max tier calulation
 Added: 4 Flags to Town main bunker (now better to see)
 Added: Pylon manager support
+Added: HQ-vehicle camo variants
 Changed: Better tech tree when nations gets combined
 Fixed: instant wreck despawn
 Fixed: Error occures when downdefenses spawn and arma deleted the goup before
+Fixed: some missing statics of town defenses
+
+

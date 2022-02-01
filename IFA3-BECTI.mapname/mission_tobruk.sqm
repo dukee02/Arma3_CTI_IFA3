@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3067;
+		nextID=3041;
 	};
 	class Camera
 	{
@@ -32,14 +32,13 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
-	"WW2_Core_c_IF_Gui_c",
 	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=4;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -55,11 +54,6 @@ class AddonsMetaData
 			url="https://www.arma3.com";
 		};
 		class Item2
-		{
-			className="WW2_Core_c_IF_Gui_c";
-			name="WW2_Core_c_IF_Gui_c";
-		};
-		class Item3
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";

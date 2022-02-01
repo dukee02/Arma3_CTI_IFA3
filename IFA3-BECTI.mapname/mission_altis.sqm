@@ -16,11 +16,11 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=5241;
+		nextID=5183;
 	};
 	class Camera
 	{
-		pos[]={11067.752,1141.3201,15696.621};
+		pos[]={11072.037,1144.5718,15693.753};
 		dir[]={-0.59967881,-0.49463063,0.62906748};
 		up[]={-0.34129372,0.86910325,0.35801962};
 		aside[]={0.7238121,0,0.6899972};
@@ -32,14 +32,13 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
-	"A3_Modules_F",
-	"A3_Structures_F_Mil_Fortification"
+	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=4;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -58,13 +57,6 @@ class AddonsMetaData
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item3
-		{
-			className="A3_Structures_F_Mil";
-			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -144,7 +136,6 @@ class CustomAttributes
 };
 class Mission
 {
-	assetType="Free";
 	class Intel
 	{
 		briefingName="VIO-BECTI-IFA3 V2.0";
@@ -3828,7 +3819,7 @@ class Mission
 						};
 					};
 					id=600;
-					atlOffset=1.0529466;
+					atlOffset=1.2027652;
 				};
 				class Item26
 				{
