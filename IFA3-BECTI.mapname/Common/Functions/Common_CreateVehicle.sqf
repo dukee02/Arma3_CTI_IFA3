@@ -67,55 +67,14 @@ clearItemCargo _vehicle;
 
 //if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format ["type: <%1> special: <%2>",  _type, _special]] call CTI_CO_FNC_Log;};
 if (_special != "FLY") then {
-	
-	//_save_pos = [getPos player, 2000, 5000, 1, 0, 0.7, 0, [], [getPos player, getPos player]] call BIS_fnc_findSafePos;
-	//_save_pos = [center, minDist, maxDist, objDist, waterMode, maxGrad, shoreMode, blacklistPos, defaultPos] call BIS_fnc_findSafePos
-	
 	if(_type isKindOf "ship") then {
-		
-		_tmp_ship_is = "not sab";
-		//_vehicle setDirection (direction _vehicle + 90);
-		
-		if(CTI_SAB_ADDON > 0) then {
-			if(_type == "VIOC_B_sab_item_carrier_2" || _type == "VIOC_B_sab_boat_cruiser" || _type == "VIOC_B_sab_boat_cruiser_rn" || _type == "VIOC_B_sab_boat_cruiser_i" || _type == "VIOC_B_sab_boat_cruiser_o" || 
-			_type == "VIOC_B_sab_boat_battleship" || _type == "VIOC_B_sab_boat_battleship_rn" || _type == "VIOC_B_sab_boat_battleship_i" || _type == "VIOC_B_sab_boat_battleship_o" || 
-			_type == "VIOC_O_sab_item_carrier_2" || _type == "VIOC_O_sab_boat_cruiser" || _type == "VIOC_O_sab_boat_cruiser_rn" || _type == "VIOC_O_sab_boat_cruiser_i" || _type == "VIOC_O_sab_boat_cruiser_o" || 
-			_type == "VIOC_O_sab_boat_battleship" || _type == "VIOC_O_sab_boat_battleship_rn" || _type == "VIOC_O_sab_boat_battleship_i" || _type == "VIOC_O_sab_boat_battleship_o") then {
-				
-				_save_pos = [_position, 0, 200, 1, 2, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-				_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
-				_tmp_ship_is = "large (spwan + 200m)";
-			} else {
-				if(_type == "VIOC_B_sab_boat_freighter_o" || _type == "VIOC_B_sab_boat_freighter" || _type == "VIOC_B_sab_boat_freighter_i" || _type == "VIOC_B_sab_boat_liberty" ||
-				_type == "VIOC_B_sab_boat_liberty_rn" || _type == "VIOC_B_sab_boat_liberty_i" || _type == "VIOC_B_sab_boat_destroyer" || _type == "VIOC_B_sab_boat_destroyer_rn" ||
-				_type == "VIOC_B_sab_boat_destroyer_i" || _type == "VIOC_B_sab_boat_destroyer_o" || _type == "VIOC_B_sab_boat_u7_o" || _type == "VIOC_B_sab_boat_u7_i" || _type == "VIOC_B_sab_boat_u7" ||
-				_type == "VIOC_O_sab_boat_freighter_o" || _type == "VIOC_O_sab_boat_freighter" || _type == "VIOC_O_sab_boat_freighter_i" || _type == "VIOC_O_sab_boat_liberty" ||
-				_type == "VIOC_O_sab_boat_liberty_rn" || _type == "VIOC_O_sab_boat_liberty_i" || _type == "VIOC_O_sab_boat_destroyer" || _type == "VIOC_O_sab_boat_destroyer_rn" ||
-				_type == "VIOC_O_sab_boat_destroyer_i" || _type == "VIOC_O_sab_boat_destroyer_o" || _type == "VIOC_O_sab_boat_u7_o" || _type == "VIOC_O_sab_boat_u7_i" || _type == "VIOC_O_sab_boat_u7") then {
-					
-					_save_pos = [_position, 0, 100, 1, 2, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-					_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
-					_tmp_ship_is = "medium (spwan + 100m)";
-				} else {
-					_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];
-					_tmp_ship_is = "small no spawn change";
-				};
-			};
-		} else {
-			_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];
-			_tmp_ship_is = "small no spawn change";
-		};
-		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format["Ship is:[%1] type: [%2]", _tmp_ship_is, _type]] call CTI_CO_FNC_Log;};
-		
-		//placeing onto the water
-		//_save_pos = [_position, 0, 200, 1, 2, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-		//_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
+		//placeing onto the water but near the shore
+		_save_pos = [_position, 0, 100, 1, 2, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+		_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
 	} else {
 		//place on a save Pos on the ground
-		//_save_pos = [_position, 0, 50, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
 		_save_pos = [_position, 0, 10, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-		_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
-		//_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1]; //--- Make the vehicle spawn above the ground level to prevent any bisteries
+		_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];//--- Make the vehicle spawn above the ground level to prevent any bisteries
 	};
 	_vehicle setVelocity [0,0,1];
 } else {
@@ -123,8 +82,9 @@ if (_special != "FLY") then {
 	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 };
 
-player reveal _vehicle; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
-//{player reveal _vehicle} forEach allUnits; 
+{//unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
+	player reveal [_vehicle, 4];
+} forEach allUnits;
 
 if (_locked) then {_vehicle lock 2} else {_vehicle lock 0};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};

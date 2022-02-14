@@ -17,6 +17,7 @@ _crews = [];
 
 {
 	if (isNil "_x") then { 
+		if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Common\Functions\Common_CreateTeam.sqf", format ["Unit is: <%1>",  _x]] call CTI_CO_FNC_Log;};
 		_x = missionNamespace getVariable format["CTI_%1_Soldier", _side];
 		if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Common\Functions\Common_CreateTeam.sqf", format ["Unit is NULL changed to: <%1>",  _x]] call CTI_CO_FNC_Log;};
 	};

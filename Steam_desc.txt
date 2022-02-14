@@ -158,35 +158,25 @@ https://steamcommunity.com/groups/vio-community/discussions/0/174001225280057993
 
 
 -------------------MAPS----------------------------
-Altis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588965899
-Baranow
-Baranow Winter
-Merderet
-Merderet koth
-Merderet V2
-Merderet V3
-Merderet Winter
-Tobruk
-Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024
-Neaville						https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040
-Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249
+Altis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588965899				V2.0_220127
+Baranow							https://steamcommunity.com/sharedfiles/filedetails/?id=2739995624				V2.0_220127
+Baranow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739997580				V2.0_220127
+Merderet						https://steamcommunity.com/sharedfiles/filedetails/?id=1576219036				V2.0_220127
+Merderet koth					https://steamcommunity.com/sharedfiles/filedetails/?id=1903002234				V2.0_220127
+Merderet V2						https://steamcommunity.com/sharedfiles/filedetails/?id=1576226166				V2.0_220127
+Merderet V3						https://steamcommunity.com/sharedfiles/filedetails/?id=1903003321				V2.0_220127
+Merderet Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739987351				V2.0_220127
+Tobruk							https://steamcommunity.com/sharedfiles/filedetails/?id=2739988353				V2.0_220127
+Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024				V2.0_220127
+Neaville						https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040				V2.0_220127
+Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249				V2.0_220127
 Staszow
 Staszow Winter
-Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617
-El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130
-Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236
+Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617				V2.0_220127
+El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130				V2.0_220127
+Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236				V2.0_220127
 Rosche Germany
 
 
 
-
--------------------old MAPS needs update/teplacement----------------------------
-WW2 - BECTI - USA vs SOV - [IFA3] Neaville
-WW2 - BECTI - GER vs USA - [IFA3] Neaville
-WW2 - BECTI - GER vs SOV - [IFA3] Neaville
-WW2-BECTI-GERvsSOV V1.2 Baranow
-WW2-BECTI-GERvsUSA V1.2 Baranow
-WW2-BECTI-USAvsSOV V1.2 Baranow
-
-WW2 - BECTI - GER vs USA - [IFA3] V1.1 (can't update, seems broken)
-WW2-BECTI-USAvsSOV - [IFA3] V1.1.1 Baranow (can't update, seems broken)
+VIO-BECTI-IFA3 Baranow V2.0

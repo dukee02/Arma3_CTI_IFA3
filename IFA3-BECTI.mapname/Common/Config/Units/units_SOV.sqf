@@ -424,7 +424,7 @@ if(CTI_IFA3_NEW > 0) then {
 		_c pushBack format["%LIB_UniversalCarrier_SOV", _sid];
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack ((CTI_ECONOMY_PRIZE_TRACKED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))/2);
+		_o pushBack ((CTI_ECONOMY_PRIZE_TRACKED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))*0.5);
 		_t pushBack _building_time;
 		_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 		_f pushBack CTI_FACTORY_HEAVY;

@@ -24,6 +24,27 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 };
 (_tag) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_SetTownFlag.sqf";
 
+//needed for townvehicles if nation on IND side
+if(_tag == "GUER_") then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			missionNamespace setVariable [format["CTI_%1Soldier", _tag], format["%1LIB_UK_Rifleman_w", _sid]];
+			missionNamespace setVariable [format["CTI_%1Crew", _tag], format["%1LIB_UK_Tank_Crew", _sid]];
+			missionNamespace setVariable [format["CTI_%1Pilot", _tag], format["%1LIB_UK_Tank_Crew", _sid]];
+		};
+		case 2: {
+			missionNamespace setVariable [format["CTI_%1Soldier", _tag], format["%1LIB_UK_DR_Rifleman", _sid]];
+			missionNamespace setVariable [format["CTI_%1Crew", _tag], format["%1LIB_UK_DR_Tank_Crew", _sid]];
+			missionNamespace setVariable [format["CTI_%1Pilot", _tag], format["%1LIB_UK_DR_Tank_Crew", _sid]];
+		};
+		default {
+			missionNamespace setVariable [format["CTI_%1Soldier", _tag], format["%1LIB_UK_Rifleman", _sid]];
+			missionNamespace setVariable [format["CTI_%1Crew", _tag], format["%1LIB_UK_Tank_Crew", _sid]];
+			missionNamespace setVariable [format["CTI_%1Pilot", _tag], format["%1LIB_UK_Tank_Crew", _sid]];
+		};
+	};
+};
+
 //***************************************************************************************************************************************
 //														Town infantry setup																*
 //***************************************************************************************************************************************

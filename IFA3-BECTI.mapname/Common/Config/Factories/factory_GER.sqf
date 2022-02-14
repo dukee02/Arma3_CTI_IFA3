@@ -23,7 +23,8 @@ if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\f
 
 //check if the CTI SIDE base units are set. If not or this side is set as AI, setup the variable.
 _priorUnits = missionNamespace getVariable format ["CTI_%1_Commander", _side, CTI_BARRACKS];
-if (isNil "_priorUnits" || _ai == 0) then {
+//if (isNil "_priorUnits" || _ai == 0) then { 
+if ((CTI_IFA3_NEW >= 0 && CTI_CSA_ADDON < 2 && CTI_FOW_ADDON < 2) || _ai == 0) then {
 	//We setup the standard units before the camo check to get secure
 	missionNamespace setVariable [format["CTI_%1_Commander", _side], format["%1LIB_GER_oberst", _sid]];
 	missionNamespace setVariable [format["CTI_%1_Worker", _side], format["%1LIB_GER_unequip", _sid]];
@@ -236,7 +237,7 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_GER_ID, CTI_IFA_ID] call CTI_CO_
 
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_Kfz1_w", _sid];
 		_c pushBack format["%1LIB_Kfz1_Hood_w", _sid];
