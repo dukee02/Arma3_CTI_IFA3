@@ -170,12 +170,12 @@ Tobruk							https://steamcommunity.com/sharedfiles/filedetails/?id=2739988353		
 Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024				V2.0_220127
 Neaville						https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040				V2.0_220127
 Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249				V2.0_220127
-Staszow
-Staszow Winter
+Staszow							https://steamcommunity.com/sharedfiles/filedetails/?id=2754344617				V2.0_220127
+Staszow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2754346258				V2.0_220127
 Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617				V2.0_220127
 El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130				V2.0_220127
 Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236				V2.0_220127
-Rosche Germany
+Rosche Germany					https://steamcommunity.com/sharedfiles/filedetails/?id=2754349165				V2.0_220127
 
 
 

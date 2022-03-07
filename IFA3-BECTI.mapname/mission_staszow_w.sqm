@@ -31,18 +31,14 @@ sourceName="VIO-BECTI-IFA3";
 addons[]=
 {
 	"A3_Characters_F",
-	"IFA3_Side_Patch",
 	"A3_Ui_F",
-	"csa38ii_data",
-	"WW2_Core_c_IF_Gui_c",
-	"A3_Modules_F",
-	"A3_Structures_F_Mil_Fortification"
+	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -52,39 +48,15 @@ class AddonsMetaData
 		};
 		class Item1
 		{
-			className="IFA3_Side_Patch";
-			name="IFA3_Side_Patch";
-		};
-		class Item2
-		{
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item3
-		{
-			className="csa38ii_data";
-			name="csa38ii_data";
-			author="CSA38 Team";
-			url="http://www.moddb.com/mods/csa38-czechoslovak-army-1938";
-		};
-		class Item4
-		{
-			className="WW2_Core_c_IF_Gui_c";
-			name="WW2_Core_c_IF_Gui_c";
-		};
-		class Item5
+		class Item2
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item6
-		{
-			className="A3_Structures_F_Mil";
-			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
