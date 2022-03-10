@@ -34,9 +34,7 @@ _matrix_nation = _this select 2;
 	for [{_i = 0}, {_i < count _matrix_full}, {_i = _i + 1}] do {
 		if(_counter < count _matrix_full) then {
 			if(_matrix_full select _counter == _matrix_nation select _counter) then {
-				if(_matrix_full select _counter == false) then {
-					_counter = _counter + 1;
-				} else {
+				if(_matrix_full select _counter == true) then {
 					_i = count _matrix_full;
 				};
 			} else {

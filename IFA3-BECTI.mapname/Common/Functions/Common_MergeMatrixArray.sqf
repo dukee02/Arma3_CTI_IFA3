@@ -1,58 +1,41 @@
 /*
   # HEADER #
-	Script: 		Common\Functions\Common_ArrayDiffers.sqf
-	Alias:			CTI_CO_FNC_ArrayDiffers
-	Description:	Check if two arrays are different either by their size or content
-	Author: 		Benny
-	Creation Date:	16-09-2013
-	Revision Date:	16-09-2013
+	Script: 		Common\Functions\Common_MergeMatrixArray.sqf
+	Alias:			CTI_CO_FNC_MergeMatrixArray
+	Description:	Combines two boolean arrays
+	Author: 		dukee
+	Creation Date:	10-01-2022
+	Revision Date:	10-01-2022
 	
   # PARAMETERS #
-    0	[Array]: A generic array
-    1	[Array]: A generic array
+    0	[Array]: matrix array base or []
+    1	[Array]: matrix array additional mod
 	
   # RETURNED VALUE #
-	[Boolean]: Return true if the arrays differs
+	[ARRAY]: Return the new techtree matrix (combi of both matrix arrays)
 	
   # SYNTAX #
-	[ARRAY, ARRAY] call CTI_CO_FNC_ArrayDiffers
+	[[], ARRAY] call CTI_CO_FNC_MergeMatrixArray		-> for initialisation
+	[ARRAY, ARRAY] call CTI_CO_FNC_MergeMatrixArray
 	
   # EXAMPLE #
-	_myArray = [0,1,2];
-	_myArray2 = [0,1];
-	_myArray3 = [2,1,0];
-	_myArray4 = [2,1,3];
+	_tech = [[], _tech_matrix select _factory select _forEachIndex select CTI_IFA_ID];		-> for initialisation
+	_tech = [_tech, _tech_matrix select _factory select _forEachIndex select CTI_IFA_ID];
 	
-	[_myArray, _myArray2] call CTI_CO_FNC_ArrayDiffers; -> True
-	[_myArray2, _myArray3] call CTI_CO_FNC_ArrayDiffers; -> False
-	[_myArray3, _myArray4] call CTI_CO_FNC_ArrayDiffers; -> False
+	_tech = [_tech, _tech_matrix select _factory select _forEachIndex select CTI_IFA_ID] call CTI_CO_FNC_MergeMatrixArray;
 */
-
-/*private ["_array1", "_array2", "_different", "_item"];
-
-_array1 = _this select 0;
-_array2 = _this select 1;
-
-_different = false;
-
-if (count _array1 != count _array2) then { 
-	_different = true;
-} else {
-	{
-		_item = _x;
-		if (({_x == _item} count _array1) != ({_x == _item} count _array2)) exitWith { _different = true };
-	} forEach _array1;
-};
-
-_different*/
-
 
 private ["_array1", "_array2"];
 
 _array1 = _this select 0;
 _array2 = _this select 1;
 
-for [{_i = 0}, {_i < count _array1}, {_i = _i + 1}] do {
+//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\functions\Common_MergeMatrixArray.sqf", format["Techmatrix: <%1> <%2>", _array1, _array2]] call CTI_CO_FNC_Log;};
+
+for [{_i = 0}, {_i < count _array2}, {_i = _i + 1}] do {
+	if(count _array1 < count _array2) then {
+		_array1 append [false];
+	};
 	if!(_array1 select _i) then {
 		if(_array2 select _i) then {
 			_array1 set [_i , _array2 select _i];

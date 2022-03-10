@@ -364,7 +364,7 @@ _tech_matrix =
 	]
 ];
 
-_tech = _tech_matrix select _factory select 0 select 0;
+_tech = [];
 if(_mod >= 0) then {
 	_tech = _tech_matrix select _factory select _nation select _mod;
 } else {
