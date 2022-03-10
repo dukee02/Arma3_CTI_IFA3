@@ -261,7 +261,7 @@ CTI_UPGRADE_GEAR = 12;
 with missionNamespace do {	
 	//Global max levels and multiplicators
 	if (isNil 'CTI_ECONOMY_LEVEL_MULTI') then {CTI_ECONOMY_LEVEL_MULTI = 100};
-	if (isNil 'CTI_ECONOMY_LEVEL_MULTI') then {CTI_ECONOMY_RESEARCH_MULTI = 100};
+	if (isNil 'CTI_ECONOMY_RESEARCH_MULTI') then {CTI_ECONOMY_RESEARCH_MULTI = 100};
 	if (isNil 'CTI_ECONOMY_LEVEL_GEAR') then {CTI_ECONOMY_LEVEL_GEAR = 2};
 	if (isNil 'CTI_ECONOMY_LEVEL_INFANTRY') then {CTI_ECONOMY_LEVEL_INFANTRY = 2};
 	if (isNil 'CTI_ECONOMY_LEVEL_WHEELED') then {CTI_ECONOMY_LEVEL_WHEELED = 4};
@@ -605,7 +605,7 @@ CTI_WEATHER_MONSOON_COEF = 0;		//Monsoon Variance {-1,0,0.1,0.25,0.5,0.75,1} tex
 CTI_WEATHER_OVERCAST = -1;			//Overcast {-1,0,30,50,75,100} texts = {"Random","Clear","Light","Medium","High","Max"};
 CTI_WEATHER_OVERCAST_COEF = -1;		//Overcast Variance {-1,0,0.1,0.25,0.5,0.75,1} texts = {"Random","None","10%","25%","50%","75%","Chaos"};
 CTI_WEATHER_FOG = -1;				//Fog value {-1,0,10,20,30,40,50,60,70,80,90,100} texts = {"Random","Clear","10","20","30","40","50","60","70","80","90","MAX"};
-CTI_WEATHER_FOG_COEF = 0.1;			//Fog Variance {-1,0,0.1,0.25,0.5,0.75,1} texts = {"Random","None","10%","25%","50%","75%","Chaos"};
+CTI_WEATHER_FOG_COEF = 0;			//Fog Variance {-1,0,0.1,0.25,0.5,0.75,1} texts = {"Random","None","10%","25%","50%","75%","Chaos"};
 CTI_WEATHER_FOG_DECAY = -1;			//Fog decay level {-1,0,0.02,0.04,0.06,0.08,0.1,0.15,0.20,0.25,0.5,0.75,1} texts = {"Random","None","0.02","0.04","0.06","0.08","0.1","0.15","0.20","0.25","0.5","0.75","1"};
 CTI_WEATHER_FOG_DECAY_COEF = -1;	//Fog decay Variance {-1,0,0.1,0.25,0.5,0.75,1} texts = {"Random","None","10%","25%","50%","75%","Chaos"};
 CTI_WEATHER_FOG_ALT = -1;			//Fog altitude {-1,0,1,5,25,50,100,200,300,400,500,600,700,800,900,1000} texts = {"Random","0m","1m","5m","25m","50m","100m","200m","300m","400m","500m","600m","700m","800m","900m","1km"};
@@ -625,21 +625,26 @@ with missionNamespace do {
 	if (isNil 'CTI_WEATHER_CHANGES') then {CTI_WEATHER_CHANGES = 0};
 	switch(CTI_WEATHER_CHANGES) do {
 		case 1: {
-			CTI_WEATHER_OVERCAST = 0;
-			CTI_WEATHER_OVERCAST_COEF = 0;
 			CTI_WEATHER_FOG = 0;
-			CTI_WEATHER_FOG_COEF = 0;
-			CTI_WEATHER_FOG_DECAY = 0;
-			CTI_WEATHER_FOG_DECAY_COEF = 0;
-			CTI_WEATHER_FOG_ALT = 0;
-			CTI_WEATHER_FOG_ALT_COEF = 0;
+			CTI_WEATHER_RAIN = 0;
 			CTI_WEATHER_WIND = 0;
-			CTI_WEATHER_WIND_COEF = 0;
-			CTI_WEATHER_WAVES = 0;
-			CTI_WEATHER_WAVES_COEF = 0;
-			CTI_WEATHER_VARIANCE_TIME = 0;
 		};
 		case 2: {
+			CTI_WEATHER_OVERCAST = 30; //0;
+			CTI_WEATHER_OVERCAST_COEF = 0.1; //0;
+			CTI_WEATHER_FOG = 10; //0;
+			CTI_WEATHER_FOG_COEF = 0.1; //0;
+			CTI_WEATHER_FOG_DECAY = 0.02; //0;
+			CTI_WEATHER_FOG_DECAY_COEF = 0.1; //0;
+			CTI_WEATHER_FOG_ALT = 0;
+			CTI_WEATHER_FOG_ALT_COEF = 0;
+			CTI_WEATHER_WIND = 30; //0;
+			CTI_WEATHER_WIND_COEF = 0.1; //0;
+			CTI_WEATHER_WAVES = 30; //0;
+			CTI_WEATHER_WAVES_COEF = 0.1; //0;
+			CTI_WEATHER_VARIANCE_TIME = 0;
+		};
+		case 3: {
 			CTI_WEATHER_RAIN = -1;
 			CTI_WEATHER_RAIN_COEF = -1;
 			CTI_WEATHER_SNOW = 1;
