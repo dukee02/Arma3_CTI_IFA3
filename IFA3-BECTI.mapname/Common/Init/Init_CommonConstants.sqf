@@ -135,9 +135,7 @@ with missionNamespace do {
 		Veteran > 0.65 and <= 0.85
 		Expert > 0.85*/
 		CTI_AI_SKILL_BASE = 0.45;
-	} else {
-		CTI_AI_SKILL_BASE = switch (CTI_TOWNS_RESISTANCE) do {case 0: {0.05}; case 1: {0.25}; case 3: {0.65}; case 4: {0.80}; default {0.45}};
-	};
+	};	//--- sets the min skil of all units
 };
 //-----------------------------------------------------------------------------------------------------------------------//
 
