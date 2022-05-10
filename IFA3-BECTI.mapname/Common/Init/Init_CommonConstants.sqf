@@ -46,14 +46,15 @@ CTI_GEAR_TAB_MISC = 5;
 CTI_GEAR_TAB_EQUIPMENT = 6;
 CTI_GEAR_TAB_TEMPLATES = 7;
 
-CTI_UNIT_LABEL = 0;
-CTI_UNIT_PICTURE = 1;
-CTI_UNIT_PRICE = 2;
-CTI_UNIT_TIME = 3;
-CTI_UNIT_UPGRADE = 4;
-CTI_UNIT_FACTORY = 5;
-CTI_UNIT_TURRETS = 6;
-CTI_UNIT_SCRIPTS = 7;
+CTI_UNIT_LABEL = 0;		//--- Classname.
+CTI_UNIT_PICTURE = 1;	//--- Picture. 
+CTI_UNIT_PRICE = 2;		//--- Price.
+CTI_UNIT_TIME = 3;		//--- Build time.
+CTI_UNIT_UPGRADE = 4;	//--- Upgrade level needed.    0 1 2 3...
+CTI_UNIT_FACTORY = 5;	//--- Built from Factory.
+CTI_UNIT_TURRETS = 6;	//--- Turrets.
+CTI_UNIT_SCRIPTS = 7;	//--- Script.
+CTI_UNIT_DISTANCE = 8;	//--- Extra Distance. (From Factory)
 
 CTI_WEST_ID = 0;
 CTI_EAST_ID = 1;
@@ -65,7 +66,7 @@ CTI_SPECIAL_REPAIRTRUCK = 0;
 CTI_SPECIAL_AMMOTRUCK = 1;
 CTI_SPECIAL_MEDICALVEHICLE = 2;
 CTI_SPECIAL_FUELTRUCK = 3;
-// CTI_SPECIAL_ALLPURPOSETRUCK = 3;
+CTI_SPECIAL_ALLPURPOSETRUCK = 4;
 
 CTI_AI_COMMANDER_BUYTO_INFANTRY = 20;
 CTI_AI_COMMANDER_BUYTO_LIGHT = 13;
@@ -126,6 +127,7 @@ with missionNamespace do {
 	if (isNil 'CTI_AI_TEAMS_JIP_PRESERVE') then {CTI_AI_TEAMS_JIP_PRESERVE = 0}; //--- Keep the AI Teams units on JIP
 	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 0}; //--- Determine whether AI Teams are enabled or not
 	if (isNil 'CTI_AI_COMMANDER_ENABLED') then {CTI_AI_COMMANDER_ENABLED = 1}; //--- Determine whether AI Commander is enabled or not
+	if (isNil 'CTI_AI_VEHICLE_LOCK') then {CTI_AI_VEHICLE_LOCKED = true;} else {if(CTI_AI_VEHICLE_LOCK == 1) then {CTI_AI_VEHICLE_LOCKED = true}else{CTI_AI_VEHICLE_LOCKED = false};}; //--- AI Teams lock the vehicles
 	if (isNil 'CTI_AI_SKILL_BASE') then {
 		/*Novice < 0.25
 		Rookie >= 0.25 and <= 0.45
@@ -411,6 +413,7 @@ CTI_TOWNS_MORTARS_RANGE_MIN = 125; //--- AI Mortars may not fire at targets with
 
 //--- Towns: Parameters
 with missionNamespace do {
+	if (isNil "CTI_TOWNS_REMOVEDPARAM") then {Towns_RemovedParam = []}; //--- Array with towns the should get removed
 	if (isNil "CTI_TOWNS_AMOUNT") then {CTI_TOWNS_AMOUNT = 6}; //--- Amount of towns (0: Very small, 1: Small, 2: Medium, 3: Large, 4: West, 5: East, 6: Full).
 	if (isNil "CTI_TOWNS_BUILD_PROTECTION_RANGE") then {CTI_TOWNS_BUILD_PROTECTION_RANGE = 300};	
 	if (isNil "CTI_TOWNS_CAMPS_CREATE") then {CTI_TOWNS_CAMPS_CREATE = 1}; //--- Create the camp models.
@@ -545,6 +548,8 @@ CTI_GC_DELAY_TANK = 300;
 CTI_GC_DELAY_SHIP = 60;
 CTI_GC_DELAY_STATIC = 80;
 CTI_GC_DELAY_BUILDING = 30;
+CTI_GC_TOWN_OBJECTS = ["TREE", "SMALL TREE", "BUSH"];		//Garbaged these objects if destroyed
+CTI_GC_RANGE_TOWN = 600;									//Range around the main bunker, where objects gets garbaged
 
 //--- Vehicles: Misc
 CTI_VEHICLES_BOUNTY = 0.45; //--- Bounty upon entity killed.
@@ -708,6 +713,7 @@ CTI_SERVICE_FUEL_TRUCK_RANGE = 35;
 CTI_SERVICE_FUEL_TRUCK_Time = 60;
 CTI_SERVICE_MEDICAL_VEHICLE_RANGE = 35;
 CTI_SERVICE_MEDICAL_VEHICLE_TIME = 60;
+CTI_SPECIAL_ALLPURPOSE_RANGE = 400;
 
 CTI_SCORE_BUILD_VALUE_PERPOINT = 1500; //--- Structure value / x
 CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
@@ -716,6 +722,10 @@ CTI_SCORE_CAMP_VALUE = 2; //--- Camp value
 
 
 with missionNamespace do {
+	if (isNil 'CTI_LOG_INFO') then {CTI_LOG_INFO = 0};
+	if (isNil 'CTI_PERSISTANT') then {CTI_PERSISTANT = 0};
+	if (isNil 'CTI_SAVE_PERIODE') then {CTI_SAVE_PERIODE = 900};		//900
+	
 	if (isNil 'CTI_GER_SIDE') then {CTI_GER_SIDE = 0};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
 	if (isNil 'CTI_SOV_SIDE') then {CTI_SOV_SIDE = 1};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
 	if (isNil 'CTI_US_SIDE') then {CTI_US_SIDE = -1};	//--- "deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"
@@ -787,30 +797,38 @@ with missionNamespace do {
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
 	
-	if (isNil 'CTI_IFA3_NEW') then {CTI_IFA3_NEW = 0};
-	//if they want to play with ifa3 chack the modversion
-	if (!isClass(configFile >> "CfgVehicles" >> "LIB_M4T34_Calliope")) then {
-		//check if the IFA3_beta version is loaded or the stable
-		CTI_IFA3_NEW = 0;
-		if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 found! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
-	} else {
-		CTI_IFA3_NEW = 1;
-		if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 beta Version found! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
-	};
-	if (!isClass(configFile >> "CfgVehicles" >> "LIB_US_Willys_MB")) then {
-		//check if the IFA3 version is loaded or no IFA3 is found
-		CTI_IFA3_NEW = -1;
-		if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 not loaded! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+	if (isNil 'CTI_IFA3_NEW') then {CTI_IFA3_NEW = -1};
+	if(CTI_IFA3_NEW >= 0) then {
+		//if they want to play with ifa3 chack the modversion
+		if (!isClass(configFile >> "CfgVehicles" >> "LIB_M4T34_Calliope")) then {
+			//check if the IFA3_beta version is loaded or the stable
+			CTI_IFA3_NEW = 0;
+			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 found! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+		} else {
+			CTI_IFA3_NEW = 1;
+			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 beta Version found! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+		};
+		if (!isClass(configFile >> "CfgVehicles" >> "LIB_US_Willys_MB")) then {
+			//check if the IFA3 version is loaded or no IFA3 is found
+			CTI_IFA3_NEW = -1;
+			if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 configured but not loaded! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+		};
 	};
 	
 	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 1};
-	//Check when IFA is loaded VIO patch is loaded too
-	if !(isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
-		CTI_VIO_ADDON = 0;
+	//Check when IFA is loaded VIO patch is loaded too?
+	if(CTI_IFA3_NEW >= 0) then {
+		if !(isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
+			//check if the VIO addon is loaded or the stable
+			CTI_VIO_ADDON = 0;
+		};
 	};
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["VIO addon loaded? <%1> ", CTI_VIO_ADDON]] call CTI_CO_FNC_Log; };
 	
+	//We can balance the water units only if we activate them for both sides
+	CTI_WATER_BALANCED_EAST = false;
+	CTI_WATER_BALANCED_WEST = false;
+	
 	//if (isNil 'CTI_BUILDING_FALLBACK') then {CTI_BUILDING_FALLBACK = 2};	//--- Fallback Buildings. (0: Altis Housing, 1: Altis Military Buildings, 2: Best Mixed).
 	if (isNil 'CTI_NO_UPGRADE_MODE') then {CTI_NO_UPGRADE_MODE = 0};
-		
 };

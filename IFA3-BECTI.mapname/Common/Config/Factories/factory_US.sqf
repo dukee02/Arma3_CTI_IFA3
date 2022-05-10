@@ -23,7 +23,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\fa
 
 //check if the CTI SIDE base units are set. If not or this side is set as AI, setup the variable.
 _priorUnits = missionNamespace getVariable format ["CTI_%1_Commander", _side, CTI_BARRACKS];
-if (isNil "_priorUnits" || _ai == 2) then { 
+if (isNil "_priorUnits" || _ai == 2) then {
 	//We setup the standard units before the camo check to get secure
 	missionNamespace setVariable [format["CTI_%1_Commander", _side], format["%1LIB_US_captain", _sid]];
 	missionNamespace setVariable [format["CTI_%1_Worker", _side], format["%1LIB_US_grenadier", _sid]];
@@ -511,19 +511,41 @@ _c = [];
 _matrix_full = [_side, CTI_UPGRADE_NAVAL] call CTI_CO_FNC_GetTechmatrix;
 _matrix_nation = [_side, CTI_UPGRADE_NAVAL, CTI_US_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
-_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_NAVAL >= _level) then {
-	_c pushBack format["%1LIB_LCA", _sid];
-	_c pushBack format["%1LIB_LCI", _sid];
-	_c pushBack format["%1LIB_LCVP", _sid];
+if(_side == west && CTI_WATER_BALANCED_WEST == false) then {
 	
-	_level = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_matrix_cnt = _matrix_cnt + 1;};
+	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+	if(CTI_ECONOMY_LEVEL_NAVAL >= _level) then {
+		_c pushBack format["%1LIB_UK_LCA", _sid];
+		_c pushBack format["%1LIB_LCVP", _sid];
+	};
+	
+	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+	if(CTI_ECONOMY_LEVEL_NAVAL >= _level) then {
+		_c pushBack format["%1LIB_UK_LCI", _sid];
+		_c pushBack format["%1LIB_LCM3_Armed", _sid];
+	};
+	CTI_WATER_BALANCED_WEST = true;
 };
-if(CTI_ECONOMY_LEVEL_NAVAL >= _level) then {
-	_c pushBack format["%1LIB_LCM3_Armed", _sid];
+if(_side == east && CTI_WATER_BALANCED_EAST == false) then {
+	
+	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+	if(CTI_ECONOMY_LEVEL_NAVAL >= _level) then {
+		_c pushBack format["%1LIB_LCA", _sid];
+		_c pushBack format["%1LIB_LCVP", _sid];
+	};
+	
+	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+	if(CTI_ECONOMY_LEVEL_NAVAL >= _level) then {
+		_c pushBack format["%1LIB_LCI", _sid];
+		_c pushBack format["%1LIB_LCM3_Armed", _sid];
+	};
+	CTI_WATER_BALANCED_EAST = true;
 };
+
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_NAVAL];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 

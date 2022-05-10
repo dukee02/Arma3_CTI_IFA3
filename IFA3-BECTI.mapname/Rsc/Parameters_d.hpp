@@ -1,5 +1,23 @@
 class Params {
-		class SEPARATOR_STARTUP {
+	class SEPARATOR_PERSISTENCE {
+		title = "=========================== Persistence ============================";
+		values[] = {1};
+		texts[] = {""};
+		default = 1;
+	};
+	class CTI_PERSISTANT {
+		title = "PERSIST: Mode";
+		values[] = {-3,-2,-1,0,1,2,3};
+		texts[] = {"Reset (1 Save for each mission)","Reset (1 Save for each era VIO-BECTI-WW2)","Reset (1 Save for all VIO-BECTIs)","Disabled","Enabled (1 Save for all VIO-BECTIs)","Enabled (1 Save for each era VIO-BECTI-WW2)","Enabled (1 Save for each mission)"};
+		default = 0;
+	};
+	class CTI_SAVE_PERIODE {
+		title = "PERSIST: Save periode in seconds";
+		values[] = {300,600,900,1200,1500,1800,2700,3600};
+		texts[] = {"5min","10 min","15 min","20 min","25 min","30 min","45 min","60 min"};
+		default = 900;
+	};
+	class SEPARATOR_STARTUP {
 		title = "========================== STARTUP ============================";
 		values[] = {1};
 		texts[] = {""};
@@ -32,7 +50,7 @@ class Params {
 	class CTI_GUER_TOWNS {
 		title = "INDEPENDENT Town Nation (change for easyer town defending or all nations are seperated into EAST and WEST)";
 		values[] = {0,1,2};
-		texts[] = {"FFI (Infantry with unarmed cars - difficulty very easy)","Polish Units (Infantry with armed trucks - difficulty easy)","3rd Party (needs one Side on GUER - difficulty normal)"};
+		texts[] = {"FFI - very easy","Polish Units - easy","3rd Party (needs one Side on GUER)"};
 		default = 2;
 	};
 	class CTI_WEST_TOWNS {
@@ -123,10 +141,10 @@ class Params {
 		title = "UPGRADE: Max Time needed for upgrades (concerns higher tier upgrades)";
 		values[] = {300,400,500,600,700,800,900,1000,1100,1200};
 		texts[] = {"300s","400s","500s","600s","700s","800s","900s","1000s","1100s","1200s"};
-		default = 600; //600
+		default = 600;
 	};
 	class CTI_ECONOMY_TIME_MULTI {
-		title = "BASE: Buildtime multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
+		title = "UPGRADE: Buildtime multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
 		values[] = {1,2,3,4,5,6,8,10};
 		texts[] = {"1","2","3","4","5","6","8","10"};
 		default = 2; //5
@@ -373,9 +391,9 @@ class Params {
 	};
   	class CTI_WEATHER_CHANGES {
 		title = "WEATHER: Simple presets";
-		values[] = {0,1,2};
-		texts[] = {"Sunny start, random normal weather","Sunny", "complete random"};
-		default = 0;
+		values[] = {0,1,2,3};
+		texts[] = {"Sunny start, random normal weather", "Sunny", "normal light weather", "complete random"};
+		default = 1;
 	};
 	class SEPERATOR_GAMEPLAY {
 		title = "============ Gameplay ============";
@@ -491,9 +509,9 @@ class Params {
 	};
 	class CTI_TOWNS_AMOUNT {
 		title = "TOWNS: Amount";
-		values[] = {0,1,2,3,6}; //values[] = {0,1,2,3,4,5,6};
-		texts[] = {"Extra Small","Small","Medium","Large","Full"}; //texts[] = {"Extra Small","Small","Medium","Large","West","East","Full"};
-		default = 6;
+		values[] = {0,1,2,3,4,5,6,7,8,9};
+		texts[] = {"Extra Small","Small","Medium","Large","SpecialMode 1 (Full if no setup defined)","SpecialMode 2 (Full if no setup defined)","SpecialMode 3 (Full if no setup defined)","SpecialMode 4 (Full if no setup defined)","Parameter (Full if no param set)","Full"};
+		default = 9;
 	};
 	class CTI_TOWNS_CAMPS_CREATE {
 		title = "TOWNS: Camps";
@@ -538,17 +556,15 @@ class Params {
 		default = 0;
 	};
 	class CTI_TOWNS_CAPTURED_DISTANCE {
-		title = "TOWNS: Distance of precaptured Towns";
+		title = "TOWNS: Distance of precaptured Towns (applies on Startingmodes with [Border] tag)";
 		values[] = {0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000};
-		texts[] = {"only the next town","1000","2000","3000","4000","5000","6000","7000","8000","9000","10000","12000","15000"};
+		texts[] = {"0 or if needed, the next town","1000","2000","3000","4000","5000","6000","7000","8000","9000","10000","12000","15000"};
 		default = 2000;
 	};
 	class CTI_TOWNS_STARTING_MODE {
 		title = "TOWNS: Starting Mode";
-		//values[] = {-1,0,1,2,3,4,5};
-		//texts[] = {"pre defined","Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
-		values[] = {0,1,2,3,4,5};
-		texts[] = {"Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9};
+		texts[] = {"pre defined","Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side [Border]","Coop at East side, rest 50:50 [Border]","Coop at East side, rest 50:50 shuffled [Border]","Coop at West side [Border]","Coop at West side, rest 50:50 [Border]","Coop at West side, rest 50:50 shuffled [Border]"};
 		default = 0;
 	};
 	class CTI_TOWNS_VEHICLES_LOCK {
@@ -646,6 +662,12 @@ class Params {
 		values[] = {2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,35,40,45,50,60,70,80,90,100};
 		texts[] = {"2","4","6","8","10","12","14","16","18","20","22","24","26","28","30","35","40","45","50","60","70","80","90","100"};
 		default = 10;
+	};
+	class CTI_AI_VEHICLE_LOCK {
+		title = "AI Vehicles locked?";
+		values[] = {0,1};
+		texts[] = {"Disabled - needed if you want to transport AI Teams","Enabled (default)"};
+		default = 1;
 	};
 	class CTI_Log_Level {
 		title = "LOG: Set level of Logging";
