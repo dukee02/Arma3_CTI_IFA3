@@ -75,6 +75,7 @@ if(_spawn_unit == true) then {
 	_unit setSkill (CTI_AI_SKILL_BASE + (random CTI_AI_SKILL_SPAN));
 	[_unit] joinSilent _team;
 	_unit addRating 1000;
+	VIOC_ZEUS addCuratorEditableObjects [[_unit], true];
 	{//unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
 		player reveal [_unit, 4];
 	} forEach allUnits; 
