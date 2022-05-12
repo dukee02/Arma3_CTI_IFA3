@@ -27,7 +27,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="VIO-BECTI-CW";
+sourceName="VIO-BECTI-IFA3";
 addons[]=
 {
 	"A3_Characters_F",
