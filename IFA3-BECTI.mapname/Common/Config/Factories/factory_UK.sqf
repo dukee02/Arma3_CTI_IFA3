@@ -473,51 +473,55 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _c];
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Town Depot.
 _c = [];
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
-	if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
+
+if(CTI_UNITS_TOWN_PURCHASE > 0) then {
+	if(CTI_UNITS_TOWN_PURCHASE == 1 || CTI_UNITS_TOWN_PURCHASE > 2) then {
+		if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
+			if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+				_c pushBack format["%1LIB_UK_Rifleman_w", _sid];
+				_c pushBack format["%1LIB_UK_Medic_w", _sid];
+			};
+			if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
+				_c pushBack format["%1LIB_UK_DR_Rifleman", _sid];
+				_c pushBack format["%1LIB_UK_DR_Medic", _sid];
+			};
+			_c pushBack format["%1LIB_UK_Rifleman", _sid];
+			_c pushBack format["%1LIB_UK_Medic", _sid];
+		};
+	};
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			_c pushBack format["%1LIB_UK_Rifleman_w", _sid];
-			_c pushBack format["%1LIB_UK_Medic_w", _sid];
+			_c pushBack format["%1LIB_UK_Willys_MB_w", _sid];
+			_c pushBack format["%1LIB_UK_Willys_MB_Hood_w", _sid];				
 		};
 		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			_c pushBack format["%1LIB_UK_DR_Rifleman", _sid];
-			_c pushBack format["%1LIB_UK_DR_Medic", _sid];
+			_c pushBack format["%1LIB_UK_DR_Willys_MB", _sid];
+			_c pushBack format["%1LIB_UK_DR_Willys_MB_Hood", _sid];		
 		};
-		_c pushBack format["%1LIB_UK_Rifleman", _sid];
-		_c pushBack format["%1LIB_UK_Medic", _sid];
+		_c pushBack format["%1LIB_UK_Willys_MB", _sid];
+		_c pushBack format["%1LIB_UK_Willys_MB_Hood", _sid];
+	};
+	if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+			_c pushBack format["%1LIB_UniversalCarrier_w", _sid];	
+		};
+		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
+			_c pushBack format["%1LIB_UniversalCarrier_desert", _sid];
+		};
+		_c pushBack format["%1LIB_UniversalCarrier", _sid];	
+	};
+	if(CTI_UNITS_TOWN_PURCHASE > 1) then {
+		if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
+			//if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
+				//_c pushBack format["%1LIB_AustinK5_DR_Ammo", _sid];					//ammotruck
+			//};
+			//_c pushBack format["%1LIB_AustinK5_Ammo", _sid];						//ammotruck
+			_c pushBack format["%1LIB_US6_Tent_Cargo", _sid];						//repairtruck
+			_c pushBack format["%1LIB_US6_Ammo", _sid];							//ammotruck
+		};
 	};
 };
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		_c pushBack format["%1LIB_UK_Willys_MB_w", _sid];
-		_c pushBack format["%1LIB_UK_Willys_MB_Hood_w", _sid];				
-	};
-	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-		_c pushBack format["%1LIB_UK_DR_Willys_MB", _sid];
-		_c pushBack format["%1LIB_UK_DR_Willys_MB_Hood", _sid];		
-	};
-	_c pushBack format["%1LIB_UK_Willys_MB", _sid];
-	_c pushBack format["%1LIB_UK_Willys_MB_Hood", _sid];
-};
-if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		_c pushBack format["%1LIB_UniversalCarrier_w", _sid];	
-	};
-	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-		_c pushBack format["%1LIB_UniversalCarrier_desert", _sid];
-	};
-	_c pushBack format["%1LIB_UniversalCarrier", _sid];	
-};
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
-	if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
-		//if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			//_c pushBack format["%1LIB_AustinK5_DR_Ammo", _sid];					//ammotruck
-		//};
-		//_c pushBack format["%1LIB_AustinK5_Ammo", _sid];						//ammotruck
-		_c pushBack format["%1LIB_US6_Tent_Cargo", _sid];						//repairtruck
-		_c pushBack format["%1LIB_US6_Ammo", _sid];							//ammotruck
-	};
-};
+
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 
