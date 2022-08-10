@@ -576,13 +576,24 @@ if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 
 
 //******************************BASE GUN DEFENSE 3******************************
+//Flak 38 Vierling for ALL
+if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+	_headers pushBack 		"Flak 38 Vierling (Winter)";
+	_classes pushBack 		format["%1LIB_Flakvierling_38_w", _sid];
+	_prices pushBack 		5000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"AA";
+};
+if(CTI_CAMO_ACTIVATION < 1 || CTI_CAMO_ACTIVATION > 1) then {
+	_headers pushBack 		"Flak 38 Vierling";
+	_classes pushBack 		format["%1LIB_Flakvierling_38", _sid];
+	_prices pushBack 		5000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"AA";
+};
+
 if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		_headers pushBack 		"Flak 38 Vierling (Winter)";
-		_classes pushBack 		format["%1LIB_Flakvierling_38_w", _sid];
-		_prices pushBack 		5000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
 		
 		_headers pushBack 		"Pak 40 (Winter)";
 		_classes pushBack 		format["%1LIB_Pak40_w", _sid];
@@ -611,12 +622,6 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	
 	_headers pushBack 		"Nebelwerfer 41 bg";
 	_classes pushBack 		format["%1LIB_Nebelwerfer41_Gelbbraun", _sid];
-	_prices pushBack 		5000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	
-	_headers pushBack 		"Flak 38 Vierling";
-	_classes pushBack 		format["%1LIB_Flakvierling_38", _sid];
 	_prices pushBack 		5000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
