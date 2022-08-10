@@ -170,6 +170,9 @@ if (_model isKindOf "Man") then {
 			_unit moveInDriver _vehicle;
 			_units pushBack _unit;
 		};
+
+		_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; default {"Soldier"}};
+		_crew = missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, _crew];
 		
 		{
 			if (count _x == 1 && _veh_infos select 3) then {
