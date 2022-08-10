@@ -15,7 +15,12 @@ with missionNamespace do {
 	CTI_PVF_Client_OnMessageReceived = { _this spawn CTI_CL_FNC_DisplayMessage };
 	CTI_PVF_Client_OnStructureKilled = { _this spawn CTI_CL_FNC_OnFriendlyStructureDestroyed };
 	CTI_PVF_Client_OnEnemyStructureKilled = { _this spawn CTI_CL_FNC_OnEnemyStructureDestroyed };
-	
+
+	CTI_PVF_Client_OnBuildingHit = { 
+		_req_var = missionNamespace getVariable (_this select 0);
+		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t>%1 at grid %2 damged: %3</t>", (_req_var select 0) select 1, mapGridPosition (_this select 1), _this select 2];
+	};
+
 	CTI_PVF_Client_OnWorkerBuilt = { 
 		_hq = CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ;
 		_pos = getPos _hq;
