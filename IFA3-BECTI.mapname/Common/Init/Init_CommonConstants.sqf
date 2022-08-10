@@ -560,6 +560,7 @@ CTI_VEHICLES_HANDLER_EMPTY = 0; //--- Determine how an empty vehicle is handled 
 
 //--- Vehicles which may lift things (not actual hookers btw)
 CTI_VEHICLES_HOOKERS = ["CUP_O_Mi17_TK", "CUP_O_MI6A_RU", "CUP_O_Mi8_RU", "O_T_VTOL_02_infantry_F", "CUP_B_Merlin_HC3_Armed_GB", "CUP_B_MV22_USMC_RAMPGUN", "CUP_B_CH53E_USMC", "CUP_B_CH47F_USA", "B_T_VTOL_01_armed_F"]; //--- Heavy Lifters
+CTI_VEHICLES_PARADROPERS = ["LIB_C47_RAF","LIB_C47_Skytrain"];
 
 //--- Types of liftable Vehicles. Format is ["type", [Co-ordinates for rope attach points], mass]. Entire parents or single classes can be added in any order, eg "Car" and "B_MRAP_01_F" will both work
 CTI_VEHICLES_HOOKABLE = [

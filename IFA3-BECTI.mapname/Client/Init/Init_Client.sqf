@@ -336,6 +336,8 @@ call compile preProcessFileLineNumbers "Client\Functions\Externals\cmEarplugs\co
 //--- Earplugs
 0 spawn { call CTI_CL_FNC_EarPlugsSpawn; };
 
+_paraCheck = execVM "Common\Init\Init_ParadropCheck.sqf";
+
 CTI_Init_Client = true;
 
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "File: Client\Init\Init_client.sqf", format["Client initialization ended at [%1]", time]] call CTI_CO_FNC_Log };

@@ -23,7 +23,8 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\fa
 
 //check if the CTI SIDE base units are set. If not or this side is set as AI, setup the variable.
 _priorUnits = missionNamespace getVariable format ["CTI_%1_Commander", _side, CTI_BARRACKS];
-if (isNil "_priorUnits" || _ai == 1) then {
+//if (isNil "_priorUnits" || _ai == 1) then { 
+if ((CTI_IFA3_NEW >= 0 && CTI_CSA_ADDON < 2 && CTI_FOW_ADDON < 2) || _ai == 1) then {
 	//We setup the standard units before the camo check to get secure
 	missionNamespace setVariable [format["CTI_%1_Commander", _side], format["%1LIB_SOV_captain_summer", _sid]];
 	missionNamespace setVariable [format["CTI_%1_Worker", _side], format["%1LIB_SOV_unequip", _sid]];
@@ -423,6 +424,11 @@ if (isNil "_priorUnits") then {
 	_c append _priorUnits; 
 };
 
+//add the paradroping units
+_priorUnits = missionNamespace getVariable "CTI_VEHICLES_PARADROPERS";
+_priorUnits pushBack format["%1LIB_Li2", _sid];
+missionNamespace setVariable ["CTI_VEHICLES_PARADROPERS", _priorUnits];
+
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\factories\factory_SOV.sqf", format["units in factory %1: [%2] ", CTI_AIR, count _c]] call CTI_CO_FNC_Log;};
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _c];
 
@@ -480,36 +486,36 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _c];
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Town Depot.
 _c = [];
-if(CTI_UNITS_TOWN_PURCHASE > 0) then {
-	if(CTI_UNITS_TOWN_PURCHASE == 1 || CTI_UNITS_TOWN_PURCHASE > 2) then {
-		if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
-			if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-				_c pushBack format["%1LIB_SOV_Rifleman_w", _sid];
-				_c pushBack format["%1LIB_SOV_Medic_w", _sid];
-			};
-				
-			_c pushBack format["%1LIB_SOV_rifleman", _sid];
-			//possible camo for desert
-			_c pushBack format["%1LIB_SOV_LC_rifleman", _sid];
-			_c pushBack format["%1LIB_SOV_medic", _sid];
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+	if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+			_c pushBack format["%1LIB_SOV_Rifleman_w", _sid];
+			_c pushBack format["%1LIB_SOV_Medic_w", _sid];
 		};
-	};
-	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-		_c pushBack format["%1LIB_GazM1_SOV", _sid];	
-		_c pushBack format["%1LIB_GazM1_SOV_camo_sand", _sid];
-	};
-	if(CTI_UNITS_TOWN_PURCHASE > 1) then {
-	if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
-			if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-				_c pushBack format["%1LIB_Zis5v_fuel_w", _sid];				//fueltruck
-				_c pushBack format["%1LIB_Zis6_parm_w", _sid];					//repairtruck
-			};
-			_c pushBack format["%1LIB_Zis5v_Fuel", _sid];						//fueltruck
-			_c pushBack format["%1LIB_Zis6_Parm", _sid];						//repairtruck
-		};
+			
+		_c pushBack format["%1LIB_SOV_rifleman", _sid];
+		//possible camo for desert
+		_c pushBack format["%1LIB_SOV_LC_rifleman", _sid];
+		_c pushBack format["%1LIB_SOV_medic", _sid];
 	};
 };
-
+if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+	_c pushBack format["%1LIB_GazM1_SOV", _sid];	
+	_c pushBack format["%1LIB_GazM1_SOV_camo_sand", _sid];
+};
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+			_c pushBack format["%1LIB_Zis5v_fuel_w", _sid];				//fueltruck
+			_c pushBack format["%1LIB_Zis6_parm_w", _sid];					//repairtruck
+		};
+		_c pushBack format["%1LIB_Zis5v_Fuel", _sid];						//fueltruck
+		_c pushBack format["%1LIB_Zis6_Parm", _sid];						//repairtruck
+	};
+	//if(CTI_ECONOMY_LEVEL_WHEELED >= 3) then {
+		//_c pushBack format["%1LIB_US6_Ammo", _sid];						//ammotruck
+	//};
+};
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 
