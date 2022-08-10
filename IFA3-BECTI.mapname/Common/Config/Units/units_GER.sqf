@@ -773,6 +773,16 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_s pushBack "";
 		_d pushBack 0;*/
 	};
+	_c pushBack format["%1LIB_C47_RAF", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack ([CTI_ECONOMY_PRIZE_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_AIR;
+	_s pushBack "";
+	_d pushBack 0;
+	
 	_c pushBack format["%1LIB_Ju87", _sid];
 	_p pushBack '';
 	_n pushBack '';
