@@ -472,6 +472,10 @@ CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.25; //--- The completion ratio is multi
 CTI_BASE_DEFENSES_AUTO_DELAY = 20; //--- Delay after which a new unit will replace a dead one for a defense
 CTI_BASE_DEFENSES_AUTO_REARM_RANGE = 500; //--- Range needed for a defense to be able to rearm at a service point
 CTI_BASE_DEFENSES_EMPTY_TIMEOUT = 1200; //--- Delay after which an empty defense is considered empty
+CTI_BASE_DEFENSES_AIR_DETECTION_RANGE = 2000; //--- Range in meters, air units gets detected and revealed
+CTI_BASE_DEFENSES_AIR_DETECTION_HEIGHT = 50; //--- Height in meters, air units gets detected and revealed
+CTI_BASE_DEFENSES_AIR_DETECTION_TIME = 20; //--- Time in seconds, the detection script runns
+CTI_BASE_DEFENSES_AIR_DETECTION_MODE = 1;
 
 //--- Base: HQ
  
@@ -813,12 +817,12 @@ with missionNamespace do {
 		};
 	};
 	
-	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 1};
+	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 0};
 	//Check when IFA is loaded VIO patch is loaded too?
 	if(CTI_IFA3_NEW >= 0) then {
-		if !(isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
+		if (isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
 			//check if the VIO addon is loaded or the stable
-			CTI_VIO_ADDON = 0;
+			CTI_VIO_ADDON = 1;
 		};
 	};
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["VIO addon loaded? <%1> ", CTI_VIO_ADDON]] call CTI_CO_FNC_Log; };

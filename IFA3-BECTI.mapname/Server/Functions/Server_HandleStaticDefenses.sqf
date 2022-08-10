@@ -27,7 +27,7 @@
 	  -> Will search for manable statics around _structure
 */
 
-private ["_ai", "_defense_team", "_direction", "_distance", "_last_scan", "_logic", "_manned", "_net", "_position", "_side", "_sideID", "_statics", "_structure", "_var"];
+private ["_ai", "_defense_team", "_direction", "_distance", "_last_scan", "_logic", "_manned", "_net", "_position", "_side", "_sideID", "_statics", "_structure", "_var", "_objects", "_object_cnt", "_defense", "_defense_data"];
 
 _structure = _this select 0;
 _side = _this select 1;
@@ -71,7 +71,7 @@ while {alive _structure} do {
 			//--- The static is occupied
 			if (alive gunner _x || alive assignedGunner _x) then {
 				_x setVariable ["cti_aman_time_occupied", time];
-			} else {;
+			} else {
 				//--- The static is empty
 				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT) then {
 					_manned = true;
@@ -108,6 +108,26 @@ while {alive _structure} do {
 				
 				if (count _ammo_trucks > 0 || !isNull _nearest) then {_x setVehicleAmmoDef 1; player sidechat "rearmed!"};
 			};
+		};
+
+		if(CTI_BASE_DEFENSES_AIR_DETECTION_MODE == 0) then {
+			//lets check the static scan the sky!
+			_defense = _x;
+			_defense_data = missionNamespace getVariable [format["CTI_%1_%2",_side,(typeOf _x)],["","","",""]];
+			_objects = nearestObjects [_x, ["Air"], CTI_BASE_DEFENSES_AIR_DETECTION_RANGE];
+			_object_cnt = count _objects;
+			if(_object_cnt > 0 && _defense_data select 3 == "AA") then {
+				{
+					_object = _x;		//for a better reading
+					_height = (getPos _object) select 2;
+					if(_height > CTI_BASE_DEFENSES_AIR_DETECTION_HEIGHT) then {
+						_defense reveal _object;
+					};
+				} forEach _objects;
+			};
+			//if (CTI_Log_Level >= CTI_Log_Debug) then {
+				["VIOC_DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Scanning the Area <%1> Objects found", _object_cnt]] call CTI_CO_FNC_Log;
+			//};
 		};
 	} forEach _statics;
 	
