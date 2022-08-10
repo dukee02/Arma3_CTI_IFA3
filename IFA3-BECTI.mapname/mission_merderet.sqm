@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=710;
+		nextID=713;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1480;
+		nextID=1530;
 	};
 	class Camera
 	{
-		pos[]={2245.7852,104.24178,1077.6788};
-		dir[]={-0.75756627,-0.61662519,0.21426375};
-		up[]={-0.59335607,0.78724849,0.16781886};
-		aside[]={0.27216128,-2.7898932e-007,0.96227461};
+		pos[]={2299.9963,165.12796,1081.4558};
+		dir[]={-0.75755036,-0.61661214,0.21425952};
+		up[]={-0.593337,0.78726703,0.16781472};
+		aside[]={0.27215606,0,0.96225321};
 	};
 };
 binarizationWanted=0;
@@ -32,13 +32,16 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
-	"A3_Modules_F"
+	"WW2_Core_c_IF_Gui_c",
+	"A3_Modules_F",
+	"A3_Structures_F_Mil_Fortification",
+	"A3_Modules_F_Curator_Curator"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=3;
+		items=6;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -55,8 +58,27 @@ class AddonsMetaData
 		};
 		class Item2
 		{
+			className="WW2_Core_c_IF_Gui_c";
+			name="WW2_Core_c_IF_Gui_c";
+		};
+		class Item3
+		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item4
+		{
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item5
+		{
+			className="A3_Modules_F_Curator";
+			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -141,6 +163,7 @@ class CustomAttributes
 };
 class Mission
 {
+	assetType="Free";
 	class Intel
 	{
 		briefingName="VIO-BECTI-IFA3 V2.0";
@@ -166,7 +189,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=47;
+		items=50;
 		class Item0
 		{
 			dataType="Group";
@@ -187,6 +210,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CAPTAIN";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Alpha, Team Leader";
 						isPlayable=1;
 					};
@@ -261,6 +285,7 @@ class Mission
 					class Attributes
 					{
 						rank="CAPTAIN";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Alpha, Team Leader";
 						isPlayable=1;
 					};
@@ -336,6 +361,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Bravo, Team Leader";
 						isPlayable=1;
 					};
@@ -411,6 +437,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Charlie, Team Leader";
 						isPlayable=1;
 					};
@@ -486,6 +513,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Delta, Team Leader";
 						isPlayable=1;
 					};
@@ -561,6 +589,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Echo, Team Leader";
 						isPlayable=1;
 					};
@@ -636,6 +665,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Foxtrot, Team Leader";
 						isPlayable=1;
 					};
@@ -711,6 +741,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Golf, Team Leader";
 						isPlayable=1;
 					};
@@ -786,6 +817,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Hotel, Team Leader";
 						isPlayable=1;
 					};
@@ -860,6 +892,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Bravo, Team Leader";
 						isPlayable=1;
 					};
@@ -934,6 +967,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Charlie, Team Leader";
 						isPlayable=1;
 					};
@@ -1008,6 +1042,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Delta, Team Leader";
 						isPlayable=1;
 					};
@@ -1082,6 +1117,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Echo, Team Leader";
 						isPlayable=1;
 					};
@@ -1156,6 +1192,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Foxtrot, Team Leader";
 						isPlayable=1;
 					};
@@ -1232,6 +1269,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Golf, Team Leader";
 						isPlayable=1;
 					};
@@ -1308,6 +1346,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Hotel, Team Leader";
 						isPlayable=1;
 					};
@@ -1574,7 +1613,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={1659.254,9.0505829,2895.999};
-								angles[]={-0,5.2696376,0};
+								angles[]={0,5.2696376,0};
 							};
 							id=319;
 							type="LocationCamp_F";
@@ -1620,7 +1659,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={2219.8225,70.206413,1202.2446};
-								angles[]={-0,3.1577194,6.2318535};
+								angles[]={0,3.1577194,6.2318535};
 							};
 							id=349;
 							type="LocationCamp_F";
@@ -1631,7 +1670,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={2144.6123,69.683525,955.65967};
-								angles[]={-0,0.49012336,0};
+								angles[]={0,0.49012336,0};
 							};
 							id=350;
 							type="LocationCamp_F";
@@ -1688,7 +1727,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={2498.8037,7.5092697,2813.1384};
-								angles[]={-0,4.6913052,0};
+								angles[]={0,4.6913052,0};
 							};
 							id=534;
 							type="LocationCamp_F";
@@ -1723,7 +1762,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={2957.4255,7.3770013,1459.53};
-								angles[]={-0,5.0092168,0.051332101};
+								angles[]={0,5.0092168,0.051332101};
 							};
 							id=361;
 							type="LocationCamp_F";
@@ -1734,7 +1773,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={2625.7102,8.7572126,1492.8431};
-								angles[]={-0,1.7759948,6.2318535};
+								angles[]={0,1.7759948,6.2318535};
 							};
 							id=362;
 							type="LocationCamp_F";
@@ -1827,7 +1866,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={3592.6228,8.5368118,2603.1309};
-								angles[]={-0,4.4862113,0};
+								angles[]={0,4.4862113,0};
 							};
 							id=384;
 							type="LocationCamp_F";
@@ -1873,7 +1912,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={2764.384,9.0505829,2565.5383};
-								angles[]={-0,6.1357045,0};
+								angles[]={0,6.1357045,0};
 							};
 							id=531;
 							type="LocationCamp_F";
@@ -1948,8 +1987,10 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={50.416759,8.0230408,157.26898};
+				position[]={50.417,8.0230408,157.269};
 			};
+			name="HC_1";
+			isPlayable=1;
 			id=409;
 			type="HeadlessClient_F";
 		};
@@ -1973,6 +2014,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="India, Team Leader";
 						isPlayable=1;
 					};
@@ -2047,6 +2089,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Juilett, Team Leader";
 						isPlayable=1;
 					};
@@ -2121,6 +2164,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Kilo, Team Leader";
 						isPlayable=1;
 					};
@@ -2195,6 +2239,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Lima, Team Leader";
 						isPlayable=1;
 					};
@@ -2269,6 +2314,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Mike, Team Leader";
 						isPlayable=1;
 					};
@@ -2343,6 +2389,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="November, Team Leader";
 						isPlayable=1;
 					};
@@ -2417,6 +2464,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Oscar, Team Leader";
 						isPlayable=1;
 					};
@@ -2493,6 +2541,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Papa, Team Leader";
 						isPlayable=1;
 					};
@@ -2570,6 +2619,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="India, Team Leader";
 						isPlayable=1;
 					};
@@ -2645,6 +2695,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Juliett, Team Leader";
 						isPlayable=1;
 					};
@@ -2720,6 +2771,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Kilo, Team Leader";
 						isPlayable=1;
 					};
@@ -2795,6 +2847,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Lima, Team Leader";
 						isPlayable=1;
 					};
@@ -2870,6 +2923,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Mike, Team Leader";
 						isPlayable=1;
 					};
@@ -2945,6 +2999,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="November, Team Leader";
 						isPlayable=1;
 					};
@@ -3020,6 +3075,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Oscar, Team Leader";
 						isPlayable=1;
 					};
@@ -3095,6 +3151,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Papa, Team Leader";
 						isPlayable=1;
 					};
@@ -3200,7 +3257,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={47.137844,8.7635546,42.390549};
-				angles[]={-0,4.7079067,0};
+				angles[]={0,4.7079067,0};
 			};
 			side="Empty";
 			flags=4;
@@ -3216,7 +3273,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={47.164738,8.7635546,36.805874};
-				angles[]={-0,4.7079067,0};
+				angles[]={0,4.7079067,0};
 			};
 			side="Empty";
 			flags=4;
@@ -3232,7 +3289,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={47.112633,8.7635546,31.148514};
-				angles[]={-0,4.7079067,0};
+				angles[]={0,4.7079067,0};
 			};
 			side="Empty";
 			flags=4;
@@ -3248,7 +3305,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={31.738033,8.7635546,42.217773};
-				angles[]={-0,4.7079067,0};
+				angles[]={0,4.7079067,0};
 			};
 			side="Empty";
 			flags=4;
@@ -3264,7 +3321,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={31.811399,8.7635546,36.53978};
-				angles[]={-0,4.7079067,0};
+				angles[]={0,4.7079067,0};
 			};
 			side="Empty";
 			flags=4;
@@ -3280,7 +3337,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={31.858675,8.7635546,30.982189};
-				angles[]={-0,4.7079067,0};
+				angles[]={0,4.7079067,0};
 			};
 			side="Empty";
 			flags=4;
@@ -3334,6 +3391,121 @@ class Mission
 			};
 			id=636;
 			type="Land_HBarrier_5_F";
+		};
+		class Item47
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={-202.01601,8.0230408,95.740997};
+			};
+			name="VIOC_ZEUS";
+			id=710;
+			type="ModuleCurator_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCurator_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="#adminlogged";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCurator_F_Forced";
+					expression="_this setVariable ['Forced',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCurator_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCurator_F_Addons";
+					expression="_this setVariable ['Addons',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=2;
+						};
+					};
+				};
+				nAttributes=4;
+			};
+		};
+		class Item48
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={50.760822,8.0230408,151.44348};
+			};
+			name="HC_2";
+			isPlayable=1;
+			id=711;
+			type="HeadlessClient_F";
+		};
+		class Item49
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={50.760822,8.0230408,145.97168};
+			};
+			name="HC_3";
+			isPlayable=1;
+			id=712;
+			type="HeadlessClient_F";
 		};
 	};
 	class Connections

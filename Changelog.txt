@@ -1,0 +1,11 @@
+V2.0_2208xx
+[x] Changed: Flak 38 Vierling for all!
+[x] Fixed: Error when building salvagers
+[x] Added: Script for a better AA
+[x] Added: Paradrop script (mousewheel option)
+[x] Changed: HCs now visible in lobby but fixed to 3
+[x] Changed: AI crew for planes now normal soldiers and 1pilot
+[x] Added: UK cargo plane to Luftwaffe
+[x] Fixed: Error on saving team funds
+
+[x] Fixed: AT Planes too strong against buildings (preparation)
