@@ -33,6 +33,7 @@ if(CTI_BASE_DEFENSES_AIR_DETECTION_MODE > 0) then {
 		_side = _x;		//for a better reading
 		_logic= (_side) call CTI_CO_FNC_GetSideLogic;
 		_defenses = [];
+		_object_cnt = -1;
 
 		if(CTI_BASE_DEFENSES_AIR_DETECTION_MODE == 1) then {
 			_defenses = _logic getVariable ["cti_defences",[]];
@@ -75,7 +76,6 @@ if(CTI_BASE_DEFENSES_AIR_DETECTION_MODE > 0) then {
 				};
 			} forEach _defenses;
 		};
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_ScanSkyForPlanes.sqf", format["End scanning the Area <%1> <%2>", _object_cnt, count _defenses]] call CTI_CO_FNC_Log;};
 	} forEach [east,west];
-
-	if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_ScanSkyForPlanes.sqf", format["End scanning the Area <%1> <%2>", _object_cnt, count _defenses]] call CTI_CO_FNC_Log;};
 };
