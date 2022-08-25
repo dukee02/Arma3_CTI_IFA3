@@ -115,7 +115,9 @@ if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then
 		[] execVM "Client\Module\zlt\zlt_fieldrepair.sqf"; 
 		//[] execVM "Client\Module\zlt\zlt_fastrope.sqf";
 	};
+	//--- Earplug script to reduce sound level when required
+	//execVM "Scripts\nre_earplugs.sqf";
 	[player] execVM "Client\Module\earplugs\simpleEP.sqf";
-}; 
+};
 
 _igiload = execVM "IgiLoad\IgiLoadInit.sqf";

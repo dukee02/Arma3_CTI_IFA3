@@ -519,6 +519,7 @@ with missionNamespace do {
 	if (isNil 'CTI_BASE_STARTUP_PLACEMENT') then {CTI_BASE_STARTUP_PLACEMENT = 4000}; //--- Each side need to be further than x meters
 	if (isNil 'CTI_BASE_WORKERS_LIMIT') then {CTI_BASE_WORKERS_LIMIT = 10}; //--- Maximum amount of workers which may be purchased by a side
 	if (isNil 'CTI_BASE_STRUCTURE_RESELL_RATIO') then {CTI_BASE_STRUCTURE_RESELL_RATIO = 0};	//--- Ratio of building cost to be refunded when sold
+	if (isNil 'CTI_FIELDREPAIR_ENABLED') then {CTI_FIELDREPAIR_ENABLED = 0};
 };
 //-----------------------------------------------------------------------------------------------------------------------//
 
