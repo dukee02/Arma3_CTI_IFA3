@@ -12,6 +12,7 @@ else {
 		_sid = "VIOC_I_";
 	};
 };
+if(CTI_VIO_ADDON == 0) then {_sid = "";};
 
 //Defense Guns for Towns
 _classes_town = [];
