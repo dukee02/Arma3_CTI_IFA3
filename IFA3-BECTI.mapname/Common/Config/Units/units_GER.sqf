@@ -278,7 +278,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_OpelBlitz_Open_G_Camo_w", _sid];
-		_c pushBack format["%1LIB_OpelBlitz_Tent_Y_Camo_w", _sid];
+		//_c pushBack format["%1LIB_OpelBlitz_Tent_Y_Camo_w", _sid];
 		_c pushBack format["%1LIB_OpelBlitz_Open_Y_Camo_w", _sid];
 		//_c pushBack format["%1LIB_OpelBlitz_Parm_w", _sid];				//repairtruck
 		//_c pushBack format["%1LIB_OpelBlitz_Ammo_w", _sid];				//ammotruck
@@ -292,7 +292,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		//_c pushBack format["%1LIB_DAK_OpelBlitz_Ammo", _sid];			//ammotruck
 		//_c pushBack format["%1LIB_DAK_OpelBlitz_Fuel", _sid];			//fueltruck
 	};
-	_c pushBack format["%1LIB_OpelBlitz_Tent_Y_Camo", _sid];
+	//_c pushBack format["%1LIB_OpelBlitz_Tent_Y_Camo", _sid];
 	_c pushBack format["%1LIB_OpelBlitz_Open_Y_Camo", _sid];
 	_c pushBack format["%1LIB_Kfz1_MG42", _sid];
 	//_c pushBack format["%1LIB_Kfz1_MG42_camo", _sid];
@@ -909,7 +909,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	_d pushBack 0;		
 };
 
-if(CTI_IFA3_NEW >= 0) then {
+//if(CTI_IFA3_NEW >= 0) then {
 	_c pushBack format["CTI_Salvager_%1", _faction];
 	_p pushBack '';
 	_n pushBack 'Salvager Truck';
@@ -929,7 +929,7 @@ if(CTI_IFA3_NEW >= 0) then {
 	_f pushBack CTI_FACTORY_REPAIR;
 	_s pushBack [format["%1LIB_OpelBlitz_Tent_Y_Camo", _sid],"salvager-independent"];
 	_d pushBack 0;
-};
+//};
 
 //***************************************************************************************************************************************
 //														Ammo Factory																	*

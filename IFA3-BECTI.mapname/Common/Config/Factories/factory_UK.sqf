@@ -436,11 +436,11 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	//_c pushBack format["%1LIB_AustinK5_Tent", _sid];						//repairtruck
 	_c pushBack format["%1LIB_US6_Tent_Cargo", _sid];						//repairtruck
 };
-if(CTI_IFA3_NEW >= 0) then {
+//if(CTI_IFA3_NEW >= 0) then {
 	if!(CTI_UK_SIDE == CTI_US_SIDE) then {
 		_c pushBack format["CTI_Salvager_%1", _side];
 	};
-};
+//};
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_REPAIR];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 
