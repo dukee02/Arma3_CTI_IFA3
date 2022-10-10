@@ -8,3 +8,16 @@ Changed: AI crew for planes now normal soldiers and 1pilot
 Fixed: Error when building salvagers
 Fixed: Error on saving team funds
 Fixed: AT Planes too strong against buildings (preparation)
+
+V2.0_221010
+Added: Param for Structure resell ratio
+Added: param for 'Time before town units despawn'
+Changed: AI Base placement a bit
+Fixed: sometimes some vanilla vehicle cargo
+Fixed: can't build FOB with active AI commander
+Fixed: breaks loading after map change, when only 1 save active
+Fixed: no salvagers thx @Muppet007
+Fixed: salvager spawns at 0,0 some times
+Fixed: magazine of secondary weapon empty when buyed
+
+
