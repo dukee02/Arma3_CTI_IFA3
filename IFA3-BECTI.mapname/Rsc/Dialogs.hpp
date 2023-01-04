@@ -103,7 +103,7 @@ class CTI_RscBuildMenu {
 			text = "";
 			action = "['onAutoManning'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
-		class CTI_Menu_Control_BuildDefense : CTI_Menu_Control_Undo {
+		class CTI_Menu_Control_BuildDefense : CTI_Menu_Control_AutoAlign {
 			idc = 100004;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.535)";
@@ -111,6 +111,15 @@ class CTI_RscBuildMenu {
 			
 			text = "Build Defense";
 			action = "['onBuildDefense', lnbCurSelRow 100007] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
+		};
+		class CTI_Menu_Control_Combo_Category : RscCombo { //Defense category drop box
+			idc = 100017;
+
+			x = "SafeZoneX + (SafeZoneW * 0.6775)";
+			y = "SafeZoneY + (SafeZoneH * 0.3925)";
+			w = "SafeZoneW * 0.1375";
+			
+			onLBSelChanged = "['onDefenseLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
 		class CTI_Menu_Control_AddWorker : CTI_Menu_Control_Undo {
 			idc = 100005;
@@ -485,8 +494,8 @@ class CTI_RscPurchaseMenu {
 			colorBackground[] = {0,0,0,0};
 			colorPicture[] = {1, 1, 1, 1};
 			itemBackground[] = {1,1,1,0.1};
-			// columns[] = {0.001, 0.26};
-			columns[] = {0.001, 0.35};
+			//columns[] = {0.001, 0.35};
+			columns[] = {0.001, 0.27, 0.35};
 			
 			onLBSelChanged = "['onUnitsLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 			onLBDblClick = "['onPurchase', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
@@ -1676,13 +1685,13 @@ class CTI_RscOptionsMenu {
 			text = "Video Settings";
 			action = "['onVideoSettingsPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
 		};
-		class CTI_Menu_Options_Music : CTI_Menu_Options_OnlineHelp {
+		class CTI_Menu_Options_PylonLoadout : CTI_Menu_Options_OnlineHelp {
 			idc = 130008;
 			
 			y = "SafeZoneY + (SafezoneH * 0.545)";
 			
-			text = "Play Music: Off";
-			action = "['onMusicPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
+			text = "Pylon Manager";
+			action = "['onPylonPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
 		};
 		class CTI_Menu_Options_TransferFunds : CTI_Menu_Options_OnlineHelp {
 			idc = 130009;
@@ -4896,3 +4905,474 @@ class CTI_RscVoteMenu {
 		};
 	};
 };
+//--- Pylon Management (by dukee).
+class CTI_RscPylonMenu {
+	movingEnable = 1;
+	idd = 400000;
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_pylonmenu', _this select 0]; ['onLoad'] execVM 'Client\Events\Events_UI_PylonMenu.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_pylonmenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+
+	class controlsBackground {
+		class CTI_Background : RscText {
+			x = "SafeZoneX + (SafeZoneW * 0.21)";
+			y = "SafeZoneY + (SafezoneH * 0.175)";
+			w = "SafeZoneW * 0.615";
+			h = "SafeZoneH * 0.705";
+			colorBackground[] = {0, 0, 0, 0.7};
+			moving = 1;
+		};
+		class CTI_Background_Header : CTI_Background {
+			x = "SafeZoneX + (SafeZoneW * 0.21)";
+			y = "SafeZoneY + (SafezoneH * 0.175)";
+			w = "SafeZoneW * 0.615";
+			h = "SafeZoneH * 0.05"; //0.06 stock
+			colorBackground[] = {0, 0, 0, 0.4};
+		};
+		class CTI_Menu_Title : RscText {
+			style = ST_LEFT;
+			x = "SafeZoneX + (SafeZoneW * 0.23)";
+			y = "SafeZoneY + (SafezoneH * 0.180)";
+			w = "SafeZoneW * 0.595";
+			h = "SafeZoneH * 0.037";
+			
+			text = "Pylon Management Menu";
+			colorText[] = {0.258823529, 0.713725490, 1, 1};
+			
+			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+		};
+		
+		class CTI_Menu_PresetListFrame : RscFrame {
+			x = "SafeZoneX + (SafeZoneW * 0.225)";
+			y = "SafeZoneY + (SafezoneH * 0.245)";
+			w = "SafeZoneW * 0.200";
+			h = "SafeZoneH * 0.570";
+		};
+		class CTI_Menu_ConfigInfoFrame : CTI_Menu_PresetListFrame {
+			x = "SafeZoneX + (SafeZoneW * 0.430)";
+			y = "SafeZoneY + (SafezoneH * 0.245)";
+			h = "SafeZoneH * 0.1";
+			w = "SafeZoneW * 0.385";
+		};
+
+		class CTI_Menu_PylonFrame : CTI_Menu_ConfigInfoFrame {
+			idc = 410001;
+
+			x = "SafeZoneX + (SafeZoneW * 0.430)";
+			y = "SafeZoneY + (SafezoneH * 0.355)";
+			h = "SafeZoneH * 0.460";
+		};
+	};
+	
+	class controls {
+		
+		class CTI_Menu_Control_PresetList : RscListNBox {
+			idc = 450018;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.225)";
+			y = "SafeZoneY + (SafezoneH * 0.245)";
+			w = "SafeZoneW * 0.200";
+			h = "SafeZoneH * 0.570";
+			
+			rowHeight = "1.35 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+			colorPicture[] = {1, 1, 1, 1};
+			itemBackground[] = {1,1,1,0.1};
+			columns[] = {0.001, 0.35};
+			
+			onLBDblClick = "['onLoadPreset', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_Control_LoadSetup : RscButton {
+			idc = 450021;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.345)";
+			y = "SafeZoneY + (SafeZoneH * 0.825)";
+			w = "SafeZoneW * 0.080";
+			h = "SafeZoneH * 0.04";
+			
+			text = "Load Setup";
+			action = "['onLoadPreset', lnbCurSelRow 450018] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_Control_DeleteSetup : RscButton {
+			idc = 450029;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.225)";
+			y = "SafeZoneY + (SafeZoneH * 0.825)";
+			w = "SafeZoneW * 0.080";
+			h = "SafeZoneH * 0.04";
+			
+			text = "Delete Preset";
+			action = "['onDeletePreset', lnbCurSelRow 450018] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_Control_ApplySetup : CTI_Menu_Control_LoadSetup {
+			idc = 450022;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.690)";
+			y = "SafeZoneY + (SafeZoneH * 0.825)";
+			w = "SafeZoneW * 0.080";
+			
+			text = "Apply Setup";
+			action = "['onApplyLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		/*class CTI_Menu_Control_SendSetup : CTI_Menu_Control_LoadSetup {
+			idc = 450023;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.500)";
+			y = "SafeZoneY + (SafeZoneH * 0.825)";
+			w = "SafeZoneW * 0.080";
+			
+			text = "Send to Server";
+			action = "['onSendLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};*/
+		class CTI_Control_Exit : RscButton {
+			idc = 450027;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.77)";
+			y = "SafeZoneY + (SafezoneH * 0.18)";
+			w = "SafeZoneW * 0.04";
+			h = "SafeZoneH * 0.04";
+			
+			text = "X";
+			action = "closeDialog 0";
+		};
+		class CTI_Control_Back : CTI_Control_Exit {
+			idc = 450032;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.725)";
+			
+			text = "<<";
+			action = "closeDialog 0; createDialog 'CTI_RscOptionsMenu';";
+		};
+		//-------------------------------------------
+		class CTI_Menu_TeamComboLabel : RscText {
+			x = "SafeZoneX + (SafeZoneW * 0.440)";
+			y = "SafeZoneY + (SafezoneH * 0.300)";
+			w = "SafeZoneW * 0.1";
+			h = "SafeZoneH * 0.035";
+			
+			text = "Preset Name :";
+			
+			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+		};
+		//Edit field for rename the stored loadout
+		class CTI_Menu_PylonStoreName : RscEdit {
+			idc = 450101;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.495)";
+			y = "SafeZoneY + (SafezoneH * 0.300)";
+			w = "SafeZoneW * 0.150";
+			h = "SafeZoneH * 0.03";
+			
+			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			text = "";
+		};
+		class CTI_Menu_Control_SaveSetup : CTI_Menu_Control_LoadSetup {
+			idc = 450028;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.680)";
+			y = "SafeZoneY + (SafeZoneH * 0.300)";
+			w = "SafeZoneW * 0.080";
+			h = "SafeZoneH * 0.035";
+			
+			text = "Save Setup";
+			action = "['onSaveLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		//Filter for Pylons
+		class CTI_Menu_ComboPylonFilter : RscCombo {
+			idc = 450100;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.680)";
+			y = "SafeZoneY + (SafezoneH * 0.360)";
+			w = "SafeZoneW * 0.120";
+			h = "SafeZoneH * 0.020";
+			
+			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			onLBSelChanged = "['onLBSelChangedFilter', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		//-------------------------------------------
+		//Pylon frame
+		class CTI_Menu_PylonBackground : RscPicture {
+			idc = 450030;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.445)";
+			y = "SafeZoneY + (SafezoneH * 0.400)";
+			w = "SafeZoneW * 0.300";
+			h = "SafeZoneH * 0.300";
+			
+			text = "\A3\Air_F_Jets\Plane_Fighter_01\Data\UI\Fighter_01_3DEN_CA.paa";
+		};
+		//Pylons
+		class CTI_Menu_ComboPylonLeft : RscCombo {
+			idc = 420010;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.470)";
+			y = "SafeZoneY + (SafezoneH * 0.420)";
+			w = "SafeZoneW * 0.072";
+			h = "SafeZoneH * 0.020";
+			
+			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft: RscCheckbox
+		{
+			idc = 420011;
+
+			x = "SafeZoneX + (SafeZoneW * 0.580)";
+			y = "SafeZoneY + (SafezoneH * 0.420)";
+			w = "SafeZoneW * 0.016";
+			h = "SafeZoneH * 0.020";
+			
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+			onCheckedChanged = "['onChangedControl', _this select 1, 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonLeft1 : CTI_Menu_ComboPylonLeft {
+			idc = 420020;
+			
+			y = "SafeZoneY + (SafezoneH * 0.480)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft1: CTI_Menu_CheckControlLeft
+		{
+			idc = 420021;
+
+			y = "SafeZoneY + (SafezoneH * 0.480)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonLeft2 : CTI_Menu_ComboPylonLeft {
+			idc = 420030;
+			
+			y = "SafeZoneY + (SafezoneH * 0.540)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 2] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft2: CTI_Menu_CheckControlLeft
+		{
+			idc = 420031;
+			
+			y = "SafeZoneY + (SafezoneH * 0.540)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 2] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonLeft3 : CTI_Menu_ComboPylonLeft {
+			idc = 420040;
+			
+			y = "SafeZoneY + (SafezoneH * 0.600)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 3] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft3: CTI_Menu_CheckControlLeft
+		{
+			idc = 420041;
+			
+			y = "SafeZoneY + (SafezoneH * 0.600)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 3] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonLeft4 : CTI_Menu_ComboPylonLeft {
+			idc = 420050;
+			
+			y = "SafeZoneY + (SafezoneH * 0.660)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 4] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft4: CTI_Menu_CheckControlLeft
+		{
+			idc = 420051;
+			
+			y = "SafeZoneY + (SafezoneH * 0.660)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 4] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonLeft5 : CTI_Menu_ComboPylonLeft {
+			idc = 420060;
+			
+			y = "SafeZoneY + (SafezoneH * 0.720)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 5] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft5: CTI_Menu_CheckControlLeft
+		{
+			idc = 420061;
+			
+			y = "SafeZoneY + (SafezoneH * 0.720)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 5] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		//--------------middle----------------------------------------------------------
+		class CTI_Menu_ComboPylonMid : CTI_Menu_ComboPylonLeft {
+			idc = 420070;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.570)";
+			y = "SafeZoneY + (SafezoneH * 0.450)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 6] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid: CTI_Menu_CheckControlLeft
+		{
+			idc = 420071;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.680)";
+			y = "SafeZoneY + (SafezoneH * 0.450)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 6] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonMid1 : CTI_Menu_ComboPylonMid {
+			idc = 420080;
+			
+			y = "SafeZoneY + (SafezoneH * 0.510)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 7] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid1: CTI_Menu_CheckControlMid
+		{
+			idc = 420081;
+			
+			y = "SafeZoneY + (SafezoneH * 0.510)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 7] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonMid2 : CTI_Menu_ComboPylonMid {
+			idc = 420090;
+			
+			y = "SafeZoneY + (SafezoneH * 0.570)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 8] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid2: CTI_Menu_CheckControlMid
+		{
+			idc = 420091;
+			
+			y = "SafeZoneY + (SafezoneH * 0.570)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 8] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonMid3 : CTI_Menu_ComboPylonMid {
+			idc = 420100;
+			
+			y = "SafeZoneY + (SafezoneH * 0.630)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 9] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid3: CTI_Menu_CheckControlMid
+		{
+			idc = 420101;
+			
+			y = "SafeZoneY + (SafezoneH * 0.630)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 9] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonMid4 : CTI_Menu_ComboPylonMid {
+			idc = 420110;
+
+			y = "SafeZoneY + (SafezoneH * 0.800)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 10] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid4: CTI_Menu_CheckControlMid
+		{
+			idc = 420111;
+			
+			y = "SafeZoneY + (SafezoneH * 0.800)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 10] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		//------------------------------------right side----------------------------------------------------------------
+		class CTI_Menu_ComboPylonRight : CTI_Menu_ComboPylonLeft {
+			idc = 420120;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.670)";
+			y = "SafeZoneY + (SafezoneH * 0.420)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 11] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight: CTI_Menu_CheckControlLeft
+		{
+			idc = 420121;
+
+			x = "SafeZoneX + (SafeZoneW * 0.780)";
+			y = "SafeZoneY + (SafezoneH * 0.420)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 11] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonRight1 : CTI_Menu_ComboPylonRight {
+			idc = 420130;
+			
+			y = "SafeZoneY + (SafezoneH * 0.480)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 12] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight1: CTI_Menu_CheckControlRight
+		{
+			idc = 420131;
+
+			y = "SafeZoneY + (SafezoneH * 0.480)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 12] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonRight2 : CTI_Menu_ComboPylonRight {
+			idc = 420140;
+			
+			y = "SafeZoneY + (SafezoneH * 0.540)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 13] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight2: CTI_Menu_CheckControlRight
+		{
+			idc = 420141;
+			
+			y = "SafeZoneY + (SafezoneH * 0.540)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 13] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonRight3 : CTI_Menu_ComboPylonRight {
+			idc = 420150;
+			
+			y = "SafeZoneY + (SafezoneH * 0.600)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 14] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight3: CTI_Menu_CheckControlRight
+		{
+			idc = 420151;
+			
+			y = "SafeZoneY + (SafezoneH * 0.600)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 14] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonRight4 : CTI_Menu_ComboPylonRight {
+			idc = 420160;
+			
+			y = "SafeZoneY + (SafezoneH * 0.660)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 15] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight4: CTI_Menu_CheckControlRight
+		{
+			idc = 420161;
+			
+			y = "SafeZoneY + (SafezoneH * 0.660)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 15] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPylonRight5 : CTI_Menu_ComboPylonRight {
+			idc = 420170;
+			
+			y = "SafeZoneY + (SafezoneH * 0.720)";
+			
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 16] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight5: CTI_Menu_CheckControlRight
+		{
+			idc = 420171;
+			
+			y = "SafeZoneY + (SafezoneH * 0.720)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 16] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
+		};
+	};
+};
+

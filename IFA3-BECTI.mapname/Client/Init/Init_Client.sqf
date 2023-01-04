@@ -140,6 +140,8 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_SatelliteCamera.sq
 call compile preprocessFile "Client\Functions\UI\Functions_UI_ServiceMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UnitsCamera.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
+call compile preprocessFile "Client\Functions\UI\Functions_UI_BuildMenu.sqf";
+call compile preprocessFile "Client\Functions\UI\Functions_UI_PylonMenu.sqf";
 
 if(CTI_GER_SIDE == (CTI_P_SideJoined) call CTI_CO_FNC_GetSideID) then {
 	(CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_GER.sqf";
@@ -252,11 +254,9 @@ if ((CTI_P_SideLogic getVariable "cti_votetime") > 0) then {createDialog "CTI_Rs
 {uiNamespace setVariable [_x, displayNull]} forEach ["CTI_Title_Capture"];
 
 //--- Gear templates (persitent)
-//if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
 if (isNil {profileNamespace getVariable format["CTI_VIOIFA3_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
 // profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], nil];
 // saveProfileNamespace;
-//if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
 if !(isNil {profileNamespace getVariable format["CTI_VIOIFA3_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
 
 //--- Graphics/video thread (persistent)
@@ -308,7 +308,7 @@ if !(isNil {profileNamespace getVariable format["CTI_VIOIFA3_PERSISTENT_GEAR_TEM
 
 // onMapSingleClick "{(vehicle leader _x) setPos ([_pos, 8, 30] call CTI_CO_FNC_GetRandomPosition)} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)";
 // onMapSingleClick "vehicle player setPos _pos";
-// player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
+// player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDamage 1}; false}]; //--- God-Slayer mode.
 // player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf"];//debug
 // player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 
@@ -327,7 +327,7 @@ if (CTI_DEBUG) then {
 	hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
 	onMapSingleClick "vehicle player setpos _pos;(vehicle player) setVelocity [0,0,-0.1];"; //--- Teleport
 	player addEventHandler ["HandleDamage", {false}];
-	player addEventHandler ["HandleDamage", {false;if (player != (_this select 3)) then {(_this select 3) setDammage 1}}]; //--- God-Slayer mode.
+	player addEventHandler ["HandleDamage", {false;if (player != (_this select 3)) then {(_this select 3) setDamage 1}}]; //--- God-Slayer mode.
 	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 };
 

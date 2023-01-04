@@ -20,4 +20,31 @@ Fixed: no salvagers thx @Muppet007
 Fixed: salvager spawns at 0,0 some times
 Fixed: magazine of secondary weapon empty when buyed
 
+V2.0_230104
+Added: Integrated Phylon Management
 
+Droped: Phylon Manager support (now integrated)
+Added: Filter for the defenselist
+Added: Param for defense max level
+Added: Parameter to set preresearched factory level
+Added: additional preset param for the other reseaches
+Added: buildtime of units in purchaselist
+Added: time to reseach window (commanderview)
+Added: Infantry spawn prevention to spawn under the map
+Added: time to fire artillery misson
+Added: no missile/bombs start now selectable NOT default
+Changed: Statics now researchable (FOB too)
+Changed: respawn params (now one mobile / one static)
+Changed: unflip vehicle function to make it safer
+Changed: Reactivated reammo costs (Phylan Man. workaround)
+Changed: default start Funds/Supply
+Changed: buildtime calculation, now wider scalable
+Changed: some descriptions
+Fixed: FOB permission granted by commander
+Fixed: Can't build connected walls
+Fixed: upgrade param description
+Fixed: Automatic max upgrade calculations
+Fixed: Infantry spawn to high an gets injured
+Fixed: AI squads waiting to long for units in base
+Fixed: Town flag positions
+Fixed: persist. gear not working

@@ -257,24 +257,30 @@ CTI_UPGRADE_AIR_CM = 9;
 CTI_UPGRADE_TOWNS = 10;
 CTI_UPGRADE_SUPPLY = 11;
 CTI_UPGRADE_GEAR = 12;
+CTI_UPGRADE_DEFENSE = 13;
 
 with missionNamespace do {	
 	//Global max levels and multiplicators
 	if (isNil 'CTI_ECONOMY_LEVEL_MULTI') then {CTI_ECONOMY_LEVEL_MULTI = 100};
 	if (isNil 'CTI_ECONOMY_RESEARCH_MULTI') then {CTI_ECONOMY_RESEARCH_MULTI = 100};
-	if (isNil 'CTI_ECONOMY_LEVEL_GEAR') then {CTI_ECONOMY_LEVEL_GEAR = 2};
-	if (isNil 'CTI_ECONOMY_LEVEL_INFANTRY') then {CTI_ECONOMY_LEVEL_INFANTRY = 2};
-	if (isNil 'CTI_ECONOMY_LEVEL_WHEELED') then {CTI_ECONOMY_LEVEL_WHEELED = 4};
-	if (isNil 'CTI_ECONOMY_LEVEL_TRACKED') then {CTI_ECONOMY_LEVEL_TRACKED = 4};
-	if (isNil 'CTI_ECONOMY_LEVEL_AIR') then {CTI_ECONOMY_LEVEL_AIR = 4};
-	if (isNil 'CTI_ECONOMY_LEVEL_NAVAL') then {CTI_ECONOMY_LEVEL_NAVAL = 3};
+	if (isNil 'CTI_ECONOMY_LEVEL_GEAR') then {CTI_ECONOMY_LEVEL_GEAR = 10};
+	if (isNil 'CTI_ECONOMY_LEVEL_INFANTRY') then {CTI_ECONOMY_LEVEL_INFANTRY = 10};
+	if (isNil 'CTI_ECONOMY_LEVEL_WHEELED') then {CTI_ECONOMY_LEVEL_WHEELED = 10};
+	if (isNil 'CTI_ECONOMY_LEVEL_TRACKED') then {CTI_ECONOMY_LEVEL_TRACKED = 10};
+	if (isNil 'CTI_ECONOMY_LEVEL_AIR') then {CTI_ECONOMY_LEVEL_AIR = 10};
+	if (isNil 'CTI_ECONOMY_LEVEL_NAVAL') then {CTI_ECONOMY_LEVEL_NAVAL = 10};
+	if (isNil 'CTI_ECONOMY_LEVEL_DEFENSE') then {CTI_ECONOMY_LEVEL_DEFENSE = 3};
+	if (CTI_ECONOMY_LEVEL_DEFENSE > 3) then {CTI_ECONOMY_LEVEL_DEFENSE = 3};
 	if (isNil 'CTI_ECONOMY_UPGRADE_TIMECAP') then {CTI_ECONOMY_UPGRADE_TIMECAP = 600};
 	if (isNil 'CTI_ECONOMY_TIME_MULTI') then {CTI_ECONOMY_TIME_MULTI = 2};
+	if (isNil 'CTI_ECONOMY_LEVEL_PRESET') then {CTI_ECONOMY_LEVEL_PRESET = 0};
 	
 	//setup the default values for the tech tree
-	//It gets changed in the factory.sqf and used in Upgrades.sqf
-	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", west], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
-	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", east], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
+	//It gets changed in the factory gear and phylon configs and used in Upgrades.sqf
+	{
+		// Current result is saved in variable _x
+		missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _x], [0,0,0,0,0,1,-1,-1,-1,1,3,4,0,-1]];
+	} forEach [west,east];
 };
 
 //-----------------------------------------------------------------------------------------------------------------------//
@@ -297,9 +303,6 @@ CTI_REQUEST_FOB_DISMANTLE = 1;
 
 //--- Requests: Parameters
 CTI_REQUESTS_TIMEOUT = 300; //---160 A request will vanish after x seconds if left unattended
-with missionNamespace do {
-	if (isNil 'CTI_FOB_BUILD_EVERYONE') then {CTI_FOB_BUILD_EVERYONE = 0};
-};
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -591,10 +594,21 @@ CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR_RANGE = 25; //--- Repair trucks may repair 
 CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE = 5000; //--- An independent Salvage may search for wreck up to x meters
 CTI_VEHICLES_SALVAGE_RATE = 0.3; //--- This coefficient determine the value of a salvaged wreck (wreck value * x)
 CTI_VEHICLES_SALVAGE_RANGE = 25; //--- This is the distance required between a Wreck and Salvage Truck
-CTI_VEHICLES_SALVAGER_PRICE = 550; //--- Determine the cost of the salvage trucks
+//CTI_VEHICLES_SALVAGER_PRICE = 550; //--- Determine the cost of the salvage trucks ---- new calc see below
+CTI_SALVAGE_SPECIALUNITS = ["C_IDAP_Van_02_medevac_F","C_Van_02_medevac_F","B_GEN_Van_02_transport_F","I_E_Van_02_transport_MP_F"];		//unitswith lights and sirens
+CTI_SALVAGE_SPECIAL_ACTIONOFF = [[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]],[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]]];		//handle for turning lights and sirens off
+CTI_SALVAGE_SPECIAL_ACTIONON = [[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]],[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]]];		//handle for turning lights and sirens on
+CTI_ADDON_CHARLIECO = 0;
 
 //--- Vehicles: Parameter
 with missionNamespace do {
+	if (isNil 'CTI_SALVAGE_SPECIAL') then {CTI_SALVAGE_SPECIAL = 1}; //--- Use special salvagers, then the normal one (0: Disabled, 1: Enabled)
+	if (isClass(configFile >> "CfgVehicles" >> "chps5g") && isClass(configFile >> "CfgVehicles" >> "FPT_MAN")) then {
+		//Charlieco'smod pack is active (civil vehicles only) so we have firetrucks
+		CTI_SALVAGE_SPECIAL = 1;
+		CTI_ADDON_CHARLIECO = 1;
+	};
+	
 	if (isNil 'CTI_VEHICLES_AIR_FFAR') then {CTI_VEHICLES_AIR_FFAR = 2}; //--- FFAR Rockets availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
 	if (isNil 'CTI_VEHICLES_AIR_AA') then {CTI_VEHICLES_AIR_AA = 2}; //--- AA Missiles availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
 	if (isNil 'CTI_VEHICLES_AIR_AT') then {CTI_VEHICLES_AIR_AT = 2}; //--- AT Missiles availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
@@ -701,13 +715,13 @@ CTI_RESPAWN_MOBILE_RANGE = 600;
 CTI_SATCAM_ZOOM_MIN = 50;
 CTI_SATCAM_ZOOM_MAX = 800;
 
-CTI_SERVICE_PRICE_REPAIR = 0;//300;
-CTI_SERVICE_PRICE_REPAIR_COEF = 0;//0.5;
-CTI_SERVICE_PRICE_REAMMO = 0;//350;
-CTI_SERVICE_PRICE_REAMMO_COEF = 0;//0.15;
-CTI_SERVICE_PRICE_REFUEL = 0;//200;
-CTI_SERVICE_PRICE_REFUEL_COEF = 0;//0.1;
-CTI_SERVICE_PRICE_HEAL = 0;//100;
+CTI_SERVICE_PRICE_REPAIR = 300;//300;
+CTI_SERVICE_PRICE_REPAIR_COEF = 0.5;//0.5;
+CTI_SERVICE_PRICE_REAMMO = 350;//350;
+CTI_SERVICE_PRICE_REAMMO_COEF = 0.15;//0.15;
+CTI_SERVICE_PRICE_REFUEL = 200;//200;
+CTI_SERVICE_PRICE_REFUEL_COEF = 0.1;//0.1;
+CTI_SERVICE_PRICE_HEAL = 100;//100;
 
 CTI_SERVICE_AMMO_DEPOT_RANGE = 150;
 CTI_SERVICE_AMMO_DEPOT_TIME = 30;
@@ -783,6 +797,8 @@ with missionNamespace do {
 		
 	CTI_GAMEPLAY_VOTE_TIME = if (CTI_Debug) then {8} else {60};
 	
+	if (isNil 'CTI_BASE_SPECIAL') then {CTI_BASE_SPECIAL = 0};
+		
 	if (isNil 'CTI_GAMEPLAY_TEAMSTACK_DISABLE') then {CTI_GAMEPLAY_TEAMSTACK_DISABLE = 1}; //--- Teamstacking script. (0: Disabled, 1: +1 Player Advantage, 2: +2 Player Advantage, 3: +3 Player Advantage, 4: +4 Player Advantage, 5: +5 Player Advantage).
 	if (isNil 'CTI_GAMEPLAY_TEAMSWAP_DISABLE') then {CTI_GAMEPLAY_TEAMSTACK_DISABLE = 1}; //--- Teamswitch script. (0: Disabled, 1: Enabled).
 	
@@ -790,12 +806,11 @@ with missionNamespace do {
 	if (isNil 'CTI_GRAPHICS_TG_MAX') then {CTI_GRAPHICS_TG_MAX = 50};
 	
 	if (isNil 'CTI_RESPAWN_AI') then {CTI_RESPAWN_AI = 1};
+	if (isNil 'CTI_RESPAWN_FOB_RANGE') then {CTI_RESPAWN_FOB_RANGE = 1750}; 		//--- Range at which a unit can spawn at a FOB
+	CTI_RESPAWN_CAMPS_RANGE = CTI_RESPAWN_FOB_RANGE;								//--- Range at which a unit can spawn at a camp
 	if (isNil "CTI_RESPAWN_CAMPS_MODE") then {CTI_RESPAWN_CAMPS_MODE = 2}; 
-	if (isNil "CTI_RESPAWN_CAMPS_RANGE") then {CTI_RESPAWN_CAMPS_RANGE = 500}; //--- Range at which a unit can spawn at a camp
-	if (isNil "CTI_RESPAWN_CAMPS_RULE_MODE") then {CTI_RESPAWN_CAMPS_RULE_MODE = 2}; //--- Respawn Camps Rule (0: Disabled, 1: West | East, 2: West | East | Resistance).
-		
-	if (isNil 'CTI_RESPAWN_FOB_RANGE') then {CTI_RESPAWN_FOB_RANGE = 1750}; //--- Range at which a unit can spawn at a FOB
-	if (isNil 'CTI_RESPAWN_MOBILE') then {CTI_RESPAWN_MOBILE = 1};
+	if (isNil "CTI_RESPAWN_MOBILE_RANGE") then {CTI_RESPAWN_MOBILE_RANGE = 500}; 	//--- Range at which a unit can spawn at medical truck
+	CTI_RESPAWN_AI_RANGE = CTI_RESPAWN_MOBILE_RANGE;								//--- Range at which a unit can take over an AI team-unit
 	if (isNil 'CTI_RESPAWN_TIMER') then {CTI_RESPAWN_TIMER = 30};
 	if (isNil 'CTI_RESPAWN_PENALTY') then {CTI_RESPAWN_PENALTY = 0};
 	
