@@ -26,11 +26,14 @@ _s = [];
 //--- Commander will assign those orders based on the force and the probability [type, strenght, {probability}, {Max per side}]
 missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_INFANTRY", _side], [["Infantry", 2, 40]]];
 missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_LIGHT", _side], [["Motorized", 2, 60]]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_HEAVY", _side], [["AntiAir", 1, 20], ["ArmoredMBT", 2, 80]]];
+missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_HEAVY", _side], [["AntiAir", 1, 20], ["Armored", 2, 80]]];
 missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_AIR", _side], [["Air", 1, 40]]];
 
 missionNamespace setVariable [format["CTI_SQUADS_%1_TOWN_DEFENSE", _side], ["Infantry", "Motorized"]];
 
+//***************************************************************************************************************************************
+//														Infantry Troops																	*
+//***************************************************************************************************************************************
 //Infantry setup for the AI groups
 units_infantry = [];
 inf_to_add = [];
@@ -186,11 +189,9 @@ kind_wheeled pushBack "MotorizedT0";
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	mot_to_add = [[format["%1LIB_SOV_M3_Halftrack", _sid], 1, 40]];
-	mot_to_add pushBack [format["%1LIB_Scout_M3", _sid], 1, 40];
+	mot_to_add = [[format["%1LIB_Scout_M3", _sid], 1, 40]];
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		mot_to_add = [[format["%1LIB_SOV_M3_Halftrack_w", _sid], 1, 40]];
-		mot_to_add pushBack [format["%1LIB_Scout_m3_w", _sid], 1, 40];
+		mot_to_add = [[format["%1LIB_Scout_m3_w", _sid], 1, 40]];
 	};
 	units_wheeled = [];
 	wheeled_auto = [];
@@ -210,9 +211,11 @@ kind_wheeled pushBack "MotorizedT1";
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	mot_to_add = [[format["%1LIB_SdKfz251_captured_FFV", _sid], 1, 40]];
+	mot_to_add = [[format["%1LIB_SOV_M3_Halftrack", _sid], 1, 40]];
+	mot_to_add pushBack [format["%1LIB_SdKfz251_captured_FFV", _sid], 1, 40];
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		mot_to_add = [[format["%1LIB_SdKfz251_captured_FFV_w", _sid], 1, 40]];
+		mot_to_add = [[format["%1LIB_SOV_M3_Halftrack_w", _sid], 1, 40]];
+		mot_to_add pushBack [format["%1LIB_SdKfz251_captured_FFV_w", _sid], 1, 40];
 	};
 	units_wheeled append mot_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {wheeled_auto append mot_to_add;};
@@ -573,5 +576,47 @@ _s pushBack [];
 kind_air pushBack "AirAll";
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\squads\squad_SOV.sqf", format["generated squads: [%1] ", count _v]] call CTI_CO_FNC_Log};
+
+//--- Those are used by the commander to determine the kind of unit an AI team has
+if(count kind_infantry > 0) then {
+	if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_INFANTRY", _side]}) then {
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_INFANTRY", _side], kind_infantry];
+	} else {
+		{
+			kind_infantry pushBackUnique _x;
+		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_INFANTRY", _side]);
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_INFANTRY", _side], kind_infantry];
+	};
+};
+if(count kind_wheeled > 0) then {
+	if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_LIGHT", _side]}) then {
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_LIGHT", _side], kind_wheeled];
+	} else {
+		{
+			kind_wheeled pushBackUnique _x;
+		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_LIGHT", _side]);
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_LIGHT", _side], kind_wheeled];
+	};
+};
+if(count kind_tracked > 0) then {
+	if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_HEAVY", _side]}) then {
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_HEAVY", _side], kind_tracked];
+	} else {
+		{
+			kind_tracked pushBackUnique _x;
+		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_HEAVY", _side]);
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_HEAVY", _side], kind_tracked];
+	};
+};
+if(count kind_air > 0) then {
+	if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_AIR", _side]}) then {
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], kind_air];
+	} else {
+		{
+			kind_air pushBackUnique _x;
+		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_AIR", _side]);
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], kind_air];
+	};
+};
 
 [_side, _v, _t, _p, _f, _m, _c, _s] call compile preprocessFileLineNumbers "Common\Config\Squads\Squads_Set.sqf";

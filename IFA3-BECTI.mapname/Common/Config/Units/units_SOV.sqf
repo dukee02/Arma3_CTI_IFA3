@@ -298,11 +298,9 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		_c pushBack format["%1LIB_SOV_M3_Halftrack_w", _sid];
 		_c pushBack format["%1LIB_Scout_M3_FFV_w", _sid];
 		_c pushBack format["%1LIB_Scout_m3_w", _sid];
 	};
-	_c pushBack format["%1LIB_SOV_M3_Halftrack", _sid];
 	_c pushBack format["%1LIB_Scout_M3", _sid];
 	_c pushBack format["%1LIB_Scout_M3_FFV", _sid];
 	
@@ -348,9 +346,11 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SdKfz251_captured_w", _sid];
 		_c pushBack format["%1LIB_SdKfz251_captured_FFV_w", _sid];
+		_c pushBack format["%1LIB_SOV_M3_Halftrack_w", _sid];
 	};
 	_c pushBack format["%1LIB_SdKfz251_captured", _sid];
 	_c pushBack format["%1LIB_SdKfz251_captured_FFV", _sid];
+	_c pushBack format["%1LIB_SOV_M3_Halftrack", _sid];
 	//_c pushBack format["%1LIB_US6_Tent", _sid];
 	//_c pushBack format["%1LIB_US6_Tent_Cargo", _sid];
 	//_c pushBack format["%1LIB_US6_Open_Cargo", _sid];

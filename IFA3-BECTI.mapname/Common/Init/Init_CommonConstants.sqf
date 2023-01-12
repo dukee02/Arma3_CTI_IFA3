@@ -269,10 +269,10 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_LEVEL_TRACKED') then {CTI_ECONOMY_LEVEL_TRACKED = 10};
 	if (isNil 'CTI_ECONOMY_LEVEL_AIR') then {CTI_ECONOMY_LEVEL_AIR = 10};
 	if (isNil 'CTI_ECONOMY_LEVEL_NAVAL') then {CTI_ECONOMY_LEVEL_NAVAL = 10};
-	if (isNil 'CTI_ECONOMY_LEVEL_DEFENSE') then {CTI_ECONOMY_LEVEL_DEFENSE = 3};
-	if (CTI_ECONOMY_LEVEL_DEFENSE > 3) then {CTI_ECONOMY_LEVEL_DEFENSE = 3};
+	if (isNil 'CTI_ECONOMY_LEVEL_DEFENSE') then {CTI_ECONOMY_LEVEL_DEFENSE = 10};
 	if (isNil 'CTI_ECONOMY_UPGRADE_TIMECAP') then {CTI_ECONOMY_UPGRADE_TIMECAP = 600};
 	if (isNil 'CTI_ECONOMY_TIME_MULTI') then {CTI_ECONOMY_TIME_MULTI = 2};
+	if (isNil 'CTI_FACTORY_LEVEL_PRESET') then {CTI_FACTORY_LEVEL_PRESET = 0};
 	if (isNil 'CTI_ECONOMY_LEVEL_PRESET') then {CTI_ECONOMY_LEVEL_PRESET = 0};
 	
 	//setup the default values for the tech tree
@@ -612,9 +612,9 @@ with missionNamespace do {
 	} else {
 		CTI_VEHICLES_BOUNTY = CTI_VEHICLES_BOUNTY/100;
 	};
-	if (isNil 'CTI_VEHICLES_AIR_FFAR') then {CTI_VEHICLES_AIR_FFAR = 2}; //--- FFAR Rockets availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
-	if (isNil 'CTI_VEHICLES_AIR_AA') then {CTI_VEHICLES_AIR_AA = 2}; //--- AA Missiles availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
-	if (isNil 'CTI_VEHICLES_AIR_AT') then {CTI_VEHICLES_AIR_AT = 2}; //--- AT Missiles availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
+	if (isNil 'CTI_VEHICLES_AIR_FFAR') then {CTI_VEHICLES_AIR_FFAR = 10}; //--- basic Rockets/Bombs availability (-1: Disabled, 0-9: max Level, 10: full, autodetected)
+	if (isNil 'CTI_VEHICLES_AIR_AA') then {CTI_VEHICLES_AIR_AA = 10}; //--- AA Missiles availability (-1: Disabled, 0-9: max Level, 10: full, autodetected)
+	if (isNil 'CTI_VEHICLES_AIR_AT') then {CTI_VEHICLES_AIR_AT = 10}; //--- AT Missiles availability (-1: Disabled, 0-9: max Level, 10: full, autodetected)
 	if (isNil 'CTI_VEHICLES_AIR_CM') then {CTI_VEHICLES_AIR_CM = 2}; //--- Countermeasures availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
 	if (isNil 'CTI_VEHICLES_EMPTY_TIMEOUT') then {CTI_VEHICLES_EMPTY_TIMEOUT = 900};
 	if (isNil 'CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX') then {CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX = 2}; //--- Maximum amount of Independent Salvage Trucks which may be present per side

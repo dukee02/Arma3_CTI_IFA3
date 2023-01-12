@@ -46,6 +46,8 @@ while {true} do {
 				((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 500100) lnbSetValue [[((lnbSize 500100) select 0)-1, 0], _i];
 			};
 		};
+		
+		["VIOC_TEST_DEBUG", "FILE: Client\GUI\GUI_VoteMenu.sqf", format["List preset: <%1>", _list_present]] call CTI_CO_FNC_Log;
 	};
 	
 	if ((((uiNamespace getVariable "cti_dialog_ui_votemenu") displayCtrl 500100) lnbText [0, 1]) != str(_voteArray select 0)) then { //--- AI Commander

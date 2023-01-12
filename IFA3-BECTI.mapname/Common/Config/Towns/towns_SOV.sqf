@@ -153,11 +153,11 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 _matrix_cnt = [2, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	WHEELED_LIGHT = [[format["%1LIB_Scout_M3", _sid],1],[format["%1LIB_Scout_M3", _sid],1]];
-	WHEELED_HEAVY = [[format["%1LIB_SOV_M3_Halftrack", _sid],1],[format["%1LIB_SOV_M3_Halftrack", _sid],1]];
+	WHEELED_LIGHT = [[format["%1LIB_Scout_M3", _sid],1]];
+	WHEELED_HEAVY = [[format["%1LIB_Scout_M3", _sid],1],[format["%1LIB_Scout_M3", _sid],1]];
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		WHEELED_LIGHT = [[format["%1LIB_Scout_m3_w", _sid],1],[format["%1LIB_Scout_m3_w", _sid],1]];
-		WHEELED_HEAVY = [[format["%1LIB_SOV_M3_Halftrack_w", _sid],1],[format["%1LIB_SOV_M3_Halftrack_w", _sid],1]];
+		WHEELED_LIGHT = [[format["%1LIB_Scout_m3_w", _sid],1]];
+		WHEELED_HEAVY = [[format["%1LIB_Scout_m3_w", _sid],1],[format["%1LIB_Scout_m3_w", _sid],1]];
 	};
 };
 

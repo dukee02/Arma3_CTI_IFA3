@@ -254,12 +254,10 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		_c pushBack format["%1LIB_SOV_M3_Halftrack_w", _sid];
 		_c pushBack format["%1LIB_Scout_M3_FFV_w", _sid];
 		_c pushBack format["%1LIB_Scout_m3_w", _sid];
 		_c pushBack format["%1LIB_Willys_MB_Ambulance_w", _sid];	//medic
 	};
-	_c pushBack format["%1LIB_SOV_M3_Halftrack", _sid];
 	_c pushBack format["%1LIB_Scout_M3", _sid];
 	_c pushBack format["%1LIB_Scout_M3_FFV", _sid];
 	_c pushBack format["%1LIB_Willys_MB_Ambulance", _sid];			//medic
@@ -271,9 +269,11 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SdKfz251_captured_w", _sid];
 		_c pushBack format["%1LIB_SdKfz251_captured_FFV_w", _sid];
+		_c pushBack format["%1LIB_SOV_M3_Halftrack_w", _sid];
 	};
 	_c pushBack format["%1LIB_SdKfz251_captured", _sid];
 	_c pushBack format["%1LIB_SdKfz251_captured_FFV", _sid];
+	_c pushBack format["%1LIB_SOV_M3_Halftrack", _sid];
 	//_c pushBack format["%1LIB_US6_Tent", _sid];
 	//_c pushBack format["%1LIB_US6_Tent_Cargo", _sid];
 	//_c pushBack format["%1LIB_US6_Open_Cargo", _sid];
