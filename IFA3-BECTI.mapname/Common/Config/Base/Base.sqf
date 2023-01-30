@@ -271,18 +271,8 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 	_tiers pushBack 		_tech_level;
-	
-	//class 	csa38_GrW34;
-	//class 	CSA38_MG34t;
-	//class 	CSA38_MG34t4;
-	//class 	CSA38_MG34t3;
-	//class 	CSA38_MG34t2;
 };
 if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-	};
-	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-	};
 	if(CTI_IFA3_NEW == 1) then {
 		_headers pushBack 		"Maxim M30 low";
 		_classes pushBack 		format["%1LIB_Maxim_M30_Deployed", _sid];
@@ -390,22 +380,8 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"AA";
 	_tiers pushBack 		_tech_level;
-	
-	_headers pushBack 		"leFH18";
-	_classes pushBack 		format["%1LIB_leFH18", _sid];
-	_prices pushBack 		2000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
-	_headers pushBack 		"leFH18 AT";
-	_classes pushBack 		format["%1LIB_leFH18_AT", _sid];
-	_prices pushBack 		2000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
 };
-if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {	
+if(CTI_GER_SIDE != (_side) call CTI_CO_FNC_GetSideID) then {
 	_headers pushBack 		"61k (AA)";
 	_classes pushBack 		format["%1LIB_61k", _sid];
 	_prices pushBack 		2000;
@@ -413,28 +389,21 @@ if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_categories pushBack 	"AA";
 	_tiers pushBack 		_tech_level;
 };
-if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	
-	if(CTI_IFA3_NEW == 0) then {
-		_headers pushBack 		"61k (AA)";
-		_classes pushBack 		format["%1LIB_61k", _sid];
-		_prices pushBack 		2000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"AA";
-		_tiers pushBack 		_tech_level;
-	};
-};
-if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	
-	if(CTI_IFA3_NEW == 0) then {
-		_headers pushBack 		"61k (AA)";
-		_classes pushBack 		format["%1LIB_61k", _sid];
-		_prices pushBack 		2000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"AA";
-		_tiers pushBack 		_tech_level;
-	};
-};
+
+//Heavy Arty for ALL
+_headers pushBack 		"leFH18";
+_classes pushBack 		format["%1LIB_leFH18", _sid];
+_prices pushBack 		2000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_tiers pushBack 		_tech_level;
+
+_headers pushBack 		"leFH18 AT";
+_classes pushBack 		format["%1LIB_leFH18_AT", _sid];
+_prices pushBack 		2000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+_tiers pushBack 		_tech_level;
 
 //Update the calculated max upgrade level
 if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
@@ -629,7 +598,7 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_categories pushBack 	"Defense";
 	_tiers pushBack 		_tech_level;
 };
-if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
+if(CTI_GER_SIDE != (_side) call CTI_CO_FNC_GetSideID) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_headers pushBack 		"Zis3 (Winter)";
 		_classes pushBack 		format["%1LIB_Zis3_w", _sid];
@@ -645,14 +614,7 @@ if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_categories pushBack 	"Defense";
 	_tiers pushBack 		_tech_level;
 };
-if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	_headers pushBack 		"Zis3";
-	_classes pushBack 		format["%1LIB_Zis3", _sid];
-	_prices pushBack 		4000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
+if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {	
 	if(CTI_IFA3_NEW > 0) then {
 		_headers pushBack 		"M45 Quadmount";
 		_classes pushBack 		format["%1LIB_M45_Quadmount", _sid];
@@ -662,14 +624,7 @@ if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 		_tiers pushBack 		_tech_level;
 	};
 };
-if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	_headers pushBack 		"Zis3";
-	_classes pushBack 		format["%1LIB_Zis3", _sid];
-	_prices pushBack 		4000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
+if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {	
 	if(CTI_IFA3_NEW > 0) then {
 		_headers pushBack 		"M45 Quadmount";
 		_classes pushBack 		format["%1LIB_M45_Quadmount_UK", _sid];
