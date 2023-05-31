@@ -48,3 +48,47 @@ Fixed: Infantry spawn to high an gets injured
 Fixed: AI squads waiting to long for units in base
 Fixed: Town flag positions
 Fixed: persist. gear not working
+
+V2.0.1_2306xx changes from jan 30 - yet
+Added: crew max amount for vehicles (7)
+Added: automatic server restart with info
+Added: automatic AI team disband if fps less than 15
+Added: max amount of vehicles spawn on same location
+Added: Filter in defensemenu
+Added: SV maxcap for spawns 150
+Added: Param for activating auto AI team disbanding
+Added: Save empty vehicles and player funds by ID
+Added: units count in towns
+Added: Artillery can change mode + max range in params
+Added: VAM (Vehicle Appearance Module)
+Added: mission build .bat
+Changed: Option to enable only special salvager units
+Changed: Town vehicles spawn heading north now
+Changed: Desc and values "TOWNS: Protection Range"
+Changed: only 1 infoline on artyshots
+Changed: updated map template
+Changed: code cleanup - tech matrix changed
+Changed: building near vehicles/men now blocked
+Changed: info if you in restricted area for basse
+Changed: Upgrade descrioption
+Changed: some param default values
+Fixed: error in defensemenu
+Fixed: commander SV and money not loaded
+Fixed: saves won't deleted after mission end
+Fixed: load and save user funds
+Fixed: only one pylon setting can be saved
+Fixed: Stuck in building cam if build on water
+Fixed: vanilla rearm works in CTI
+Fixed: Town capture gets broadcasted
+Fixed: Damage <null> on building hit
+
+Added: MineDetector and calculation of items (WW2)
+Changed: defense price finally gets calculated too (WW2)
+Changed: default VISUAL options
+Changed: moved igiload to the client part
+Changed: Flak36 and Nebelwerfer tier switched
+Fixed: tobruk city SV
+Fixed: wrong dependency for defense T2
+Fixed: cant place defenses
+
+
