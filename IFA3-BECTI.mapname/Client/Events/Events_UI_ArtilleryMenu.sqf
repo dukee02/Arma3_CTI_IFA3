@@ -83,7 +83,7 @@ switch (_action) do {
 				{
 					_modeName = getText (configfile >> "CfgWeapons" >> (_weapon select 0) >> _x >> "displayName");
 					_rangemaxcheck = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> _x >> "maxRange"));
-					if(_rangemaxcheck <= CTI_ARTILLERY_SETUP) then {
+					if(!(["Single", _x] call BIS_fnc_inString) && _rangemaxcheck <= CTI_ARTILLERY_SETUP) then {
 						((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290018) lbAdd str _modeName;
 						((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290018) lbSetValue [_forEachIndex, _forEachIndex];
 						_usable_modes pushBack _x;
