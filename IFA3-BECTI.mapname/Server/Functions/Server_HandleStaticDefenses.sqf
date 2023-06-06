@@ -34,15 +34,7 @@ _side = _this select 1;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
-//_defense_team = _logic getVariable "cti_defensive_team";
 _defense_team = _logic getVariable ["cti_defensive_team", grpNull];
-//check if team exists, if not create a new one
-if (typeName _defense_team == "grpNull") then {
-	_defense_team = createGroup _side;
-	_defense_team setGroupID ["Defense Team"];
-	_defense_team setVariable ["cti_gc_noremove", true];
-	_logic setVariable ["cti_defensive_team", _defense_team];
-};
 _var = missionNamespace getVariable format ["CTI_%1_%2", _side, _structure getVariable "cti_structure_type"];
 _direction = 360 - ((_var select 4) select 0);
 _distance = (_var select 4) select 1;
@@ -72,6 +64,13 @@ while {alive _structure} do {
 			if (alive gunner _x || alive assignedGunner _x) then {
 				_x setVariable ["cti_aman_time_occupied", time];
 			} else {
+				//check if team exists, if not create a new one
+				if (typeName _defense_team == "grpNull") then {
+					_defense_team = createGroup _side;
+					_defense_team setGroupID ["Defense Team"];
+					_defense_team setVariable ["cti_gc_noremove", true];
+					_logic setVariable ["cti_defensive_team", _defense_team];
+				};
 				//--- The static is empty
 				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT) then {
 					_manned = true;
@@ -106,28 +105,8 @@ while {alive _structure} do {
 				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 				
-				if (count _ammo_trucks > 0 || !isNull _nearest) then {_x setVehicleAmmoDef 1; player sidechat "rearmed!"};
+				if (count _ammo_trucks > 0 || !isNull _nearest) then {_x setVehicleAmmoDef 1};	//player sidechat "rearmed!"
 			};
-		};
-
-		if(CTI_BASE_DEFENSES_AIR_DETECTION_MODE == 0) then {
-			//lets check the static scan the sky!
-			_defense = _x;
-			_defense_data = missionNamespace getVariable [format["CTI_%1_%2",_side,(typeOf _x)],["","","",""]];
-			_objects = nearestObjects [_x, ["Air"], CTI_BASE_DEFENSES_AIR_DETECTION_RANGE];
-			_object_cnt = count _objects;
-			if(_object_cnt > 0 && _defense_data select 3 == "AA") then {
-				{
-					_object = _x;		//for a better reading
-					_height = (getPos _object) select 2;
-					if(_height > CTI_BASE_DEFENSES_AIR_DETECTION_HEIGHT) then {
-						_defense reveal _object;
-					};
-				} forEach _objects;
-			};
-			//if (CTI_Log_Level >= CTI_Log_Debug) then {
-				["VIOC_DEBUG", "FILE: Server\Functions\Server_HandleStaticDefenses.sqf", format["Scanning the Area <%1> Objects found", _object_cnt]] call CTI_CO_FNC_Log;
-			//};
 		};
 	} forEach _statics;
 	

@@ -17,6 +17,18 @@ class Params {
 		texts[] = {"5min","10 min","15 min","20 min","25 min","30 min","45 min","60 min"};
 		default = 900;
 	};
+	class CTI_PERFORMANCE_CHECK {
+		title = "PERFORMANCE: On active Persistence, log unit infos to .rpt and maybe disband stuck AI teams";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","only Information","Enabled AI disbanding"};
+		default = 1;
+	};
+	class CTI_ADD_MODULE {
+		title = "Modules: Additional Modules to activate";
+		values[] = {0,1,2,3};
+		texts[] = {"Disabled","Igiload","Vehicle Appearance Module","Igiload + VAM"};
+		default = 3;
+	};
 	class SEPARATOR_STARTUP {
 		title = "========================== STARTUP ============================";
 		values[] = {1};
@@ -104,55 +116,55 @@ class Params {
 	class CTI_ECONOMY_LEVEL_GEAR {
 		title = "UPGRADE: Max Level Gear (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_INFANTRY {
 		title = "UPGRADE: Max Level Infantry (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_WHEELED {
 		title = "UPGRADE: Max Level Wheeled (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_TRACKED {
 		title = "UPGRADE: Max Level Tracked (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_NAVAL {
 		title = "UPGRADE: Max Level Naval (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_AIR {
 		title = "UPGRADE: Max Level Air (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable this units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_FFAR {
 		title = "UNITS_UPGRADE: Aircraft Basic equipment";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No basic Rockets/Bombs","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"No basic Rockets/Bombs","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AA {
 		title = "UNITS_UPGRADE: Aircraft AA Missiles";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No AA Missiles","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"No AA Missiles","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AT {
 		title = "UNITS_UPGRADE: Aircraft advanced AT Missiles";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No advanced AT Missiles","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"No advanced AT Missiles","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	/*class CTI_VEHICLES_AIR_CM {
@@ -164,7 +176,7 @@ class Params {
 	class CTI_ECONOMY_LEVEL_DEFENSE {
 		title = "UPGRADE: Max Level Defense";
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_FACTORY_LEVEL_PRESET {
@@ -456,10 +468,10 @@ class Params {
 		default = 0;
 	};
 	class CTI_ARTILLERY_SETUP {
-		title = "ARTILLERY: Setup";
-		values[] = {-2,-1,0,1,2,3};
-		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
-		default = -1;
+		title = "ARTILLERY: Setup (can make units unusable)";
+		values[] = {-2,-1,5000,10000,15000,20000,30000,40000,120000};
+		texts[] = {"Disabled","Ballistic Computer","max. 5000m","max. 10000m","max. 15000m","max. 20000m","max. 30000m","max. 40000m","near unlimited 120000m"};
+		default = 15000;
 	};
 	class CTI_ARTILLERY_TIMEOUT {
 		title = "ARTILLERY: Delay between each fire mission (if Arty not Disabled or with Ballistic Computer)";
@@ -586,9 +598,9 @@ class Params {
 		default = 2;
 	};
 	class CTI_TOWNS_BUILD_PROTECTION_RANGE {
-		title = "TOWNS: Protection Range";
-		values[] = {0,50,100,150,200,250,300,350,400,450,500};
-		texts[] = {"0m","50m","100m","150m","200m","250m","300m","350m","400m","450m","500m"};
+		title = "TOWNS: Protection Range for Base building";
+		values[] = {0,100,250,500,750,1000,1250,1500};
+		texts[] = {"0m","100m","250m","500m","750m","1000m","1250m","1500m"};
 		default = 0;
 	};
 	class CTI_TOWNS_ACTIVE_TIME {
@@ -698,6 +710,12 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"Disabled - needed if you want to transport AI Teams","Enabled (default)"};
 		default = 1;
+	};
+	class CTI_SALVAGE_SPECIAL {
+		title = "SPECIAL: Enable Rescue Vehicle as Salvager if some there";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","Enabled","Enabled with siren"};
+		default = 0;
 	};
 	class CTI_Log_Level {
 		title = "LOG: Set level of Logging";

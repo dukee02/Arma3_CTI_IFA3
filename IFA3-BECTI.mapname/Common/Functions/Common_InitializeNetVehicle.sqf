@@ -40,6 +40,10 @@ _marker_type = "";
 _marker_size = [1,1];
 _marker_color = CTI_P_SideColor;
 
+//if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["DEBUG", "FILE: Common\Functions\Common_InitializeNetVehicle.sqf", format["Attempting to perform net initialization of vehicle [%1] on side [%2]", typeOf _vehicle, _side]] call CTI_CO_FNC_Log;
+//};
+
 //--- Perform general operations
 _special = _vehicle getVariable "cti_spec";
 if (isNil '_special') then { _special = [] };
@@ -66,13 +70,13 @@ if (CTI_SPECIAL_MEDICALVEHICLE in _special) then { //--- Medical vehicle.
 	_marker_type = CTI_P_MarkerPrefix+"med";
 };
 
-if (_classname in CTI_VEHICLES_HOOKERS) then { //--- Revamped A2  Airlift
+/*if (_classname in CTI_VEHICLES_HOOKERS) then { //--- Revamped A2  Airlift
 	[_vehicle] ExecVM 'Client\Module\ZetaCargo\Zeta_AddAction.sqf';
 };
 
 if (_classname in (CTI_VEHICLES_HOOKERS_EX)) then {
 	_vehicle addAction ["<t color='#86F078'>Hook (Main)</t>", "Client\Actions\Action_HookMenu.sqf", "", 99, false, true, "", "alive _target && local _target && _this == driver _target"]
-};
+};*/
 
 //--- Bypass DLC restrictions
 _ownsKarts = if (288520 in getDLCs 1) then {true} else {false};

@@ -168,7 +168,7 @@ switch (_action) do {
 				_vehicles = [_selected, false] call CTI_CO_FNC_GetTeamVehicles;
 				_units = (units _selected) call CTI_CO_FNC_GetLiveUnits;
 				
-				{_x setDammage 1} forEach (_vehicles + _units);
+				{_x setDamage 1} forEach (_vehicles + _units);
 			};
 		};
 	};

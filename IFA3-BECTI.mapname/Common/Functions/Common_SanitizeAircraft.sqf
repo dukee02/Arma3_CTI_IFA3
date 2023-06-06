@@ -37,7 +37,7 @@ _side = _this select 1;
 
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 if(count _upgrades == 0) then {_upgrades = [10,10,10,10,10,10,10,10,10,10,10,10,10,10]};
-
+/* //deactivated because we use pylons now for all other units we set them in techtree to match!
 //--- We check the FFAR loadout 
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") do {
 	//case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR};//--- Remove
@@ -66,7 +66,7 @@ switch (missionNamespace getVariable "CTI_VEHICLES_AIR_AA") do {
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_CM") do {
 	case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftCM};//--- Remove
 	case 1: {if (_upgrades select CTI_UPGRADE_AIR_CM < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftCM}};//--- Remove if not yet ugpraded
-};
+};*/
 
 _phylon_cnt = 1;
 {
@@ -97,7 +97,7 @@ _phylon_cnt = 1;
 			};
 		};
 	} else {
-		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Get magazine <%1> with no data", _x]] call CTI_CO_FNC_Log};
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Get magazine of <%1> with no data <%2>", _vehicle, _x]] call CTI_CO_FNC_Log};
 	};
 	_phylon_cnt = _phylon_cnt + 1;
 } forEach getPylonMagazines _vehicle;

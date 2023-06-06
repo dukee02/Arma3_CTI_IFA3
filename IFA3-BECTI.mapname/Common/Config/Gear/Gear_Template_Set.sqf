@@ -9,7 +9,7 @@ Gear saves like:
 [""b_assaultpack_mcamo"",[]]],
 [""h_helmetb_light"",""g_goggles_vr""],
 [["""",""binocular""],
-[""itemmap"","""",""itemradio"",""itemcompass"",""itemwatch""]]]
+[""itemmap"","""",""itemradio"",""itemcompass"",""itemwatch""]]],0,151707]]
 */
 private ["_faction", "_templates"];
 
@@ -27,12 +27,14 @@ _formated = [];
 	_nils = [];
 	
 	{
-		_var = missionNamespace getVariable _x;
-		if !(isNil '_var') then {
-			_cost = _cost + ((_var select 0) select 1);
-			if (((_var select 0) select 0) > _upgrade) then {_upgrade = (_var select 0) select 0};
-		} else {
-			_nils pushBack _x;
+		if(_x != "" && _x != "binocular") then {
+			_var = missionNamespace getVariable _x;
+			if !(isNil '_var') then {
+				_cost = _cost + ((_var select 0) select 1);
+				if (((_var select 0) select 0) > _upgrade) then {_upgrade = (_var select 0) select 0};
+			} else {
+				_nils pushBack _x;
+			};
 		};
 	} forEach (_x call CTI_CO_FNC_ConvertGearToFlat);
 	

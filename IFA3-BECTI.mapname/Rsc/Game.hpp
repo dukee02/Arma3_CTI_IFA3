@@ -4,11 +4,11 @@ respawnDelay = 3;
 respawnDialog = false;
 
 //--- Require briefing.html to show up.
-onLoadName = "VIO-BECTI-IFA3 V2.0";
+onLoadName = "VIO-BECTI-IFA3 V2.0.1";
 onLoadMissionTime = false;
-onLoadMission = "VIO-BECTI-IFA3 V2.0_230109";
+onLoadMission = "VIO-BECTI-IFA3 V2.0.1_230606";
 
-briefingName = "VIO-BECTI-IFA3 V2.0";
+briefingName = "VIO-BECTI-IFA3 V2.0.1";
 
 //--- ArmA 3 Specifics
 dev = "Benny, dukee";

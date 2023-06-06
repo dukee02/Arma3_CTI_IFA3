@@ -60,14 +60,10 @@ Added: Param for activating auto AI team disbanding
 Added: Save empty vehicles and player funds by ID
 Added: units count in towns
 Added: Artillery can change mode + max range in params
-Added: VAM (Vehicle Appearance Module)
-Added: mission build .bat
 Changed: Option to enable only special salvager units
 Changed: Town vehicles spawn heading north now
 Changed: Desc and values "TOWNS: Protection Range"
 Changed: only 1 infoline on artyshots
-Changed: updated map template
-Changed: code cleanup - tech matrix changed
 Changed: building near vehicles/men now blocked
 Changed: info if you in restricted area for basse
 Changed: Upgrade descrioption
@@ -92,3 +88,10 @@ Fixed: wrong dependency for defense T2
 Fixed: cant place defenses
 
 
+x Changed: standardize Base Units config		(feb 21)
+x Changed: basic base units coding				(Apr 12)
+x Changed: code cleanup - tech matrix changed  (mar 1)		(Apr 25)
+x Added: VAM (Vehicle Appearance Module)		(May 10)
+-> Added: mission build .bat					(Apr 19)
+-> Changed: updated map template				(feb 23)
+-> parameters check
