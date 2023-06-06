@@ -97,6 +97,7 @@ CTI_CO_FNC_GetCalculatedItemPrize = compileFinal preprocessFileLineNumbers "Comm
 CTI_CO_FNC_ScanSkyForPlanes = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ScanSkyForPlanes.sqf";
 CTI_CO_FNC_DropParatroopers = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DropParatroopers.sqf";
 WW2_PARADROP = compile preprocessFileLineNumbers "WW2\Core_f\WW2_System_Curator_F\waypoints\fn_wpParadrop.sqf";
+CTI_CO_FNC_DisbandTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DisbandTeam.sqf";
 
 CTI_CO_CustomIterator = 0;
 
