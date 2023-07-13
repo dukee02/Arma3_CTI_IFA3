@@ -271,17 +271,7 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	TRACKED_LIGHT = [[format["%1LIB_M3A3_Stuart", _sid],1],[format["%1LIB_M3A3_Stuart", _sid],1]];
 	TRACKED_MEDIUM = [[format["%1LIB_M5A1_Stuart", _sid],1],[format["%1LIB_M5A1_Stuart", _sid],1]];
-	if(CTI_IFA3_NEW > 0) then {
-		TRACKED_HEAVY = [[format["%1LIB_M4E5", _sid],1],[format["%1LIB_M4E5", _sid],1]];
-	} else {
-		TRACKED_HEAVY = [[format["%1LIB_M4A3_76", _sid],1],[format["%1LIB_M4A3_76", _sid],1]];
-	};
-	TRACKED_HEAVY = [[format["%1LIB_M4E5", _sid],1],[format["%1LIB_M4E5", _sid],1]];
-	if(CTI_CAMO_ACTIVATION == 1) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			TRACKED_HEAVY = [[format["%1LIB_M4E5_w", _sid],1],[format["%1LIB_M4E5_w", _sid],1]];
-		};
-	};
+	TRACKED_HEAVY = [[format["%1LIB_M4A3_76", _sid],1],[format["%1LIB_M4A3_76", _sid],1]];
 };
 
 _matrix_cnt = [_matrix_cnt+ 1, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -289,11 +279,7 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	TRACKED_LIGHT = [[format["%1LIB_M3A3_Stuart", _sid],1],[format["%1LIB_M3A3_Stuart", _sid],1]];
 	TRACKED_MEDIUM = [[format["%1LIB_M5A1_Stuart", _sid],1],[format["%1LIB_M5A1_Stuart", _sid],1]];
-	if(CTI_IFA3_NEW > 0) then {
-		TRACKED_HEAVY = [[format["%1LIB_M4A3_76", _sid],1],[format["%1LIB_M4T34_Calliope", _sid],1]];
-	} else {
-		TRACKED_HEAVY = [[format["%1LIB_M4A3_76_HVSS", _sid],1],[format["%1LIB_M4A3_76_HVSS", _sid],1]];
-	};
+	TRACKED_HEAVY = [[format["%1LIB_M4A3_76_HVSS", _sid],1],[format["%1LIB_M4A3_76_HVSS", _sid],1]];
 };
 
 if (isNil {missionNamespace getVariable format["%1TRACKED_SQ_LIGHT", _tag]}) then {
@@ -356,14 +342,6 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	ANTI_AIR = [[format["%1LIB_US_Willys_MB_M1919", _sid],1],[format["%1LIB_US_Willys_MB_M1919", _sid],1]];
-};
-
-_matrix_cnt = [4, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		ANTI_AIR = [[format["%1LIB_US_M16_Halftrack", _sid],1]];
-	};
 };
 
 if (isNil {missionNamespace getVariable format["%1SQ_ANTI_AIR", _tag]}) then {

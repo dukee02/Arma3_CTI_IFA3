@@ -70,18 +70,22 @@ if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_AT) then {
 //*********************************************************************************************************************************************
 //														Unguided rockets																	  *
 //*********************************************************************************************************************************************
-//*****************************************************LEVEL*1****************************************************************************
-/*_tech_level = 1;
+if(CTI_SPE_DLC >= 1) then {
+	//*****************************************************LEVEL*1****************************************************************************
+	_tech_level = 1;
 
-//_c pushBack "PylonRack_12Rnd_missiles";					//DAR 				<Unguided rockets with high-explosive warhead>
+	_c pushBack "SPE_3Rnd_M8_P47";					//M8 Rockets <Unguided rockets with high-explosive warhead>
+	_c pushBack "SPE_60Rnd_M8";						//M8 Rockets <>
+	_c pushBack "SPE_60Rnd_M8_direct";				//M8 Rockets <>
 
-// set all other vars in a slope
-_cntstart = count _c;
-_cntend = count _d;
-for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
-	_d pushBack "air-to-surface";
-	_m pushBack 100;
-	_u pushBack _tech_level;
+	// set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _d;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_d pushBack "air-to-surface";
+		_m pushBack 100;
+		_u pushBack _tech_level;
+	};
 };
 
 //Update the calculated max upgrade level
@@ -90,7 +94,7 @@ if((_tech_level) > _upgrade_levels_east select CTI_UPGRADE_AIR_FFAR) then {
 };
 if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_FFAR) then {
 	_upgrade_levels_west set [CTI_UPGRADE_AIR_FFAR, (_tech_level)];
-};*/
+};
 
 //*********************************************************************************************************************************************
 //														bomb																				  *
@@ -98,7 +102,16 @@ if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_FFAR) then {
 //*****************************************************LEVEL*1****************************************************************************
 _tech_level = 1;
 
-_c pushBack "LIB_1Rnd_SC50";							//SC-50
+if(CTI_IFA_ADDON >= 1) then {
+	_c pushBack "LIB_1Rnd_SC50";					//SC-50 <>
+};
+
+if(CTI_SPE_DLC >= 1) then {
+	_c pushBack "SPE_1Rnd_Timed_Short_SC50";		//Impact-Delay 2s, SC-50 <50 kg, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_Timed_Long_SC50";			//Impact-Delay 6s, SC-50 <50 kg, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_SC50";					//SC-50 <50 kg, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_NC50";					//NC-50 <50 kg, Smoke, unguided bomb>
+};
 
 // set all other vars in a slope
 _cntstart = count _c;
@@ -112,8 +125,18 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 //*****************************************************LEVEL*2****************************************************************************
 _tech_level = 2;
 
-_c pushBack "LIB_1Rnd_FAB250";							//FAB-250 bomb
-_c pushBack "LIB_1Rnd_SC250";							//SC-250
+if(CTI_IFA_ADDON >= 1) then {
+	_c pushBack "LIB_1Rnd_FAB250";						//FAB-250 bomb
+	_c pushBack "LIB_1Rnd_SC250";						//SC-250
+};
+
+if(CTI_SPE_DLC >= 1) then {
+	_c pushBack "SPE_1Rnd_Timed_Short_SC250";			//Impact-Delay 2s, SC-250 <250 kg, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_Timed_Long_SC250";			//Impact-Delay 6s, SC-250 <250 kg, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_SC250";						//SC-250 <250 kg, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_NC250";						//NC-250 <250 kg, Smoke, unguided bomb>
+	_c pushBack "SPE_1Rnd_M47_WP";						//100 lb Bomb (WP) <100 lb, white-phosphorus, unguided bomb>
+};
 
 // set all other vars in a slope
 _cntstart = count _c;
@@ -127,8 +150,19 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 //*****************************************************LEVEL*3****************************************************************************
 _tech_level = 3;
 
-_c pushBack "LIB_1Rnd_US_500lb";						//500 lb Bomb
-_c pushBack "LIB_1Rnd_SC500";							//SC-500
+if(CTI_IFA_ADDON >= 1) then {
+	_c pushBack "LIB_1Rnd_US_500lb";						//500 lb Bomb
+	_c pushBack "LIB_1Rnd_SC500";							//SC-500
+};
+
+if(CTI_SPE_DLC >= 1) then {
+	_c pushBack "SPE_1Rnd_US_Timed_Short_500lb";			//Impact-Delay 2s, 500 lb Bomb <500lb, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_US_Timed_Long_500lb";				//Impact-Delay 6s, 500 lb Bomb <500lb, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_Timed_Short_SC500";				//Impact-Delay 2s, SC-500 <500 kg, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_Timed_Long_SC500";				//Impact-Delay 6s, SC-500 <500 kg, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_US_500lb";						//500 lb Bomb <500lb, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_SC500";							//SC-500 <500 kg, high-explosive, unguided bomb>
+};
 
 // set all other vars in a slope
 _cntstart = count _c;
@@ -137,6 +171,24 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_d pushBack "bomb";
 	_m pushBack 100;
 	_u pushBack _tech_level;
+};
+
+if(CTI_SPE_DLC >= 1) then {
+	//*****************************************************LEVEL*4****************************************************************************
+	_tech_level = 4;
+
+	_c pushBack "SPE_1Rnd_US_Timed_Short_1000lb";			//Impact-Delay 2s, 1,000 lb Bomb <1000lb, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_US_Timed_Long_1000lb";			//Impact-Delay 6s, 1,000 lb Bomb <1000lb, high-explosive, unguided bomb>
+	_c pushBack "SPE_1Rnd_US_1000lb";						//1,000 lb Bomb <1000lb, high-explosive, unguided bomb>
+
+	// set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _d;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_d pushBack "bomb";
+		_m pushBack 100;
+		_u pushBack _tech_level;
+	};
 };
 
 //Update the calculated max upgrade level
@@ -150,17 +202,22 @@ if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_FFAR) then {
 //*********************************************************************************************************************************************
 //														weapon pod																		  *
 //*********************************************************************************************************************************************
+if(CTI_SPE_DLC >= 1) then {
+	_tech_level = 1;
 
-//_c pushBack "PylonWeapon_300Rnd_20mm_shells";		//Twin Cannon 20mm <20mm twin-cannon weapon pod>
+	_c pushBack "SPE_400Rnd_MG131";					//13 mm MG 131 <13 mm Machine gun suitable for air targets>
+	_c pushBack "SPE_250Rnd_MG151";					//20 mm MG 151/20 <20 mm Autocannon suitable for air and lightly armored ground targets. Mixed AP, HE, and Tracer belts.>
+	_c pushBack "SPE_425rnd_M2_P47";				//.50 Cal. MG AN/M2 <12.7 mm Machine gun suitable for air and lightly armored ground targets. AP Incendiary Tracer belt>
 
-// set all other vars in a slope
-/*_cntstart = count _c;
-_cntend = count _d;
-for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
-	_d pushBack "weapon pod";
-	_m pushBack 100;
-	_u pushBack _tech_level;
-};*/
+	// set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _d;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_d pushBack "weapon pod";
+		_m pushBack 100;
+		_u pushBack _tech_level;
+	};
+};
 
 //*********************************************************************************************************************************************
 //														special-purpose																		  *

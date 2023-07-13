@@ -285,61 +285,6 @@ _c pushBack "Armored";
 _s pushBack [];
 kind_tracked pushBack format["ArmoredT%1", _level];
 
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_UK_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
-
-	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-		if(CTI_IFA3_NEW > 0) then {
-			arm_to_add = [[format["%1LIB_M3A3_Stuart_UK", _sid], 1, 40]];
-			if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-				arm_to_add = [[format["%1LIB_M3A3_Stuart_UK_W", _sid], 1, 40]];
-			};
-			if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-				arm_to_add = [[format["%1LIB_M3A3_Stuart_DR", _sid], 1, 40]];
-			};
-		};
-		units_tracked append arm_to_add;
-		tracked_auto append arm_to_add;
-	};
-
-	_v pushBack format["ArmoredT%1", _level];
-	_t pushBack "M3A3_Stuart (UK)";
-	_p pushBack arm_to_add;
-	_f pushBack CTI_HEAVY;
-	_m pushBack 500;
-	_c pushBack "Armored";
-	_s pushBack [];
-	kind_tracked pushBack format["ArmoredT%1", _level];
-
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-		if(CTI_IFA3_NEW > 0) then {
-			arm_to_add = [[format["%1LIB_M5A1_Stuart_UK", _sid], 1, 40]];
-			if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-				arm_to_add = [[format["%1LIB_M5A1_Stuart_UK_W", _sid], 1, 40]];
-			};
-			if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-				arm_to_add = [[format["%1LIB_M5A1_Stuart_DR", _sid], 1, 40]];
-			};
-		};
-		units_tracked append arm_to_add;
-		if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
-	};
-
-	_v pushBack format["ArmoredT%1", _level];
-	_t pushBack "M5A1 Stuart (UK)";
-	_p pushBack arm_to_add;
-	_f pushBack CTI_HEAVY;
-	_m pushBack 500;
-	_c pushBack "Armored";
-	_s pushBack [];
-	kind_tracked pushBack format["ArmoredT%1", _level];
-};
-
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
@@ -376,20 +321,11 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	arm_to_add = [[format["%1LIB_Cromwell_Mk4", _sid], 1, 40]];
-	if(CTI_IFA3_NEW > 0) then {
-		arm_to_add pushBack [format["%1LIB_Cromwell_Mk6", _sid], 1, 40];
-	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		arm_to_add = [[format["%1LIB_Cromwell_Mk4_w", _sid], 1, 40]];
-		if(CTI_IFA3_NEW > 0) then {
-			arm_to_add pushBack [format["%1LIB_Cromwell_Mk6_w", _sid], 1, 40];
-		};
 	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		arm_to_add = [[format["%1LIB_Cromwell_Mk4", _sid], 1, 40]];
-		if(CTI_IFA3_NEW > 0) then {
-			arm_to_add pushBack [format["%1LIB_Cromwell_Mk6", _sid], 1, 40];
-		};
 	};
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
@@ -407,18 +343,8 @@ kind_tracked pushBack format["ArmoredT%1", _level];
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		arm_to_add = [[format["%1LIB_Sherman_I", _sid], 1, 40]];
-		arm_to_add pushBack [format["%1LIB_Sherman_IB", _sid], 1, 40];
-	} else {
-		arm_to_add = [[format["%1LIB_UK_Italy_M4A3_75", _sid], 1, 40]];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			arm_to_add = [[format["%1LIB_Sherman_I_w", _sid], 1, 40]];
-			arm_to_add pushBack [format["%1LIB_Sherman_IB_w", _sid], 1, 40];
-		};
-	};
+	arm_to_add = [[format["%1LIB_UK_Italy_M4A3_75", _sid], 1, 40]];
+
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		arm_to_add = [[format["%1LIB_UK_DR_M4A3_75", _sid], 1, 40]];
 	};
@@ -438,16 +364,9 @@ kind_tracked pushBack format["ArmoredT%1", _level];
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		arm_to_add = [[format["%1LIB_IC_Firefly", _sid], 1, 60]];
-	} else {
-		arm_to_add = [[format["%1LIB_M4A4_FIREFLY", _sid], 1, 60]];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			arm_to_add = [[format["%1LIB_IC_Firefly_w", _sid], 1, 60]];
-		};
-	};
+
+	arm_to_add = [[format["%1LIB_M4A4_FIREFLY", _sid], 1, 60]];
+	
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
 };
@@ -506,34 +425,12 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 
 _v pushBack format["AntiAirT%1", _level];
 _t pushBack "Willys M1919";
-_p pushBack air_to_add;
+_p pushBack antiair_to_add;
 _f pushBack CTI_AIR;
 _m pushBack 1000;
 _c pushBack "AntiAir";
 _s pushBack [];
 kind_wheeled pushBack format["AntiAirT%1", _level];
-
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_UK_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_cnt = [4, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-		antiair_to_add pushBack [format["%1LIB_UK_M16_Halftrack", _sid], 1, 50];
-	};
-
-	units_antiair append antiair_to_add;
-	if(CTI_FACTORY_LEVEL_PRESET >= _level) then {antiair_auto append antiair_to_add;};
-
-	_v pushBack format["AntiAirT%1", _level];
-	_t pushBack "M16 Halftrack (UK)";
-	_p pushBack air_to_add;
-	_f pushBack CTI_AIR;
-	_m pushBack 1000;
-	_c pushBack "AntiAir";
-	_s pushBack [];
-	kind_wheeled pushBack format["AntiAirT%1", _level];
-};
 
 _v pushBack "AntiAir";
 _t pushBack "AntiAir (Auto)";

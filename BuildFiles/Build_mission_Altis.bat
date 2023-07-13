@@ -15,7 +15,7 @@ set buildpath="D:\Tausch\Programmierung\VIO-BECTI\VIO-BECTI-IFA3"
 ::set sek=%time:~6,2%
 
 set mapname="Altis"
-set missionfloder="IFA3-BECTI.%mapname%"
+set missionfloder="VIO-BECTI-IFA3.%mapname%"
 echo aktuelle Mission wird erstellt unter: "buildpath\%missionfloder%"
 echo copy Client folder
 xcopy "%gitpath%\IFA3-BECTI.mapname\Client" "%buildpath%\%missionfloder%\Client" /E /Y /I
@@ -37,7 +37,7 @@ copy "%gitpath%\IFA3-BECTI.mapname\RSC\Sounds.hpp" "%buildpath%\%missionfloder%\
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Styles.hpp" "%buildpath%\%missionfloder%\RSC\Styles.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Titles.hpp" "%buildpath%\%missionfloder%\RSC\Titles.hpp"
 echo copy Script files
-copy "%gitpath%\IFA3-BECTI.mapname\\Scripts\nre_earplugs.sqf" "%buildpath%\%missionfloder%\\Scripts\nre_earplugs.sqf"
+copy "%gitpath%\IFA3-BECTI.mapname\\Scripts\nre_earplugs.sqf" "%buildpath%\%missionfloder%\Scripts\nre_earplugs.sqf"
 echo copy Server folder
 xcopy "%gitpath%\IFA3-BECTI.mapname\Server" "%buildpath%\%missionfloder%\Server" /E /Y /I
 echo copy VAM folder

@@ -347,22 +347,13 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_Sdkfz251_w", _sid];
 		_c pushBack format["%1LIB_SdKfz251_FFV_w", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_SdKfz251_2_w", _sid];
-		};
 	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		_c pushBack format["%1LIB_DAK_SdKfz251", _sid];
 		_c pushBack format["%1LIB_DAK_SdKfz251_FFV", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_DAK_SdKfz251_2", _sid];
-		};
 	};
 	_c pushBack format["%1LIB_SdKfz251_FFV", _sid];
 	_c pushBack format["%1LIB_SdKfz251", _sid];
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_SdKfz251_2", _sid];
-	};
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -384,25 +375,11 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_SdKfz251_22_w", _sid];
-			_c pushBack format["%1LIB_SdKfz251_23_w", _sid];
-		};
-	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_DAK_SdKfz251_22", _sid];
-			//_c pushBack format["%1LIB_DAK_SdKfz251_23", _sid];
-		};
 		_c pushBack format["%1LIB_DAK_M3_Halftrack", _sid];
 	};
 	_c pushBack format["%1LIB_DAK_Scout_M3", _sid];
 	_c pushBack format["%1LIB_DAK_Scout_M3_FFV", _sid];
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_SdKfz251_22", _sid];
-		_c pushBack format["%1LIB_SdKfz251_23", _sid];
-	};
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -426,20 +403,11 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SdKfz_7_AA_w", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_SdKfz251_W40_w", _sid];
-		};
 	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		_c pushBack format["%1LIB_DAK_SdKfz_7_AA", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_DAK_SdKfz251_W40", _sid];
-		};
 	};
 	_c pushBack format["%1LIB_SdKfz_7_AA", _sid];
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_SdKfz251_W40", _sid];
-	};
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -506,17 +474,15 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_s pushBack "";
 	_d pushBack 0;
 	
-	if(CTI_IFA3_NEW == 0) then {
-		_c pushBack format["%1LIB_SdKfz124", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	};
+	_c pushBack format["%1LIB_SdKfz124", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_HEAVY;
+	_s pushBack "";
+	_d pushBack 0;
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -794,24 +760,6 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 	_building_time = [CTI_FACTORY_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_Ju87_G2", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_AIR;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-};
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
-	_building_time = [CTI_FACTORY_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-	
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_FW190F8_w", _sid];
 		_p pushBack '';
@@ -904,27 +852,25 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	_d pushBack 0;		
 };
 
-//if(CTI_IFA3_NEW >= 0) then {
-	_c pushBack format["CTI_Salvager_%1", _faction];
-	_p pushBack '';
-	_n pushBack 'Salvager Truck';
-	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-	_t pushBack _building_time;
-	_u pushBack _tech_level;
-	_f pushBack CTI_FACTORY_REPAIR;
-	_s pushBack [format["%1LIB_OpelBlitz_Tent_Y_Camo", _sid],"salvager"];
-	_d pushBack 0;
+_c pushBack format["CTI_Salvager_%1", _faction];
+_p pushBack '';
+_n pushBack 'Salvager Truck';
+_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+_t pushBack _building_time;
+_u pushBack _tech_level;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack [format["%1LIB_OpelBlitz_Tent_Y_Camo", _sid],"salvager"];
+_d pushBack 0;
 		
-	_c pushBack format["CTI_Salvager_Independent_%1", _faction];
-	_p pushBack '';
-	_n pushBack 'Salvager Truck';
-	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-	_t pushBack _building_time;
-	_u pushBack _tech_level;
-	_f pushBack CTI_FACTORY_REPAIR;
-	_s pushBack [format["%1LIB_OpelBlitz_Tent_Y_Camo", _sid],"salvager-independent"];
-	_d pushBack 0;
-//};
+_c pushBack format["CTI_Salvager_Independent_%1", _faction];
+_p pushBack '';
+_n pushBack 'Salvager Truck';
+_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+_t pushBack _building_time;
+_u pushBack _tech_level;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack [format["%1LIB_OpelBlitz_Tent_Y_Camo", _sid],"salvager-independent"];
+_d pushBack 0;
 
 //***************************************************************************************************************************************
 //														Ammo Factory																	*

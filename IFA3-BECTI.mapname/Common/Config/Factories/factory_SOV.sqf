@@ -6,15 +6,15 @@ _setupBaseUnits = false;
 
 switch (_side) do {
 	case west: {
-		/*_sid = "VIOC_B_";*/_tag = "WEST_";
-		if(CTI_WEST_AI == CTI_SOV_ID || CTI_WEST_TOWNS == CTI_SOV_ID) then {_setupBaseUnits = true};
+		_sid = "VIOC_B_";_tag = "WEST_";
+		if(CTI_WEST_AI == CTI_UK_ID || CTI_WEST_TOWNS == CTI_UK_ID) then {_setupBaseUnits = true};
 	};
 	case east: {
-		/*_sid = "VIOC_O_";*/_tag = "EAST_";
-		if(CTI_EAST_AI == CTI_SOV_ID || CTI_EAST_TOWNS == CTI_SOV_ID) then {_setupBaseUnits = true};
+		_sid = "VIOC_O_";_tag = "EAST_";
+		if(CTI_EAST_AI == CTI_UK_ID || CTI_EAST_TOWNS == CTI_UK_ID) then {_setupBaseUnits = true};
 	};
 	case resistance: {
-		_sid = "";_tag = "GUER_";
+		_sid = "VIOC_I_";_tag = "GUER_";
 	};
 	default {_sid = "";};
 };
@@ -235,9 +235,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_SOV_M16_Halftrack", _sid];
-	};
 	_c pushBack format["%1LIB_US6_BM13", _sid];
 };
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_LIGHT];
@@ -256,25 +253,6 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _c];
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
 _c = [];
 _matrix_cnt = 0;
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
-
-	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-		_c pushBack format["%1LIB_UniversalCarrier_SOV", _sid];
-	};
-
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			_c pushBack format["%1LIB_M3A3_Stuart_SOV_w", _sid];
-		};
-		_c pushBack format["%1LIB_M3A3_Stuart_SOV", _sid];
-	};
-};
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
 _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 

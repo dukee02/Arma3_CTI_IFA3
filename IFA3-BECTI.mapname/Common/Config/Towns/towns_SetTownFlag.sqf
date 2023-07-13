@@ -7,18 +7,27 @@ switch (missionNamespace getVariable format["CTI_%1FLAG", _side]) do {
 //switch (format["CTI_%1FLAG", _side]) do {
 	case 1: {
 		_texture = "\WW2\Core_t\IF_Decals_t\German\flag_GER_co.paa";
+		if(CTI_SPE_DLC >= 1) then {
+			_texture = "\WW2\SPE_Core_t\Data_t\Flags\flag_GER_co.paa";
+		};
 	};
 	case 2: {
 		_texture = "\WW2\Core_t\IF_Decals_t\Ussr\flag_SU_co.paa";
 	};
 	case 3: {
 		_texture = "\WW2\Core_t\IF_Decals_t\US\flag_USA_co.paa";
+		if(CTI_SPE_DLC >= 1) then {
+			_texture = "\WW2\SPE_Core_t\Data_t\Flags\flag_USA_co.paa";
+		};
 	};
 	case 4: {
 		_texture = "\A3\Data_F\Flags\Flag_uk_CO.paa";
 	};
 	/*case 5: {
 		_texture = "";
+		if(CTI_SPE_DLC >= 1) then {
+			_texture = "\WW2\SPE_Core_t\Data_t\Flags\flag_FFF_co.paa";
+		};
 	};*/
 	default {
 		if(_side == "WEST_") then {

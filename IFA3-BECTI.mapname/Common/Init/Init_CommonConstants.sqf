@@ -35,7 +35,7 @@ CTI_US_ID = 3;
 
 //--- Mod IDs
 CTI_IFA_ID = 0;
-CTI_IFA_NEW_ID = 1;
+CTI_SPE_ID = 1;
 
 CTI_GEAR_TAB_PRIMARY = 0;
 CTI_GEAR_TAB_SECONDARY = 1;
@@ -438,8 +438,8 @@ with missionNamespace do {
 
 //--- Towns: Misc.
 CTI_TOWNS_MARKER_RANGE = 1.0; //--- A town marker is updated (SV) on map if a unit is within the range (town range * coef).
-CTI_TOWNS_OCCUPATION_GROUPS_RATIO = switch (CTI_TOWNS_OCCUPATION) do {case 1: {0.1}; case 2: {0.125}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
-CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.1}; case 2: {0.125}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
+CTI_TOWNS_OCCUPATION_GROUPS_RATIO = switch (CTI_TOWNS_OCCUPATION) do {case 1: {0.1}; case 2: {0.125}; case 3: {0.15}; case 4: {0.2}; default {0.1}}; //--- Determine how many groups may spawn (scales with town value)
+CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.1}; case 2: {0.125}; case 3: {0.15}; case 4: {0.2}; default {0.1}}; //--- Determine how many groups may spawn (scales with town value)
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -522,7 +522,7 @@ with missionNamespace do {
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 2}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_DEPLOY_COST') then {CTI_BASE_HQ_DEPLOY_COST = 100}; //--- The cost needed to deploy the HQ
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
-	//if (isNil 'CTI_BASE_START_TOWN') then {CTI_BASE_START_TOWN = 1}; //--- Remove the spawn locations which are too far away from the towns.
+	if (isNil 'CTI_BASE_START_TOWN') then {CTI_BASE_START_TOWN = 2000}; //--- Remove the spawn locations which are too far away from the towns.
 	if (isNil 'CTI_BASE_STARTUP_PLACEMENT') then {CTI_BASE_STARTUP_PLACEMENT = 4000}; //--- Each side need to be further than x meters
 	if (isNil 'CTI_BASE_WORKERS_LIMIT') then {CTI_BASE_WORKERS_LIMIT = 10}; //--- Maximum amount of workers which may be purchased by a side
 	if (isNil 'CTI_BASE_STRUCTURE_RESELL_RATIO') then {CTI_BASE_STRUCTURE_RESELL_RATIO = 0};	//--- Ratio of building cost to be refunded when sold
@@ -759,7 +759,7 @@ with missionNamespace do {
 		
 	if (isNil 'CTI_WEST_AI') then {CTI_WEST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
 	if (isNil 'CTI_EAST_AI') then {CTI_EAST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
-	if (isNil 'CTI_CAMO_ACTIVATION') then {CTI_CAMO_ACTIVATION = 0};	//--- "Standard", "Winter", "Desert", "All active (Main = Standard)"
+	if (isNil 'CTI_CAMO_ACTIVATION') then {CTI_CAMO_ACTIVATION = 0};	//--- 0 normal camo | 1 winter camo | 2 desert camo | 3 jungle camo | 4 urban camo | 5 maritim camo | 6 special | 7 all
 	if (isNil 'CTI_TOWN_CAMO') then {CTI_TOWN_CAMO = CTI_CAMO_ACTIVATION};
 	
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 15000}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, max. 5000m (can make units unusable),max. 10000m, max. 15000m, max. 20000m, max. 30000m, max. 40000m")
@@ -825,27 +825,34 @@ with missionNamespace do {
 	
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0};
 	
-	if (isNil 'CTI_IFA3_NEW') then {CTI_IFA3_NEW = -1};
-	if(CTI_IFA3_NEW >= 0) then {
+	if (isNil 'CTI_SPE_DLC') then {CTI_SPE_DLC = 0};
+	if (isNil 'CTI_IFA_ADDON') then {CTI_IFA_ADDON = 0};
+	if(CTI_SPE_DLC == 0) then {
 		//if they want to play with ifa3 chack the modversion
-		if (!isClass(configFile >> "CfgVehicles" >> "LIB_M4T34_Calliope")) then {
-			//check if the IFA3_beta version is loaded or the stable
-			CTI_IFA3_NEW = 0;
-			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 found! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+		if (isClass(configFile >> "CfgVehicles" >> "SPE_OpelBlitz_Open")) then {
+			CTI_SPE_DLC = 1;
+			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["Spearhead Version found! <%1>", CTI_SPE_DLC]] call CTI_CO_FNC_Log; };
 		} else {
-			CTI_IFA3_NEW = 1;
-			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 beta Version found! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+			CTI_SPE_DLC = 0;
 		};
-		if (!isClass(configFile >> "CfgVehicles" >> "LIB_US_Willys_MB")) then {
+		if (isClass(configFile >> "CfgVehicles" >> "LIB_US_Willys_MB")) then {
 			//check if the IFA3 version is loaded or no IFA3 is found
-			CTI_IFA3_NEW = -1;
-			if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 configured but not loaded! <%1>", CTI_IFA3_NEW]] call CTI_CO_FNC_Log; };
+			CTI_IFA_ADDON = 1;
+			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["IFA3 found! SPE? <%1>", CTI_SPE_DLC]] call CTI_CO_FNC_Log; };
+		} else {
+			CTI_IFA_ADDON = 0;
+			if(CTI_SPE_DLC == 0) then {
+				if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: common\init\Init_CommonConstants.sqf", format["No valid Mod loaded! <%1>", CTI_SPE_DLC]] call CTI_CO_FNC_Log; };
+			};
 		};
 	};
-	
+	if (isNil 'CTI_IFA_NEW') then {
+		if(CTI_SPE_DLC >= 1) then {CTI_IFA_NEW = 2} else {CTI_IFA_NEW = 0};
+	};
+
 	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 0};
 	//Check when IFA is loaded VIO patch is loaded too?
-	if(CTI_IFA3_NEW >= 0) then {
+	if(CTI_IFA_ADDON >= 1) then {
 		if (isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
 			//check if the VIO addon is loaded or the stable
 			CTI_VIO_ADDON = 1;
@@ -858,5 +865,4 @@ with missionNamespace do {
 	CTI_WATER_BALANCED_WEST = false;
 	
 	//if (isNil 'CTI_BUILDING_FALLBACK') then {CTI_BUILDING_FALLBACK = 2};	//--- Fallback Buildings. (0: Altis Housing, 1: Altis Military Buildings, 2: Best Mixed).
-	if (isNil 'CTI_NO_UPGRADE_MODE') then {CTI_NO_UPGRADE_MODE = 0};
 };

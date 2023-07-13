@@ -202,41 +202,15 @@ TRACKED_LIGHT = [];
 TRACKED_MEDIUM = [];
 TRACKED_HEAVY = [];
 _matrix_cnt = 0;
-
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
-
-	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-		TRACKED_LIGHT = [[format["%LIB_UniversalCarrier_SOV", _sid],1]];
-		TRACKED_MEDIUM = [[format["%LIB_UniversalCarrier_SOV", _sid],1]];
-		TRACKED_HEAVY = [[format["%LIB_UniversalCarrier_SOV", _sid],1]];
-	};
-
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-		TRACKED_LIGHT = [[format["%1LIB_M3A3_Stuart_SOV", _sid],1]];
-		TRACKED_MEDIUM = [[format["%1LIB_M3A3_Stuart_SOV", _sid],1]];
-		TRACKED_HEAVY = [[format["%1LIB_M3A3_Stuart_SOV", _sid],1]];
-	};
-};
-
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
 _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		TRACKED_LIGHT = [[format["%1LIB_M3A3_Stuart_SOV", _sid],1]];
-	} else {
-		TRACKED_LIGHT = [[format["%1LIB_T34_76", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			TRACKED_LIGHT = [[format["%1LIB_T34_76_w", _sid],1]];
-		};
+	TRACKED_LIGHT = [[format["%1LIB_T34_76", _sid],1]];
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		TRACKED_LIGHT = [[format["%1LIB_T34_76_w", _sid],1]];
 	};
 	TRACKED_MEDIUM = [[format["%1LIB_T34_76", _sid],1]];
 	TRACKED_HEAVY = [[format["%1LIB_T34_76", _sid],1]];
@@ -249,13 +223,9 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		TRACKED_LIGHT = [[format["%1LIB_M3A3_Stuart_SOV", _sid],1]];
-	} else {
-		TRACKED_LIGHT = [[format["%1LIB_T34_76", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			TRACKED_LIGHT = [[format["%1LIB_T34_76_w", _sid],1]];
-		};
+	TRACKED_LIGHT = [[format["%1LIB_T34_76", _sid],1]];
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		TRACKED_LIGHT = [[format["%1LIB_T34_76_w", _sid],1]];
 	};
 	TRACKED_MEDIUM = [[format["%1LIB_T34_76", _sid],1]];
 	TRACKED_HEAVY = [[format["%1LIB_T34_76", _sid],1],[format["%1LIB_SU85", _sid],1]];
@@ -268,13 +238,9 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		TRACKED_LIGHT = [[format["%1LIB_M3A3_Stuart_SOV", _sid],1]];
-	} else {
-		TRACKED_LIGHT = [[format["%1LIB_T34_76", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			TRACKED_LIGHT = [[format["%1LIB_T34_76_w", _sid],1]];
-		};
+	TRACKED_LIGHT = [[format["%1LIB_T34_76", _sid],1]];
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		TRACKED_LIGHT = [[format["%1LIB_T34_76_w", _sid],1]];
 	};
 	TRACKED_MEDIUM = [[format["%1LIB_T34_76", _sid],1],[format["%1LIB_SU85", _sid],1]];
 	TRACKED_HEAVY = [[format["%1LIB_T34_85", _sid],1]];
@@ -287,13 +253,9 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		TRACKED_LIGHT = [[format["%1LIB_M3A3_Stuart_SOV", _sid],1]];
-	} else {
-		TRACKED_LIGHT = [[format["%1LIB_T34_76", _sid],1]];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			TRACKED_LIGHT = [[format["%1LIB_T34_76_w", _sid],1]];
-		};
+	TRACKED_LIGHT = [[format["%1LIB_T34_76", _sid],1]];
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+		TRACKED_LIGHT = [[format["%1LIB_T34_76_w", _sid],1]];
 	};
 	TRACKED_MEDIUM = [[format["%1LIB_T34_85", _sid],1],[format["%1LIB_SU85", _sid],1]];
 	TRACKED_HEAVY = [[format["%1LIB_JS2_43", _sid],1]];

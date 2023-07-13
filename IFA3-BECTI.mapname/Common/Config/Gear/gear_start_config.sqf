@@ -70,7 +70,28 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Config\Ge
 
 switch(_nationID) do {
 	case CTI_GER_ID: {
-		if(_modID == CTI_IFA_NEW_ID) then {
+		if(_modID == CTI_SPE_ID) then {
+			switch(CTI_CAMO_ACTIVATION) do {
+				case 4: {//urban
+					_uniform = "U_SPE_GER_Soldier_Boots";
+					_vest = "V_SPE_GER_VestKar98";
+					_backpack = "B_SPE_GER_Belt_bag_K98k_MG";
+					_helmet = "H_SPE_GER_Helmet";
+				};
+				default {
+					_uniform = "U_SPE_ST_Soldier_E44";
+					_vest = "V_SPE_DAK_VestKar98";
+					_backpack = "B_SPE_GER_A_frame_ST_K98k_MG";
+					_helmet = "H_SPE_ST_Helmet";
+				};
+			};
+			_weapon = "SPE_K98_Late";
+			_weapon_ammo = "SPE_5Rnd_792x57";
+			_grenades = "SPE_Shg24";
+			_healing = "SPE_GER_FirstAidKit";
+			_bino = "SPE_Binocular_GER";
+			_item_compass = "SPE_GER_ItemCompass_deg";
+			_item_watch = "SPE_GER_ItemWatch";
 		} else {
 			switch(CTI_CAMO_ACTIVATION) do {
 				case 1: {//Winter
@@ -101,7 +122,7 @@ switch(_nationID) do {
 		};
 	};
 	case CTI_SOV_ID: {
-		if(_modID == CTI_IFA_NEW_ID) then {
+		if(_modID == CTI_SPE_ID) then {
 		} else {
 			switch(CTI_CAMO_ACTIVATION) do {
 				case 1: {//Winter
@@ -124,7 +145,7 @@ switch(_nationID) do {
 		};
 	};
 	case CTI_UK_ID: {
-		if(_modID == CTI_IFA_NEW_ID) then {
+		if(_modID == CTI_SPE_ID) then {
 		} else {
 			switch(CTI_CAMO_ACTIVATION) do {
 				case 1: {//Winter
@@ -155,7 +176,28 @@ switch(_nationID) do {
 		};
 	};
 	case CTI_US_ID: {
-		if(_modID == CTI_IFA_NEW_ID) then {
+		if(_modID == CTI_SPE_ID) then {
+			switch(CTI_CAMO_ACTIVATION) do {
+				case 4: {//urban
+					_uniform = "U_SPE_US_Rangers_Uniform";
+					_vest = "V_SPE_US_Assault_Vest";
+					_backpack = "";
+					_helmet = "H_SPE_US_Rangers_Helmet";
+				};
+				default {
+					_uniform = "U_SPE_US_Private";
+					_vest = "V_SPE_US_Vest_Garand";
+					_backpack = "B_SPE_US_Backpack_Bandoleer_Rifleman";
+					_helmet = "H_SPE_US_Helmet_ns";
+				};
+			};
+			_weapon = "SPE_M1903A3_Springfield";
+			_weapon_ammo = "SPE_5Rnd_762x63_t";
+			_grenades = "SPE_US_Mk_2";
+			_healing = "SPE_US_FirstAidKit";
+			_bino = "SPE_US_Medkit";
+			_item_compass = "SPE_US_ItemCompass";
+			_item_watch = "SPE_US_ItemWatch";
 		} else {
 			switch(CTI_CAMO_ACTIVATION) do {
 				case 1: {//Winter

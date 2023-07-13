@@ -40,9 +40,9 @@ _marker_type = "";
 _marker_size = [1,1];
 _marker_color = CTI_P_SideColor;
 
-//if (CTI_Log_Level >= CTI_Log_Debug) then {
+if (CTI_Log_Level >= CTI_Log_Debug) then {
 	["DEBUG", "FILE: Common\Functions\Common_InitializeNetVehicle.sqf", format["Attempting to perform net initialization of vehicle [%1] on side [%2]", typeOf _vehicle, _side]] call CTI_CO_FNC_Log;
-//};
+};
 
 //--- Perform general operations
 _special = _vehicle getVariable "cti_spec";

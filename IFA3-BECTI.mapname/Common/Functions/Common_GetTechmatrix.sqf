@@ -56,21 +56,21 @@ if(_mod >= 0) then {
 	if(_nation >= 0) then {
 		_tech = _tech_matrix select _factory select _nation select 0;
 
-		if(CTI_IFA3_NEW >= 0) then {
+		if(CTI_IFA_ADDON >= 0) then {
 			_tech = [_tech, _tech_matrix select _factory select _nation select CTI_IFA_ID] call CTI_CO_FNC_MergeMatrixArray;
 		};
-		if(CTI_IFA3_NEW >= 1) then {
-			_tech = [_tech, _tech_matrix select _factory select _nation select CTI_IFA_NEW_ID] call CTI_CO_FNC_MergeMatrixArray;
+		if(CTI_SPE_DLC >= 0) then {
+			_tech = [_tech, _tech_matrix select _factory select _nation select CTI_SPE_ID] call CTI_CO_FNC_MergeMatrixArray;
 		};
 	} else {
 		//combine the tech tree
 		{
 			if(_side == (_x) call CTI_CO_FNC_GetSideFromID) then {
-				if(CTI_IFA3_NEW >= 0) then {
+				if(CTI_IFA_ADDON >= 0) then {
 					_tech = [_tech, _tech_matrix select _factory select _forEachIndex select CTI_IFA_ID] call CTI_CO_FNC_MergeMatrixArray;
 				};
-				if(CTI_IFA3_NEW >= 1) then {
-					_tech = [_tech, _tech_matrix select _factory select _forEachIndex select CTI_IFA_NEW_ID] call CTI_CO_FNC_MergeMatrixArray;
+				if(CTI_SPE_DLC >= 0) then {
+					_tech = [_tech, _tech_matrix select _factory select _forEachIndex select CTI_SPE_ID] call CTI_CO_FNC_MergeMatrixArray;
 				};
 			};	
 		} forEach [CTI_GER_SIDE, CTI_SOV_SIDE, CTI_UK_SIDE, CTI_US_SIDE];

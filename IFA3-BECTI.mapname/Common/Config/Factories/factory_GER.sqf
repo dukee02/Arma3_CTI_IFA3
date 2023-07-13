@@ -6,15 +6,15 @@ _setupBaseUnits = false;
 
 switch (_side) do {
 	case west: {
-		/*_sid = "VIOC_B_";*/_tag = "WEST_";
-		if(CTI_WEST_AI == CTI_GER_ID || CTI_WEST_TOWNS == CTI_GER_ID) then {_setupBaseUnits = true};
+		_sid = "VIOC_B_";_tag = "WEST_";
+		if(CTI_WEST_AI == CTI_UK_ID || CTI_WEST_TOWNS == CTI_UK_ID) then {_setupBaseUnits = true};
 	};
 	case east: {
-		/*_sid = "VIOC_O_";*/_tag = "EAST_";
-		if(CTI_EAST_AI == CTI_GER_ID || CTI_EAST_TOWNS == CTI_GER_ID) then {_setupBaseUnits = true};
+		_sid = "VIOC_O_";_tag = "EAST_";
+		if(CTI_EAST_AI == CTI_UK_ID || CTI_EAST_TOWNS == CTI_UK_ID) then {_setupBaseUnits = true};
 	};
 	case resistance: {
-		_sid = "";_tag = "GUER_";
+		_sid = "VIOC_I_";_tag = "GUER_";
 	};
 	default {_sid = "";};
 };
@@ -245,46 +245,23 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_Sdkfz251_w", _sid];
 		_c pushBack format["%1LIB_SdKfz251_FFV_w", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_SdKfz251_2_w", _sid];
-		};
 	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		_c pushBack format["%1LIB_DAK_SdKfz251", _sid];
 		_c pushBack format["%1LIB_DAK_SdKfz251_FFV", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_DAK_SdKfz251_2", _sid];
-		};
 	};
 	_c pushBack format["%1LIB_SdKfz251_FFV", _sid];
 	_c pushBack format["%1LIB_SdKfz251", _sid];
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_SdKfz251_2", _sid];
-	};
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_SdKfz251_22_w", _sid];
-			_c pushBack format["%1LIB_SdKfz251_23_w", _sid];
-		};
-	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_DAK_SdKfz251_22", _sid];
-			//_c pushBack format["%1LIB_DAK_SdKfz251_23", _sid];
-		};
 		_c pushBack format["%1LIB_DAK_M3_Halftrack", _sid];
 	};
 	_c pushBack format["%1LIB_DAK_Scout_M3", _sid];
 	_c pushBack format["%1LIB_DAK_Scout_M3_FFV", _sid];
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_SdKfz251_22", _sid];
-		_c pushBack format["%1LIB_SdKfz251_23", _sid];
-	};
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -292,20 +269,11 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_SdKfz_7_AA_w", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_SdKfz251_W40_w", _sid];
-		};
 	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		_c pushBack format["%1LIB_DAK_SdKfz_7_AA", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_DAK_SdKfz251_W40", _sid];
-		};
 	};
 	_c pushBack format["%1LIB_SdKfz_7_AA", _sid];
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_SdKfz251_W40", _sid];
-	};
 };
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_LIGHT];
 if (isNil "_priorUnits") then { 
@@ -336,9 +304,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	//if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 	//};
 	_c pushBack format["%1LIB_StuG_III_G", _sid];
-	if(CTI_IFA3_NEW == 0) then {
-		_c pushBack format["%1LIB_SdKfz124", _sid];
-	};
+	_c pushBack format["%1LIB_SdKfz124", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -441,14 +407,6 @@ if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	};
 	_c pushBack format["%1LIB_C47_RAF", _sid];			//for paradropers needed
 	_c pushBack format["%1LIB_Ju87", _sid];
-};
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_Ju87_G2", _sid];
-	};
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;

@@ -482,24 +482,22 @@ _i pushBack "U_LIB_DAK_Medic";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-//Winter
-if(CTI_IFA3_NEW == 0) then {
-	_i pushBack "U_LIB_GER_Soldier3_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "U_LIB_GER_Soldier3_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "U_LIB_GER_Soldier_camo_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "U_LIB_GER_Soldier_camo_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "U_LIB_GER_Scharfschutze_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "U_LIB_GER_Scharfschutze_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "U_LIB_GER_Scharfschutze_2_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-};
+_i pushBack "U_LIB_GER_Scharfschutze_2_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+
 
 
 //Level 1
@@ -557,12 +555,11 @@ _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalcul
 _i pushBack "U_LIB_GER_Oberst";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-//Winter
-if(CTI_IFA3_NEW == 0) then {
-	_i pushBack "U_LIB_GER_Hauptmann_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-};
+
+_i pushBack "U_LIB_GER_Hauptmann_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+
 
 //Update the calculatetd max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
@@ -769,39 +766,38 @@ _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //Winter
-if(CTI_IFA3_NEW == 0) then {
-	_i pushBack "H_LIB_GER_FSJ_M44_Helmet_Winter";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_FSJ_M44_Helmet_Winter";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_Fieldcap_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_Fieldcap_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_Helmet_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_Helmet_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_Helmet_Glasses_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_Helmet_Glasses_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_HelmetCamo2b_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_HelmetCamo2b_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_HelmetCamob_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_HelmetCamob_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_Helmet_net_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_Helmet_net_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_Helmet_ns_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-};
+_i pushBack "H_LIB_GER_Helmet_ns_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+
 
 //Level 1
 _tech_level = _tech_level + 1;
@@ -828,19 +824,18 @@ _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //Winter
-if(CTI_IFA3_NEW == 0) then {
-	_i pushBack "H_LIB_GER_HelmetCamo4_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_HelmetCamo4_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_HelmetCamo2_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_GER_HelmetCamo2_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_GER_HelmetCamo_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-};
+_i pushBack "H_LIB_GER_HelmetCamo_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+
 
 //Update the calculatetd max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {

@@ -96,13 +96,17 @@ CTI_CO_FNC_GetCalculatedBuildtime = compileFinal preprocessFileLineNumbers "Comm
 CTI_CO_FNC_GetCalculatedItemPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedItemPrize.sqf";
 CTI_CO_FNC_ScanSkyForPlanes = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ScanSkyForPlanes.sqf";
 CTI_CO_FNC_DropParatroopers = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DropParatroopers.sqf";
-WW2_PARADROP = compile preprocessFileLineNumbers "WW2\Core_f\WW2_System_Curator_F\waypoints\fn_wpParadrop.sqf";
 CTI_CO_FNC_DisbandTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DisbandTeam.sqf";
+CTI_CO_FNC_HasDLC = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasDLC.sqf";
+if(CTI_IFA_ADDON >= 1) then {	//only if IFA3 loaded
+	WW2_PARADROP = compile preprocessFileLineNumbers "WW2\Core_f\WW2_System_Curator_F\waypoints\fn_wpParadrop.sqf";
+};
 
 CTI_CO_CustomIterator = 0;
 
 //calculate the main mod depends on the given parameters
 _mainmod = CTI_IFA_ID;
+if(CTI_SPE_DLC >= 1) then {_mainmod = CTI_SPE_ID;};
 _nation = -1;
 {
 	// Current result is saved in variable _x
@@ -112,32 +116,32 @@ _nation = -1;
 		case (CTI_GER_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == CTI_GER_ID): {
 			_nation = CTI_GER_ID;
 		};
-		case (CTI_SOV_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == CTI_SOV_ID): {
+		case (CTI_SOV_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == CTI_SOV_ID && CTI_IFA_ADDON >= 1): {
 			_nation = CTI_SOV_ID;
 		};
 		case (CTI_US_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == CTI_UK_ID): {
-			_nation = CTI_UK_ID;
-		};
-		case (CTI_UK_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == CTI_US_ID): {
 			_nation = CTI_US_ID;
+		};
+		case (CTI_UK_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == CTI_US_ID && CTI_IFA_ADDON >= 1): {
+			_nation = CTI_UK_ID;
 		};
 		case (CTI_GER_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == -1): {
 			_nation = CTI_GER_ID;
 		};
-		case (CTI_SOV_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == -1): {
+		case (CTI_SOV_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == -1 && CTI_IFA_ADDON >= 1): {
 			_nation = CTI_SOV_ID;
 		};
 		case (CTI_US_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == -1): {
 			_nation = CTI_US_ID;
 		};
-		case (CTI_UK_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == -1): {
-			_nation = CTI_SOV_ID;
+		case (CTI_UK_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == -1 && CTI_IFA_ADDON >= 1): {
+			_nation = CTI_UK_ID;
 		};
 		default {};
 	};
-	if (CTI_Log_Level >= CTI_Log_Debug) then {
+	//if (CTI_Log_Level >= CTI_Log_Debug) then {
 		["VIOC_DEBUG", "FILE: Common\Init\Init_Common.sqf", format ["Start gear config: side %1 NationID <%2> MainMod: <%3>", _x, _nation, _mainmod]] call CTI_CO_FNC_Log;
-	};
+	//};
 	missionNamespace setVariable [format ["CTI_%1_MAINNATIONS", _x], [_nation, _mainmod]];
 	[_x, _nation, _mainmod] call compile preprocessFileLineNumbers "Common\Config\Gear\gear_start_config.sqf";
 	
@@ -156,52 +160,84 @@ call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 
 //CTI_UK_SIDE declaration
 if(CTI_UK_SIDE >= 0) then {
-	((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_UK.sqf";
-	((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_UK.sqf";
-	if((CTI_UK_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_UK_SIDE == 1 && CTI_EAST_AI < 0)) then {
-		((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_UK.sqf";
+	//if(CTI_SPE_DLC >= 1) then {};
+	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+		((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_UK.sqf";
+		((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_UK.sqf";
+		if((CTI_UK_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_UK_SIDE == 1 && CTI_EAST_AI < 0)) then {
+			((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_UK.sqf";
+		};
+		if((CTI_UK_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_UK_SIDE == 1 && CTI_EAST_TOWNS < 0) || (CTI_UK_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
+			((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_UK.sqf";
+		};
+		((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_UK.sqf";
 	};
-	if((CTI_UK_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_UK_SIDE == 1 && CTI_EAST_TOWNS < 0) || (CTI_UK_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
-		((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_UK.sqf";
-	};
-	((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_UK.sqf";
 };
 //CTI_US_SIDE declaration
 if(CTI_US_SIDE >= 0) then {
-	((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_US.sqf";
-	((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_US.sqf";
-	if((CTI_US_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_US_SIDE >= 1 && CTI_EAST_AI < 0)) then {
-		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_US.sqf";
+	if(CTI_SPE_DLC >= 1) then {
+		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_US_SPE.sqf";
+		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_US_SPE.sqf";
+		if((CTI_US_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_US_SIDE >= 1 && CTI_EAST_AI < 0)) then {
+			((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_US_SPE.sqf";
+		};
+		if((CTI_US_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_US_SIDE >= 1 && CTI_EAST_TOWNS < 0) || (CTI_US_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
+			((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_US_SPE.sqf";
+		};
+		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_US_SPE.sqf";
 	};
-	if((CTI_US_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_US_SIDE >= 1 && CTI_EAST_TOWNS < 0) || (CTI_US_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
-		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_US.sqf";
+	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_US.sqf";
+		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_US.sqf";
+		if((CTI_US_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_US_SIDE >= 1 && CTI_EAST_AI < 0)) then {
+			((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_US.sqf";
+		};
+		if((CTI_US_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_US_SIDE >= 1 && CTI_EAST_TOWNS < 0) || (CTI_US_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
+			((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_US.sqf";
+		};
+		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_US.sqf";
 	};
-	((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_US.sqf";
 };
 //CTI_SOV_SIDE declaration
 if(CTI_SOV_SIDE >= 0) then {
-	((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_SOV.sqf";
-	((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_SOV.sqf";
-	if((CTI_SOV_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_SOV_SIDE == 1 && CTI_EAST_AI < 0)) then {
-		((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_SOV.sqf";
+	//if(CTI_SPE_DLC >= 1) then {};
+	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+		((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_SOV.sqf";
+		((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_SOV.sqf";
+		if((CTI_SOV_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_SOV_SIDE == 1 && CTI_EAST_AI < 0)) then {
+			((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_SOV.sqf";
+		};
+		if((CTI_SOV_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_SOV_SIDE == 1 && CTI_EAST_TOWNS < 0) || (CTI_SOV_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
+			((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_SOV.sqf";
+		};
+		((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_SOV.sqf";
 	};
-	if((CTI_SOV_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_SOV_SIDE == 1 && CTI_EAST_TOWNS < 0) || (CTI_SOV_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
-		((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_SOV.sqf";
-	};
-	((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_SOV.sqf";
 	
 };
 //CTI_GER_SIDE declaration
 if(CTI_GER_SIDE >= 0) then {
-	((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_GER.sqf";
-	((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_GER.sqf";
-	if((CTI_GER_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_GER_SIDE == 1 && CTI_EAST_AI < 0)) then {
-		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_GER.sqf";
+	if(CTI_SPE_DLC >= 1) then {
+		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_GER_SPE.sqf";
+		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_GER_SPE.sqf";
+		if((CTI_GER_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_GER_SIDE == 1 && CTI_EAST_AI < 0)) then {
+			((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_GER_SPE.sqf";
+		};
+		if((CTI_GER_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_GER_SIDE == 1 && CTI_EAST_TOWNS < 0) || (CTI_GER_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
+			((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_GER_SPE.sqf";
+		};
+		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_GER_SPE.sqf";
 	};
-	if((CTI_GER_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_GER_SIDE == 1 && CTI_EAST_TOWNS < 0) || (CTI_GER_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
-		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_GER.sqf";
+	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_GER.sqf";
+		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_GER.sqf";
+		if((CTI_GER_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_GER_SIDE == 1 && CTI_EAST_AI < 0)) then {
+			((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_GER.sqf";
+		};
+		if((CTI_GER_SIDE == 0 && CTI_WEST_TOWNS < 0) || (CTI_GER_SIDE == 1 && CTI_EAST_TOWNS < 0) || (CTI_GER_SIDE == 2 && CTI_GUER_TOWNS == 2)) then {
+			((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_GER.sqf";
+		};
+		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_GER.sqf";
 	};
-	((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_GER.sqf";
 };
 
 switch(CTI_GUER_TOWNS) do {
@@ -220,16 +256,32 @@ switch(CTI_GUER_TOWNS) do {
 	if(_x >= 0) then {
 		switch(_x) do {
 			case 0: {
-				((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_GER.sqf";
+				if(CTI_SPE_DLC >= 1) then {
+					((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_GER_SPE.sqf";
+				};
+				if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+					((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_GER.sqf";
+				};
 			};
 			case 1: {
-				((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_SOV.sqf";
+				//if(CTI_SPE_DLC >= 1) then {};
+				if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+					((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_SOV.sqf";
+				};
 			};
 			case 2: {
-				((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_US.sqf";
+				if(CTI_SPE_DLC >= 1) then {
+					((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_US_SPE.sqf";
+				};
+				if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+					((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_US.sqf";
+				};
 			};
 			case 3: {
-				((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_UK.sqf";
+				//if(CTI_SPE_DLC >= 1) then {};
+				if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+					((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_UK.sqf";
+				};
 			};
 			default {};
 		};
@@ -239,16 +291,32 @@ switch(CTI_GUER_TOWNS) do {
 	if(_x >= 0) then {
 		switch(_x) do {
 			case 0: {
-				((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_GER.sqf";
+				if(CTI_SPE_DLC >= 1) then {
+					((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_GER_SPE.sqf";
+				};
+				if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+					((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_GER.sqf";
+				};
 			};
 			case 1: {
-				((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_SOV.sqf";
+				//if(CTI_SPE_DLC >= 1) then {};
+				if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+					((CTI_SOV_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_SOV.sqf";
+				};
 			};
 			case 2: {
-				((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_US.sqf";
+				if(CTI_SPE_DLC >= 1) then {
+					((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_US_SPE.sqf";
+				};
+				if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+					((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_US.sqf";
+				};
 			};
 			case 3: {
-				((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_UK.sqf";
+				//if(CTI_SPE_DLC >= 1) then {};
+				if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+					((CTI_UK_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_UK.sqf";
+				};
 			};
 			default {};
 		};

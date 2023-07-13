@@ -68,6 +68,7 @@ if(_loadingFine) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["World and Towns found, loading seems OK, load data %1", _part]] call CTI_CO_FNC_Log;};
 	
 	switch(_part) do {
+		case "exists": {};
 		case "towns": {
 			if (count _towns != count CTI_TOWNS) exitWith {
 				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_ERROR", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["ERROR on loading the towns, town count: <%1>", count _towns]] call CTI_CO_FNC_Log;};
@@ -246,7 +247,8 @@ if(_loadingFine) then {
 					_loadingFine = false;
 				} else {
 					if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Side supply loaded from profile:<SAVE_%1_FUNDSCOM> Funds Com: <%2>", _savename, _supply_stored]] call CTI_CO_FNC_Log;};
-					[_x, _supply_stored] call CTI_CO_FNC_ChangeSideSupply; 
+					_supply_now = call CTI_CO_FNC_GetSideSupply;
+					_logic setVariable ["cti_supply", _supply_stored, true];
 				};
 				
 				//Load the funds of the commander
@@ -348,7 +350,6 @@ if(_loadingFine) then {
 					};
 
 					//--- Custom vehicle?
-					["DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Vehicles: <%1>", _var_classname]] call CTI_CO_FNC_Log;
 					_script = _var_classname select CTI_UNIT_SCRIPTS;
 					if (CTI_Log_Level >= CTI_Log_Information) then {
 						["DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["with script?: <%1>", _script]] call CTI_CO_FNC_Log;
@@ -361,25 +362,26 @@ if(_loadingFine) then {
 					};
 					_vehicle = [_model, (_x select 1), (_x select 2), (_x select 3), false, true, true] call CTI_CO_FNC_CreateVehicle;
 
-					_sideVeh = west;
-					//{
+					_sideVeh = independent;
+					{
 						// Current result is saved in variable _x
-						//_side = _x;
-						_side = east;
+						_side = _x;
 						{
 							// Current result is saved in variable _x
 							if(_model in _x) then {
-								_sideVeh = west;
+								_sideVeh = _side;
 							};
 						} forEach [(missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_BARRACKS]),(missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_LIGHT]),(missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_HEAVY]),(missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_AIR]),(missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_REPAIR]),(missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_AMMO]),(missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT]),(missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_NAVAL])];
-					//} forEach [east,west];
+					} forEach [east,west];
 					
 					if ((_script != "") && alive _vehicle) then {
 						[_vehicle, _sideVeh, _script, ""] spawn CTI_CO_FNC_InitializeCustomVehicle;
 						//if (_customid > -1) then {_vehicle setVariable ["cti_customid", _customid, true]};
 					};
 					//Set the cti_net to track the vehicles on map
-					_vehicle setVariable ["cti_net", _sideVeh, true];
+					if(_sideVeh != independent) then {
+						_vehicle setVariable ["cti_net", (_sideVeh) call CTI_CO_FNC_GetSideID, true];
+					};
 
 					sleep 0.1;
 				} forEach _vehicles_stored;

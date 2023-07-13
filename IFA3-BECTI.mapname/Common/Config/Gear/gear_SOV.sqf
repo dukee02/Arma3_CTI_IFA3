@@ -366,19 +366,17 @@ _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //Winter
-if(CTI_IFA3_NEW == 0) then {
-	_i pushBack "U_LIB_SOV_Strelok_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "U_LIB_SOV_Strelok_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "U_LIB_SOV_Strelok_2_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "U_LIB_SOV_Strelok_2_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "U_LIB_SOV_Sniper_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-};
+_i pushBack "U_LIB_SOV_Sniper_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //Level 1
 _tech_level = _tech_level + 1;
@@ -599,19 +597,17 @@ _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //Winter
-if(CTI_IFA3_NEW == 0) then {
-	_i pushBack "H_LIB_SOV_RA_Helmet_w";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_SOV_RA_Helmet_w";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_SOV_Ushanka";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "H_LIB_SOV_Ushanka";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "H_LIB_SOV_Ushanka2";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-};
+_i pushBack "H_LIB_SOV_Ushanka2";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //Update the calculatetd max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {

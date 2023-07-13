@@ -11,49 +11,28 @@ _tech_matrix =
 		[
 			//IFA
 			[true,true,true],
-			//IFA_NEW
+			//SPE
 			[true,true,true]
 		],
 		//SOV
 		[
 			//IFA
 			[true,true,true],
-			//IFA_NEW
-			[true,true,true]
+			//SPE
+			[false,false,false]
 		],
 		//UK
 		[
 			//IFA
 			[true,true,true],
-			//IFA_NEW
-			[true,true,true]
+			//SPE
+			[false,false,false]
 		],
 		//US
 		[
 			//IFA
 			[true,true,true],
-			//IFA_NEW
-			[true,true,true]
-		],
-		//JPN
-		[
-			//IFA
-			[true,true,true],
-			//IFA_NEW
-			[true,true,true]
-		],
-		//CZ
-		[
-			//IFA
-			[true,true,true],
-			//IFA_NEW
-			[true,true,true]
-		],
-		//FIN
-		[
-			//IFA
-			[true,true,true],
-			//IFA_NEW
+			//SPE
 			[true,true,true]
 		]
 	],
@@ -63,50 +42,29 @@ _tech_matrix =
 		[
 			//IFA
 			[true,true,true,true,true],
-			//IFA_NEW
-			[true,true,true,true,true]
+			//SPE
+			[true,true,true,true,false]
 		],
 		//SOV
 		[
 			//IFA
 			[true,true,true,true,true],
-			//IFA_NEW
-			[true,true,true,true,true]
+			//SPE
+			[false,false,false,false,false]
 		],
 		//UK
 		[
 			//IFA
 			[true,true,true,true,false],
-			//IFA_NEW
-			[true,true,true,true,true]
+			//SPE
+			[false,false,false,false,false]
 		],
 		//US
 		[
 			//IFA
 			[true,true,true,true,true],
-			//IFA_NEW
-			[true,true,true,true,true]
-		],
-		//JPN
-		[
-			//IFA
-			[false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false]
-		],
-		//CZ
-		[
-			//IFA
-			[false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false]
-		],
-		//FIN
-		[
-			//IFA
-			[false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false]
+			//SPE
+			[true,true,true,true,false]
 		]
 	],
 	//CTI_UPGRADE_HEAVY
@@ -115,50 +73,29 @@ _tech_matrix =
 		[
 			//IFA
 			[false,false,true,true,true,true,true,true],
-			//IFA_NEW
-			[false,false,true,true,true,true,true,true]
+			//SPE
+			[false,false,true,true,true,true,false,false]
 		],
 		//SOV
 		[
 			//IFA
 			[false,false,false,true,true,true,true,true],
-			//IFA_NEW
-			[true,true,false,true,true,true,true,true]
+			//SPE
+			[false,false,false,false,false,false,false,false]
 		],
 		//UK
 		[
 			//IFA
 			[true,false,false,true,false,true,true,true],
-			//IFA_NEW
-			[true,true,true,true,false,true,true,true]
+			//SPE
+			[false,false,false,false,false,false,false,false]
 		],
 		//US
 		[
 			//IFA
 			[false,true,true,false,false,true,true,true],
-			//IFA_NEW
-			[false,true,true,false,false,true,true,true]
-		],
-		//JPN
-		[
-			//IFA
-			[false,false,false,false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false,false,false,false]
-		],
-		//CZ
-		[
-			//IFA
-			[false,false,false,false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false,false,false,false]
-		],
-		//FIN
-		[
-			//IFA
-			[false,false,false,false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false,false,false,false]
+			//SPE
+			[false,false,true,true,true,true,false,false]
 		]
 	],
 	//CTI_UPGRADE_AIR
@@ -167,50 +104,29 @@ _tech_matrix =
 		[
 			//IFA
 			[false,true,true,true,false,false],
-			//IFA_NEW
-			[false,true,true,true,false,false]
+			//SPE
+			[false,false,false,true,false,false]
 		],
 		//SOV
 		[
 			//IFA
 			[true,true,true,false,false,false],
-			//IFA_NEW
-			[true,true,true,false,false,false]
+			//SPE
+			[false,false,false,false,false,false]
 		],
 		//UK
 		[
 			//IFA
 			[true,false,true,false,false,false],
-			//IFA_NEW
-			[true,false,true,false,false,false]
+			//SPE
+			[false,false,false,false,false,false]
 		],
 		//US
 		[
 			//IFA
 			[true,true,false,true,false,false],
-			//IFA_NEW
-			[true,true,false,true,false,false]
-		],
-		//JPN
-		[
-			//IFA
-			[false,false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false,false]
-		],
-		//CZ
-		[
-			//IFA
-			[false,false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false,false]
-		],
-		//FIN
-		[
-			//IFA
-			[false,false,false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false,false,false]
+			//SPE
+			[false,false,false,true,false,false]
 		]
 	],
 	//CTI_UPGRADE_NAVAL
@@ -219,50 +135,29 @@ _tech_matrix =
 		[
 			//IFA
 			[false,false,false,false],
-			//IFA_NEW
+			//SPE
 			[false,false,false,false]
 		],
 		//SOV
 		[
 			//IFA
 			[false,false,false,false],
-			//IFA_NEW
+			//SPE
 			[false,false,false,false]
 		],
 		//UK
 		[
 			//IFA
 			[true,false,false,false],
-			//IFA_NEW
+			//SPE
 			[true,false,false,false]
 		],
 		//US
 		[
 			//IFA
 			[true,true,false,false],
-			//IFA_NEW
+			//SPE
 			[true,true,false,false]
-		],
-		//JPN
-		[
-			//IFA
-			[false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false]
-		],
-		//CZ
-		[
-			//IFA
-			[false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false]
-		],
-		//FIN
-		[
-			//IFA
-			[false,false,false,false],
-			//IFA_NEW
-			[false,false,false,false]
 		]
 	],
 	[],[],[],[],[],[],[],
@@ -272,49 +167,28 @@ _tech_matrix =
 		[
 			//IFA
 			[true,true,true],
-			//IFA_NEW
+			//SPE
 			[true,true,true]
 		],
 		//SOV
 		[
 			//IFA
 			[true,true,true],
-			//IFA_NEW
+			//SPE
 			[true,true,true]
 		],
 		//UK
 		[
 			//IFA
 			[true,true,true],
-			//IFA_NEW
+			//SPE
 			[true,true,true]
 		],
 		//US
 		[
 			//IFA
 			[true,true,true],
-			//IFA_NEW
-			[true,true,true]
-		],
-		//JPN
-		[
-			//IFA
-			[true,true,true],
-			//IFA_NEW
-			[true,true,true]
-		],
-		//CZ
-		[
-			//IFA
-			[true,true,true],
-			//IFA_NEW
-			[true,true,true]
-		],
-		//FIN
-		[
-			//IFA
-			[true,true,true],
-			//IFA_NEW
+			//SPE
 			[true,true,true]
 		]
 	]

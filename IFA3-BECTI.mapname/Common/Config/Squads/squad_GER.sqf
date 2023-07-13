@@ -223,20 +223,11 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	mot_to_add = [[format["%1LIB_SdKfz251_FFV", _sid], 1, 40]];
-	if(CTI_IFA3_NEW > 0) then {
-		mot_to_add pushBack [format["%1LIB_SdKfz251_2", _sid], 1, 40];
-	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		mot_to_add = [[format["%1LIB_SdKfz251_FFV_w", _sid], 1, 40]];
-		if(CTI_IFA3_NEW > 0) then {
-			mot_to_add pushBack [format["%1LIB_SdKfz251_2_w", _sid], 1, 40];
-		};
 	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		mot_to_add = [[format["%1LIB_DAK_SdKfz251_FFV", _sid], 1, 40]];
-		if(CTI_IFA3_NEW > 0) then {
-			mot_to_add pushBack [format["%1LIB_DAK_SdKfz251_2", _sid], 1, 40];
-		};
 	};
 	units_wheeled append mot_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {wheeled_auto append mot_to_add;};
@@ -250,59 +241,6 @@ _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
 kind_wheeled pushBack "MotorizedT2";
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		mot_to_add = [[format["%1LIB_SdKfz251_22", _sid], 1, 40]];
-		mot_to_add pushBack [format["%1LIB_SdKfz251_23", _sid], 1, 40];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			mot_to_add = [[format["%1LIB_SdKfz251_22_w", _sid], 1, 40]];
-			mot_to_add pushBack [format["%1LIB_SdKfz251_23_w", _sid], 1, 40];
-		};
-		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			mot_to_add = [[format["%1LIB_DAK_SdKfz251_22", _sid], 1, 40]];
-			mot_to_add pushBack [format["%1LIB_SdKfz251_23", _sid], 1, 40];
-		};
-		units_wheeled append mot_to_add;
-	if(CTI_FACTORY_LEVEL_PRESET >= _level) then {wheeled_auto append mot_to_add;};
-	};
-};
-
-_v pushBack "MotorizedT3";
-_t pushBack "SdKfz 251/22 + 23";
-_p pushBack mot_to_add;
-_f pushBack CTI_LIGHT;
-_m pushBack 200;
-_c pushBack "Motorized";
-_s pushBack [];
-kind_wheeled pushBack "MotorizedT3";
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_WHEELED >= 4) then {
-	if(CTI_IFA3_NEW > 0) then {
-		mot_to_add = [[format["%1LIB_SdKfz251_W40", _sid], 1, 20]];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			mot_to_add = [[format["%1LIB_SdKfz251_W40_w", _sid], 1, 20]];
-		};
-		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			mot_to_add = [[format["%1LIB_DAK_SdKfz251_W40", _sid], 1, 20]];
-		};
-		units_wheeled append mot_to_add;
-		if(CTI_FACTORY_LEVEL_PRESET >= _level) then {wheeled_auto append mot_to_add;};
-
-		_v pushBack "MotorizedT4";
-		_t pushBack "SdKfz 251/W40";
-		_p pushBack mot_to_add;
-		_f pushBack CTI_LIGHT;
-		_m pushBack 200;
-		_c pushBack "Motorized";
-		_s pushBack [];
-		kind_wheeled pushBack "MotorizedT4";
-	};
-};
 
 _v pushBack "Motorized";
 _t pushBack "Motorized (Auto)";
@@ -599,27 +537,6 @@ _m pushBack 1000;
 _c pushBack "Air";
 _s pushBack [];
 kind_air pushBack format["AirT%1", _level];
-
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-
-	if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
-		air_to_add = [[format["%1LIB_Ju87_G2", _sid], 1, 40]];
-		
-		units_air append air_to_add;
-		if(CTI_FACTORY_LEVEL_PRESET == _level) then {air_auto append air_to_add;};
-	};
-		
-	_v pushBack format["AirT%1", _level];
-	_t pushBack "Ju 87 G2";
-	_p pushBack air_to_add;
-	_f pushBack CTI_AIR;
-	_m pushBack 1000;
-	_c pushBack "Air";
-	_s pushBack [];
-	kind_air pushBack format["AirT%1", _level];
-};
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};

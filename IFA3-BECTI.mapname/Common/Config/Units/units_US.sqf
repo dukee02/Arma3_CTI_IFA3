@@ -352,9 +352,6 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_US_M16_Halftrack", _sid];
-	};
 	_c pushBack format["%1LIB_M8_Greyhound", _sid];
 	
 	//set all other vars in a slope
@@ -468,40 +465,15 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_M4E5_w", _sid];
-			_p pushBack '';
-			_n pushBack '';
-			_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-			_t pushBack _building_time;
-			_u pushBack _tech_level;
-			_f pushBack CTI_FACTORY_HEAVY;
-			_s pushBack "";
-			_d pushBack 0;
-		};
-	};
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_M4E5", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	} else {
-		_c pushBack format["%1LIB_M4A3_76", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	};
+	_c pushBack format["%1LIB_M4A3_76", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_HEAVY;
+	_s pushBack "";
+	_d pushBack 0;
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -509,36 +481,15 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_M4T34_Calliope", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-		_c pushBack format["%1LIB_M4A3_76", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	} else {
-		_c pushBack format["%1LIB_M4A3_76_HVSS", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	};
+	_c pushBack format["%1LIB_M4A3_76_HVSS", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_HEAVY;
+	_s pushBack "";
+	_d pushBack 0;
 };
 
 //Update the calculatetd max upgrade level
@@ -655,27 +606,25 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	_d pushBack 0;
 };
 
-//if(CTI_IFA3_NEW >= 0) then {
-	_c pushBack format["CTI_Salvager_%1", _faction];
-	_p pushBack '';
-	_n pushBack 'Salvager Truck';
-	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-	_t pushBack _building_time;
-	_u pushBack _tech_level;
-	_f pushBack CTI_FACTORY_REPAIR;
-	_s pushBack [format["%1LIB_US_GMC_Open", _sid],"salvager"];
-	_d pushBack 0;
+_c pushBack format["CTI_Salvager_%1", _faction];
+_p pushBack '';
+_n pushBack 'Salvager Truck';
+_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+_t pushBack _building_time;
+_u pushBack _tech_level;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack [format["%1LIB_US_GMC_Open", _sid],"salvager"];
+_d pushBack 0;
 		
-	_c pushBack format["CTI_Salvager_Independent_%1", _faction];
-	_p pushBack '';
-	_n pushBack 'Salvager Truck';
-	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-	_t pushBack _building_time;
-	_u pushBack _tech_level;
-	_f pushBack CTI_FACTORY_REPAIR;
-	_s pushBack [format["%1LIB_US_GMC_Open", _sid],"salvager-independent"];
-	_d pushBack 0;
-//};
+_c pushBack format["CTI_Salvager_Independent_%1", _faction];
+_p pushBack '';
+_n pushBack 'Salvager Truck';
+_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+_t pushBack _building_time;
+_u pushBack _tech_level;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack [format["%1LIB_US_GMC_Open", _sid],"salvager-independent"];
+_d pushBack 0;
 
 //***************************************************************************************************************************************
 //														Ammo Factory																	*

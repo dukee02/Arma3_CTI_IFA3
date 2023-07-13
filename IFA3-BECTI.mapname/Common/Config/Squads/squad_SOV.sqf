@@ -275,48 +275,6 @@ arm_to_add = [];
 tracked_auto = [];
 kind_tracked = [];
 _matrix_cnt = 0;
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
-
-	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-		arm_to_add = [[format["%LIB_UniversalCarrier_SOV", _sid], 1, 10]];
-		units_tracked = arm_to_add;
-		tracked_auto append arm_to_add;
-	};
-
-	_v pushBack format["ArmoredT%1", _level];
-	_t pushBack "UniversalCarrier (SOV)";
-	_p pushBack arm_to_add;
-	_f pushBack CTI_HEAVY;
-	_m pushBack 500;
-	_c pushBack "Armored";
-	_s pushBack [];
-	kind_tracked pushBack format["ArmoredT%1", _level];
-
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-		arm_to_add pushBack [format["%1LIB_M3A3_Stuart_SOV", _sid], 1, 30];
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			arm_to_add pushBack [format["%1LIB_M3A3_Stuart_SOV_w", _sid], 1, 30];
-		};
-		units_tracked = arm_to_add;
-		tracked_auto append arm_to_add;
-	};
-
-	_v pushBack format["ArmoredT%1", _level];
-	_t pushBack "M3A3 Stuart (SOV)";
-	_p pushBack arm_to_add;
-	_f pushBack CTI_HEAVY;
-	_m pushBack 500;
-	_c pushBack "Armored";
-	_s pushBack [];
-	kind_tracked pushBack format["ArmoredT%1", _level];
-};
-	
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
 _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
@@ -465,26 +423,6 @@ _m pushBack 1000;
 _c pushBack "AntiAir";
 _s pushBack [];
 kind_wheeled pushBack format["AntiAirT%1", _level];
-
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_WHEELED >= 4) then {
-		air_to_add pushBack [format["%1LIB_SOV_M16_Halftrack", _sid], 1, 40];
-	};
-	
-	units_antiair append antiair_to_add;
-	if(CTI_FACTORY_LEVEL_PRESET >= _level) then {antiair_auto append antiair_to_add;};
-
-	_v pushBack format["AntiAirT%1", _level];
-	_t pushBack "M16 Halftrack (SOV)";
-	_p pushBack antiair_to_add;
-	_f pushBack CTI_AIR;
-	_m pushBack 1000;
-	_c pushBack "AntiAir";
-	_s pushBack [];
-	kind_tracked pushBack format["AntiAirT%1", _level];
-};
 
 _v pushBack "AntiAir";
 _t pushBack "AntiAir (Auto)";

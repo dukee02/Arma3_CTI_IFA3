@@ -377,9 +377,6 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_SOV_M16_Halftrack", _sid];
-	};
 	_c pushBack format["%1LIB_US6_BM13", _sid];
 	
 	//set all other vars in a slope
@@ -407,53 +404,6 @@ if(_tech_level > _upgrade_levels select CTI_UPGRADE_LIGHT) then {
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
 _matrix_cnt = 0;
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
-
-	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-		_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-	
-		_c pushBack format["%LIB_UniversalCarrier_SOV", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-	
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			_c pushBack format["%1LIB_M3A3_Stuart_SOV_w", _sid];
-			_p pushBack '';
-			_n pushBack '';
-			_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-			_t pushBack _building_time;
-			_u pushBack _tech_level;
-			_f pushBack CTI_FACTORY_HEAVY;
-			_s pushBack "";
-			_d pushBack 0;
-		};
-		_c pushBack format["%1LIB_M3A3_Stuart_SOV", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-};
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
 _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_SOV_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
@@ -705,27 +655,26 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	_s pushBack "service-repairtruck";
 	_d pushBack 0;
 };
-//if(CTI_IFA3_NEW >= 0) then {
-	_c pushBack format["CTI_Salvager_%1", _faction];
-	_p pushBack '';
-	_n pushBack 'Salvager Truck';
-	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-	_t pushBack _building_time;
-	_u pushBack _tech_level;
-	_f pushBack CTI_FACTORY_REPAIR;
-	_s pushBack [format["%1LIB_Zis5v", _sid],"salvager"];
-	_d pushBack 0;
-		
-	_c pushBack format["CTI_Salvager_Independent_%1", _faction];
-	_p pushBack '';
-	_n pushBack 'Salvager Truck';
-	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-	_t pushBack _building_time;
-	_u pushBack _tech_level;
-	_f pushBack CTI_FACTORY_REPAIR;
-	_s pushBack [format["%1LIB_Zis5v", _sid],"salvager-independent"];
-	_d pushBack 0;
-//};
+
+_c pushBack format["CTI_Salvager_%1", _faction];
+_p pushBack '';
+_n pushBack 'Salvager Truck';
+_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+_t pushBack _building_time;
+_u pushBack _tech_level;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack [format["%1LIB_Zis5v", _sid],"salvager"];
+_d pushBack 0;
+
+_c pushBack format["CTI_Salvager_Independent_%1", _faction];
+_p pushBack '';
+_n pushBack 'Salvager Truck';
+_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+_t pushBack _building_time;
+_u pushBack _tech_level;
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack [format["%1LIB_Zis5v", _sid],"salvager-independent"];
+_d pushBack 0;
 
 //***************************************************************************************************************************************
 //														Ammo Factory																	*

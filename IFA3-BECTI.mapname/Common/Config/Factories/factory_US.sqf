@@ -6,15 +6,15 @@ _setupBaseUnits = false;
 
 switch (_side) do {
 	case west: {
-		/*_sid = "VIOC_B_";*/_tag = "WEST_";
-		if(CTI_WEST_AI == CTI_GER_ID || CTI_WEST_TOWNS == CTI_US_ID) then {_setupBaseUnits = true};
+		_sid = "VIOC_B_";_tag = "WEST_";
+		if(CTI_WEST_AI == CTI_UK_ID || CTI_WEST_TOWNS == CTI_UK_ID) then {_setupBaseUnits = true};
 	};
 	case east: {
-		/*_sid = "VIOC_O_";*/_tag = "EAST_";
-		if(CTI_EAST_AI == CTI_GER_ID || CTI_EAST_TOWNS == CTI_US_ID) then {_setupBaseUnits = true};
+		_sid = "VIOC_O_";_tag = "EAST_";
+		if(CTI_EAST_AI == CTI_UK_ID || CTI_EAST_TOWNS == CTI_UK_ID) then {_setupBaseUnits = true};
 	};
 	case resistance: {
-		_sid = "";_tag = "GUER_";
+		_sid = "VIOC_I_";_tag = "GUER_";
 	};
 	default {_sid = "";};
 };
@@ -217,9 +217,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_US_M16_Halftrack", _sid];
-	};
 	_c pushBack format["%1LIB_M8_Greyhound", _sid];
 };
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_LIGHT];
@@ -269,27 +266,13 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_M4E5_w", _sid];
-		};
-	};
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_M4E5", _sid];
-	} else {
-		_c pushBack format["%1LIB_M4A3_76", _sid];
-	};
+	_c pushBack format["%1LIB_M4A3_76", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_M4T34_Calliope", _sid];
-		_c pushBack format["%1LIB_M4A3_76", _sid];
-	} else {
-		_c pushBack format["%1LIB_M4A3_76_HVSS", _sid];
-	};
+	_c pushBack format["%1LIB_M4A3_76_HVSS", _sid];
 };
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_HEAVY];
 if (isNil "_priorUnits") then { 

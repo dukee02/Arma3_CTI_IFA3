@@ -293,33 +293,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	};
 };
 
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_UK_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
-
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
-		_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-	
-		_c pushBack format["%1LIB_UK_M16_Halftrack", _sid];
-		
-		//set all other vars in a slope
-		_cntstart = count _c;
-		_cntend = count _p;
-		for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
-			_p pushBack '';
-			_n pushBack '';
-			_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-			_t pushBack _building_time;
-			_u pushBack _tech_level;
-			_f pushBack CTI_FACTORY_LIGHT;
-			_s pushBack "";
-			_d pushBack 0;	
-		};
-	};
-};
-
 //Update the calculatetd max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_LIGHT) then {
 	_upgrade_levels set [CTI_UPGRADE_LIGHT, _tech_level];
@@ -358,70 +331,6 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_s pushBack "";
 		_d pushBack 0;	
 	};
-};
-
-if(CTI_IFA3_NEW > 0) then {
-	_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_UK_ID, CTI_IFA_NEW_ID] call CTI_CO_FNC_GetTechmatrix;
-
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-		_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-	
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			_c pushBack format["%1LIB_M3A3_Stuart_UK_W", _sid];
-		};
-		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			_c pushBack format["%1LIB_M3A3_Stuart_DR", _sid];
-		};
-		_c pushBack format["%1LIB_M3A3_Stuart_UK", _sid];
-		
-		//set all other vars in a slope
-		_cntstart = count _c;
-		_cntend = count _p;
-		for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
-			_p pushBack '';
-			_n pushBack '';
-			_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-			_t pushBack _building_time;
-			_u pushBack _tech_level;
-			_f pushBack CTI_FACTORY_HEAVY;
-			_s pushBack "";
-			_d pushBack 0;	
-		};
-	};
-
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-		_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-	
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			_c pushBack format["%1LIB_M5A1_Stuart_UK_W", _sid];
-		};
-		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-			_c pushBack format["%1LIB_M5A1_Stuart_DR", _sid];
-		};
-		_c pushBack format["%1LIB_M5A1_Stuart_UK", _sid];
-		
-		//set all other vars in a slope
-		_cntstart = count _c;
-		_cntend = count _p;
-		for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
-			_p pushBack '';
-			_n pushBack '';
-			_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-			_t pushBack _building_time;
-			_u pushBack _tech_level;
-			_f pushBack CTI_FACTORY_HEAVY;
-			_s pushBack "";
-			_d pushBack 0;	
-		};
-	};
-
-	_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-	_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_UK_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -469,14 +378,8 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_Cromwell_Mk4_w", _sid];
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_Cromwell_Mk6_w", _sid];
-		};
 	};
 	_c pushBack format["%1LIB_Cromwell_Mk4", _sid];
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_Cromwell_Mk6", _sid];
-	};
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -498,22 +401,11 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_Sherman_I_w", _sid];
-			_c pushBack format["%1LIB_Sherman_IB_w", _sid];
-		};
-	};
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		_c pushBack format["%1LIB_UK_DR_M4A3_75", _sid];
 	};
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_Sherman_I", _sid];
-		_c pushBack format["%1LIB_Sherman_IB", _sid];
-	} else {
-		_c pushBack format["%1LIB_UK_Italy_M4A3_75", _sid];
-	};
-	
+	_c pushBack format["%1LIB_UK_Italy_M4A3_75", _sid];
+
 	//set all other vars in a slope
 	_cntstart = count _c;
 	_cntend = count _p;
@@ -534,16 +426,7 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		if(CTI_IFA3_NEW > 0) then {
-			_c pushBack format["%1LIB_IC_Firefly_w", _sid];
-		};
-	};
-	if(CTI_IFA3_NEW > 0) then {
-		_c pushBack format["%1LIB_IC_Firefly", _sid];
-	} else {
-		_c pushBack format["%1LIB_M4A4_FIREFLY", _sid];
-	};
+	_c pushBack format["%1LIB_M4A4_FIREFLY", _sid];
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -665,30 +548,27 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	//_d pushBack 0;
 	
 };
-//if(CTI_IFA3_NEW >= 0) then {
-	if!(CTI_UK_SIDE == CTI_US_SIDE) then {
-		_c pushBack format["CTI_Salvager_%1", _faction];
-		_p pushBack '';
-		_n pushBack 'Salvager Truck';
-		_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_REPAIR;
-		_s pushBack [format["%1LIB_US6_Open_Cargo", _sid],"salvager"];
-		_d pushBack 0;
-			
-		_c pushBack format["CTI_Salvager_Independent_%1", _faction];
-		_p pushBack '';
-		_n pushBack 'Salvager Truck';
-		_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_REPAIR;
-		_s pushBack [format["%1LIB_US6_Open_Cargo", _sid],"salvager-independent"];
-		_d pushBack 0;
+if!(CTI_UK_SIDE == CTI_US_SIDE) then {
+	_c pushBack format["CTI_Salvager_%1", _faction];
+	_p pushBack '';
+	_n pushBack 'Salvager Truck';
+	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_REPAIR;
+	_s pushBack [format["%1LIB_US6_Open_Cargo", _sid],"salvager"];
+	_d pushBack 0;
 		
-	};
-//};
+	_c pushBack format["CTI_Salvager_Independent_%1", _faction];
+	_p pushBack '';
+	_n pushBack 'Salvager Truck';
+	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_REPAIR;
+	_s pushBack [format["%1LIB_US6_Open_Cargo", _sid],"salvager-independent"];
+	_d pushBack 0;
+};
 
 
 //***************************************************************************************************************************************
