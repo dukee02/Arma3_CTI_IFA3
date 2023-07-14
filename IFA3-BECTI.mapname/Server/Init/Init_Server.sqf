@@ -58,14 +58,6 @@ call compile preprocessFileLineNumbers "Server\Functions\Server_TownMortars.sqf"
 
 execVM "Server\Init\Init_Prison.sqf";
 
-//TODO:
-//1. delete locations to far away of towns
-//2. combine basic location and side specific ones
-//3. make default location for each side selectable (range > 100k)
-//CTI_BASE_START_TOWN
-//CTI_BASE_STARTUP_PLACEMENT
-
-
 //--- Get the starting locations.
 _startup_locations = [];
 _startup_locations_west = [];
