@@ -144,7 +144,7 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_BuildMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_PylonMenu.sqf";
 
 if(CTI_GER_SIDE == (CTI_P_SideJoined) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_SPE_DLC >= 1) then {
+	if(CTI_SPE_DLC >= 1 && [1175380] call CTI_CO_FNC_HasDLC) then {
 		(CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_GER_SPE.sqf";};
 	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
 		(CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_GER.sqf";
@@ -157,7 +157,7 @@ if(CTI_SOV_SIDE == (CTI_P_SideJoined) call CTI_CO_FNC_GetSideID) then {
 	};
 };
 if(CTI_US_SIDE == (CTI_P_SideJoined) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_SPE_DLC >= 1) then {
+	if(CTI_SPE_DLC >= 1 && [1175380] call CTI_CO_FNC_HasDLC) then {
 		(CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_US_SPE.sqf";};
 	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
 		(CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_US.sqf";

@@ -106,7 +106,7 @@ CTI_CO_CustomIterator = 0;
 
 //calculate the main mod depends on the given parameters
 _mainmod = CTI_IFA_ID;
-if(CTI_SPE_DLC >= 1) then {_mainmod = CTI_SPE_ID;};
+if(CTI_SPE_DLC >= 1 && [1175380] call CTI_CO_FNC_HasDLC) then {_mainmod = CTI_SPE_ID;};
 _nation = -1;
 {
 	// Current result is saved in variable _x
@@ -177,7 +177,9 @@ if(CTI_UK_SIDE >= 0) then {
 if(CTI_US_SIDE >= 0) then {
 	if(CTI_SPE_DLC >= 1) then {
 		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_US_SPE.sqf";
-		((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_US_SPE.sqf";
+		if([1175380] call CTI_CO_FNC_HasDLC) then {
+			((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_US_SPE.sqf";
+		};
 		if((CTI_US_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_US_SIDE >= 1 && CTI_EAST_AI < 0)) then {
 			((CTI_US_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_US_SPE.sqf";
 		};
@@ -218,7 +220,9 @@ if(CTI_SOV_SIDE >= 0) then {
 if(CTI_GER_SIDE >= 0) then {
 	if(CTI_SPE_DLC >= 1) then {
 		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_GER_SPE.sqf";
-		((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_GER_SPE.sqf";
+		if([1175380] call CTI_CO_FNC_HasDLC) then {
+			((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_GER_SPE.sqf";
+		};
 		if((CTI_GER_SIDE == 0 && CTI_WEST_AI < 0) || (CTI_GER_SIDE == 1 && CTI_EAST_AI < 0)) then {
 			((CTI_GER_SIDE) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Squads\squad_GER_SPE.sqf";
 		};
