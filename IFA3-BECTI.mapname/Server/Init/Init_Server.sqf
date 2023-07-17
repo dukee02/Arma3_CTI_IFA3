@@ -249,6 +249,9 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 				
 				_group setVariable ["cti_vote", -1, true];
 				
+				//if (CTI_Log_Level >= CTI_Log_Debug) then {
+					["VIOC_DEBUG", "FILE: Server\Init\Init_Server.sqf", format["starting side: [%1] | gear: [%2]", _side, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]]] call CTI_CO_FNC_Log;
+				//};
 				[leader _group, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]] call CTI_CO_FNC_EquipUnit;
 				
 				if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then { //--- Wait for the player to be "ready"

@@ -94,7 +94,7 @@ but can lead to display errors and other misbehavior. We advise everyone to use 
     [*]No fixed script, every game can run differently.
 [/list]
 
-[h1]BECTI special features: [/h1] 
+[h1]VIO-BECTI special features: [/h1] 
 [list]
     [*]Mission designed for PvP, but also Coop possible.
     [*]New start modes for Coop, where the own side holds an adjustable small radius to start.
