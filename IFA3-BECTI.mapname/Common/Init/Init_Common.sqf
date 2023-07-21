@@ -120,10 +120,10 @@ _nation = -1;
 			_nation = CTI_SOV_ID;
 		};
 		case (CTI_US_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == CTI_UK_ID): {
-			_nation = CTI_US_ID;
+			_nation = CTI_UK_ID;
 		};
 		case (CTI_UK_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == CTI_US_ID && CTI_IFA_ADDON >= 1): {
-			_nation = CTI_UK_ID;
+			_nation = CTI_US_ID;
 		};
 		case (CTI_GER_SIDE == (_x) call CTI_CO_FNC_GetSideID && _ai == -1): {
 			_nation = CTI_GER_ID;
@@ -139,9 +139,7 @@ _nation = -1;
 		};
 		default {};
 	};
-	//if (CTI_Log_Level >= CTI_Log_Debug) then {
-		["VIOC_DEBUG", "FILE: Common\Init\Init_Common.sqf", format ["Start gear config: side %1 NationID <%2> MainMod: <%3>", _x, _nation, _mainmod]] call CTI_CO_FNC_Log;
-	//};
+	if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Init\Init_Common.sqf", format ["Start gear config: side %1 NationID <%2> MainMod: <%3>", _x, _nation, _mainmod]] call CTI_CO_FNC_Log};
 	missionNamespace setVariable [format ["CTI_%1_MAINNATIONS", _x], [_nation, _mainmod]];
 	[_x, _nation, _mainmod] call compile preprocessFileLineNumbers "Common\Config\Gear\gear_start_config.sqf";
 	

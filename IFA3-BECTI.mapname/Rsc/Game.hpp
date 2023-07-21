@@ -18,7 +18,7 @@ overviewPicture = "VIO_BECTI.jpg";
 
 //--- Properties.
 class Header {
-	gameType = CTI;
+	gameType = viocti;
 	minPlayers = 1;
 	maxPlayers = 35;
 };

@@ -45,7 +45,7 @@ if((_side == west && ((CTI_WEST_AI >= 0 && CTI_WEST_AI == CTI_SOV_ID) ||  CTI_WE
 		};	
 	};
 	//1 pilot for all camos
-	missionNamespace setVariable [format["CTI_%1_Pilot", _tag], format["%1LIB_SOV_pilot", _sid]];
+	missionNamespace setVariable [format["CTI_%1Pilot", _tag], format["%1LIB_SOV_pilot", _sid]];
 
 	if(CTI_CAMO_ACTIVATION == 1) then {		//winter camo active
 		//Set starting vehicles

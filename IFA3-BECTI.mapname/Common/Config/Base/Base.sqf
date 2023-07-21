@@ -14,42 +14,58 @@ else {
 };
 if(CTI_VIO_ADDON == 0) then {_sid = "";};
 
-if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
-		switch(CTI_CAMO_ACTIVATION) do {
-			case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Parm_w", _sid]];};		//Winter camo
-			default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Tent", _sid]];};		//default/woodland camo
+_nation = missionNamespace getVariable [format ["CTI_%1_MAINNATIONS", _x], []];
+switch (_nation select 0) do {
+	case CTI_GER_ID: {
+		switch (_nation select 1) do {
+			case CTI_IFA_ID: {
+				switch(CTI_CAMO_ACTIVATION) do {
+					case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_OpelBlitz_Parm_w", _sid]];};		//Winter camo
+					case 2: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_DAK_OpelBlitz_Parm", _sid]];};		//Desert camo
+					default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_OpelBlitz_Parm", _sid]];};		//default/woodland camo
+				};
+			};
+			case CTI_SPE_ID: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1SPE_OpelBlitz_Repair", _sid]]};
+			default { };
 		};
 	};
-};
-if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_SPE_DLC >= 1) then {
-		missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1SPE_US_M3_Halftrack_Repair", _sid]];
-	} else{
-		switch(CTI_CAMO_ACTIVATION) do {
-			case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Parm_w", _sid]];};		//Winter camo
-			default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Tent", _sid]];};		//default/woodland camo
+	case CTI_SOV_ID: {
+		switch (_nation select 1) do {
+			case CTI_IFA_ID: {
+				switch(CTI_CAMO_ACTIVATION) do {
+					case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_Zis6_parm_w", _sid]];};		//Winter camo
+					default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_Zis6_Parm", _sid]];};		//default/woodland camo
+				};
+			};
+			//case CTI_SPE_ID: {};
+			default { };
 		};
 	};
-};
-if(CTI_SOV_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
-		switch(CTI_CAMO_ACTIVATION) do {
-			case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_Zis6_parm_w", _sid]];};		//Winter camo
-			default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_Zis6_Parm", _sid]];};		//default/woodland camo
+	case CTI_UK_ID: {
+		switch (_nation select 1) do {
+			case CTI_IFA_ID: {
+				switch(CTI_CAMO_ACTIVATION) do {
+					case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Parm_w", _sid]];};		//Winter camo
+					default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Tent", _sid]];};		//default/woodland camo
+				};
+			};
+			//case CTI_SPE_ID: {};
+			default { };
 		};
 	};
-};
-if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
-	if(CTI_SPE_DLC >= 1) then {
-		missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1SPE_OpelBlitz_Repair", _sid]];
-	} else{
-		switch(CTI_CAMO_ACTIVATION) do {
-			case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_OpelBlitz_Parm_w", _sid]];};		//Winter camo
-			case 2: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_DAK_OpelBlitz_Parm", _sid]];};		//Desert camo
-			default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_OpelBlitz_Parm", _sid]];};		//default/woodland camo
+	case CTI_US_ID: {
+		switch (_nation select 1) do {
+			case CTI_IFA_ID: {
+				switch(CTI_CAMO_ACTIVATION) do {
+					case 1: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Parm_w", _sid]];};		//Winter camo
+					default {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1LIB_US_GMC_Tent", _sid]];};		//default/woodland camo
+				};
+			};
+			case CTI_SPE_ID: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1SPE_US_M3_Halftrack_Repair", _sid]]};
+			default { };
 		};
 	};
+	default { };
 };
 
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: Common\Config\Base\Base.sqf", format ["Set HQ Vehicle [%1] for side [%2]", missionNamespace getVariable format["CTI_%1_HQ", _side], _side]] call CTI_CO_FNC_Log };
@@ -647,7 +663,8 @@ if(CTI_SPE_DLC >= 1) then {
 		_categories pushBack 	"AA";
 		_tiers pushBack 		_tech_level;
 	};
-} else {
+};
+if(CTI_IFA_ADDON >= 1 && CTI_SPE_DLC < 1) then {
 	//Flak 38 Vierling for ALL
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_headers pushBack 		"Flak 38 Vierling (Winter)";

@@ -249,9 +249,6 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 				
 				_group setVariable ["cti_vote", -1, true];
 				
-				//if (CTI_Log_Level >= CTI_Log_Debug) then {
-					["VIOC_DEBUG", "FILE: Server\Init\Init_Server.sqf", format["starting side: [%1] | gear: [%2]", _side, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]]] call CTI_CO_FNC_Log;
-				//};
 				[leader _group, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]] call CTI_CO_FNC_EquipUnit;
 				
 				if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then { //--- Wait for the player to be "ready"
@@ -467,7 +464,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 waitUntil {time > 0};
 
 //--- start the Air detection script, because AA gets build very soon.
-0 spawn {
+/*0 spawn {
 	while {!CTi_GameOver} do {
 		_detectionTime = 30;
 		if(diag_fps > 50) then {_detectionTime = CTI_BASE_DEFENSES_AIR_DETECTION_TIME;} else {_detectionTime = (((60-diag_fps)/10)*CTI_BASE_DEFENSES_AIR_DETECTION_TIME);};
@@ -475,6 +472,6 @@ waitUntil {time > 0};
 		sleep _detectionTime;
 		call CTI_CO_FNC_ScanSkyForPlanes;
 	};
-};
+};*/
 
 {_x Spawn CTI_SE_FNC_VoteForCommander} forEach [west, east];
