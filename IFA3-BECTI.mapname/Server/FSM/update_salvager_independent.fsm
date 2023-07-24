@@ -47,7 +47,7 @@ link21[] = {18,16};
 link22[] = {19,20};
 link23[] = {20,18};
 globals[] = {0.000000,0,0,0,0,640,480,1,196,6316128,1,-555.809814,609.651367,630.043701,-455.164551,973,884,1};
-window[] = {2,-1,-1,-32000,-32000,963,182,1437,182,3,991};
+window[] = {2,-1,-1,-1,-1,989,208,1463,208,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -358,12 +358,12 @@ class FSM
                          "		};" \n
                          "		deleteVehicle _goto;" \n
                          "		//--- destroyed objects" \n
-                         "		{" \n
-                         "			if (damage _x ==1) then {[_x, true] remoteExec [""hideObjectGlobal"", 2];};" \n
-                         "		} foreach (nearestTerrainObjects [_salvager,CTI_GC_TOWN_OBJECTS,(CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE*2)]);" \n
-                         "		if (CTI_Log_Level >= CTI_Log_Information) then {" \n
-                         "			[""INFORMATION"", ""FILE: \Server\FSM\update_salvager_independent.fsm"", format[""Cleanup done: <%1|%2>"",CTI_GC_TOWN_OBJECTS,(CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE*2)]] call CTI_CO_FNC_Log;" \n
-                         "		};" \n
+                         "		//{" \n
+                         "		//	if (damage _x ==1) then {[_x, true] remoteExec [""hideObjectGlobal"", 2];};" \n
+                         "		//} foreach (nearestTerrainObjects [_salvager,CTI_GC_TOWN_OBJECTS,(CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE*2)]);" \n
+                         "		//if (CTI_Log_Level >= CTI_Log_Information) then {" \n
+                         "		//	[""INFORMATION"", ""FILE: \Server\FSM\update_salvager_independent.fsm"", format[""Cleanup done: <%1|%2>"",CTI_GC_TOWN_OBJECTS,(CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE*2)]] call CTI_CO_FNC_Log;" \n
+                         "		//};" \n
                          "		_action = """";" \n
                          "	} else {" \n
                          "		if (time - _move_lasttime > 30) then {" \n

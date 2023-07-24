@@ -119,12 +119,3 @@ if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then
 	//execVM "Scripts\nre_earplugs.sqf";
 	[player] execVM "Client\Module\earplugs\simpleEP.sqf";
 };
-
-if((!CTI_IsServer && !CTI_IsHeadless) || CTI_IsHostedServer) then {
-	if(CTI_ADD_MODULE >= 2) then {
-		[] execVM "VAM_GUI\VAM_GUI_init.sqf";
-	};
-	if(CTI_ADD_MODULE == 1 || CTI_ADD_MODULE == 3) then {
-		_igiload = execVM "IgiLoad\IgiLoadInit.sqf";
-	};
-};

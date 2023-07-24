@@ -879,11 +879,9 @@ if (_obj_main_type in IL_Supported_Vehicles_C47) then
 	];*/
 };
 
-if (_vsupported) then {
-	_obj_main setVariable ["canCargo", true];
-} else {
-	if (IL_DevMod) then {Player globalChat Format["Object type: ""%1"" is not supported.", _obj_main_type]};
-	_obj_main setVariable ["canCargo", false];
+if (!(_vsupported) && (IL_DevMod)) then
+{
+	Player globalChat Format["Object type: ""%1"" is not supported.", _obj_main_type];
 };
 
 if (IL_DevMod) then

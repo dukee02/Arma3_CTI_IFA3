@@ -6,19 +6,20 @@ _setupBaseUnits = false;
 
 switch (_side) do {
 	case west: {
-		/*_sid = "VIOC_B_";*/_tag = "WEST_";
-		if(CTI_WEST_AI == CTI_GER_ID || CTI_WEST_TOWNS == CTI_US_ID) then {_setupBaseUnits = true};
+		_sid = "VIOC_B_";_tag = "WEST_";
+		if(CTI_WEST_AI == CTI_US_ID || CTI_WEST_TOWNS == CTI_US_ID) then {_setupBaseUnits = true};
 	};
 	case east: {
-		/*_sid = "VIOC_O_";*/_tag = "EAST_";
-		if(CTI_EAST_AI == CTI_GER_ID || CTI_EAST_TOWNS == CTI_US_ID) then {_setupBaseUnits = true};
+		_sid = "VIOC_O_";_tag = "EAST_";
+		if(CTI_EAST_AI == CTI_US_ID || CTI_EAST_TOWNS == CTI_US_ID) then {_setupBaseUnits = true};
 	};
 	case resistance: {
-		_sid = "";_tag = "GUER_";
+		_sid = "VIOC_I_";_tag = "GUER_";
 	};
 	default {_sid = "";};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
+//if(CTI_VIO_ADDON == 0) then {_sid = "";};
+_sid = "";
 
 //CTI_CAMO_ACTIVATION = 0 normal camo | 1 winter camo | 2 desert camo | 3 jungle camo | 4 urban camo | 5 maritim camo | 6 special | 7 all
 
