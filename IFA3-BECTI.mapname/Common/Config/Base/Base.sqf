@@ -14,7 +14,7 @@ else {
 };
 if(CTI_VIO_ADDON == 0) then {_sid = "";};
 
-_nation = missionNamespace getVariable [format ["CTI_%1_MAINNATIONS", _x], []];
+_nation = missionNamespace getVariable [format ["CTI_%1_MAINNATIONS", _side], []];
 switch (_nation select 0) do {
 	case CTI_GER_ID: {
 		switch (_nation select 1) do {

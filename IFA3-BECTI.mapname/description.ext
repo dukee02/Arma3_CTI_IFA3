@@ -1,7 +1,9 @@
-/*
-	BECTI: By Benny (benny_boy66@hotmail.fr)
-	  "Praise the bugs!"
-*/
+//--- Properties.
+class Header {
+	gameType = viocti;
+	minPlayers = 1;
+	maxPlayers = 35;
+};
 
 #include "Rsc\Game.hpp"
 #include "Rsc\Resources.hpp"

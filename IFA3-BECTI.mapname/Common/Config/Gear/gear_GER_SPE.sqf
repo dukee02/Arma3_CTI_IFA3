@@ -179,17 +179,17 @@ _i pushBack "SPE_Faustpatrone";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-//_i pushBack "SPE_1Rnd_Faustpatrone";
-//_u pushBack _tech_level;
-//_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "SPE_1Rnd_Faustpatrone";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "SPE_PzFaust_30m";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-//_i pushBack "SPE_1Rnd_PzFaust_30m";
-//_u pushBack _tech_level;
-//_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "SPE_1Rnd_PzFaust_30m";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //------------------------------------Uniforms------------------------------------
 _i pushBack "U_SPE_GER_Soldier_Gaiters";
@@ -1042,9 +1042,9 @@ _i pushBack "SPE_PzFaust_60m";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-//_i pushBack "SPE_1Rnd_PzFaust_60m";
-//_u pushBack _tech_level;
-//_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
+_i pushBack "SPE_1Rnd_PzFaust_60m";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //------------------------------------Uniforms------------------------------------
 //camo

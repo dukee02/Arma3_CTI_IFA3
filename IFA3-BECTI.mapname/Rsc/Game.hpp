@@ -6,7 +6,7 @@ respawnDialog = false;
 //--- Require briefing.html to show up.
 onLoadName = "VIO-BECTI-IFA3 V2.0.2";
 onLoadMissionTime = false;
-onLoadMission = "VIO-BECTI-IFA3 V2.0.2_rc4_230717";
+onLoadMission = "VIO-BECTI-IFA3 V2.0.2";
 loadScreen = "VIO_BECTI.jpg";
 
 briefingName = "VIO-BECTI-IFA3 V2.0.2";
@@ -15,10 +15,3 @@ briefingName = "VIO-BECTI-IFA3 V2.0.2";
 dev = "Benny, dukee";
 author = "Benny, dukee";
 overviewPicture = "VIO_BECTI.jpg";
-
-//--- Properties.
-class Header {
-	gameType = viocti;
-	minPlayers = 1;
-	maxPlayers = 35;
-};

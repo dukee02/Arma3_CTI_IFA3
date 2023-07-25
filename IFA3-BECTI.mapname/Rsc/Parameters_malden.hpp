@@ -32,7 +32,7 @@ class Params {
 	class CTI_IFA_NEW {
 		title = "Testsetup: activate testsetup";
 		values[] = {0,1,2};
-		texts[] = {"IFA3 only","IFA3 FFA","IFA3 test only"};
+		texts[] = {"IFA3 only","IFA3 + SPE","SPE only"};
 		default = 0;
 	};
 	class SEPARATOR_STARTUP {
@@ -68,7 +68,7 @@ class Params {
 	class CTI_GUER_TOWNS {
 		title = "INDEPENDENT Town Nation (change for easyer town defending or all nations are seperated into EAST and WEST)";
 		values[] = {0,1,2};
-		texts[] = {"FFI - very easy","Polish Units - easy","3rd Party (needs one Side on GUER)"};
+		texts[] = {"FFI - very easy [IFA3 needed]","Polish Units - easy [IFA3 needed]","3rd Party (needs one Side on GUER or set 50:50 at townsmode)"};
 		default = 2;
 	};
 	class CTI_WEST_TOWNS {
