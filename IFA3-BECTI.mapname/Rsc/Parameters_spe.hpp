@@ -30,10 +30,10 @@ class Params {
 		default = 0;
 	};
 	class CTI_IFA_NEW {
-		title = "Testsetup: activate testsetup";
+		title = "IFA3 - SPE setup";
 		values[] = {0,1,2};
 		texts[] = {"IFA3 only","IFA3 + SPE","SPE only"};
-		default = 2;
+		default = 0;
 	};
 	class SEPARATOR_STARTUP {
 		title = "========================== STARTUP ============================";
@@ -482,8 +482,8 @@ class Params {
 	class CTI_ARTILLERY_TIMEOUT {
 		title = "ARTILLERY: Delay between each fire mission (if Arty not Disabled or with Ballistic Computer)";
 		values[] = {0,60,120,180,240,300,600};
-		texts[] = {"Disabled","60","120","180","240","300","600"};
-		default = 180;
+		texts[] = {"Disabled","1 min","2 min","3 min","4 min","5 min","10 min"};
+		default = 240;
 	};
 	class CTI_GAMEPLAY_TEAMSTACK_DISABLE {
 		title = "GAMEPLAY: Kick Team Stackers";

@@ -35,8 +35,6 @@ copy "%gitpath%\IFA3-BECTI.mapname\RSC\Resources.hpp" "%buildpath%\%missionflode
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Sounds.hpp" "%buildpath%\%missionfloder%\RSC\Sounds.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Styles.hpp" "%buildpath%\%missionfloder%\RSC\Styles.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Titles.hpp" "%buildpath%\%missionfloder%\RSC\Titles.hpp"
-echo copy Script files
-copy "%gitpath%\IFA3-BECTI.mapname\\Scripts\nre_earplugs.sqf" "%buildpath%\%missionfloder%\Scripts\nre_earplugs.sqf"
 echo copy Server folder
 xcopy "%gitpath%\IFA3-BECTI.mapname\Server" "%buildpath%\%missionfloder%\Server" /E /Y /I
 echo copy VAM folder

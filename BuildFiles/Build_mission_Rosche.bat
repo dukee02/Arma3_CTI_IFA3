@@ -1,5 +1,5 @@
 @echo off
-title VIO-BECTI-IFA3.Merderet Mission gets created
+title VIO-BECTI-IFA3.WL_Rosche Mission gets created
 
 set gitpath="F:\GitReps\Arma3_CTI_IFA3"
 set buildpath="D:\Tausch\Programmierung\VIO-BECTI\VIO-BECTI-IFA3"
@@ -14,8 +14,8 @@ set buildpath="D:\Tausch\Programmierung\VIO-BECTI\VIO-BECTI-IFA3"
 ::set min=%time:~3,2%
 ::set sek=%time:~6,2%
 
-set mapname="Merderet"
-set missionfloder="VIO-BECTI-IFA3.I44_%mapname%"
+set Map_name="Rosche"
+set missionfloder="VIO-BECTI-IFA3.WL_%Map_name%"
 echo aktuelle Mission wird erstellt unter: "buildpath\%missionfloder%"
 echo copy Client folder
 xcopy "%gitpath%\IFA3-BECTI.mapname\Client" "%buildpath%\%missionfloder%\Client" /E /Y /I
@@ -30,7 +30,7 @@ copy "%gitpath%\IFA3-BECTI.mapname\RSC\Debriefing.hpp" "%buildpath%\%missionflod
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Dialogs.hpp" "%buildpath%\%missionfloder%\RSC\Dialogs.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Game.hpp" "%buildpath%\%missionfloder%\RSC\Game.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Notifications.hpp" "%buildpath%\%missionfloder%\RSC\Notifications.hpp"
-copy "%gitpath%\IFA3-BECTI.mapname\RSC\Parameters_smallMap.hpp" "%buildpath%\%missionfloder%\RSC\Parameters.hpp"
+copy "%gitpath%\IFA3-BECTI.mapname\RSC\Parameters.hpp" "%buildpath%\%missionfloder%\RSC\Parameters.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Resources.hpp" "%buildpath%\%missionfloder%\RSC\Resources.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Sounds.hpp" "%buildpath%\%missionfloder%\RSC\Sounds.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Styles.hpp" "%buildpath%\%missionfloder%\RSC\Styles.hpp"
@@ -44,8 +44,8 @@ copy "%gitpath%\IFA3-BECTI.mapname\briefing.sqf" "%buildpath%\%missionfloder%\br
 copy "%gitpath%\IFA3-BECTI.mapname\debug_diag.sqf" "%buildpath%\%missionfloder%\debug_diag.sqf"
 copy "%gitpath%\IFA3-BECTI.mapname\description.ext" "%buildpath%\%missionfloder%\description.ext"
 copy "%gitpath%\IFA3-BECTI.mapname\init.sqf" "%buildpath%\%missionfloder%\init.sqf"
-copy "%gitpath%\IFA3-BECTI.mapname\mission_%mapname%.sqm" "%buildpath%\%missionfloder%\mission.sqm"
-copy "%gitpath%\IFA3-BECTI-Thumpnails\IFA3-BECTI-%mapname%Small.jpg" "%buildpath%\%missionfloder%\VIO_BECTI.jpg"
+copy "%gitpath%\IFA3-BECTI.mapname\mission_%Map_name%.sqm" "%buildpath%\%missionfloder%\mission.sqm"
+copy "%gitpath%\IFA3-BECTI-Thumpnails\IFA3-BECTI-%Map_name%Small.jpg" "%buildpath%\%missionfloder%\VIO_BECTI.jpg"
 copy "%gitpath%\IFA3-BECTI.mapname\WFpostprocess.sqf" "%buildpath%\%missionfloder%\WFpostprocess.sqf"
 copy "%gitpath%\IFA3-BECTI.mapname\stringtable.xml" "%buildpath%\%missionfloder%\stringtable.xml"
 

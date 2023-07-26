@@ -570,7 +570,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_c pushBack format["%1LIB_PzKpfwVI_E_w", _sid];
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,2.0] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
@@ -581,7 +581,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_c pushBack format["%1LIB_DAK_PzKpfwVI_E", _sid];
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,2.0] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
@@ -591,7 +591,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_c pushBack format["%1LIB_PzKpfwVI_E", _sid];
 	_p pushBack '';
 	_n pushBack '';
-	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,2.0] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 	_t pushBack _building_time;
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_HEAVY;
@@ -644,7 +644,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_c pushBack format["%1LIB_PzKpfwVI_B_w", _sid];
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,2.0] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
@@ -657,7 +657,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_c pushBack format["%1LIB_PzKpfwVI_B", _sid];
 	_p pushBack '';
 	_n pushBack '';
-	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,2.0] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 	_t pushBack _building_time;
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_HEAVY;

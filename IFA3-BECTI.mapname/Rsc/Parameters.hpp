@@ -30,7 +30,7 @@ class Params {
 		default = 0;
 	};
 	class CTI_IFA_NEW {
-		title = "Testsetup: activate testsetup";
+		title = "IFA3 - SPE setup";
 		values[] = {0,1,2};
 		texts[] = {"IFA3 only","IFA3 + SPE","SPE only"};
 		default = 0;

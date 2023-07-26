@@ -141,11 +141,11 @@ Want to know more about the mission, find servers running the mission or find ot
 
 [h1]If you like my work, you can[url=paypal.me/dukeeVio] Support me [/url][/h1]
 
-[url=https://steamcommunity.com/groups/vio-community] Steam-Community [/url]
 [url=https://steamcommunity.com/groups/vio-community/discussions/0/3039354546887486100/] IFA3 BECTI Info [/url]
 [url=https://discord.gg/sJw2Nynh7s] Discord [/url]
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2564772956] VIO-BECTI WorldWar2 Collection [/url]
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2484775180] VIO-BECTI Vanilla Collection [/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1963377152] VIO-BECTI Cold-War Collection [/url]
 
 
 
@@ -155,26 +155,28 @@ https://steamcommunity.com/groups/vio-community/discussions/0/174001225280057993
 
 
 -------------------MAPS----------------------------
-Altis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588965899				V2.0_221010
-Baranow							https://steamcommunity.com/sharedfiles/filedetails/?id=2739995624				V2.0_221010
-Baranow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739997580				V2.0_221010
-Merderet						https://steamcommunity.com/sharedfiles/filedetails/?id=1576219036				V2.0_221010
-Merderet koth					https://steamcommunity.com/sharedfiles/filedetails/?id=1903002234				V2.0_221010
-Merderet V2						https://steamcommunity.com/sharedfiles/filedetails/?id=1576226166				V2.0_221010
-Merderet V3						https://steamcommunity.com/sharedfiles/filedetails/?id=1903003321				V2.0_221010
-Merderet Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739987351				V2.0_221010
-Tobruk							https://steamcommunity.com/sharedfiles/filedetails/?id=2739988353				V2.0_221010
-Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024				V2.0_221010
-Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040				V2.0_221010
-Neaville 						https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249				V2.0_221010
-Staszow							https://steamcommunity.com/sharedfiles/filedetails/?id=2754344617				V2.0_221010
-Staszow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2754346258				V2.0_221010
-Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617				V2.0_221010
-El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130				V2.0_221010
-Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236				V2.0_221010
-Rosche Germany					https://steamcommunity.com/sharedfiles/filedetails/?id=2754349165				V2.0_221010
+Baranow							https://steamcommunity.com/sharedfiles/filedetails/?id=2739995624				V2.0.2
+Baranow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739997580				V2.0.2
+Merderet						https://steamcommunity.com/sharedfiles/filedetails/?id=1576219036				V2.0.2
+Merderet koth					https://steamcommunity.com/sharedfiles/filedetails/?id=1903002234				V2.0.2
+Merderet V2						https://steamcommunity.com/sharedfiles/filedetails/?id=1576226166				V2.0.2
+Merderet V3						https://steamcommunity.com/sharedfiles/filedetails/?id=1903003321				V2.0.2
+Merderet Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739987351				V2.0.2
+Tobruk							https://steamcommunity.com/sharedfiles/filedetails/?id=2739988353				V2.0.2
+Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040				V2.0.2
+Neaville 						https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249				V2.0.2
+Staszow							https://steamcommunity.com/sharedfiles/filedetails/?id=2754344617				V2.0.2
+Staszow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2754346258				V2.0.2
+El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130				V2.0.2
 
 Normandy						https://steamcommunity.com/sharedfiles/filedetails/?id=3009609630				V2.0.2
 
+Altis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588965899				V2.0.2
+Enoch							https://steamcommunity.com/sharedfiles/filedetails/?id=3010280590				V2.0.2
+Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024				V2.0.2
+Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617				V2.0.2
+Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236				V2.0.2
 
-VIO-BECTI-IFA3 Normandy V2.0.2
+Rosche Germany					https://steamcommunity.com/sharedfiles/filedetails/?id=2754349165				V2.0.2
+
+

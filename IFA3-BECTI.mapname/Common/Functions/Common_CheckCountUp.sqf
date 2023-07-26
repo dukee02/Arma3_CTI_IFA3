@@ -31,7 +31,7 @@ _matrix_full = _this select 1;
 _matrix_nation = _this select 2;
 
 //if(_counter >= 0) then {
-	for [{_i = 0}, {_i < count _matrix_full}, {_i = _i + 1}] do {
+	/*for [{_i = 0}, {_i < count _matrix_full}, {_i = _i + 1}] do {
 		if(_counter < count _matrix_full) then {
 			if(_matrix_full select _counter == _matrix_nation select _counter) then {
 				if(_matrix_full select _counter == true) then {
@@ -48,8 +48,26 @@ _matrix_nation = _this select 2;
 			_i = count _matrix_full;
 			_counter = -1;
 		};
-	};
+	};*/
 //};
+for [{_i = _counter}, {_i < count _matrix_full}, {_i = _i + 1}] do {
+	if(_counter < count _matrix_full) then {
+		if(_matrix_full select _i == _matrix_nation select _i) then {
+			if(_matrix_full select _i == true) then {
+				_i = count _matrix_full;
+			};
+		} else {
+			if(_matrix_nation select _i == false) then {
+				_counter = _counter + 1;
+			} else {
+				_i = count _matrix_full;
+			};
+		};
+	} else {
+		_i = count _matrix_full;
+		_counter = -1;
+	};
+};
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\functions\Common_CheckCountUp.sqf", format["Counter: [%1] Matrix: <%2> <%3>", _counter, _matrix_full, _matrix_nation]] call CTI_CO_FNC_Log;};
 

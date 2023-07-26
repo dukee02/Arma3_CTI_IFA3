@@ -49,17 +49,18 @@ Fixed: AI squads waiting to long for units in base
 Fixed: Town flag positions
 Fixed: persist. gear not working
 
-V2.0.1_2306xx changes from jan 30 - yet
+(20230726)
+V2.0.2 
 Added: crew max amount for vehicles (7)
 Added: automatic server restart with info
-Added: automatic AI team disband if fps less than 15
 Added: max amount of vehicles spawn on same location
 Added: Filter in defensemenu
 Added: SV maxcap for spawns 150
-Added: Param for activating auto AI team disbanding
+Added: Param for activating auto AI team disbanding if fps less than 15
 Added: Save empty vehicles and player funds by ID
 Added: units count in towns
 Added: Artillery can change mode + max range in params
+Added: MineDetector and calculation of items (WW2)
 Changed: Option to enable only special salvager units
 Changed: Town vehicles spawn heading north now
 Changed: Desc and values "TOWNS: Protection Range"
@@ -68,6 +69,10 @@ Changed: building near vehicles/men now blocked
 Changed: info if you in restricted area for basse
 Changed: Upgrade descrioption
 Changed: some param default values
+Changed: moved igiload to the client part
+Changed: Flak36 and Nebelwerfer tier switched
+Changed: default VISUAL options
+Changed: defense price finally gets calculated too (WW2)
 Fixed: error in defensemenu
 Fixed: commander SV and money not loaded
 Fixed: saves won't deleted after mission end
@@ -77,21 +82,6 @@ Fixed: Stuck in building cam if build on water
 Fixed: vanilla rearm works in CTI
 Fixed: Town capture gets broadcasted
 Fixed: Damage <null> on building hit
-
-Added: MineDetector and calculation of items (WW2)
-Changed: defense price finally gets calculated too (WW2)
-Changed: default VISUAL options
-Changed: moved igiload to the client part
-Changed: Flak36 and Nebelwerfer tier switched
 Fixed: tobruk city SV
 Fixed: wrong dependency for defense T2
 Fixed: cant place defenses
-
-
-x Changed: standardize Base Units config		(feb 21)
-x Changed: basic base units coding				(Apr 12)
-x Changed: code cleanup - tech matrix changed  (mar 1)		(Apr 25)
-x Added: VAM (Vehicle Appearance Module)		(May 10)
--> Added: mission build .bat					(Apr 19)
--> Changed: updated map template				(feb 23)
--> parameters check

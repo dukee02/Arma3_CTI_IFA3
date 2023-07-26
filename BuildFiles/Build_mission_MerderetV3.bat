@@ -30,14 +30,11 @@ copy "%gitpath%\IFA3-BECTI.mapname\RSC\Debriefing.hpp" "%buildpath%\%missionflod
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Dialogs.hpp" "%buildpath%\%missionfloder%\RSC\Dialogs.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Game.hpp" "%buildpath%\%missionfloder%\RSC\Game.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Notifications.hpp" "%buildpath%\%missionfloder%\RSC\Notifications.hpp"
-::copy "%gitpath%\IFA3-BECTI.mapname\RSC\Parameters_%mapname%.hpp" "%buildpath%\%missionfloder%\RSC\Parameters.hpp"
-copy "%gitpath%\IFA3-BECTI.mapname\RSC\Parameters.hpp" "%buildpath%\%missionfloder%\RSC\Parameters.hpp"
+copy "%gitpath%\IFA3-BECTI.mapname\RSC\Parameters_smallMap.hpp" "%buildpath%\%missionfloder%\RSC\Parameters.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Resources.hpp" "%buildpath%\%missionfloder%\RSC\Resources.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Sounds.hpp" "%buildpath%\%missionfloder%\RSC\Sounds.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Styles.hpp" "%buildpath%\%missionfloder%\RSC\Styles.hpp"
 copy "%gitpath%\IFA3-BECTI.mapname\RSC\Titles.hpp" "%buildpath%\%missionfloder%\RSC\Titles.hpp"
-echo copy Script files
-copy "%gitpath%\IFA3-BECTI.mapname\\Scripts\nre_earplugs.sqf" "%buildpath%\%missionfloder%\Scripts\nre_earplugs.sqf"
 echo copy Server folder
 xcopy "%gitpath%\IFA3-BECTI.mapname\Server" "%buildpath%\%missionfloder%\Server" /E /Y /I
 echo copy VAM folder
