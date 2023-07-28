@@ -85,3 +85,7 @@ Fixed: Damage <null> on building hit
 Fixed: tobruk city SV
 Fixed: wrong dependency for defense T2
 Fixed: cant place defenses
+
+V2.0.2_b230728
+Added: SPE_Side_Patch support
+Added: IFA3 voice lines as default if loaded

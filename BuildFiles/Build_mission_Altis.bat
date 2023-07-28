@@ -15,7 +15,7 @@ set buildpath="D:\Tausch\Programmierung\VIO-BECTI\VIO-BECTI-IFA3"
 ::set sek=%time:~6,2%
 
 set mapname="Altis"
-set missionfloder="VIO-BECTI-IFA3.%mapname%"
+set missionfloder="VIO-BECTI-SPE_IFA3.%mapname%"
 echo aktuelle Mission wird erstellt unter: "buildpath\%missionfloder%"
 echo copy Client folder
 xcopy "%gitpath%\IFA3-BECTI.mapname\Client" "%buildpath%\%missionfloder%\Client" /E /Y /I

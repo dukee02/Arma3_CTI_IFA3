@@ -15,7 +15,7 @@ set buildpath="D:\Tausch\Programmierung\VIO-BECTI\VIO-BECTI-IFA3"
 ::set sek=%time:~6,2%
 
 set mapname="Merderet_V3"
-set missionfloder="VIO-BECTI-IFA3.I44_%mapname%"
+set missionfloder="VIO-BECTI-SPE_IFA3.I44_%mapname%"
 echo aktuelle Mission wird erstellt unter: "buildpath\%missionfloder%"
 echo copy Client folder
 xcopy "%gitpath%\IFA3-BECTI.mapname\Client" "%buildpath%\%missionfloder%\Client" /E /Y /I

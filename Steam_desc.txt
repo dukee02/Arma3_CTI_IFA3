@@ -155,28 +155,28 @@ https://steamcommunity.com/groups/vio-community/discussions/0/174001225280057993
 
 
 -------------------MAPS----------------------------
-Baranow							https://steamcommunity.com/sharedfiles/filedetails/?id=2739995624				V2.0.2
-Baranow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739997580				V2.0.2
-Merderet						https://steamcommunity.com/sharedfiles/filedetails/?id=1576219036				V2.0.2
-Merderet koth					https://steamcommunity.com/sharedfiles/filedetails/?id=1903002234				V2.0.2
-Merderet V2						https://steamcommunity.com/sharedfiles/filedetails/?id=1576226166				V2.0.2
-Merderet V3						https://steamcommunity.com/sharedfiles/filedetails/?id=1903003321				V2.0.2
-Merderet Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739987351				V2.0.2
-Tobruk							https://steamcommunity.com/sharedfiles/filedetails/?id=2739988353				V2.0.2
-Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040				V2.0.2
-Neaville 						https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249				V2.0.2
-Staszow							https://steamcommunity.com/sharedfiles/filedetails/?id=2754344617				V2.0.2
-Staszow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2754346258				V2.0.2
-El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130				V2.0.2
+Baranow							https://steamcommunity.com/sharedfiles/filedetails/?id=2739995624				V2.0.2_b230728
+Baranow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739997580				V2.0.2_b230728
+Merderet						https://steamcommunity.com/sharedfiles/filedetails/?id=1576219036				V2.0.2_b230728
+Merderet koth					https://steamcommunity.com/sharedfiles/filedetails/?id=1903002234				V2.0.2_b230728
+Merderet V2						https://steamcommunity.com/sharedfiles/filedetails/?id=1576226166				V2.0.2_b230728
+Merderet V3						https://steamcommunity.com/sharedfiles/filedetails/?id=1903003321				V2.0.2_b230728
+Merderet Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739987351				V2.0.2_b230728
+Tobruk							https://steamcommunity.com/sharedfiles/filedetails/?id=2739988353				V2.0.2_b230728
+Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040				V2.0.2_b230728
+Neaville 						https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249				V2.0.2_b230728
+Staszow							https://steamcommunity.com/sharedfiles/filedetails/?id=2754344617				V2.0.2_b230728
+Staszow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2754346258				V2.0.2_b230728
+El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130				V2.0.2_b230728
 
-Normandy						https://steamcommunity.com/sharedfiles/filedetails/?id=3009609630				V2.0.2
+Normandy						https://steamcommunity.com/sharedfiles/filedetails/?id=3009609630				V2.0.2_b230728
 
-Altis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588965899				V2.0.2
-Enoch							https://steamcommunity.com/sharedfiles/filedetails/?id=3010280590				V2.0.2
-Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024				V2.0.2
-Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617				V2.0.2
-Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236				V2.0.2
+Altis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588965899				V2.0.2_b230728
+Enoch							https://steamcommunity.com/sharedfiles/filedetails/?id=3010280590				V2.0.2_b230728
+Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024				V2.0.2_b230728
+Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617				V2.0.2_b230728
+Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236				V2.0.2_b230728
 
-Rosche Germany					https://steamcommunity.com/sharedfiles/filedetails/?id=2754349165				V2.0.2
+Rosche Germany					https://steamcommunity.com/sharedfiles/filedetails/?id=2754349165				V2.0.2_b230728
 
 
