@@ -12,7 +12,7 @@ else {
 		_sid = "VIOC_I_";
 	};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
+if !(("LIB_GER_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = "";};
 
 _nation = missionNamespace getVariable [format ["CTI_%1_MAINNATIONS", _side], []];
 switch (_nation select 0) do {

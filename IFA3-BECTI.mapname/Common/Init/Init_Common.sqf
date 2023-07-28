@@ -98,6 +98,7 @@ CTI_CO_FNC_ScanSkyForPlanes = compileFinal preprocessFileLineNumbers "Common\Fun
 CTI_CO_FNC_DropParatroopers = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DropParatroopers.sqf";
 CTI_CO_FNC_DisbandTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DisbandTeam.sqf";
 CTI_CO_FNC_HasDLC = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasDLC.sqf";
+CTI_CO_FNC_IsSidePatchLoaded = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsSidePatchLoaded.sqf";
 if(CTI_IFA_ADDON >= 1) then {	//only if IFA3 loaded
 	WW2_PARADROP = compile preprocessFileLineNumbers "WW2\Core_f\WW2_System_Curator_F\waypoints\fn_wpParadrop.sqf";
 };

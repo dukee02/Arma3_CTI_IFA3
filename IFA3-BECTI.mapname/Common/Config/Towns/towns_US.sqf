@@ -17,7 +17,7 @@ else {
 		_tag = "GUER_";
 	};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
+if !(("LIB_US_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = "";};
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {
 	["VIOC_DEBUG", "FILE: common\config\Towns_US.sqf", format["Town Squad preparation - sid: <%1> tag: <%2> ", _sid, _tag]] call CTI_CO_FNC_Log;

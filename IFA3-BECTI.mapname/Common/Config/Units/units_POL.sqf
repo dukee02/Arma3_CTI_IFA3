@@ -17,7 +17,7 @@ if(_side == west) then {
 		_faction = "Resistance";
 	};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
+if !(("LIB_WP_Strzelec") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = "";};
 
 _c = []; //--- Classname
 _p = []; //--- Picture. 				'' = auto generated.

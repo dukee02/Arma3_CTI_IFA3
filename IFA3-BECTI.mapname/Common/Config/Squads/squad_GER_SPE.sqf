@@ -13,7 +13,7 @@ else {
 		_sid = "VIOC_I_";
 	};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
+if !(("SPE_GER_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = "";};
 
 _v = [];
 _t = [];
@@ -205,7 +205,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 };
 
 _v pushBack "MotorizedT1";
-_t pushBack "Kfz1 MG42";
+_t pushBack "SdKfz 250 + Ambulance";
 _p pushBack mot_to_add;
 _f pushBack CTI_LIGHT;
 _m pushBack 200;

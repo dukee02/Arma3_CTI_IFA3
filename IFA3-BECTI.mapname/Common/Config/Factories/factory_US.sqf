@@ -18,7 +18,7 @@ switch (_side) do {
 	};
 	default {_sid = "";};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
+if !(("LIB_US_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = "";};
 
 //CTI_CAMO_ACTIVATION = 0 only normal camo | 1 adds winter camo | 2 adds desert camo | 3 adds winter and desert camo
 

@@ -847,16 +847,6 @@ with missionNamespace do {
 		if(CTI_SPE_DLC >= 1) then {CTI_IFA_NEW = 2} else {CTI_IFA_NEW = 0};
 	};
 
-	if (isNil 'CTI_VIO_ADDON') then {CTI_VIO_ADDON = 0};
-	//Check when IFA is loaded VIO patch is loaded too?
-	if(CTI_IFA_ADDON >= 1) then {
-		if (isClass(configFile >> "CfgVehicles" >> "VIOC_O_LIB_GER_rifleman")) then {
-			//check if the VIO addon is loaded or the stable
-			CTI_VIO_ADDON = 1;
-		};
-	};
-	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: common\init\Init_CommonConstants.sqf", format["VIO addon loaded? <%1> ", CTI_VIO_ADDON]] call CTI_CO_FNC_Log; };
-	
 	//We can balance the water units only if we activate them for both sides
 	CTI_WATER_BALANCED_EAST = false;
 	CTI_WATER_BALANCED_WEST = false;

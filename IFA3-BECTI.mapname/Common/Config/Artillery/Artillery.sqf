@@ -2,16 +2,12 @@ _c = []; //--- Classname
 _m = []; //--- Magazines
 _b = []; //--- Burst
 _r = []; //--- Ranges
-
 _sid = [];
-if(CTI_VIO_ADDON == 0) then {
-	_sid = [""];
-} else {
-	_sid = ["VIOC_B_", "VIOC_O_", "VIOC_I_"];
-};
 
-{
-	if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
+	_sid = ["VIOC_B_", "VIOC_O_", "VIOC_I_"];
+	if !(("LIB_GER_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = [""];};
+	{
 		_c pushBack format["%1LIB_GrWr34", _x];
 		//_m pushBack ["LIB_8Rnd_81mmHE_GRWR34","ARTY_LIB_8Rnd_81mmHE_GRWR34","LIB_1rnd_81mmHE_GRWR34","LIB_81mm_GRWR34_SmokeShell"];
 		_b pushBack [1, 2, 4, 8];
@@ -80,32 +76,34 @@ if(CTI_VIO_ADDON == 0) then {
 		//_m pushBack ["LIB_Shell_105L28_Gr38_HE","LIB_Shell_105L28_Gr39HlC_HE","LIB_20x_Shell_105L28_Gr39HlC_HE","LIB_20x_Shell_105L28_Gr38_HE"];
 		_b pushBack [1, 2, 4, 6, 8, 10];
 		//_r pushBack [[300,2000], [300,3000], [300,4000], [300,5000]];
-	};
-	
-	if(CTI_SPE_DLC >= 1) then {
-		_sidx = "";			//it looks like siepatch isn't needed in SPE, if not we add a sidepatch later maybe
+	} forEach _sid;
+};
 
-		_c pushBack format["%1SPE_GrW278_1", _sidx];
+if(CTI_SPE_DLC >= 1) then {
+	_sid = ["VIOC_B_", "VIOC_O_", "VIOC_I_"];
+	if !(("SPE_GER_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = [""];};
+	{
+		_c pushBack format["%1SPE_GrW278_1", _x];
 		//_m pushBack ["SPE_8Rnd_81mm_FA_Mle_1932_HE","SPE_8Rnd_81mm_FA_Mle_1932_Smoke","SPE_8Rnd_81mm_FA_Mle_1932_Illu","SPE_1Rnd_81mm_FA_Mle_1932_HE","SPE_81mm_FA_Mle_1932_Smoke","SPE_81mm_FA_Mle_1932_Illu"];
 		_b pushBack [1, 2, 4, 8];
 		//_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
 
-		_c pushBack format["%1SPE_M1_81", _sidx];
+		_c pushBack format["%1SPE_M1_81", _x];
 		//_m pushBack ["SPE_8Rnd_81mmHE_M1_M43A1","SPE_8rnd_81mm_M1_M57_SmokeShell","SPE_8Rnd_81mmWP_M1_M57","SPE_1Rnd_81mmHE_M1_M43A1","SPE_81mm_M1_M57_SmokeShell","SPE_1Rnd_81mmWP_M1_M57"];
 		_b pushBack [1, 2, 4, 8];
 		//_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
 			
-		_c pushBack format["%1SPE_leFH18", _sidx];
+		_c pushBack format["%1SPE_leFH18", _x];
 		//_m pushBack ["SPE_20x_Shell_105L28_Gr38_HE","SPE_8x_Shell_105L28_Gr39HlC_HEAT_Artillery","SPE_20x_Shell_105L28_Gr38_NB","SPE_Shell_105L28_Gr38_HE","SPE_Shell_105L28_Gr39HlC_HEAT","SPE_Shell_105L28_Gr38_NB"];
 		_b pushBack [1, 2, 4, 6, 8, 10];
 		//_r pushBack [[500,2000], [500,3000], [500,4000], [500,5000]];
 			
-		_c pushBack format["%1SPE_M4A1_T34_Calliope", _sidx];
+		_c pushBack format["%1SPE_M4A1_T34_Calliope", _x];
 		//_m pushBack ["SPE_60Rnd_M8"];
 		_b pushBack [5, 10, 20, 30, 40];
 		//_r pushBack [[500,2000], [500,3000], [500,4000], [500,5000]];
-	};
-} forEach _sid;
+	} forEach _sid;
+};
 
 //_cntstart = count _c;
 //_cntend = count _m;

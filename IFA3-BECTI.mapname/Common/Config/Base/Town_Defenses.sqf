@@ -12,12 +12,13 @@ else {
 		_sid = "VIOC_I_";
 	};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
 
 //Defense Guns for Towns
 _classes_town = [];
 _categories_town = [];
 if(CTI_IFA_ADDON > 0) then {
+	if !(("LIB_GER_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = [""];};
+
 	if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 			_classes_town pushBack 		format["%1LIB_FlaK_30_w", _sid];
@@ -169,6 +170,8 @@ if(CTI_IFA_ADDON > 0) then {
 	};
 };
 if(CTI_SPE_DLC >= 1) then {
+	if !(("SPE_GER_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = [""];};
+
 	if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 		_classes_town pushBack 		format["%1SPE_MG34_Lafette_Deployed", _sid];
 		_categories_town pushBack 	"MG";

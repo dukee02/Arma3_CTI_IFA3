@@ -17,7 +17,7 @@ else {
 		_tag = "GUER_";
 	};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
+if !(("SPE_GER_rifleman") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = "";};
 
 (_tag) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_SetTownFlag.sqf";
 

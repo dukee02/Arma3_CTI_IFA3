@@ -16,7 +16,7 @@ else {
 		_tag = "GUER_";
 	};
 };
-if(CTI_VIO_ADDON == 0) then {_sid = "";};
+if !(("LIB_FFI_Soldier_1") call CTI_CO_FNC_IsSidePatchLoaded) then {_sid = "";};
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {
 	["VIOC_DEBUG", "FILE: common\config\Towns_FFI.sqf", format["Town Squad preparation - sid: <%1> tag: <%2> ", _sid, _tag]] call CTI_CO_FNC_Log;
@@ -37,7 +37,7 @@ INFANTRY_AT = [];
 
 switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
 	case 1: {
-		if(CTI_VIO_ADDON == 0) then {
+		if(("LIB_FFI_Soldier_1") call CTI_CO_FNC_IsSidePatchLoaded) then {
 			INFANTRY = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
@@ -48,7 +48,7 @@ switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
 		};
 	};
 	case 2: {
-		if(CTI_VIO_ADDON == 0) then {
+		if(("LIB_FFI_Soldier_1") call CTI_CO_FNC_IsSidePatchLoaded) then {
 			INFANTRY = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
@@ -59,7 +59,7 @@ switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
 		};
 	};
 	default {
-		if(CTI_VIO_ADDON == 0) then {
+		if(("LIB_FFI_Soldier_1") call CTI_CO_FNC_IsSidePatchLoaded) then {
 			INFANTRY = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
 			INFANTRY_MG = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
 			INFANTRY_AT = [[format["%1LIB_FFI_Soldier_1", _sid],1],[format["%1LIB_FFI_Soldier_2", _sid],1],[format["%1LIB_FFI_Soldier_3", _sid],1],[format["%1LIB_FFI_Soldier_4", _sid],1],[format["%1LIB_FFI_Soldier_5", _sid],1],[format["%1LIB_FFI_Soldier_1", _sid],1]];
