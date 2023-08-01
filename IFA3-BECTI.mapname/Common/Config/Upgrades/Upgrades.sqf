@@ -12,7 +12,7 @@ _cost = 1;
 //_upgrade_levels = [];
 _upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
 if (isNil "_upgrade_levels") then { 
-	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,0,1,0,0,0,3,4,CTI_ECONOMY_LEVEL_GEAR,3]; 
+	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,1,0,0,0,0,3,4,CTI_ECONOMY_LEVEL_GEAR,3]; 
 } else {
 	if(_upgrade_levels select CTI_UPGRADE_BARRACKS > CTI_ECONOMY_LEVEL_INFANTRY) then {_upgrade_levels set [CTI_UPGRADE_BARRACKS, CTI_ECONOMY_LEVEL_INFANTRY]};		//--- Barracks
 	if(_upgrade_levels select CTI_UPGRADE_LIGHT > CTI_ECONOMY_LEVEL_WHEELED) then {_upgrade_levels set [CTI_UPGRADE_LIGHT, CTI_ECONOMY_LEVEL_WHEELED]};				//--- Light
@@ -90,7 +90,7 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_AIR)}, {_i = _i
 }; 
 _upgrade_cost pushBack _cost;															//--- Air
 _cost = [];
-_cost_level = round((2000*CTI_ECONOMY_RESEARCH_MULTI)/100);
+_cost_level = round((200*CTI_ECONOMY_RESEARCH_MULTI)/100);
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_NAVAL)}, {_i = _i + 1}] do {
 	//_cost_level = _cost_level*(_i+1);
 	_cost pushBack [_cost_level*(_i+1),(_cost_level*(_i+1))/2];
@@ -251,6 +251,7 @@ _time = [];
 _time_level_base = 90;
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_NAVAL)}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<60): {60}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Naval 
@@ -259,6 +260,7 @@ _time = [];
 _time_level_base = 90;
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_AIR_FFAR)}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<30): {30}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Air FFAR 
@@ -266,6 +268,7 @@ _time = [];
 _time_level_base = 90;
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_AIR_AT)}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<30): {30}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Air AT 
@@ -273,6 +276,7 @@ _time = [];
 _time_level_base = 90;
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_AIR_AA)}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<30): {30}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Air AA 
@@ -291,6 +295,7 @@ _time = [];
 _time_level_base = 60;
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_DEFENSE)}, {_i = _i + 1}] do {
 	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time_level = switch(true) do {case (_time_level<30): {30}; case (_time_level>CTI_ECONOMY_UPGRADE_TIMECAP): {CTI_ECONOMY_UPGRADE_TIMECAP}; default {_time_level}};
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Defenses
