@@ -93,6 +93,11 @@ if(CTI_SPE_DLC >= 1) then {
 		_b pushBack [1, 2, 4, 8];
 		//_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
 			
+		_c pushBack format["%1SPE_MLE_27_31", _x];
+		//_m pushBack ["SPE_8Rnd_81mm_FA_Mle_1932_HE","SPE_8Rnd_81mm_FA_Mle_1932_Smoke","SPE_8Rnd_81mm_FA_Mle_1932_Illu","SPE_1Rnd_81mm_FA_Mle_1932_HE","SPE_81mm_FA_Mle_1932_Smoke","SPE_81mm_FA_Mle_1932_Illu"];
+		_b pushBack [1, 2, 4, 8];
+		//_r pushBack [[100,1000], [100,1500], [100,2000], [100,2500]];
+
 		_c pushBack format["%1SPE_leFH18", _x];
 		//_m pushBack ["SPE_20x_Shell_105L28_Gr38_HE","SPE_8x_Shell_105L28_Gr39HlC_HEAT_Artillery","SPE_20x_Shell_105L28_Gr38_NB","SPE_Shell_105L28_Gr38_HE","SPE_Shell_105L28_Gr39HlC_HEAT","SPE_Shell_105L28_Gr38_NB"];
 		_b pushBack [1, 2, 4, 6, 8, 10];

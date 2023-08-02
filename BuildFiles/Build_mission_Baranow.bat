@@ -49,5 +49,4 @@ copy "%gitpath%\IFA3-BECTI-Thumpnails\IFA3-BECTI-%Map_name%Small.jpg" "%buildpat
 copy "%gitpath%\IFA3-BECTI.mapname\WFpostprocess.sqf" "%buildpath%\%missionfloder%\WFpostprocess.sqf"
 copy "%gitpath%\IFA3-BECTI.mapname\stringtable.xml" "%buildpath%\%missionfloder%\stringtable.xml"
 
-timeout 30
 echo pause

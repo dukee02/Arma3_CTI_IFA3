@@ -40,31 +40,23 @@ inf_to_add = [];
 infantry_auto = [];
 kind_infantry = [];
 _matrix_full = [_side, CTI_UPGRADE_BARRACKS] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_US_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_FR_ID, CTI_SPE_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
-	if(CTI_CAMO_ACTIVATION == 4 || CTI_CAMO_ACTIVATION == 7) then {		//urban camo active
-		inf_to_add = [[format["%1SPE_US_Rangers_rifleman", _sid], 1, 60]];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_medic", _sid], 1, 40];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_radioman", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_grenadier", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_engineer", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_Flamethrower_Operator", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_Rifleman_AmmoBearer", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_engineer_bangalore", _sid], 1, 20];
-	};
-	if(CTI_CAMO_ACTIVATION <= 4 || CTI_CAMO_ACTIVATION >= 3) then {		//other/all camo active
-		inf_to_add = [[format["%1SPE_US_Rifleman", _sid], 1, 60]];
-		inf_to_add pushBack [format["%1SPE_US_Medic", _sid], 1, 40];
-		inf_to_add pushBack [format["%1SPE_US_Radioman", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Driver", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Engineer", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Flamethrower_Operator", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Grenadier", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Rifleman_AmmoBearer", _sid], 1, 20];
-	};
+
+	inf_to_add = [[format["%1SPE_FR_Rifleman", _sid], 1, 60]];
+	inf_to_add pushBack [format["%1SPE_FR_Medic", _sid], 1, 40];
+	inf_to_add pushBack [format["%1SPE_FR_Tank_Crew", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Tank_Sergeant", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Radioman", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Engineer", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Flamethrower_Operator", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Grenadier", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Mortar_Gunner", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Mortar_AmmoBearer", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Mortar_AGunner", _sid], 1, 20];
 
 	units_infantry append inf_to_add;
 	infantry_auto append inf_to_add;
@@ -82,16 +74,12 @@ kind_infantry pushBack "InfantryT0";
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
-	if(CTI_CAMO_ACTIVATION == 4 || CTI_CAMO_ACTIVATION == 7) then {		//urban camo active
-		inf_to_add = [[format["%1SPE_US_Rangers_Autorifleman", _sid], 1, 20]];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_Assist_Autorifleman", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_AT_soldier", _sid], 1, 20];
-	};
-	if(CTI_CAMO_ACTIVATION <= 4 || CTI_CAMO_ACTIVATION >= 3) then {		//other/all camo active
-		inf_to_add = [[format["%1SPE_US_Autorifleman", _sid], 1, 20]];
-		inf_to_add pushBack [format["%1SPE_US_Assist_Autorifleman", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_AT_Soldier", _sid], 1, 20];
-	};
+
+	inf_to_add pushBack [format["%1SPE_FR_Rifleman_Carbine", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_AT_Soldier", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_SquadLead", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Assist_SquadLead", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Tank_Second_Lieutenant", _sid], 1, 20];
 
 	units_infantry append inf_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {infantry_auto append inf_to_add;};
@@ -109,17 +97,14 @@ kind_infantry pushBack "InfantryT1";
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
-	if(CTI_CAMO_ACTIVATION == 4 || CTI_CAMO_ACTIVATION == 7) then {		//urban camo active
-		inf_to_add = [[format["%1SPE_US_Rangers_sniper", _sid], 1, 20]];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_AHMGunner", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Rangers_HMGunner", _sid], 1, 20];
-	};
-	if(CTI_CAMO_ACTIVATION <= 4 || CTI_CAMO_ACTIVATION >= 3) then {		//other/all camo active
-		inf_to_add = [[format["%1SPE_US_AHMGunner", _sid], 1, 20]];
-		inf_to_add pushBack [format["%1SPE_US_HMGunner", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_HMG_AmmoBearer", _sid], 1, 20];
-		inf_to_add pushBack [format["%1SPE_US_Sniper", _sid], 1, 20];
-	};
+
+	inf_to_add pushBack [format["%1SPE_FR_Autorifleman", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Assist_Autorifleman", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_HMGunner", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_AHMGunner", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_HMG_AmmoBearer", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Sniper", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Captain", _sid], 1, 20];
 
 	units_infantry append inf_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {infantry_auto append inf_to_add;};
@@ -161,12 +146,12 @@ mot_to_add = [];
 wheeled_auto = [];
 kind_wheeled = [];
 _matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_US_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_FR_ID, CTI_SPE_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	mot_to_add = [[format["%1SPE_US_M3_Halftrack_Unarmed_Open", _sid], 1, 10]];
+	mot_to_add = [[format["%1SPE_FR_M3_Halftrack_Unarmed_Open", _sid], 1, 10]];
 	
 	units_wheeled = mot_to_add;
 	wheeled_auto append mot_to_add;
@@ -184,8 +169,8 @@ kind_wheeled pushBack "MotorizedT0";
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	mot_to_add = [[format["%1SPE_US_M3_Halftrack", _sid], 1, 60]];	
-	mot_to_add pushBack [format["%1SPE_US_M3_Halftrack_Ambulance", _sid], 1, 20];
+	mot_to_add = [[format["%1SPE_FR_M3_Halftrack", _sid], 1, 60]];	
+	mot_to_add pushBack [format["%1SPE_FR_M3_Halftrack_Ambulance", _sid], 1, 20];
 	units_wheeled = [];
 	wheeled_auto = [];
 	units_wheeled append mot_to_add;
@@ -229,12 +214,12 @@ arm_to_add = [];
 tracked_auto = [];
 kind_tracked = [];
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_US_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_FR_ID, CTI_SPE_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	arm_to_add = [[format["%1SPE_M4A0_75_Early", _sid], 1, 20]];
+	arm_to_add = [[format["%1SPE_FR_M4A0_75_Early", _sid], 1, 20]];
 	units_tracked = arm_to_add;
 	tracked_auto append arm_to_add;
 };
@@ -251,8 +236,8 @@ kind_tracked pushBack format["ArmoredT%1", _level];
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	arm_to_add = [[format["%1SPE_M4A0_75", _sid], 1, 30]];
-	arm_to_add pushBack [format["%1SPE_M10", _sid], 1, 20];
+	arm_to_add = [[format["%1SPE_FR_M4A0_75_mid", _sid], 1, 30]];
+	arm_to_add pushBack [format["%1SPE_FR_M10", _sid], 1, 20];
 
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
@@ -270,8 +255,7 @@ kind_tracked pushBack format["ArmoredT%1", _level];
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	arm_to_add = [[format["%1SPE_M4A1_T34_Calliope", _sid], 1, 10]];
-	arm_to_add pushBack [format["%1SPE_M4A1_75", _sid], 1, 30];
+	arm_to_add pushBack [format["%1SPE_FR_M4A1_75", _sid], 1, 30];
 
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
@@ -289,15 +273,14 @@ kind_tracked pushBack format["ArmoredT%1", _level];
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	arm_to_add = [[format["%1SPE_M18_Hellcat", _sid], 1, 20]];
-	arm_to_add pushBack [format["%1SPE_M4A1_76", _sid], 1, 30];
+	arm_to_add pushBack [format["%1SPE_FR_M4A1_76", _sid], 1, 30];
 
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
 };
 
 _v pushBack format["ArmoredT%1", _level];
-_t pushBack "Hellcat | M4A1";
+_t pushBack "M4A1 76";
 _p pushBack arm_to_add;
 _f pushBack CTI_HEAVY;
 _m pushBack 500;
@@ -331,12 +314,12 @@ units_antiair = [];
 antiair_to_add = [];
 antiair_auto = [];
 _matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_US_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_FR_ID, CTI_SPE_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [2, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	antiair_to_add = [[format["%1SPE_US_M16_Halftrack", _sid], 1]];
+	antiair_to_add = [[format["%1SPE_FR_M16_Halftrack", _sid], 1]];
 
 	units_antiair append antiair_to_add;
 	antiair_auto append antiair_to_add;
@@ -378,7 +361,7 @@ air_to_add = [];
 air_auto = [];
 kind_air = [];
 _matrix_full = [_side, CTI_UPGRADE_AIR] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_US_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_FR_ID, CTI_SPE_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -416,7 +399,7 @@ _c pushBack "Air";
 _s pushBack [];
 kind_air pushBack "AirAll";
 
-if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\squads\squad_US.sqf", format["generated squads: [%1] ", count _v]] call CTI_CO_FNC_Log};
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\squads\squad_FR_SPE.sqf", format["generated squads: [%1] ", count _v]] call CTI_CO_FNC_Log};
 
 //--- Those are used by the commander to determine the kind of unit an AI team has
 if(count kind_infantry > 0) then {

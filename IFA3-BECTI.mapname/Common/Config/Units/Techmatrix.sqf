@@ -34,6 +34,13 @@ _tech_matrix =
 			[true,true,true],
 			//SPE
 			[true,true,true]
+		],
+		//FR
+		[
+			//IFA
+			[false,false,false],
+			//SPE
+			[true,true,true]
 		]
 	],
 	//CTI_UPGRADE_LIGHT
@@ -64,7 +71,14 @@ _tech_matrix =
 			//IFA
 			[true,true,true,true,true,false],
 			//SPE
-			[true,true,true,true,false,false]
+			[true,true,true,false,false,false]
+		],
+		//FR
+		[
+			//IFA
+			[false,false,false,false,false,false],
+			//SPE
+			[true,true,true,false,false,false]
 		]
 	],
 	//CTI_UPGRADE_HEAVY
@@ -94,6 +108,13 @@ _tech_matrix =
 		[
 			//IFA
 			[false,true,true,false,false,true,true,true],
+			//SPE
+			[false,false,true,true,true,true,false,false]
+		],
+		//FR
+		[
+			//IFA
+			[false,false,false,false,false,false,false,false],
 			//SPE
 			[false,false,true,true,true,true,false,false]
 		]
@@ -127,6 +148,13 @@ _tech_matrix =
 			[true,true,false,true,false,false],
 			//SPE
 			[false,false,false,true,false,false]
+		],
+		//FR
+		[
+			//IFA
+			[false,false,false,false,false,false],
+			//SPE
+			[false,false,false,false,false,false]
 		]
 	],
 	//CTI_UPGRADE_NAVAL
@@ -158,6 +186,13 @@ _tech_matrix =
 			[true,true,false,false],
 			//SPE
 			[true,true,false,false]
+		],
+		//FR
+		[
+			//IFA
+			[false,false,false,false],
+			//SPE
+			[false,false,false,false]
 		]
 	],
 	[],[],[],[],[],[],[],
@@ -185,6 +220,13 @@ _tech_matrix =
 			[true,true,true]
 		],
 		//US
+		[
+			//IFA
+			[true,true,true],
+			//SPE
+			[true,true,true]
+		],
+		//FR
 		[
 			//IFA
 			[true,true,true],

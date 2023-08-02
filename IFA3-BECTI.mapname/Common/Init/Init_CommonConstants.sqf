@@ -32,6 +32,7 @@ CTI_GER_ID = 0;
 CTI_SOV_ID = 1;
 CTI_UK_ID = 2;
 CTI_US_ID = 3;
+CTI_FR_ID = 4;
 
 //--- Mod IDs
 CTI_IFA_ID = 0;

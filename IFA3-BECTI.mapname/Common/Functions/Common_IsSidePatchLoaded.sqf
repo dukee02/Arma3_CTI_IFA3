@@ -21,4 +21,14 @@
 	  -> Return true if this unit has a VIOC_X_ inheritation
 */
 
-if (isClass(configFile >> "CfgVehicles" >> format["VIOC_O_%1", _this])) then {true} else {false};
+private["_unitToCheck", "_isLoaded"];
+
+_unitToCheck = _this;
+_isLoaded = false;
+
+if (isClass(configFile >> "CfgVehicles" >> format["VIOC_O_%1", _this])) then {
+	_isLoaded = true;
+} else {
+	if (isClass(configFile >> "CfgVehicles" >> format["VIOC_%1", _this])) then {_isLoaded = true};
+};
+_isLoaded;

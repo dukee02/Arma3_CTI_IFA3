@@ -1187,13 +1187,13 @@ _i pushBack "B_SPE_US_Backpack_roll_gp";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,5.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-_i pushBack "B_SPE_US_Backpack_RocketBag_Big_Empty";
-_u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,5.0] call CTI_CO_FNC_GetCalculatedItemPrize);
+//_i pushBack "B_SPE_US_Backpack_RocketBag_Big_Empty";
+//_u pushBack _tech_level;
+//_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,5.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-_i pushBack "B_SPE_US_RocketBag_Big_Empty";
-_u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,5.0] call CTI_CO_FNC_GetCalculatedItemPrize);
+//_i pushBack "B_SPE_US_RocketBag_Big_Empty";
+//_u pushBack _tech_level;
+//_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,5.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "B_SPE_US_packboard_eng";
 _u pushBack _tech_level;

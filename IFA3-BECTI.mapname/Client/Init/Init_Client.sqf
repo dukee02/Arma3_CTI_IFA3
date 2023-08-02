@@ -169,6 +169,12 @@ if(CTI_UK_SIDE == (CTI_P_SideJoined) call CTI_CO_FNC_GetSideID) then {
 		(CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_UK.sqf";
 	};
 };
+if(CTI_FR_SIDE == (CTI_P_SideJoined) call CTI_CO_FNC_GetSideID) then {
+	if(CTI_SPE_DLC >= 1) then {
+		(CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_FR_SPE.sqf";
+	};
+	//if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {};
+};
 
 (CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Template.sqf";
 

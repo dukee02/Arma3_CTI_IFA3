@@ -6,11 +6,14 @@ _sid = "VIOC_";
 _building_time = 10;
 
 if(_side == west) then {
+	_sid = "VIOC_B_";
 	_faction = "West";
 } else {
 	if(_side == east) then {
+		_sid = "VIOC_O_";
 		_faction = "East";
 	} else {
+		_sid = "VIOC_I_";
 		_faction = "Resistance";
 	};
 };
@@ -41,7 +44,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 	_c pushBack format["%1LIB_FFI_Soldier_4", _sid];
 	_c pushBack format["%1LIB_FFI_Soldier_5", _sid];
 	
-	if(CTI_VIO_ADDON > 0) then {
+	if(_sid != "") then {
 		_c pushBack format["%1FFI_medic", _sid];
 		_c pushBack format["%1FFI_AT_soldier", _sid];
 	};
@@ -62,7 +65,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 };
 //Level 1
 _tech_level = _tech_level + 1;
-if(CTI_ECONOMY_LEVEL_INFANTRY >= 1 && CTI_VIO_ADDON > 0) then {
+if(CTI_ECONOMY_LEVEL_INFANTRY >= 1 && _sid != "") then {
 	_building_time = [CTI_FACTORY_BARRACKS,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
 	_c pushBack format["%1LIB_FFI_LAT_Soldier", _sid];
@@ -84,7 +87,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 1 && CTI_VIO_ADDON > 0) then {
 };
 //Level 2
 _tech_level = _tech_level + 1;
-if(CTI_ECONOMY_LEVEL_INFANTRY >= 2 && CTI_VIO_ADDON > 0) then {
+if(CTI_ECONOMY_LEVEL_INFANTRY >= 2 && _sid != "") then {
 	_building_time = [CTI_FACTORY_BARRACKS,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
 	_c pushBack format["%1FFI_MG_soldier", _sid];

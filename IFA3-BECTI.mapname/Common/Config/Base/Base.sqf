@@ -65,6 +65,12 @@ switch (_nation select 0) do {
 			default { };
 		};
 	};
+	case CTI_FR_ID: {
+		switch (_nation select 1) do {
+			case CTI_SPE_ID: {missionNamespace setVariable [format["CTI_%1_HQ", _side], format["%1SPE_FR_M3_Halftrack_Repair", _sid]]};
+			default { };
+		};
+	};
 	default { };
 };
 
@@ -427,6 +433,38 @@ if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	};	
 };
 
+if(CTI_FR_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
+	if(CTI_SPE_DLC >= 1) then {
+		_headers pushBack 		"M1919 M2 MG";
+		_classes pushBack 		format["%1SPE_FR_M1919_M2", _sid];
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+
+		_headers pushBack 		"M1919 M2 MG Trench";
+		_classes pushBack 		format["%1SPE_FR_M1919_M2_Trench_Deployed", _sid];
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+
+		_headers pushBack 		"M1919A6 MG";
+		_classes pushBack 		format["%1SPE_FR_M1919A6_Bipod", _sid];
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+		
+		_headers pushBack 		"MLE 27 31 (Mortar)";
+		_classes pushBack 		format["%SPE_MLE_27_31", _sid];
+		_prices pushBack 		_priceArty;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+	};
+};
+
 //Update the calculated max upgrade level
 if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
 	_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
@@ -507,6 +545,17 @@ if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	if(CTI_SPE_DLC >= 1) then {
 		_headers pushBack 		"AT 57mm M1";
 		_classes pushBack 		format["%1SPE_57mm_M1", _sid];
+		_prices pushBack 		_priceGun;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+	};
+};
+
+if(CTI_FR_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
+	if(CTI_SPE_DLC >= 1) then {
+		_headers pushBack 		"AT 57mm M1";
+		_classes pushBack 		format["%1SPE_FR_57mm_M1", _sid];
 		_prices pushBack 		_priceGun;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
@@ -621,7 +670,16 @@ if(CTI_SPE_DLC >= 1) then {
 		_categories pushBack 	"AA";
 		_tiers pushBack 		_tech_level;
 	};
+	if(CTI_FR_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
+		_headers pushBack 		"M45 Quadmount (AA)";
+		_classes pushBack 		format["%1SPE_FR_M45_Quadmount", _sid];
+		_prices pushBack 		_priceAA;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"AA";
+		_tiers pushBack 		_tech_level;
+	};
 };
+
 if(CTI_IFA_ADDON >= 1 && CTI_SPE_DLC < 1) then {
 	//Flak 38 Vierling for ALL
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active

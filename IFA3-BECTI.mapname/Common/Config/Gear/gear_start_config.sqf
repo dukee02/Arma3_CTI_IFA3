@@ -54,18 +54,6 @@ _item_radio = "itemradio";
 _item_compass = "itemcompass";
 _item_watch = "itemwatch";
 
-/*
-//--- National IDs
-CTI_GER_ID = 0;
-CTI_SOV_ID = 1;
-CTI_UK_ID = 2;
-CTI_US_ID = 3;
-
-//--- Mod IDs
-CTI_IFA_ID = 0;
-CTI_IFA_NEW_ID = 1;
-*/
-
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Config\Gear\gear_start_config.sqf", format ["_side <%1> _nationID <%2> _modID <%3> _defaultGearVar<%4>", _side, _nationID, _modID, _defaultGearVar]] call CTI_CO_FNC_Log };
 
 switch(_nationID) do {
@@ -195,7 +183,7 @@ switch(_nationID) do {
 			_weapon_ammo = "SPE_5Rnd_762x63_t";
 			_grenades = "SPE_US_Mk_2";
 			_healing = "SPE_US_FirstAidKit";
-			_bino = "SPE_US_Medkit";
+			_bino = "SPE_Binocular_US";
 			_item_compass = "SPE_US_ItemCompass";
 			_item_watch = "SPE_US_ItemWatch";
 		} else {
@@ -222,6 +210,21 @@ switch(_nationID) do {
 			_vest = "V_LIB_US_VEST_M1919";
 			_backpack = "B_LIB_US_M36";
 		};
+	};
+	case CTI_FR_ID: {
+		if(_modID == CTI_SPE_ID && (CTI_SPE_DLC >= 1 && [1175380] call CTI_CO_FNC_HasDLC)) then {
+			_uniform = "U_SPE_FR_HBT_Uniform";
+			_vest = "V_SPE_US_Vest_Garand";
+			_backpack = "B_SPE_FR_Backpack_Bandoleer_Rifleman";
+			_helmet = "H_SPE_FR_Adrian";
+			_weapon = "SPE_M1903A3_Springfield";
+			_weapon_ammo = "SPE_5Rnd_762x63_t";
+			_grenades = "SPE_US_Mk_2";
+			_healing = "SPE_US_FirstAidKit";
+			_bino = "SPE_Binocular_US";
+			_item_compass = "SPE_US_ItemCompass";
+			_item_watch = "SPE_US_ItemWatch";
+		} else {};
 	};
 	default {};
 };
