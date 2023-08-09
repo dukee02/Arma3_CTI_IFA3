@@ -61,14 +61,15 @@ execVM "Server\Init\Init_Prison.sqf";
 //--- Get the starting locations.
 _startup_locations = [];
 _startup_locations_west = [];
+//Wait until all tows set, we maybe need it to place the spawnlocations
+waitUntil {missionNamespace getVariable ["CTI_InitTowns", false]};
 
 for '_i' from 0 to 30 step +1 do {
 	_location = getMarkerPos format ["cti-spawn-west%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	//Check if location matches near towns setup if active
 	if (CTI_BASE_START_TOWN > 0) then {
-		//_near = [_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance;
-		if(_location distance (([_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
+		if(_location distance (([_location,CTI_Towns] call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
 			_startup_locations_west pushBack _location;
 		};
 	} else {
@@ -80,8 +81,7 @@ for '_i' from 0 to 50 step +1 do {
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	//Check if location matches near towns setup if active
 	if (CTI_BASE_START_TOWN > 0) then {
-		//_near = [_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance;
-		if(_location distance (([_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
+		if(_location distance (([_location,CTI_Towns] call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
 			_startup_locations pushBack _location;
 		};
 	} else {
@@ -96,8 +96,7 @@ for '_i' from 0 to 30 step +1 do {
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	//Check if location matches near towns setup if active
 	if (CTI_BASE_START_TOWN > 0) then {
-		//_near = [_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance;
-		if(_location distance (([_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
+		if(_location distance (([_location,CTI_Towns] call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
 			_startup_locations_east pushBack _location;
 		};
 	} else {
@@ -105,13 +104,6 @@ for '_i' from 0 to 30 step +1 do {
 	};
 };
 _startup_locations_east append _startup_locations;
-/*if(count _startup_locations_east < 1) then {
-	for '_i' from 1 to 30 step +2 do {
-		_location = getMarkerPos format ["cti-spawn%1", _i];
-		if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
-		_startup_locations_east pushBack _location;
-	};
-};*/
 
 //--- Place both sides.
 _range = missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
