@@ -6,14 +6,11 @@ _sid = "VIOC_";
 _building_time = 10;
 
 if(_side == west) then {
-	_sid = "VIOC_B_";
 	_faction = "West";
 } else {
 	if(_side == east) then {
-		_sid = "VIOC_O_";
 		_faction = "East";
 	} else {
-		_sid = "VIOC_I_";
 		_faction = "Resistance";
 	};
 };
@@ -55,7 +52,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_o pushBack ([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
@@ -77,7 +74,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 1 && _sid != "") then {
 	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_o pushBack ([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
@@ -100,7 +97,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 2 && _sid != "") then {
 	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_o pushBack ([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;

@@ -1,18 +1,15 @@
 _side = _this;
-_sid = "";
+_sid = "VIOC_";
 _tag = "";
 
 if(_side == west) then {
-	_sid = "VIOC_";
 	_tag = "WEST_";
 } 
 else {
 	if(_side == east) then {
-		_sid = "VIOC_";
 		_tag = "EAST_";
 	} 
 	else {
-		_sid = "VIOC_";
 		_tag = "GUER_";
 	};
 };
