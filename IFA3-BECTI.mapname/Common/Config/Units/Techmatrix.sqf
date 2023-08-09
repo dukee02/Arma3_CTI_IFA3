@@ -162,21 +162,21 @@ _tech_matrix =
 		//GER
 		[
 			//IFA
-			[false,false,false,false],
+			[true,true,false,false],
 			//SPE
 			[false,false,false,false]
 		],
 		//SOV
 		[
 			//IFA
-			[false,false,false,false],
+			[true,true,false,false],
 			//SPE
 			[false,false,false,false]
 		],
 		//UK
 		[
 			//IFA
-			[true,false,false,false],
+			[true,true,false,false],
 			//SPE
 			[true,false,false,false]
 		],
@@ -190,7 +190,7 @@ _tech_matrix =
 		//FR
 		[
 			//IFA
-			[false,false,false,false],
+			[true,true,false,false],
 			//SPE
 			[false,false,false,false]
 		]

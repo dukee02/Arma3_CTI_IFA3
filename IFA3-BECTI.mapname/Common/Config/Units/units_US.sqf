@@ -474,13 +474,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_f pushBack CTI_FACTORY_HEAVY;
 	_s pushBack "";
 	_d pushBack 0;
-};
 
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-	
 	_c pushBack format["%1LIB_M4A3_76_HVSS", _sid];
 	_p pushBack '';
 	_n pushBack '';
@@ -681,113 +675,14 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 //														Naval Factory																	*
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Naval Factory.
-_matrix_full = [_side, CTI_UPGRADE_NAVAL] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_NAVAL, CTI_US_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
+//--- For balancing the naval on all maps, wo put them into file units_IFA_Naval
+/*_matrix_full = [_side, CTI_UPGRADE_NAVAL] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_NAVAL, CTI_GER_ID, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
-if(_side == west && CTI_WATER_BALANCED_WEST == false) then {
-	
-	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
-		_building_time = [CTI_FACTORY_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-		
-		_c pushBack format["%1LIB_UK_LCA", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_NAVAL;
-		_s pushBack "";
-		_d pushBack 0;
-		_c pushBack format["%1LIB_LCVP", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_NAVAL;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-	
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
-		_building_time = [CTI_FACTORY_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-		
-		_c pushBack format["%1LIB_UK_LCI", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_NAVAL;
-		_s pushBack "";
-		_d pushBack 0;
-		_c pushBack format["%1LIB_LCM3_Armed", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_NAVAL;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-};
-if(_side == east && CTI_WATER_BALANCED_EAST == false) then {
-	
-	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
-		_building_time = [CTI_FACTORY_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-		
-		_c pushBack format["%1LIB_LCA", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_NAVAL;
-		_s pushBack "";
-		_d pushBack 0;
-		_c pushBack format["%1LIB_LCVP", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_NAVAL;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-	
-	_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-	if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
-		_building_time = [CTI_FACTORY_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-		
-		_c pushBack format["%1LIB_LCI", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_NAVAL;
-		_s pushBack "";
-		_d pushBack 0;
-		_c pushBack format["%1LIB_LCM3_Armed", _sid];
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack ([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_NAVAL;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-};
+//Update the calculatetd max upgrade level
+if(_tech_level > _upgrade_levels select CTI_UPGRADE_NAVAL) then {
+	_upgrade_levels set [CTI_UPGRADE_NAVAL, _tech_level];
+};*/
 
 //Update the calculatetd max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_NAVAL) then {

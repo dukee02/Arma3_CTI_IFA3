@@ -360,6 +360,11 @@ switch(CTI_GUER_TOWNS) do {
 	};
 }forEach [CTI_WEST_AI, CTI_EAST_AI];
 
+{
+	(_x) call compile preprocessFileLineNumbers "Common\Config\Units\units_IFA_Naval.sqf";
+	(_x) call compile preprocessFileLineNumbers "Common\Config\Factories\factory_IFA_Naval.sqf";
+} forEach [west,east];
+
 call compile preprocessFileLineNumbers "Common\Config\Pylons\pylons.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
