@@ -240,13 +240,6 @@ _i pushBack "LIB_M2_Flamethrower_Mag";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-_i pushBack "LIB_1Rnd_60mm_M6";
-_u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5] call CTI_CO_FNC_GetCalculatedItemPrize);
-
-//Level 2
-//_tech_level = _tech_level + 1;
-
 //Update the calculatetd max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
 	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
@@ -284,7 +277,7 @@ _i pushBack "LIB_M3_Greasegun";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-//Level 1
+//Level 2
 _tech_level = _tech_level + 1;
 _i pushBack "LIB_M1903A4_Springfield";
 _u pushBack _tech_level;
@@ -326,13 +319,18 @@ _i pushBack "LIB_M1919A6";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-_i pushBack "LIB_M1A1_Bazooka";
-_u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-
 _i pushBack "LIB_Maxim_M30";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+//AT Guns
+_i pushBack "LIB_M1A1_Bazooka";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+_i pushBack "LIB_1Rnd_60mm_M6";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //Update the calculatetd max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {

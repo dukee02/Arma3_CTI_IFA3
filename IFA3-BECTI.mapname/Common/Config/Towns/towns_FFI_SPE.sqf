@@ -24,7 +24,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 (_tag) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_SetTownFlag.sqf";
 
 //needed for townvehicles
-if(CTI_SPE_DLC >= 1 && CTI_IFA_NEW >= 1) then {
+if(CTI_SPE_DLC >= 1) then {
 	missionNamespace setVariable [format["CTI_%1Commander", _tag], format["%1SPE_FFI_TeamLeader", _sid]];
 	missionNamespace setVariable [format["CTI_%1Soldier", _tag], format["%1SPE_FFI_Fighter", _sid]];
 	missionNamespace setVariable [format["CTI_%1Crew", _tag], format["%1SPE_FFI_Militia", _sid]];

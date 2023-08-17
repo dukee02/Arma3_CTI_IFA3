@@ -4,6 +4,7 @@ _side = _this;
 _faction = "";
 _sid = "";
 _building_time = 10;
+_tech_level = 0;
 
 if(_side == west) then {
 	_sid = "VIOC_B_";
@@ -45,7 +46,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\un
 _matrix_full = [_side, CTI_UPGRADE_NAVAL] call CTI_CO_FNC_GetTechmatrix;
 _matrix_nation = [_side, CTI_UPGRADE_NAVAL, 0, CTI_IFA_ID] call CTI_CO_FNC_GetTechmatrix;
 
-if(_side == west && CTI_WATER_BALANCED_WEST == false) then {
+if(_side == west) then {
 	
 	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -96,7 +97,7 @@ if(_side == west && CTI_WATER_BALANCED_WEST == false) then {
 		_d pushBack 0;
 	};
 };
-if(_side == east && CTI_WATER_BALANCED_EAST == false) then {
+if(_side == east) then {
 	_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 	if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {

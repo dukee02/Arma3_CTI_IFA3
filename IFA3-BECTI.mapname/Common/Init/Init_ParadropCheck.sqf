@@ -59,6 +59,7 @@ while {true} do
 		_canParadrop = player getVariable ["canParadrop", -1];
 		if(_canParadrop >= 0) then {
 			player removeAction _canParadrop;
+			player setVariable ["canParadrop", -1];
 		};
 	};
 	
