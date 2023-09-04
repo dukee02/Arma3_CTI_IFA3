@@ -89,3 +89,15 @@ Fixed: cant place defenses
 V2.0.2_b230728
 Added: SPE_Side_Patch support
 Added: IFA3 voice lines as default if loaded
+
+V2.0.2_c230817
+Added: FR side and SPE FFIs
+Changed: internal IFA naval config
+Fixed: upgrades ignores timecap
+Fixed: Error on startup with east-west locations
+Fixed: error on loading for some FFI units
+Fixed: cant delete gearconfig
+Fixed: some minor errors
+Fixed: can't disband team
+
+
