@@ -33,7 +33,7 @@ class Params {
 		title = "IFA3 - SPE setup";
 		values[] = {0,1,2};
 		texts[] = {"IFA3 only","IFA3 + SPE","SPE only"};
-		default = 0;
+		default = 2;
 	};
 	class SEPARATOR_STARTUP {
 		title = "========================== STARTUP ============================";
@@ -111,13 +111,13 @@ class Params {
 		title = "FLAG: Flagtexture of the West-Side";
 		values[] = {0,1,2,3,4};
 		texts[] = {"Standard Blue","German Wehrmacht","USSR","USA","Great Britain"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_EAST_FLAG {
 		title = "FLAG: Flagtexture of the East-Side";
 		values[] = {0,1,2,3,4};
 		texts[] = {"Standard Red","German Wehrmacht","USSR","USA","Great Britain"};
-		default = 2;
+		default = 0;
 	};
 	class CTI_GUER_FLAG {
 		title = "FLAG: Flagtexture of the Independent-Side";

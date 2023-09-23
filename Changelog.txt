@@ -100,4 +100,6 @@ Fixed: cant delete gearconfig
 Fixed: some minor errors
 Fixed: can't disband team
 
-
+V2.0.2_d230923
+Fixed: SPE params didn't match
+Fixed: some spawn points on Normandy map
