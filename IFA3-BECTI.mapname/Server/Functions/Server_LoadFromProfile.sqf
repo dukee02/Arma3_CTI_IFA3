@@ -113,6 +113,9 @@ if(_loadingFine) then {
 						_hq setdir (_hq_stored select 1);
 						if !(_hq_stored select 2) then {_hq setDamage 1};
 					};
+					_hq_deaths = profileNamespace getVariable [Format ["SAVE_%1_%2_HQ_deaths", _savename, _x],[]];
+					_logic = (_x) call CTI_CO_FNC_GetSideLogic;
+					_logic setVariable ["cti_hq_repair_count", _hq_deaths, true];
 				} forEach [east,west];	
 			} else {
 				//Load the HQ for the side
