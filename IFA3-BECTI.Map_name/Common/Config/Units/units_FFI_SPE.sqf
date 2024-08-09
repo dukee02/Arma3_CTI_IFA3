@@ -46,6 +46,11 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 	_c pushBack format["%1SPE_FFI_Sapper_Mle208", _sid];
 	_c pushBack format["%1SPE_FFI_Militia", _sid];
 	_c pushBack format["%1SPE_FFI_Militia_Shotgun", _sid];
+
+	_c pushBack format["%1SPE_FFI_Fighter_No3", _sid];
+	_c pushBack format["%1SPE_FFI_Autorifleman_Bren", _sid];
+	_c pushBack format["%1SPE_FFI_Militia_No3", _sid];
+	_c pushBack format["%1SPE_FFI_Militia_M37_Shotgun", _sid];
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -129,6 +134,23 @@ _tech_level = 0;
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
+	_c pushBack format["%1SPE_FFI_R200_Unarmed", _sid];
+	_c pushBack format["%1SPE_FFI_R200_Hood", _sid];
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "";
+		_d pushBack 5;	
+	};
+
+	_c pushBack format["%1SPE_FFI_R200_MG34", _sid];
 	_c pushBack format["%1SPE_FFI_OpelBlitz", _sid];
 	_c pushBack format["%1SPE_FFI_OpelBlitz_Open", _sid];
 	//_c pushBack format["%1SPE_FFI_OpelBlitz_Ammo", _sid];

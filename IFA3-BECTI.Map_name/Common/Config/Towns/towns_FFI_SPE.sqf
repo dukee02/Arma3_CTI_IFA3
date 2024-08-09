@@ -83,11 +83,11 @@ WHEELED_HEAVY = [];
 
 switch (CTI_ECONOMY_LEVEL_WHEELED) do {
 	case 1: {
-		WHEELED_LIGHT = [[format["%1SPE_FFI_OpelBlitz", _sid],1]];
+		WHEELED_LIGHT = [[format["%1SPE_FFI_R200_MG34", _sid],1]];
 		WHEELED_HEAVY = [[format["%1SPE_FFI_OpelBlitz_Ambulance", _sid],1]];
 	};
 	default {
-		WHEELED_LIGHT = [[format["%1SPE_FFI_OpelBlitz_Ambulance", _sid],1]];
+		WHEELED_LIGHT = [[format["%1SPE_FFI_R200_MG34", _sid],1],[format["%1SPE_FFI_OpelBlitz_Ambulance", _sid],1]];
 		WHEELED_HEAVY = [[format["%1SPE_FFI_SdKfz250_1", _sid],1]];
 	};
 };

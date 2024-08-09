@@ -91,6 +91,13 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	WHEELED_HEAVY = [[format["%1SPE_FR_M3_Halftrack", _sid],1]];
 };
 
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	WHEELED_LIGHT = [[format["%1SPE_FR_M3_Halftrack_Ambulance", _sid],1],[format["%1SPE_FR_M3_Halftrack", _sid],1]];
+	WHEELED_HEAVY = [[format["%1SPE_FR_M8_LAC_ringMount", _sid],1],[format["%1SPE_FR_M8_LAC", _sid],1]];
+};
+
 if (isNil {missionNamespace getVariable format["%1WHEELED_SQ_LIGHT", _tag]}) then {
 	missionNamespace setVariable [format["%1WHEELED_SQ_LIGHT", _tag], WHEELED_LIGHT];
 	missionNamespace setVariable [format["%1WHEELED_SQ_HEAVY", _tag], WHEELED_HEAVY];
@@ -131,12 +138,13 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	TRACKED_MEDIUM pushBack [format["%1SPE_FR_M4A1_75", _sid],1];
 	TRACKED_HEAVY pushBack [format["%1SPE_FR_M4A1_75", _sid],1];
+	TRACKED_HEAVY pushBack [format["%1SPE_FR_M4A0_105", _sid],1];
 };
 
 _matrix_cnt = [_matrix_cnt+ 1, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	TRACKED_HEAVY = [[format["%1SPE_FR_M4A1_76", _sid],1]];
+	TRACKED_HEAVY pushBack [format["%1SPE_FR_M4A1_76", _sid],1];
 };
 
 if (isNil {missionNamespace getVariable format["%1TRACKED_SQ_LIGHT", _tag]}) then {

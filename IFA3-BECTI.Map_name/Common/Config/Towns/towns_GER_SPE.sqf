@@ -107,14 +107,14 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_GER_ID, CTI_IFA_ID] call CTI_CO_
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	WHEELED_LIGHT = [[format["%1SPE_OpelBlitz_Open", _sid],1]];
-	WHEELED_HEAVY = [[format["%1SPE_OpelBlitz_Open", _sid],1]];
+	WHEELED_LIGHT = [[format["%1SPE_GER_R200_MG34", _sid],1]];
+	WHEELED_HEAVY = [[format["%1SPE_GER_R200_MG34", _sid],1]];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	WHEELED_LIGHT = [[format["%1SPE_OpelBlitz_Ambulance", _sid],1]];
+	WHEELED_LIGHT = [[format["%1SPE_GER_R200_MG34", _sid],1],[format["%1SPE_OpelBlitz_Ambulance", _sid],1]];
 	WHEELED_HEAVY = [[format["%1SPE_SdKfz250_1", _sid],1]];
 };
 
@@ -143,7 +143,7 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	TRACKED_LIGHT = [[format["%1SPE_PzKpfwIII_J", _sid],1]];
-	TRACKED_MEDIUM = [[format["%1SPE_PzKpfwIII_J", _sid],1]];
+	TRACKED_MEDIUM = [[format["%1SPE_StuG_III_G_Early", _sid],1]];
 	TRACKED_HEAVY = [[format["%1SPE_PzKpfwIII_L", _sid],1]];
 };
 
@@ -151,25 +151,33 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	TRACKED_LIGHT pushBack [format["%1SPE_PzKpfwIII_L", _sid],1];
-	TRACKED_MEDIUM = [[format["%1SPE_PzKpfwIII_M", _sid],1]];
-	TRACKED_HEAVY = [[format["%1SPE_PzKpfwIII_N", _sid],1]];
+	TRACKED_MEDIUM pushBack [format["%1SPE_StuH_42", _sid],1];
+	TRACKED_MEDIUM pushBack [format["%1SPE_StuG_III_G_late", _sid],1];
+	TRACKED_HEAVY = [[format["%1SPE_PzKpfwIII_M", _sid],1]];
+	TRACKED_HEAVY pushBack [format["%1SPE_PzKpfwIII_N", _sid],1];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	TRACKED_LIGHT pushBack [format["%1SPE_PzKpfwIII_M", _sid],1];
+	TRACKED_MEDIUM pushBack [format["%1SPE_PzKpfwIII_M", _sid],1];
 	TRACKED_MEDIUM pushBack [format["%1SPE_PzKpfwIII_N", _sid],1];
+	TRACKED_MEDIUM pushBack [format["%1SPE_StuG_III_G_SKB", _sid],1];
 	TRACKED_HEAVY = [[format["%1SPE_PzKpfwIV_G", _sid],1]];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	TRACKED_LIGHT append TRACKED_MEDIUM;
-	TRACKED_MEDIUM = [[format["%1SPE_PzKpfwIV_G", _sid],1]];
-	TRACKED_HEAVY = [[format["%1SPE_PzKpfwVI_H1", _sid],1]];
-	TRACKED_HEAVY pushBack [format["%1SPE_Nashorn", _sid],1];
+	TRACKED_MEDIUM pushBack [format["%1SPE_Nashorn", _sid],1];
+	TRACKED_HEAVY pushBack [format["%1SPE_PzKpfwVI_H1", _sid],1];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	TRACKED_MEDIUM pushBack [format["%1SPE_Jagdpanther_G1", _sid],1];
+	TRACKED_HEAVY pushBack [format["%1SPE_PzKpfwV_G", _sid],1];
 };
 
 if (isNil {missionNamespace getVariable format["%1TRACKED_SQ_LIGHT", _tag]}) then {

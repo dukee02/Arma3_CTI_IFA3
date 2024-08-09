@@ -58,6 +58,11 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1SPE_GER_ober_grenadier", _sid], 1, 20];
 		inf_to_add pushBack [format["%1SPE_GER_AT_grenadier", _sid], 1, 20];
 		inf_to_add pushBack [format["%1SPE_GER_LAT_Klein_Rifleman", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_GER_AT_Soldier", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_GER_AT_Soldier_Assistant", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_GER_AT_Soldier_SquadLead", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_GER_Sentry_MP40", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_GER_Sentry_K98k", _sid], 1, 20];
 	};
 	if(CTI_CAMO_ACTIVATION <= 4 || CTI_CAMO_ACTIVATION >= 3) then {		//other/all camo active
 		inf_to_add = [[format["%1SPE_sturmtrooper_rifleman", _sid], 1, 60]];
@@ -71,7 +76,14 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1SPE_sturmtrooper_ober_grenadier", _sid], 1, 20];
 		inf_to_add pushBack [format["%1SPE_sturmtrooper_AT_grenadier", _sid], 1, 20];
 		inf_to_add pushBack [format["%1SPE_sturmtrooper_LAT_Klein_Rifleman", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_ST_AT_Soldier", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_ST_AT_Soldier_Assistant", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_ST_AT_Soldier_SquadLead", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_ST_Sentry_MP35", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_ST_Sentry_MP40", _sid], 1, 20];
+		inf_to_add pushBack [format["%1SPE_ST_Sentry_K98k", _sid], 1, 20];
 	};
+
 	units_infantry append inf_to_add;
 	infantry_auto append inf_to_add;
 };
@@ -178,13 +190,13 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_GER_ID, CTI_IFA_ID] call CTI_CO_
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	mot_to_add = [[format["%1SPE_OpelBlitz_Open", _sid], 1, 10]];
+	mot_to_add = [[format["%1SPE_GER_R200_MG34", _sid], 1, 10]];
 	units_wheeled append mot_to_add;
 	wheeled_auto append mot_to_add;
 };
 
 _v pushBack "MotorizedT0";
-_t pushBack "Opel Blitz unarmed";
+_t pushBack "R200 MG34";
 _p pushBack mot_to_add;
 _f pushBack CTI_LIGHT;
 _m pushBack 200;
@@ -247,13 +259,14 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	arm_to_add = [[format["%1SPE_PzKpfwIII_J", _sid], 1, 30]];
 	arm_to_add pushBack [format["%1SPE_PzKpfwIII_L", _sid], 1, 30];
+	arm_to_add pushBack [format["%1SPE_StuG_III_G_Early", _sid], 1, 30];
 
 	units_tracked append arm_to_add;
 	tracked_auto append arm_to_add;
 };
 
 _v pushBack format["ArmoredT%1", _level];
-_t pushBack "PzKpfw III J|L";
+_t pushBack "PzKpfw III J|L + StuG 3";
 _p pushBack arm_to_add;
 _f pushBack CTI_HEAVY;
 _m pushBack 500;
@@ -266,13 +279,15 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	arm_to_add = [[format["%1SPE_PzKpfwIII_M", _sid], 1, 30]];
 	arm_to_add pushBack [format["%1SPE_PzKpfwIII_N", _sid], 1, 30];
+	arm_to_add pushBack [format["%1SPE_StuH_42", _sid], 1, 30];
+	arm_to_add pushBack [format["%1SPE_StuG_III_G_late", _sid], 1, 30];
 
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
 };
 
 _v pushBack format["ArmoredT%1", _level];
-_t pushBack "PzKpfw III M|N";
+_t pushBack "PzKpfw III M|N + StuH/G";
 _p pushBack arm_to_add;
 _f pushBack CTI_HEAVY;
 _m pushBack 500;
@@ -284,13 +299,14 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	arm_to_add = [[format["%1SPE_PzKpfwIV_G", _sid], 1, 40]];
+	arm_to_add pushBack [format["%1SPE_StuG_III_G_SKB", _sid], 1, 30];
 	
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
 };
 
 _v pushBack format["ArmoredT%1", _level];
-_t pushBack "PzKpfw IV G";
+_t pushBack "PzKpfw IV + StuG 3 G";
 _p pushBack arm_to_add;
 _f pushBack CTI_HEAVY;
 _m pushBack 500;
@@ -310,6 +326,25 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 
 _v pushBack format["ArmoredT%1", _level];
 _t pushBack "PzKpfw VI H1 | Nashorn";
+_p pushBack arm_to_add;
+_f pushBack CTI_HEAVY;
+_m pushBack 500;
+_c pushBack "Armored";
+_s pushBack [];
+kind_tracked pushBack format["ArmoredT%1", _level];
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	arm_to_add = [[format["%1SPE_PzKpfwV_G", _sid], 1, 30]];
+	arm_to_add pushBack [format["%1SPE_Jagdpanther_G1", _sid], 1, 30];
+
+	units_tracked append arm_to_add;
+	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
+};
+
+_v pushBack format["ArmoredT%1", _level];
+_t pushBack "Panther | Jagdpanther";
 _p pushBack arm_to_add;
 _f pushBack CTI_HEAVY;
 _m pushBack 500;

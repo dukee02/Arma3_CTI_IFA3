@@ -57,6 +57,8 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	inf_to_add pushBack [format["%1SPE_FR_Mortar_Gunner", _sid], 1, 20];
 	inf_to_add pushBack [format["%1SPE_FR_Mortar_AmmoBearer", _sid], 1, 20];
 	inf_to_add pushBack [format["%1SPE_FR_Mortar_AGunner", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Sentry", _sid], 1, 20];
+	inf_to_add pushBack [format["%1SPE_FR_Sentry_Carbine", _sid], 1, 20];
 
 	units_infantry append inf_to_add;
 	infantry_auto append inf_to_add;
@@ -179,6 +181,41 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 
 _v pushBack "MotorizedT1";
 _t pushBack "M3 Halftrack";
+_p pushBack mot_to_add;
+_f pushBack CTI_LIGHT;
+_m pushBack 200;
+_c pushBack "Motorized";
+_s pushBack [];
+kind_wheeled pushBack "MotorizedT1";
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	mot_to_add = [[format["%1SPE_FR_M20_AUC", _sid], 1, 60]];
+	units_wheeled append mot_to_add;
+	wheeled_auto append mot_to_add;
+};
+
+_v pushBack "MotorizedT1";
+_t pushBack "M20 AUC";
+_p pushBack mot_to_add;
+_f pushBack CTI_LIGHT;
+_m pushBack 200;
+_c pushBack "Motorized";
+_s pushBack [];
+kind_wheeled pushBack "MotorizedT1";
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	mot_to_add = [[format["%1SPE_FR_M8_LAC", _sid], 1, 60]];	
+	mot_to_add pushBack [format["%1SPE_FR_M8_LAC_ringMount", _sid], 1, 20];
+	units_wheeled append mot_to_add;
+	wheeled_auto append mot_to_add;
+};
+
+_v pushBack "MotorizedT1";
+_t pushBack "M8";
 _p pushBack mot_to_add;
 _f pushBack CTI_LIGHT;
 _m pushBack 200;

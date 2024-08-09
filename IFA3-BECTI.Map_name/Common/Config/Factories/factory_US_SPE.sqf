@@ -69,9 +69,14 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		_c pushBack format["%1SPE_US_Mortar_AGunner", _sid];
 		_c pushBack format["%1SPE_US_Mortar_Gunner", _sid];
 		_c pushBack format["%1SPE_US_Mortar_AmmoBearer", _sid];
+		_c pushBack format["%1SPE_US_Sentry", _sid];
+		_c pushBack format["%1SPE_US_Sentry_Carbine", _sid];
 	};
 	_c pushBack format["%1SPE_US_Tank_Crew", _sid];
 	_c pushBack format["%1SPE_US_Guncrew", _sid];
+	_c pushBack format["%1SPE_US_Tank_Coverall", _sid];
+	_c pushBack format["%1SPE_US_Tank_HBT_Late", _sid];
+	_c pushBack format["%1SPE_US_Tank_Late", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -119,6 +124,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		_c pushBack format["%1SPE_US_Captain", _sid];
 	};
 	_c pushBack format["%1SPE_US_Tank_Second_Lieutenant", _sid];
+	_c pushBack format["%1SPE_US_Tank_Second_Lieutenant_late", _sid];
 	
 	_c pushBack format["%1SPE_US_HBT44_Rifleman", _sid];
 	_c pushBack format["%1SPE_US_HBT44_AHMGunner", _sid];
@@ -159,24 +165,50 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_US_ID, CTI_SPE_ID] call CTI_CO_F
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	_c pushBack format["%1SPE_US_M3_Halftrack_Unarmed_Open", _sid];	
-	//_c pushBack format["%1SPE_US_M3_Halftrack_Unarmed", _sid];	
-	//_c pushBack format["%1SPE_US_M3_Halftrack_Ammo", _sid];	
-	//_c pushBack format["%1SPE_US_M3_Halftrack_Fuel", _sid];	
-	//_c pushBack format["%1SPE_US_M3_Halftrack_Repair", _sid];	
+	_c pushBack format["%1SPE_US_G503_MB", _sid];
+	_c pushBack format["%1SPE_US_G503_MB_M1919", _sid];
+	_c pushBack format["%1SPE_US_G503_MB_M1919_PATROL", _sid];
+	_c pushBack format["%1SPE_US_G503_MB_M2", _sid];
+	_c pushBack format["%1SPE_US_G503_MB_M2_PATROL", _sid];
+
+	//_c pushBack format["%1SPE_CCKW_353", _sid];
+	_c pushBack format["%1SPE_CCKW_353_Open", _sid];
+	_c pushBack format["%1SPE_CCKW_353_M2", _sid];
+	_c pushBack format["%1SPE_CCKW_353_Ambulance", _sid];
+	//_c pushBack format["%1SPE_CCKW_353_Repair", _sid];
+	//_c pushBack format["%1SPE_CCKW_353_Fuel", _sid];
+	//_c pushBack format["%1SPE_CCKW_353_Ammo", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	_c pushBack format["%1SPE_US_G503_MB_Armoured", _sid];
+	_c pushBack format["%1SPE_US_G503_MB_M1919_Armoured", _sid];
+	_c pushBack format["%1SPE_US_G503_MB_M2_Armoured", _sid];
+
+	_c pushBack format["%1SPE_US_M3_Halftrack_Unarmed_Open", _sid];	
+	_c pushBack format["%1SPE_US_M3_Halftrack_Unarmed", _sid];	
 	_c pushBack format["%1SPE_US_M3_Halftrack", _sid];
+	//_c pushBack format["%1SPE_US_M3_Halftrack_Ammo", _sid];	
+	//_c pushBack format["%1SPE_US_M3_Halftrack_Fuel", _sid];	
+	//_c pushBack format["%1SPE_US_M3_Halftrack_Repair", _sid];	
 	_c pushBack format["%1SPE_US_M3_Halftrack_Ambulance", _sid];
+	_c pushBack format["%1SPE_US_G503_MB_Ambulance", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	_c pushBack format["%1SPE_US_M16_Halftrack", _sid];
+	_c pushBack format["%1SPE_M20_AUC", _sid];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	_c pushBack format["%1SPE_M8_LAC_ringMount", _sid];
+	_c pushBack format["%1SPE_M8_LAC", _sid];
 };
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_LIGHT];
@@ -203,6 +235,7 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	_c pushBack format["%1SPE_M4A0_75_Early", _sid];
 	_c pushBack format["%1SPE_M4A0_75", _sid];
+	_c pushBack format["%1SPE_M4A0_composite", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -210,6 +243,7 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	_c pushBack format["%1SPE_M10", _sid];
 	_c pushBack format["%1SPE_M4A1_75", _sid];
+	_c pushBack format["%1SPE_M4A1_75_erla", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -217,6 +251,7 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	_c pushBack format["%1SPE_M4A1_T34_Calliope_Direct", _sid];
 	_c pushBack format["%1SPE_M4A1_T34_Calliope", _sid];
+	_c pushBack format["%1SPE_M4A0_105", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -224,6 +259,16 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	_c pushBack format["%1SPE_M18_Hellcat", _sid];
 	_c pushBack format["%1SPE_M4A1_76", _sid];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	_c pushBack format["%1SPE_M4A3_75", _sid];
+	_c pushBack format["%1SPE_M4A3_105", _sid];
+	_c pushBack format["%1SPE_M4A3_76", _sid];
+	_c pushBack format["%1SPE_M4A3_T34_Calliope", _sid];
+	_c pushBack format["%1SPE_M4A3_T34_Calliope_Direct", _sid];
 };
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_HEAVY];
@@ -269,7 +314,10 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _c];
 _c = [];
 if (_setupBaseUnits) then {
 	_c pushBack format["CTI_Salvager_%1", _side];
-	//_c pushBack format["%1SPE_US_M3_Halftrack_Unarmed", _sid];
+};
+
+if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+	_c pushBack format["%1SPE_CCKW_353_Repair", _sid];						//repairtruck
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	_c pushBack format["%1SPE_US_M3_Halftrack_Repair", _sid];						//repairtruck
@@ -289,6 +337,11 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _c];
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Ammo Factory.
 _c = [];
+
+if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+	_c pushBack format["%1SPE_CCKW_353_Ammo", _sid];						//ammotruck
+	_c pushBack format["%1SPE_CCKW_353_Fuel", _sid];						//fueltruck
+};
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	_c pushBack format["%1SPE_US_M3_Halftrack_Ammo", _sid];						//ammotruck
 	_c pushBack format["%1SPE_US_M3_Halftrack_Fuel", _sid];						//fueltruck

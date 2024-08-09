@@ -39,8 +39,8 @@ if((_side == west && ((CTI_WEST_AI >= 0 && CTI_WEST_AI == CTI_GER_ID) ||  CTI_WE
 
 	//Set starting vehicles
 	missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-		[format["%1SPE_OpelBlitz_Open", _sid], []], 
-		[format["%1SPE_OpelBlitz_Open", _sid], []]
+		[format["%1SPE_GER_R200_Unarmed", _sid], []], 
+		[format["%1SPE_GER_R200_Unarmed", _sid], []]
 	]];
 };
 

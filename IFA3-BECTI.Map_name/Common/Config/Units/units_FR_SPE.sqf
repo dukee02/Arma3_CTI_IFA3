@@ -60,6 +60,8 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 	_c pushBack format["%1SPE_FR_Mortar_Gunner", _sid];
 	_c pushBack format["%1SPE_FR_Mortar_AmmoBearer", _sid];
 	_c pushBack format["%1SPE_FR_Mortar_AGunner", _sid];
+	_c pushBack format["%1SPE_FR_Sentry", _sid];
+	_c pushBack format["%1SPE_FR_Sentry_Carbine", _sid];
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -202,6 +204,30 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
 	_c pushBack format["%1SPE_FR_M16_Halftrack", _sid];
+	_c pushBack format["%1SPE_FR_M20_AUC", _sid];
+	
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "";
+		_d pushBack 5;	
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
+	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
+	
+	_c pushBack format["%1SPE_FR_M8_LAC_ringMount", _sid];
+	_c pushBack format["%1SPE_FR_M8_LAC", _sid];
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -283,6 +309,21 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
 	_c pushBack format["%1SPE_FR_M4A1_75", _sid];
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_HEAVY;
+		_s pushBack "";
+		_d pushBack 5;
+	};
+	
+	_c pushBack format["%1SPE_FR_M4A0_105", _sid];
 	//set all other vars in a slope
 	_cntstart = count _c;
 	_cntend = count _p;

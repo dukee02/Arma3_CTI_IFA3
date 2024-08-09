@@ -50,7 +50,7 @@ _tech_matrix =
 			//IFA
 			[true,true,true,true,true,true],
 			//SPE
-			[false,true,true,true,false,false]
+			[true,true,true,false,false,false]
 		],
 		//SOV
 		[
@@ -71,14 +71,14 @@ _tech_matrix =
 			//IFA
 			[true,true,true,true,true,false],
 			//SPE
-			[true,true,true,false,false,false]
+			[true,true,true,true,false,false]
 		],
 		//FR
 		[
 			//IFA
 			[false,false,false,false,false,false],
 			//SPE
-			[true,true,true,false,false,false]
+			[true,true,true,true,false,false]
 		]
 	],
 	//CTI_UPGRADE_HEAVY
@@ -88,7 +88,7 @@ _tech_matrix =
 			//IFA
 			[false,false,true,true,true,true,true,true],
 			//SPE
-			[false,false,true,true,true,true,false,false]
+			[false,false,true,true,true,true,false,true]
 		],
 		//SOV
 		[
@@ -109,14 +109,14 @@ _tech_matrix =
 			//IFA
 			[false,true,true,false,false,true,true,true],
 			//SPE
-			[false,false,true,true,true,true,false,false]
+			[false,false,true,true,true,true,false,true]
 		],
 		//FR
 		[
 			//IFA
 			[false,false,false,false,false,false,false,false],
 			//SPE
-			[false,false,true,true,true,true,false,false]
+			[false,false,true,true,true,true,false,true]
 		]
 	],
 	//CTI_UPGRADE_AIR

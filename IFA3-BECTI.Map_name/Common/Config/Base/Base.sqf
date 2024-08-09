@@ -88,6 +88,16 @@ missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
 	[CTI_AMMO, 0, [80,37]]
 ]];
 
+missionNamespace setVariable [format["CTI_%1_Defense_Template", _side], [
+	[CTI_HEAVY, "AA", 270, 20],
+	[CTI_AMMO, "AA", 90, 30],
+	[CTI_AIR, "AA", 90, 30],
+	[CTI_LIGHT, "AT", 90, 20],
+	[CTI_BARRACKS, "Defense", 90, 20],
+	[CTI_CONTROLCENTER, "Defense", 270, 20],
+	[CTI_REPAIR, "Defense", 90, 20]
+]];
+
 //--- Structures
 _headers = [];
 _classes = [];
@@ -489,6 +499,13 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	};
 	
 	if(CTI_SPE_DLC >= 1) then {
+		_headers pushBack 		"FM24 MG";
+		_classes pushBack 		format["%1SPE_FM24_M24_Bipod", _sid];
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+
 		_headers pushBack 		"leFH18";
 		_classes pushBack 		format["%1SPE_leFH18", _sid];
 		_prices pushBack 		_priceArty;
@@ -543,6 +560,20 @@ if(CTI_IFA_ADDON >= 1 && CTI_IFA_NEW <= 1) then {
 
 if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	if(CTI_SPE_DLC >= 1) then {
+		_headers pushBack 		"M2 M3 MG";
+		_classes pushBack 		format["%1SPE_M2_M3", _sid];
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+
+		_headers pushBack 		"M2 M3 MG (Trench)";
+		_classes pushBack 		format["%1SPE_M2_M3_Trench", _sid];
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+
 		_headers pushBack 		"AT 57mm M1";
 		_classes pushBack 		format["%1SPE_57mm_M1", _sid];
 		_prices pushBack 		_priceGun;
@@ -572,6 +603,7 @@ _tech_level = 2;
 
 _priceMG = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,2.5] call CTI_CO_FNC_GetCalculatedUnitsPrize;
 _priceArty = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,10] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+_priceAT = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,5] call CTI_CO_FNC_GetCalculatedUnitsPrize;
 _priceAA = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,4] call CTI_CO_FNC_GetCalculatedUnitsPrize;
 
 if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
@@ -646,6 +678,24 @@ if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"AA";
 	_tiers pushBack 		_tech_level;
+};
+
+if(CTI_SPE_DLC >= 1) then {
+	if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
+		_headers pushBack 		"105mm M3";
+		_classes pushBack 		format["%1SPE_105mm_M3_Direct", _sid];
+		_prices pushBack 		_priceAT;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"AT";
+		_tiers pushBack 		_tech_level;
+		
+		_headers pushBack 		"105mm M3 (Arty)";
+		_classes pushBack 		format["%1SPE_105mm_M3", _sid];
+		_prices pushBack 		_priceArty;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+	};
 };
 
 //Update the calculated max upgrade level

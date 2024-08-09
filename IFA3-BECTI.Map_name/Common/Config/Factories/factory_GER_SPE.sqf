@@ -67,6 +67,11 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		_c pushBack format["%1SPE_GER_gun_crew", _sid];
 		_c pushBack format["%1SPE_GER_spg_crew", _sid];
 		_c pushBack format["%1SPE_GER_tank_crew", _sid];
+		_c pushBack format["%1SPE_GER_AT_Soldier", _sid];
+		_c pushBack format["%1SPE_GER_AT_Soldier_Assistant", _sid];
+		_c pushBack format["%1SPE_GER_AT_Soldier_SquadLead", _sid];
+		_c pushBack format["%1SPE_GER_Sentry_MP40", _sid];
+		_c pushBack format["%1SPE_GER_Sentry_K98k", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION <= 4 || CTI_CAMO_ACTIVATION >= 3) then {		//other/all camo active
 		_c pushBack format["%1SPE_sturmtrooper_rifleman_lite", _sid];
@@ -84,7 +89,15 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		_c pushBack format["%1SPE_sturmtrooper_LAT_Klein_Rifleman", _sid];
 		_c pushBack format["%1SPE_sturmtrooper_ober_grenadier", _sid];
 		_c pushBack format["%1SPE_sturmtrooper_tank_crew", _sid];
+		_c pushBack format["%1SPE_ST_AT_Soldier", _sid];
+		_c pushBack format["%1SPE_ST_AT_Soldier_Assistant", _sid];
+		_c pushBack format["%1SPE_ST_AT_Soldier_SquadLead", _sid];
+		_c pushBack format["%1SPE_ST_Sentry_MP35", _sid];
+		_c pushBack format["%1SPE_ST_Sentry_MP40", _sid];
+		_c pushBack format["%1SPE_ST_Sentry_K98k", _sid];
 	};
+	_c pushBack format["%1SPE_GER_flak_gun_crew", _sid];
+	_c pushBack format["%1SPE_GER_flak_gun_SquadLead", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -177,6 +190,13 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_GER_ID, CTI_SPE_ID] call CTI_CO_
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	_c pushBack format["%1SPE_GER_R200_Unarmed", _sid];
+	_c pushBack format["%1SPE_GER_R200_Hood", _sid];
+	_c pushBack format["%1SPE_GER_R200_MG34", _sid];
+	//_c pushBack format["%1SPE_ST_R200_Unarmed", _sid];
+	//_c pushBack format["%1SPE_ST_R200_Hood", _sid];
+	//_c pushBack format["%1SPE_ST_R200_MG34", _sid];
+
 	_c pushBack format["%1SPE_OpelBlitz_Open", _sid];
 	_c pushBack format["%1SPE_OpelBlitz_Ambulance", _sid];
 	//_c pushBack format["%1SPE_OpelBlitz", _sid];
@@ -219,6 +239,7 @@ _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_GER_ID, CTI_SPE_ID] call CTI_CO_
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	_c pushBack format["%1SPE_StuG_III_G_Early", _sid];
 	_c pushBack format["%1SPE_PzKpfwIII_J", _sid];
 	_c pushBack format["%1SPE_PzKpfwIII_L", _sid];
 };
@@ -226,6 +247,8 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	_c pushBack format["%1SPE_StuH_42", _sid];
+	_c pushBack format["%1SPE_StuG_III_G_late", _sid];
 	_c pushBack format["%1SPE_PzKpfwIII_M", _sid];
 	_c pushBack format["%1SPE_PzKpfwIII_N", _sid];
 };
@@ -233,6 +256,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	_c pushBack format["%1SPE_StuG_III_G_SKB", _sid];
 	_c pushBack format["%1SPE_PzKpfwIV_G", _sid];
 };
 
@@ -241,6 +265,14 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	_c pushBack format["%1SPE_PzKpfwVI_H1", _sid];
 	_c pushBack format["%1SPE_Nashorn", _sid];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	_c pushBack format["%1SPE_Jagdpanther_G1", _sid];
+	//_c pushBack format["%1SPE_ST_Jagdpanther_G1", _sid];
+	_c pushBack format["%1SPE_PzKpfwV_G", _sid];
 };
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_HEAVY];

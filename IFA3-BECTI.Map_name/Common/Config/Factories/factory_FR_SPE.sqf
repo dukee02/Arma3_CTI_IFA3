@@ -60,6 +60,8 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	_c pushBack format["%1SPE_FR_Mortar_Gunner", _sid];
 	_c pushBack format["%1SPE_FR_Mortar_AmmoBearer", _sid];
 	_c pushBack format["%1SPE_FR_Mortar_AGunner", _sid];
+	_c pushBack format["%1SPE_FR_Sentry", _sid];
+	_c pushBack format["%1SPE_FR_Sentry_Carbine", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -123,6 +125,14 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	_c pushBack format["%1SPE_FR_M16_Halftrack", _sid];
+	_c pushBack format["%1SPE_FR_M20_AUC", _sid];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	_c pushBack format["%1SPE_FR_M8_LAC_ringMount", _sid];
+	_c pushBack format["%1SPE_FR_M8_LAC", _sid];
 };
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_LIGHT];
@@ -161,6 +171,7 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	_c pushBack format["%1SPE_FR_M4A1_75", _sid];
+	_c pushBack format["%1SPE_FR_M4A0_105", _sid];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;

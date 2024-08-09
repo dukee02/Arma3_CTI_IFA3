@@ -37,8 +37,8 @@ if((_side == west && ((CTI_WEST_AI >= 0 && CTI_WEST_AI == CTI_US_ID) ||  CTI_WES
 
 	//Set starting vehicles
 	missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-		[format["%1SPE_US_M3_Halftrack_Unarmed_Open", _sid], []], 
-		[format["%1SPE_US_M3_Halftrack_Unarmed_Open", _sid], []]
+		[format["%1SPE_US_G503_MB", _sid], []], 
+		[format["%1SPE_US_G503_MB", _sid], []]
 	]];
 };
 

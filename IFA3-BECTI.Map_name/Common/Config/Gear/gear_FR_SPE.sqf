@@ -203,6 +203,19 @@ if(CTI_US_SIDE != (_side) call CTI_CO_FNC_GetSideID) then {
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,1] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 
+	_i pushBack "SPE_MAS_36";
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+	_i pushBack "SPE_5Rnd_75x54";
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,5,(750*54)] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+	_i pushBack "SPE_5Rnd_75x54_35P_AP";
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,5,(750*54)] call CTI_CO_FNC_GetCalculatedItemPrize);
+	
+
 	_i pushBack "SPE_M2_Flamethrower";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);

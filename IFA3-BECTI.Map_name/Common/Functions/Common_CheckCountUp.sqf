@@ -33,8 +33,7 @@ _counter = 0;
 _found = false;
 
 for [{_i = 0}, {_i < count _matrix_full}, {_i = _i + 1}] do {
-	if(_counter < count _matrix_full) then {
-		diag_log format["i = %1   cnt = %2 --- %3 - %4", _i, _counter, (_matrix_full select _counter), (_matrix_nation select _counter)];			
+	if(_counter < count _matrix_full) then {		
 		if((_matrix_full select _i) == (_matrix_nation select _i)) then {
 			if(_matrix_full select _i == true) then {
 				if(_found) then {_counter = _counter + 1;};

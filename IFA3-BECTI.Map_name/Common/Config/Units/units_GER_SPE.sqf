@@ -68,6 +68,11 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 		_c pushBack format["%1SPE_GER_gun_crew", _sid];
 		_c pushBack format["%1SPE_GER_spg_crew", _sid];
 		_c pushBack format["%1SPE_GER_tank_crew", _sid];
+		_c pushBack format["%1SPE_GER_AT_Soldier", _sid];
+		_c pushBack format["%1SPE_GER_AT_Soldier_Assistant", _sid];
+		_c pushBack format["%1SPE_GER_AT_Soldier_SquadLead", _sid];
+		_c pushBack format["%1SPE_GER_Sentry_MP40", _sid];
+		_c pushBack format["%1SPE_GER_Sentry_K98k", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION <= 4 || CTI_CAMO_ACTIVATION >= 3) then {		//other/all camo active
 		_c pushBack format["%1SPE_sturmtrooper_rifleman_lite", _sid];
@@ -85,7 +90,15 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 		_c pushBack format["%1SPE_sturmtrooper_LAT_Klein_Rifleman", _sid];
 		_c pushBack format["%1SPE_sturmtrooper_ober_grenadier", _sid];
 		_c pushBack format["%1SPE_sturmtrooper_tank_crew", _sid];
+		_c pushBack format["%1SPE_ST_AT_Soldier", _sid];
+		_c pushBack format["%1SPE_ST_AT_Soldier_Assistant", _sid];
+		_c pushBack format["%1SPE_ST_AT_Soldier_SquadLead", _sid];
+		_c pushBack format["%1SPE_ST_Sentry_MP35", _sid];
+		_c pushBack format["%1SPE_ST_Sentry_MP40", _sid];
+		_c pushBack format["%1SPE_ST_Sentry_K98k", _sid];
 	};
+	_c pushBack format["%1SPE_GER_flak_gun_crew", _sid];
+	_c pushBack format["%1SPE_GER_flak_gun_SquadLead", _sid];
 	
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -221,7 +234,27 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
+
+	_c pushBack format["%1SPE_GER_R200_Unarmed", _sid];
+	_c pushBack format["%1SPE_GER_R200_Hood", _sid];
+	//_c pushBack format["%1SPE_ST_R200_Unarmed", _sid];
+	//_c pushBack format["%1SPE_ST_R200_Hood", _sid];
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "";
+		_d pushBack 5;	
+	};
 	
+	_c pushBack format["%1SPE_GER_R200_MG34", _sid];
+	//_c pushBack format["%1SPE_ST_R200_MG34", _sid];
 	_c pushBack format["%1SPE_OpelBlitz_Open", _sid];
 	
 	//set all other vars in a slope
@@ -316,6 +349,16 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
+
+	_c pushBack format["%1SPE_StuG_III_G_Early", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_HEAVY;
+	_s pushBack "";
+	_d pushBack 5;
 	
 	_c pushBack format["%1SPE_PzKpfwIII_J", _sid];
 	_c pushBack format["%1SPE_PzKpfwIII_L", _sid];
@@ -339,6 +382,22 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
+	_c pushBack format["%1SPE_StuH_42", _sid];
+	_c pushBack format["%1SPE_StuG_III_G_late", _sid];
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_HEAVY;
+		_s pushBack "";
+		_d pushBack 5;
+	};
+	
 	_c pushBack format["%1SPE_PzKpfwIII_M", _sid];
 	_c pushBack format["%1SPE_PzKpfwIII_N", _sid];
 	//set all other vars in a slope
@@ -361,6 +420,16 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
+	_c pushBack format["%1SPE_StuG_III_G_SKB", _sid];
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_HEAVY;
+	_s pushBack "";
+	_d pushBack 5;
+
 	_c pushBack format["%1SPE_PzKpfwIV_G", _sid];
 	_p pushBack '';
 	_n pushBack '';
@@ -400,6 +469,43 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_p pushBack '';
 		_n pushBack '';
 		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_HEAVY;
+		_s pushBack "";
+		_d pushBack 5;
+	};
+};
+
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
+	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
+	
+	_c pushBack format["%1SPE_Jagdpanther_G1", _sid];
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_HEAVY;
+		_s pushBack "";
+		_d pushBack 5;
+	};
+
+	_c pushBack format["%1SPE_PzKpfwV_G", _sid];
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
