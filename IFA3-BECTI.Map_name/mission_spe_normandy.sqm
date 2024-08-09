@@ -98,7 +98,7 @@ class ScenarioData
 	respawn=3;
 	class Header
 	{
-		gameType="CTI";
+		gameType="viocti";
 		minPlayers=1;
 		maxPlayers=35;
 	};

@@ -107,6 +107,11 @@ if(CTI_SPE_DLC >= 1) then {
 		//_m pushBack ["SPE_60Rnd_M8"];
 		_b pushBack [5, 10, 20, 30, 40];
 		//_r pushBack [[500,2000], [500,3000], [500,4000], [500,5000]];
+		
+		_c pushBack format["%1SPE_M4A3_T34_Calliope", _x];
+		//_m pushBack ["SPE_60Rnd_M8"];
+		_b pushBack [5, 10, 20, 30, 40];
+		//_r pushBack [[500,2000], [500,3000], [500,4000], [500,5000]];
 	} forEach _sid;
 };
 
