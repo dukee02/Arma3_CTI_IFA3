@@ -33,6 +33,9 @@ switch (_mainsetup select 0) do {
 		if(CTI_IFA_ADDON >= 1) then {
 			_voices append ["male01ger","male02ger","male03ger","male04ger","male05ger","male06ger"];
 		};
+		if(CTI_SPE_DLC >= 1) then {
+			_voices append ["SPE_male01ger","SPE_male02ger"];
+		};
 	};
 	case CTI_SOV_ID: {
 		if(CTI_IFA_ADDON >= 1) then {
