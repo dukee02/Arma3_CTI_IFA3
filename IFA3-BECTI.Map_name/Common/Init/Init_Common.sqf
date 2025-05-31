@@ -279,6 +279,20 @@ switch(CTI_GUER_TOWNS) do {
 			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_POL.sqf";
 		};
 	};
+	case 2: {
+		if (isClass(configFile >> "CfgVehicles" >> "Zombie_Special_GREENFOR_Boomer")) then {
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_WBK_IFA_Zombies.sqf";
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_WBK_IFA_Zombies.sqf";
+		};
+		if (isClass(configFile >> "CfgVehicles" >> "RyanZombieC_man_1slow")) then {
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_Ryan_Zombies.sqf";
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_Ryan_Zombies.sqf";
+		};
+		if (isClass(configFile >> "CfgVehicles" >> "Max_zombie")) then {
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_Max_Zombies.sqf";
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_Max_Zombies.sqf";
+		};
+	};
 	default {};
 };
 

@@ -696,15 +696,15 @@ _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,25,(792*57)] call CTI_CO
 
 _i pushBack "SPE_RPzB_43";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "SPE_RPzB_54";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "SPE_1Rnd_RPzBGr_4322";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //Update the calculatetd max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {

@@ -5,7 +5,7 @@
 	Description:	Checks if the level counter needs to count up once ore more to match with the complete tech tree
 	Author: 		dukee
 	Creation Date:	10-01-2022
-	Revision Date:	10-01-2022
+	Revision Date:	13-04-2025
 	
   # PARAMETERS #
     0	[Side]: The initial counter
@@ -23,32 +23,31 @@
     _tech_level = [_matrix_cnt + 1, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 */
 
-private ["_counter", "_counter_last", "_matrix_full", "_matrix_nation", "_i", "_found"];
+private ["_counter", "_counter_last", "_matrix_full", "_matrix_nation", "_i"];
 
 _counter_last = _this select 0;
-if(isNil "_counter") then {_counter = -1};
 _matrix_full = _this select 1;
 _matrix_nation = _this select 2;
-_counter = 0;
-_found = false;
+_counter = _counter_last;
 
-for [{_i = 0}, {_i < count _matrix_full}, {_i = _i + 1}] do {
-	if(_counter < count _matrix_full) then {		
+for [{_i = _counter_last}, {_i < count _matrix_full}, {_i = _i + 1}] do {
+	if(_counter < count _matrix_full) then {
+		//check if both trees have units in this tier
 		if((_matrix_full select _i) == (_matrix_nation select _i)) then {
-			if(_matrix_full select _i == true) then {
-				if(_found) then {_counter = _counter + 1;};
-				_found = true;
+			//both are the same
+			if((_matrix_full select _i) == true) then {
+				//in both branches are units, we have it
+				_i = count _matrix_full;
+			} else {
+				//No no units in this branche we skip 
 			};
 		} else {
+			//branches are different and if its false in nation we are okay and count up
 			if((_matrix_nation select _i) == false) then {
 				_counter = _counter + 1;
 			} else {
-				_found = true;
-			};
-		};
-		if(_found) then {
-			if(_counter >= _counter_last) then {
-				_i = count _matrix_full;
+				//_counter = -1;
+				//if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: common\functions\Common_CheckCountUp.sqf", format["Matrix not valid, check the Matrix: <%1> <%2>", _matrix_full, _matrix_nation]] call CTI_CO_FNC_Log;};
 			};
 		};
 	} else {

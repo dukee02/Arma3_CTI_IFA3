@@ -73,9 +73,9 @@ class Params {
 	};
 	class CTI_GUER_TOWNS {
 		title = "INDEPENDENT Town Nation (change for easyer town defending or all nations are seperated into EAST and WEST)";
-		values[] = {0,1,2};
-		texts[] = {"FFI - very easy [IFA3 / SPE]","Polish Units - easy [IFA3 needed]","3rd Party (needs one Side on GUER or set 50:50 at townsmode)"};
-		default = 2;
+		values[] = {-1,0,1,2};
+		texts[] = {"3rd Party (needs one Side on GUER or set 50:50 at townsmode)","FFI - very easy [IFA3 / SPE]","Polish Units - easy [IFA3 needed]","Zombies [one of Ryan|Max|WBK Zombie Mod]"};
+		default = -1;
 	};
 	class CTI_WEST_TOWNS {
 		title = "BLUFOR (West) Town Nation (change the defending Town Units | only needed if 2 nations at one side)";
@@ -623,15 +623,15 @@ class Params {
 	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Disabled","Light","Medium","Hard","Impossible"};
-		default = 2;
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Disabled","Easiest","Easy","Easier","Normal","Harder","Hard","Very hard","Impossible"};
+		default = 4;
 	};
 	class CTI_TOWNS_RESISTANCE {
-		title = "TOWNS: Resistance";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Disabled","Light","Medium","Hard","Impossible"};
-		default = 1;
+		title = "TOWNS: Independent";
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Disabled","Easiest","Easy","Easier","Normal","Harder","Hard","Very hard","Impossible"};
+		default = 3;
 	};
 	class CTI_UNITS_TOWN_PURCHASE {
 		title = "TOWNS: Purchase Units";

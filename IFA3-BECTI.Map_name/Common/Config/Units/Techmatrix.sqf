@@ -86,37 +86,37 @@ _tech_matrix =
 		//GER
 		[
 			//IFA
-			[false,false,true,true,true,true,true,true],
+			[false,false,false,true,true,true,true,true,true],
 			//SPE
-			[false,false,true,true,true,true,false,true]
+			[false,false,true,true,true,true,false,true,false]
 		],
 		//SOV
 		[
 			//IFA
-			[false,false,false,true,true,true,true,true],
+			[false,false,false,true,true,true,true,true,false],
 			//SPE
-			[false,false,false,false,false,false,false,false]
+			[false,false,false,false,false,false,false,false,false]
 		],
 		//UK
 		[
 			//IFA
-			[true,false,false,true,false,true,true,true],
+			[true,false,false,true,false,true,true,true,false],
 			//SPE
-			[false,false,false,false,false,false,false,false]
+			[false,false,false,false,false,false,false,false,false]
 		],
 		//US
 		[
 			//IFA
-			[false,true,true,false,false,true,true,true],
+			[false,true,true,false,false,true,true,true,false],
 			//SPE
-			[false,false,true,true,true,true,false,true]
+			[false,false,true,true,true,true,false,true,false]
 		],
 		//FR
 		[
 			//IFA
-			[false,false,false,false,false,false,false,false],
+			[false,false,false,false,false,false,false,false,false],
 			//SPE
-			[false,false,true,true,true,true,false,true]
+			[false,false,true,true,true,true,false,true,false]
 		]
 	],
 	//CTI_UPGRADE_AIR
