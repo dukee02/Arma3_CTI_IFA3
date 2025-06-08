@@ -255,8 +255,13 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 
 	_c pushBack format["%1SPE_CCKW_353_Ambulance", _sid];
 	_p pushBack '';
-	_n pushBack 'CCKW 353 Mobile Respawn';
-	_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	if(CTI_RESPAWN_MOBILE <= 0) then {
+		_n pushBack 'CCKW 353 Medic (Heal only)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	} else {
+		_n pushBack 'CCKW 353 Medic (Mobile Respawn)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	};
 	_t pushBack _building_time;
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_LIGHT;
@@ -305,8 +310,13 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	
 	_c pushBack format["%1SPE_US_M3_Halftrack_Ambulance", _sid];
 	_p pushBack '';
-	_n pushBack 'M3 Mobile Respawn';
-	_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	if(CTI_RESPAWN_MOBILE <= 0) then {
+		_n pushBack 'M3 Medic (Heal only)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	} else {
+		_n pushBack 'M3 Medic (Mobile Respawn)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	};
 	_t pushBack _building_time;
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_LIGHT;
@@ -315,8 +325,13 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	
 	_c pushBack format["%1SPE_US_G503_MB_Ambulance", _sid];
 	_p pushBack '';
-	_n pushBack 'G503 Mobile Respawn';
-	_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	if(CTI_RESPAWN_MOBILE <= 0) then {
+		_n pushBack 'G503 Medic (Heal only)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	} else {
+		_n pushBack 'G503 Medic (Mobile Respawn)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	};
 	_t pushBack _building_time;
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_LIGHT;
