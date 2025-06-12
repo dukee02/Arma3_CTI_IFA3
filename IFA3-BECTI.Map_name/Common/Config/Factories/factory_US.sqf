@@ -341,7 +341,7 @@ _c = [];
 if (_setupBaseUnits) then {
 	_c pushBack format["CTI_Salvager_%1", _side];
 };
-if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
+if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_US_GMC_Parm_w", _sid];				//repairtruck
 	};
@@ -366,7 +366,7 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _c];
 //***************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Ammo Factory.
 _c = [];
-if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
+if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 		_c pushBack format["%1LIB_US_GMC_Ammo_w", _sid];				//ammotruck
 		_c pushBack format["%1LIB_US_GMC_Fuel_w", _sid];				//fueltruck
@@ -393,6 +393,32 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _c];
 _c = [];
 
 if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+			_c pushBack format["%1LIB_US_Willys_MB_w", _sid];	
+			_c pushBack format["%1LIB_US_Willys_MB_Hood_w", _sid];	
+		};
+		if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
+			_c pushBack format["%1LIB_US_NAC_Willys_MB", _sid];	
+			_c pushBack format["%1LIB_US_NAC_Willys_MB_Hood", _sid];	
+		};
+		_c pushBack format["%1LIB_US_Willys_MB", _sid];	
+		_c pushBack format["%1LIB_US_Willys_MB_Hood", _sid];
+	};
+};
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 1) then {
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
+			_c pushBack format["%1LIB_US_GMC_Ammo_w", _sid];				//ammotruck
+			_c pushBack format["%1LIB_US_GMC_Fuel_w", _sid];				//fueltruck
+			_c pushBack format["%1LIB_US_GMC_Parm_w", _sid];				//repairtruck
+		};
+		_c pushBack format["%1LIB_US_GMC_Ammo", _sid];						//ammotruck
+		_c pushBack format["%1LIB_US_GMC_Fuel", _sid];						//fueltruck
+		_c pushBack format["%1LIB_US_GMC_Parm", _sid];						//repairtruck
+	};
+};
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 2) then {
 	if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 			_c pushBack format["%1LIB_US_Rifleman_w", _sid];
@@ -406,30 +432,7 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 		_c pushBack format["%1LIB_US_medic", _sid];
 	};
 };
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-		_c pushBack format["%1LIB_US_Willys_MB_w", _sid];	
-		_c pushBack format["%1LIB_US_Willys_MB_Hood_w", _sid];	
-	};
-	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
-		_c pushBack format["%1LIB_US_NAC_Willys_MB", _sid];	
-		_c pushBack format["%1LIB_US_NAC_Willys_MB_Hood", _sid];	
-	};
-	_c pushBack format["%1LIB_US_Willys_MB", _sid];	
-	_c pushBack format["%1LIB_US_Willys_MB_Hood", _sid];
-};
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
-	if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
-			_c pushBack format["%1LIB_US_GMC_Ammo_w", _sid];				//ammotruck
-			_c pushBack format["%1LIB_US_GMC_Fuel_w", _sid];				//fueltruck
-			_c pushBack format["%1LIB_US_GMC_Parm_w", _sid];				//repairtruck
-		};
-		_c pushBack format["%1LIB_US_GMC_Ammo", _sid];						//ammotruck
-		_c pushBack format["%1LIB_US_GMC_Fuel", _sid];						//fueltruck
-		_c pushBack format["%1LIB_US_GMC_Parm", _sid];						//repairtruck
-	};
-};
+
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 

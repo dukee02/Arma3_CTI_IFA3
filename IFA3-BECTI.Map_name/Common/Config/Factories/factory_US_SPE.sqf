@@ -364,6 +364,19 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _c];
 _c = [];
 
 if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+		_c pushBack format["%1SPE_US_G503_MB", _sid];
+		_c pushBack format["%1SPE_CCKW_353_Open", _sid];
+	};
+};
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 1) then {
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+		_c pushBack format["%1SPE_CCKW_353_Ammo", _sid];						//ammotruck
+		_c pushBack format["%1SPE_CCKW_353_Fuel", _sid];						//fueltruck
+		_c pushBack format["%1SPE_CCKW_353_Repair", _sid];						//repairtruck
+	};
+};
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 2) then {
 	if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 		if(CTI_CAMO_ACTIVATION == 4 || CTI_CAMO_ACTIVATION == 7) then {		//urban camo active
 			_c pushBack format["%1SPE_US_Rangers_rifleman", _sid];
@@ -376,15 +389,7 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 		_c pushBack format["%1SPE_US_Tank_Crew", _sid];
 	};
 };
-//if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-//};
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
-	if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
-		_c pushBack format["%1SPE_US_M3_Halftrack_Ammo", _sid];							//ammotruck
-		_c pushBack format["%1SPE_US_M3_Halftrack_Fuel", _sid];							//fueltruck
-		_c pushBack format["%1SPE_US_M3_Halftrack_Repair", _sid];						//repairtruck
-	};
-};
+
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 
