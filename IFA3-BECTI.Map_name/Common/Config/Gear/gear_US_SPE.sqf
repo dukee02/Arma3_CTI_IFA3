@@ -81,8 +81,6 @@ _i pushBack "SPE_US_Mk_2";
 _i pushBack "SPE_US_Mk_2_Yellow";
 _i pushBack "SPE_US_Mk_3";
 
-_i pushBack "SPE_1Rnd_G_Mk2";
-_i pushBack "SPE_1Rnd_G_M9A1";
 _i pushBack "SPE_1Rnd_G_M2_AN_M14";
 _i pushBack "SPE_1Rnd_G_M2_ANM8";
 _i pushBack "SPE_1Rnd_G_M21A1";
@@ -149,11 +147,20 @@ _i pushBack "SPE_ACC_M1905_Bayo";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,1] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+_tech_level = 1;
 _i pushBack "SPE_ACC_GL_M1";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,1] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+_i pushBack "SPE_1Rnd_G_Mk2";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,30] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+_i pushBack "SPE_1Rnd_G_M9A1";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,50] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+_tech_level = 0;
 _i pushBack "SPE_No3_Mk1_Enfield_M1917_Bayonet";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);

@@ -575,10 +575,13 @@ _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculat
 
 //Level 1
 _tech_level = _tech_level + 1;
-_i pushBack "LIB_ACC_GL_Enfield_CUP_Empty";
+_i pushBack "LIB_ACC_GL_Enfield_CUP_Empty"; //UK
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+_i pushBack "LIB_M39"; //UK
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,40] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //------------------------------------------Items-------------------------------------------------
 /*_i pushBack "Binocular";

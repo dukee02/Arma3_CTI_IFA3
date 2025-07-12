@@ -647,6 +647,9 @@ _i pushBack "LIB_ACC_GL_DYAKONOV_Empty";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.25] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+_i pushBack "LIB_1Rnd_G_DYAKONOV"; //UK
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,40] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //------------------------------------------Items-------------------------------------------------
 /*_i pushBack "Binocular";

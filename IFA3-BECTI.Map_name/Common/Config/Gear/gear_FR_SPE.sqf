@@ -105,14 +105,6 @@ if(CTI_US_SIDE != (_side) call CTI_CO_FNC_GetSideID) then {
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,10] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 
-	_i pushBack "SPE_1Rnd_G_Mk2";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,40] call CTI_CO_FNC_GetCalculatedItemPrize);
-
-	_i pushBack "SPE_1Rnd_G_M9A1";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,40] call CTI_CO_FNC_GetCalculatedItemPrize);
-
 	_i pushBack "SPE_1Rnd_G_M2_AN_M14";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,40] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -152,7 +144,6 @@ if(CTI_US_SIDE != (_side) call CTI_CO_FNC_GetSideID) then {
 	_i pushBack "SPE_1Rnd_G_M2_M18_Violet";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,10] call CTI_CO_FNC_GetCalculatedItemPrize);
-
 
 	//-------------------------------------Weapons------------------------------------------------------
 	_tech_level = 0;
@@ -198,11 +189,20 @@ if(CTI_US_SIDE != (_side) call CTI_CO_FNC_GetSideID) then {
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,1] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+	_tech_level = 1;
 	_i pushBack "SPE_ACC_GL_M1";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,1] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+	_i pushBack "SPE_1Rnd_G_Mk2";
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,30] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+	_i pushBack "SPE_1Rnd_G_M9A1";
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,50] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+	_tech_level = 0;
 	_i pushBack "SPE_MAS_36";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);

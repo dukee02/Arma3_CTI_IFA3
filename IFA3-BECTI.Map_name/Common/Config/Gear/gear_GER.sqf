@@ -28,6 +28,7 @@ _p = [];
 
 //---------------------------Grenades and mines-----------------------------------------
 _tech_level=0;
+
 _i pushBack "LIB_Rpg6"; //Ind
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,50] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -782,6 +783,17 @@ _i pushBack "LIB_ACC_GW_SB_empty";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,1] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+_i pushBack "LIB_1Rnd_G_SPRGR_30"; //Ger
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,30] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+_i pushBack "LIB_1Rnd_G_PZGR_30"; //Ger
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,40] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+_i pushBack "LIB_1Rnd_G_PZGR_40"; //Ger
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,50] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 //------------------------------------------Items-------------------------------------------------
 /*_i = _i		+ "Binocular";
