@@ -533,9 +533,9 @@ class Params {
 	};
 	class CTI_RESPAWN_AI {
 		title = "RESPAWN: AI Members";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		values[] = {0,1,2,3};
+		texts[] = {"Disabled","Enabled only near units","Enabled all units","Enabled all units with remote control"};
+		default = 1;
 	};
 	class CTI_RESPAWN_CAMPS_MODE {
 		title = "RESPAWN: Camps";
