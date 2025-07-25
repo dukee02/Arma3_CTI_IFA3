@@ -332,12 +332,16 @@ for [{ _cnt = 0 }, { _cnt < _cntstart-_cntend }, { _cnt = _cnt + 1 }] do {
 	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 //-----------------------------------------Vests----------------------------------------------------
-//load 80
-_i pushBack "V_SPE_GER_TankPrivateBelt";
-_i pushBack "V_SPE_GER_SniperBelt";
-_i pushBack "V_SPE_GER_FieldOfficer";
+
+//load < 80
+_i pushBack "V_SPE_OST_officer";
+_i pushBack "V_SPE_OST_sword";
+_i pushBack "V_SPE_erla_FWOVest";
+_i pushBack "V_SPE_GER_FSJ_blau_FWO";
+_i pushBack "V_SPE_GER_FSJ_FWO";
+_i pushBack "V_SPE_GER_FSJ_camo_FWO";
 _i pushBack "V_SPE_GER_PistolBelt";
-_i pushBack "V_SPE_GER_LW_Schwimm";
+_i pushBack "V_SPE_GER_TankPrivateBelt";
 //set all other vars in a slope
 _cntstart = count _i;
 _cntend = count _p;
@@ -346,7 +350,42 @@ for [{ _cnt = 0 }, { _cnt < _cntstart-_cntend }, { _cnt = _cnt + 1 }] do {
 	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 
-//load 100
+//load 80+
+_i pushBack "V_SPE_GER_SniperBelt";
+_i pushBack "V_SPE_GER_FieldOfficer";
+_i pushBack "V_SPE_GER_LW_Schwimm";
+_i pushBack "V_SPE_erla_VestG43";
+_i pushBack "V_SPE_erla_VestGrenadier";
+_i pushBack "V_SPE_erla_SaniVest2";
+_i pushBack "V_SPE_erla_VestKar98";
+_i pushBack "V_SPE_GER_FSJ_blau_VestKar98_Bandoleer";
+_i pushBack "V_SPE_GER_FSJ_blau_G43";
+_i pushBack "V_SPE_GER_FSJ_blau_VestGrenadier";
+_i pushBack "V_SPE_GER_FSJ_blau_VestKar98";
+_i pushBack "V_SPE_GER_FSJ_VestKar98_Bandoleer_gelb";
+_i pushBack "V_SPE_GER_FSJ_VestKar98_Bandoleer_split";
+_i pushBack "V_SPE_GER_FSJ_VestKar98_Bandoleer_sumpf";
+_i pushBack "V_SPE_GER_FSJ_VestKar98_Bandoleer";
+_i pushBack "V_SPE_GER_FSJ_VestGrenadier";
+_i pushBack "V_SPE_GER_FSJ_VestKar98";
+_i pushBack "V_SPE_GER_FSJ_Sani2";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98_Bandoleer_gelb";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98_Bandoleer_split";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98_Bandoleer_sumpf";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98_Bandoleer";
+_i pushBack "V_SPE_GER_FSJ_camo_G43";
+_i pushBack "V_SPE_GER_FSJ_camo_VestGrenadier";
+_i pushBack "V_SPE_GER_FSJ_camo_Pio";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98";
+//set all other vars in a slope
+_cntstart = count _i;
+_cntend = count _p;
+for [{ _cnt = 0 }, { _cnt < _cntstart-_cntend }, { _cnt = _cnt + 1 }] do { 
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
+};
+
+//load 100+
 _i pushBack "V_SPE_GER_VestKar98";
 _i pushBack "V_SPE_GER_VestG43";
 _i pushBack "V_SPE_GER_VestMG";
@@ -354,6 +393,50 @@ _i pushBack "V_SPE_GER_VestUnterofficer";
 _i pushBack "V_SPE_DAK_VestKar98";
 _i pushBack "V_SPE_DAK_VestG43";
 _i pushBack "V_SPE_DAK_VestMG";
+_i pushBack "V_SPE_erla_VestMG";
+_i pushBack "V_SPE_erla_VestMP40";
+_i pushBack "V_SPE_erla_VestSTG";
+_i pushBack "V_SPE_erla_VestUnterofficer";
+_i pushBack "V_SPE_GER_FSJ_blau_VestKar98_Bandoleer_pistol";
+_i pushBack "V_SPE_GER_FSJ_blau_VestFG42_Bandoleer";
+_i pushBack "V_SPE_GER_FSJ_blau_VestFG42_Bandoleer_pistol";
+_i pushBack "V_SPE_GER_FSJ_blau_MG";
+_i pushBack "V_SPE_GER_FSJ_blau_SMG";
+_i pushBack "V_SPE_GER_FSJ_blau_STG";
+_i pushBack "V_SPE_GER_FSJ_blau_NCO";
+_i pushBack "V_SPE_GER_FSJ_VestKar98_Bandoleer_pistol_gelb";
+_i pushBack "V_SPE_GER_FSJ_VestKar98_Bandoleer_pistol_split";
+_i pushBack "V_SPE_GER_FSJ_VestKar98_Bandoleer_pistol_sumpf";
+_i pushBack "V_SPE_GER_FSJ_VestKar98_Bandoleer_pistol";
+_i pushBack "V_SPE_GER_FSJ_VestFG42_Bandoleer_gelb";
+_i pushBack "V_SPE_GER_FSJ_VestFG42_Bandoleer_pistol_gelb";
+_i pushBack "V_SPE_GER_FSJ_VestFG42_Bandoleer_split";
+_i pushBack "V_SPE_GER_FSJ_VestFG42_Bandoleer_pistol_split";
+_i pushBack "V_SPE_GER_FSJ_VestFG42_Bandoleer_sumpf";
+_i pushBack "V_SPE_GER_FSJ_VestFG42_Bandoleer_pistol_sumpf";
+_i pushBack "V_SPE_GER_FSJ_VestFG42_Bandoleer";
+_i pushBack "V_SPE_GER_FSJ_VestFG42_Bandoleer_pistol";
+_i pushBack "V_SPE_GER_FSJ_G43";
+_i pushBack "V_SPE_GER_FSJ_MG";
+_i pushBack "V_SPE_GER_FSJ_SMG";
+_i pushBack "V_SPE_GER_FSJ_STG";
+_i pushBack "V_SPE_GER_FSJ_NCO";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98_Bandoleer_pistol_gelb";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98_Bandoleer_pistol_split";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98_Bandoleer_pistol_sumpf";
+_i pushBack "V_SPE_GER_FSJ_camo_VestKar98_Bandoleer_pistol";
+_i pushBack "V_SPE_GER_FSJ_camo_VestFG42_Bandoleer_gelb";
+_i pushBack "V_SPE_GER_FSJ_camo_VestFG42_Bandoleer_pistol_gelb";
+_i pushBack "V_SPE_GER_FSJ_camo_VestFG42_Bandoleer_split";
+_i pushBack "V_SPE_GER_FSJ_camo_VestFG42_Bandoleer_pistol_split";
+_i pushBack "V_SPE_GER_FSJ_camo_VestFG42_Bandoleer_sumpf";
+_i pushBack "V_SPE_GER_FSJ_camo_VestFG42_Bandoleer_pistol_sumpf";
+_i pushBack "V_SPE_GER_FSJ_camo_VestFG42_Bandoleer";
+_i pushBack "V_SPE_GER_FSJ_camo_VestFG42_Bandoleer_pistol";
+_i pushBack "V_SPE_GER_FSJ_camo_MG";
+_i pushBack "V_SPE_GER_FSJ_camo_SMG";
+_i pushBack "V_SPE_GER_FSJ_camo_STG";
+_i pushBack "V_SPE_GER_FSJ_camo_NCO";
 //set all other vars in a slope
 _cntstart = count _i;
 _cntend = count _p;
@@ -379,11 +462,13 @@ for [{ _cnt = 0 }, { _cnt < _cntstart-_cntend }, { _cnt = _cnt + 1 }] do {
 	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,3.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 
-//load 120
+//load 120+
 _i pushBack "V_SPE_GER_PioneerVest";
 _i pushBack "V_SPE_GER_FWOVest";
 _i pushBack "V_SPE_GER_SaniVest";
 _i pushBack "V_SPE_GER_SaniVest2";
+_i pushBack "V_SPE_erla_PioneerVest";
+_i pushBack "V_SPE_GER_FSJ_Pio";
 //set all other vars in a slope
 _cntstart = count _i;
 _cntend = count _p;

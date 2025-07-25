@@ -80,22 +80,31 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_FR_ID, CTI_SPE_ID] call CTI_CO_F
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	WHEELED_LIGHT = [[format["%1SPE_FR_M3_Halftrack_Unarmed_Open", _sid],1]];
-	WHEELED_HEAVY = [[format["%1SPE_FR_M3_Halftrack_Unarmed_Open", _sid],1]];
+	WHEELED_LIGHT = [[format["%1SPE_FR_G503_MB_M1919", _sid],1]];
+	WHEELED_HEAVY = [[format["%1SPE_FR_G503_MB_M2", _sid],1]];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	WHEELED_LIGHT = [[format["%1SPE_FR_M3_Halftrack_Ambulance", _sid],1]];
+	WHEELED_LIGHT pushBack [format["%1SPE_FR_G503_MB_M2", _sid],1];
+	WHEELED_LIGHT pushBack [format["%1SPE_FR_G503_MB_Armoured", _sid],1];
+	WHEELED_LIGHT pushBack [format["%1SPE_FR_G503_MB_M1919_Armoured", _sid],1];
+	WHEELED_LIGHT pushBack [format["%1SPE_FR_G503_MB_M2_Armoured", _sid],1];
 	WHEELED_HEAVY = [[format["%1SPE_FR_M3_Halftrack", _sid],1]];
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	WHEELED_LIGHT = [[format["%1SPE_FR_M3_Halftrack_Ambulance", _sid],1],[format["%1SPE_FR_M3_Halftrack", _sid],1]];
-	WHEELED_HEAVY = [[format["%1SPE_FR_M8_LAC_ringMount", _sid],1],[format["%1SPE_FR_M8_LAC", _sid],1]];
+	WHEELED_HEAVY pushBack [format["%1SPE_FR_M20_AUC", _sid],1];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	WHEELED_HEAVY pushBack [format["%1SPE_FR_M8_LAC_ringMount", _sid],1];
+	WHEELED_HEAVY pushBack [format["%1SPE_FR_M8_LAC", _sid],1];
 };
 
 if (isNil {missionNamespace getVariable format["%1WHEELED_SQ_LIGHT", _tag]}) then {

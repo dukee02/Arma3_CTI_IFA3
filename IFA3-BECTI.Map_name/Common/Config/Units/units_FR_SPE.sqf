@@ -148,9 +148,33 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
+
 	
-	_c pushBack format["%1SPE_FR_M3_Halftrack_Unarmed_Open", _sid];	
-	
+	_c pushBack format["%1SPE_FR_G503_MB", _sid];	
+	_c pushBack format["%1SPE_FR_G503_MB_Open", _sid];	
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "";
+		_d pushBack 5;	
+	};
+
+	_c pushBack format["%1SPE_FR_G503_MB_M1919", _sid];	
+	_c pushBack format["%1SPE_FR_G503_MB_M2", _sid];	
+	_c pushBack format["%1SPE_FR_G503_MB_M2_PATROL", _sid];	
+	_c pushBack format["%1SPE_FR_G503_MB_M1919_PATROL", _sid];
+	//_c pushBack format["%1SPE_FR_CCKW_353", _sid];	
+	_c pushBack format["%1SPE_FR_CCKW_353_Open", _sid];	
+	//_c pushBack format["%1SPE_FR_CCKW_353_Ammo", _sid];	
+	//_c pushBack format["%1SPE_FR_CCKW_353_Fuel", _sid];	
+	//_c pushBack format["%1SPE_FR_CCKW_353_Repair", _sid];	
 	//set all other vars in a slope
 	_cntstart = count _c;
 	_cntend = count _p;
@@ -164,6 +188,31 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_s pushBack "";
 		_d pushBack 5;	
 	};
+
+	_c pushBack format["%1SPE_FR_CCKW_353_M2", _sid];	
+	_p pushBack '';
+	_n pushBack '';
+	_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_LIGHT;
+	_s pushBack "";
+	_d pushBack 5;
+
+	_c pushBack format["%1SPE_FR_CCKW_353_Ambulance", _sid];
+	_p pushBack '';
+	if(CTI_RESPAWN_MOBILE <= 0) then {
+		_n pushBack 'CCKW 353 Medic (Heal only)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	} else {
+		_n pushBack 'CCKW 353 Medic (Mobile Respawn)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	};
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_LIGHT;
+	_s pushBack "service-medic";
+	_d pushBack 5;
 };
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -171,8 +220,15 @@ if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt 
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 	
-	_c pushBack format["%1SPE_FR_M3_Halftrack", _sid];
+	//_c pushBack format["%1SPE_FR_M3_Halftrack_Unarmed", _sid];	
+	//_c pushBack format["%1SPE_FR_M3_Halftrack_Ammo", _sid];	
+	//_c pushBack format["%1SPE_FR_M3_Halftrack_Fuel", _sid];	
+	//_c pushBack format["%1SPE_FR_M3_Halftrack_Repair", _sid];	
 	
+	_c pushBack format["%1SPE_FR_G503_MB_Armoured", _sid];	
+	_c pushBack format["%1SPE_FR_G503_MB_M1919_Armoured", _sid];	
+	_c pushBack format["%1SPE_FR_G503_MB_M2_Armoured", _sid];	
+	_c pushBack format["%1SPE_FR_M3_Halftrack_Unarmed_Open", _sid];
 	//set all other vars in a slope
 	_cntstart = count _c;
 	_cntend = count _p;
@@ -180,6 +236,21 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_p pushBack '';
 		_n pushBack '';
 		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "";
+		_d pushBack 5;	
+	};
+	
+	_c pushBack format["%1SPE_FR_M3_Halftrack", _sid];
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
@@ -194,6 +265,21 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 	} else {
 		_n pushBack 'M3 Medic (Mobile Respawn)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	};
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_LIGHT;
+	_s pushBack "service-medic";
+	_d pushBack 5;
+	
+	_c pushBack format["%1SPE_FR_G503_MB_Ambulance", _sid];	
+	_p pushBack '';
+	if(CTI_RESPAWN_MOBILE <= 0) then {
+		_n pushBack 'G503 Medic (Heal only)';
+		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+	} else {
+		_n pushBack 'G503 Medic (Mobile Respawn)';
 		_o pushBack ([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 	};
 	_t pushBack _building_time;

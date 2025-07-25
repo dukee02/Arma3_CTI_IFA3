@@ -153,14 +153,15 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_FR_ID, CTI_SPE_ID] call CTI_CO_F
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	mot_to_add = [[format["%1SPE_FR_M3_Halftrack_Unarmed_Open", _sid], 1, 10]];
+	mot_to_add = [[format["%1SPE_FR_G503_MB_M1919", _sid], 1, 10]];
+	mot_to_add pushBack [format["%1SPE_FR_G503_MB_M2", _sid], 1, 20];
 	
 	units_wheeled = mot_to_add;
 	wheeled_auto append mot_to_add;
 };
 
 _v pushBack "MotorizedT0";
-_t pushBack "M3 unarmed";
+_t pushBack "G503";
 _p pushBack mot_to_add;
 _f pushBack CTI_LIGHT;
 _m pushBack 200;
@@ -173,6 +174,8 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	mot_to_add = [[format["%1SPE_FR_M3_Halftrack", _sid], 1, 60]];	
 	mot_to_add pushBack [format["%1SPE_FR_M3_Halftrack_Ambulance", _sid], 1, 20];
+	mot_to_add pushBack [format["%1SPE_FR_G503_MB_M1919_Armoured", _sid], 1, 20];
+	mot_to_add pushBack [format["%1SPE_FR_G503_MB_M2_Armoured", _sid], 1, 20];
 	units_wheeled = [];
 	wheeled_auto = [];
 	units_wheeled append mot_to_add;
@@ -192,12 +195,14 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	mot_to_add = [[format["%1SPE_FR_M20_AUC", _sid], 1, 60]];
+	units_wheeled = [];
+	wheeled_auto = [];
 	units_wheeled append mot_to_add;
 	wheeled_auto append mot_to_add;
 };
 
 _v pushBack "MotorizedT1";
-_t pushBack "M20 AUC";
+_t pushBack "M20";
 _p pushBack mot_to_add;
 _f pushBack CTI_LIGHT;
 _m pushBack 200;
@@ -210,6 +215,8 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	mot_to_add = [[format["%1SPE_FR_M8_LAC", _sid], 1, 60]];	
 	mot_to_add pushBack [format["%1SPE_FR_M8_LAC_ringMount", _sid], 1, 20];
+	units_wheeled = [];
+	wheeled_auto = [];
 	units_wheeled append mot_to_add;
 	wheeled_auto append mot_to_add;
 };
@@ -240,7 +247,6 @@ _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
 kind_wheeled pushBack "MotorizedAll";
-
 
 //***************************************************************************************************************************************
 //														Armored																			*
