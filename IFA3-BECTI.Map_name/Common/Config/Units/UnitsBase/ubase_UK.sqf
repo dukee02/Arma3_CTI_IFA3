@@ -58,15 +58,15 @@ if((_side == west && ((CTI_WEST_AI >= 0 && CTI_WEST_AI == CTI_UK_ID) ||  CTI_WES
 	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		//Set starting vehicles
 		missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-			[format["%1LIB_DAK_Kfz1_hood", _sid], []], 
-			[format["%1LIB_DAK_Kfz1_hood", _sid], []]
+			[format["%1LIB_UniversalCarrier_desert", _sid], []], 
+			[format["%1LIB_UniversalCarrier_desert", _sid], []]
 		]];
 	};
 	if(CTI_CAMO_ACTIVATION < 1 || CTI_CAMO_ACTIVATION > 2) then {		//all camo active
 		//Set starting vehicles
 		missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-			[format["%1LIB_UniversalCarrier_desert", _sid], []], 
-			[format["%1LIB_UniversalCarrier_desert", _sid], []]
+			[format["%1LIB_UniversalCarrier", _sid], []], 
+			[format["%1LIB_UniversalCarrier", _sid], []]
 		]];
 	};
 };
