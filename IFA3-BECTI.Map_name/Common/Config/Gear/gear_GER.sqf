@@ -197,6 +197,10 @@ _i pushBack "LIB_10Rnd_9x19_M1896";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,10,(900*19)] call CTI_CO_FNC_GetCalculatedItemPrize);
 
+_i pushBack "LIB_8Rnd_9x19";
+_u pushBack _tech_level;
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,8,(900*19)] call CTI_CO_FNC_GetCalculatedItemPrize);
+
 _i pushBack "LIB_8Rnd_9x19_P08";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,8,(900*19)] call CTI_CO_FNC_GetCalculatedItemPrize);

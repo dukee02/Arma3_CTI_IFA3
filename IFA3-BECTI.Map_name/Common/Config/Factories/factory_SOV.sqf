@@ -414,7 +414,7 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 		_c pushBack format["%1LIB_GazM1_SOV_camo_sand", _sid];
 	};
 };
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 1) then {
 	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 			_c pushBack format["%1LIB_Zis5v_fuel_w", _sid];				//fueltruck
@@ -424,7 +424,7 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 		_c pushBack format["%1LIB_Zis6_Parm", _sid];						//repairtruck
 	};
 };
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 2) then {
 	if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
 		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 3) then {		//Winter camo active
 			_c pushBack format["%1LIB_SOV_Rifleman_w", _sid];

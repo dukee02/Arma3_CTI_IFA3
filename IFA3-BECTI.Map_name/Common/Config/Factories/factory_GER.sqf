@@ -417,7 +417,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 		//_c pushBack format["%1LIB_FW190F8_2_w", _sid];
 		//_c pushBack format["%1LIB_FW190F8_3_w", _sid];
 	};
-	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo activea
+	if(CTI_CAMO_ACTIVATION == 2 || CTI_CAMO_ACTIVATION == 3) then {		//Desert camo active
 		_c pushBack format["%1LIB_DAK_FW190F8", _sid];
 		//_c pushBack format["%1LIB_DAK_FW190F8_Desert2", _sid];
 		//_c pushBack format["%1LIB_DAK_FW190F8_Desert3", _sid];
