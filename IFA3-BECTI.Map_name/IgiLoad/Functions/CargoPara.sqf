@@ -25,7 +25,7 @@ else
 };
 _cargo_pos = [0,0,0];
 
-_damage = getDammage _cargo;
+_damage = damage _cargo;
 detach _cargo;
 _dist = _v distance _cargo;
 _tmp = [_cargo] spawn
@@ -103,7 +103,7 @@ if (IL_CDamage == 0) then
 if (IL_CDamage == 1) then
 {
 	_cargo setDamage _damage;
-	if (_damage != (getDammage _cargo)) then
+	if (_damage != (damage _cargo)) then
 	{
 		sleep 1;
 		_cargo setDamage _damage;

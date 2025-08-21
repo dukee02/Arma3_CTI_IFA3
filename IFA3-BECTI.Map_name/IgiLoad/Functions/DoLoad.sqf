@@ -17,176 +17,26 @@ _sdist = 0;
 _counter = 0;
 _done = false;
 _turn = false;
-// APC
-/*
-if ((_obj_type in IL_Supported_Vehicles_C17) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL + IL_SDistL_Heli_offset;
-	_spoint = _v modelToWorld [0,-16.5,-3];//Ramp end [0,-13.5,-3.2]
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-*/
+
 //*****************************************************************************************************************
 //*										VIOC Units declaration
 //*****************************************************************************************************************
-//Gaz
-if ((_obj_type in IL_Supported_Vehicles_Gaz) && (_doors == "B")) then
+//_obj_container = missionNamespace getVariable Format["IL_Supported_Vehicles_", (_obj getVariable "supported_cargo")]
+if (IL_DevMod) then
 {
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL;
-	//_spoint = _v modelToWorld [0,-4.5,-1.6];
-	_spoint = _v modelToWorld [0,-6 - (_v getVariable "load_offset"),0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
+	Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
 };
-// Praga
-if ((_obj_type in IL_Supported_Vehicles_Praga) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL;
-	_spoint = _v modelToWorld [0,-5 - (_v getVariable "load_offset"),0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-// Blitz
-if ((_obj_type in IL_Supported_Vehicles_Blitz) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL;
-	_spoint = _v modelToWorld [0,-6 - (_v getVariable "load_offset"),0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-// Blitz
-if ((_obj_type in IL_Supported_Vehicles_BlitzCSA) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL;
-	_spoint = _v modelToWorld [0,-5 - (_v getVariable "load_offset"),0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-// US6
-if ((_obj_type in IL_Supported_Vehicles_US6) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL;
-	_spoint = _v modelToWorld [0,-6 - (_v getVariable "load_offset"),0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-// GMC
-if ((_obj_type in IL_Supported_Vehicles_GMC) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL;
-	_spoint = _v modelToWorld [0,-6 - (_v getVariable "load_offset"),0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-// GMC FoW
-if ((_obj_type in IL_Supported_Vehicles_GMCFOW) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL;
-	_spoint = _v modelToWorld [0,-6 - (_v getVariable "load_offset"),0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-//SdKfz7
-if ((_obj_type in IL_Supported_Vehicles_SdKfz7) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = IL_SDistL;
-	_spoint = _v modelToWorld [0,-7 - (_v getVariable "load_offset"),0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-// LCVP
-if ((_obj_type in IL_Supported_Vehicles_LCVP) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = 20;	//IL_SDistL;
-	_spoint = _v modelToWorld [0,-6 - (_v getVariable "load_offset"),0];
-	//_spoint = _v modelToWorld [0,12,0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-// LCVP
-if ((_obj_type in IL_Supported_Vehicles_LCM3) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = 30;	//IL_SDistL;
-	_spoint = _v modelToWorld [0,-6 - (_v getVariable "load_offset"),0];
-	//_spoint = _v modelToWorld [0,6,0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-// Liberty Ship
-if ((_obj_type in IL_Supported_Vehicles_Cargo_Ship) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = 50;	//IL_SDistL;
-	_spoint = _v modelToWorld [0,(_v getVariable "load_offset"),0];
-	//_spoint = _v modelToWorld [0,6,0];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
-//C47
-if ((_obj_type in IL_Supported_Vehicles_C47) && (_doors == "B")) then
-{
-	if (IL_DevMod) then
-	{
-		Player globalChat Format ["IgiLoad ""%1"". Do_load vehicle type: ""%2"" and doors: ""%3""", IL_Script_Inst, _obj_type, _doors];
-	};
-	_sdist = 20;	//IL_SDistL + IL_SDistL_Heli_offset;
-	_spoint = _v modelToWorld [0,-9,-5.4];
-	_box_num = _v getVariable "box_num";
-	_slot_num = _v getVariable "slots_num";
-};
+_sdist = IL_SDistL;
+//_spoint = _v modelToWorld [0,-4.5,-1.6];
+//_spoint = _v modelToWorld [0,-6 - (_v getVariable "load_offset"),0];
+_box_num = _v getVariable "box_num";
+_slot_num = _v getVariable "slots_num";
 
 if !(_force) then
 {
 	//nearestObjects [position, types, radius, 2Dmode]
-	_obj_lst = nearestObjects[ _spoint, _supported_cargo, _sdist];
+	//_obj_lst = nearestObjects[ _spoint, _supported_cargo, _sdist];
+	_obj_lst = [_v, 100] call IL_Select_Attach;
 }
 else
 {
@@ -257,103 +107,25 @@ if (count (_obj_lst) > 0) then
 				_x_cargo_offset = 0;
 				_damage = damage _x;
 				
-				/*if ((typeOf _x) in IL_Supported_SDV) then
-				{
-					_x animate ["periscope", 3]; 
-					_x animate ["Antenna", 3]; 
-					_x animate ["HideScope", 3]; 
-					_x animate["display_on_R", 1];
-					//animationPhase
-					[_v, "Waiting for periscope."] call IL_Vehicle_Chat;
-					while {_x animationPhase "periscope" < 3} do
-					{
-						sleep 1;
+				//*****************************************************************************************************************
+				//										VIOC Units declaration
+				//*****************************************************************************************************************
+
+				[_v, Format ["""%1"" is loaded onto ""%2"".", (_counter * (_x getVariable "cargo_offset")), (_x getVariable "cargo_offset")], true] call IL_Vehicle_Chat;
+				//[_v, _x, [_x_cargo_offset,_counter - _cargo_offset,_zload], _turn] call IL_Attach;
+				
+				if((typeOf _x) in IL_Supported_Landing_Ship_Cargo || (typeOf _x) in IL_Supported_L_Landing_Ship_Cargo) then {
+					if((_v getVariable "xload_to_left")) then {
+						_x_cargo_offset = -12;
+						_v setVariable["xload_to_left", false, true];
+					} else {
+						_x_cargo_offset = 12;
+						_v setVariable["xload_to_left", true, true];
 					};
-				};*/
-				/*
-				if ((_obj_type in IL_Supported_Vehicles_C17)  && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-16.5,-1.75 + _zload], [_x_cargo_offset,-14,-1.75 + _zload], 1, _turn] call IL_Move_Attach;
-					[_v, _x, [_x_cargo_offset,-13,-1.75 + _zload], [_x_cargo_offset,-6.5,_zload], 1, _turn] call IL_Move_Attach;
-					[_v, _x, [_x_cargo_offset,-5.5,_zload], [_x_cargo_offset,_counter + 32 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
+					diag_log format["[IgiLoad (%1)] IL_Move_Attach X offset set to <%2>", IL_Script_Inst, _x_cargo_offset];
 				};
-				*/
-				//*****************************************************************************************************************
-				//*										VIOC Units declaration
-				// IL_Move_Attach
-				// private ["_veh", "_obj", "_from", "_to", "_pos", "_step", "_steps", "_from_x", "_from_y", "_from_z", "_to_x", "_to_y", "_to_z", "_x", "_y", "_z", "_i", "_x_step", "_y_step", "_z_step", "_turn"];
-				// _v = "_veh"
-				// _x = "_obj"
-				// [...] = "_from"
-				// [...] = "_to"
-				// 1 = "_pos"
-				// _turn = "_step"
-				//*****************************************************************************************************************
-				// Gaz
-				if ((_obj_type in IL_Supported_Vehicles_Gaz) && (_doors == "B")) then
-				{
-					//[_v, _x, [_x_cargo_offset,-4.5,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-					[_v, _x, [_x_cargo_offset,-4.5,_zload], [_x_cargo_offset,_counter + 0.85 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// Praga
-				if ((_obj_type in IL_Supported_Vehicles_Praga) && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-5 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// Blitz
-				if ((_obj_type in IL_Supported_Vehicles_Blitz) && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-6 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// Blitz
-				if ((_obj_type in IL_Supported_Vehicles_BlitzCSA) && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-5 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// US6
-				if ((_obj_type in IL_Supported_Vehicles_US6) && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-6 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// GMC
-				if ((_obj_type in IL_Supported_Vehicles_GMC) && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-6 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// GMC FoW
-				if ((_obj_type in IL_Supported_Vehicles_GMCFOW) && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-6 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// SdKfz7
-				if ((_obj_type in IL_Supported_Vehicles_SdKfz7) && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-1 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// LCVP
-				if ((_obj_type in IL_Supported_Vehicles_LCVP) && (_doors == "B")) then
-				{
-					//[_v, _x, [_x_cargo_offset,-6 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-					[_v, _x, [_x_cargo_offset,8,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// LCM3
-				if ((_obj_type in IL_Supported_Vehicles_LCM3) && (_doors == "B")) then
-				{
-					//[_v, _x, [_x_cargo_offset,-6 - _cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-					[_v, _x, [_x_cargo_offset,10,_zload], [_x_cargo_offset,_counter + 0.25 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
-				// Liberty Ship
-				if ((_obj_type in IL_Supported_Vehicles_Cargo_Ship) && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,_cargo_offset,_zload], [_x_cargo_offset,_counter + 0.25 + 50,_zload_offset], 1, _turn] call IL_Move_Attach;
-				};
-				//C47
-				if ((_obj_type in IL_Supported_Vehicles_C130J)  && (_doors == "B")) then
-				{
-					[_v, _x, [_x_cargo_offset,-9,-0.93 + _zload], [_x_cargo_offset,-8,-0.93 + _zload], 1, _turn] call IL_Move_Attach;
-					[_v, _x, [_x_cargo_offset,-7,-0.93 + _zload], [_x_cargo_offset,-3.5,_zload], 1, _turn] call IL_Move_Attach;
-					[_v, _x, [_x_cargo_offset,-2.5,_zload], [_x_cargo_offset,_counter + 17 - _cargo_offset,_zload], 1, _turn] call IL_Move_Attach;
-				};
+				[_v, _x, [_x_cargo_offset,(_counter * (_x getVariable "cargo_offset")) - _cargo_offset,_zload], _turn] call IL_Attach;
+				
 				_counter = _counter - (_x getVariable "slots");
 				if (_doors == "B") then
 				{
@@ -421,6 +193,6 @@ if (count (_obj_lst) > 0) then
 else
 {
 	//_msgErr = format["Vehicles found: %1", _obj_lst];
-	[_v, "No supported Cargo in range!"] call IL_Vehicle_Chat;
+	//[_v, "No supported Cargo in range!"] call IL_Vehicle_Chat;
 };
 _v setVariable["can_load", true, true];

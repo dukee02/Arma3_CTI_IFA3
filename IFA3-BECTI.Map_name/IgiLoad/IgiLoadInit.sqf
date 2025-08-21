@@ -11,6 +11,10 @@ IL_EV_Count = 0;
 IL_Veh_Array = [];
 
 cutText ["IgiLoad is loading. Please wait...","PLAIN",2];
+with missionNamespace do {
+	//helping function to check the used vehicle classes if sidepatch is used.
+	IL_GetUsedOrAll = compileFinal preprocessFileLineNumbers "IgiLoad\Functions\GetUsedOrAll.sqf";
+};
 sleep (random 30);
 
 cutText [Format ["IgiLoad init Player: %1", Player],"PLAIN",2];
@@ -65,9 +69,9 @@ while {true} do
 			_null = [_cargoVehicle] execVM "IgiLoad\IgiLoadCheck.sqf";
 			waitUntil {scriptDone _null};
 			if (IL_DevMod) then {
-				_canCargo = _cargoVehicle getVariable "canCargo";
+				_canCargo = _cargoVehicle getVariable ["canCargo", false];
 				//diag_log format["vehicle can handle cargo: <%1>", _canCargo];
-				//player globalChat Format["vehicle can handle cargo: %1", _canCargo];
+				player globalChat Format["vehicle can handle cargo: %1", _canCargo];
 			};
 		} else {
 			if (IL_DevMod) then {player globalChat Format["vehicle can handle cargo: %1", _canCargo];};
