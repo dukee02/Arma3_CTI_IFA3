@@ -1,3 +1,29 @@
+[V2.0.6] Changelog:
+Added: Zombiemode
+Added: Better Base-repair prise calculation
+Added: SPE Update 1.1.2 units
+Added: dmg indicator for buildings and HQ
+Added: remote controll if set CTI_RESPAWN_AI >= 3
+Added: new igiload cargo script
+Changed: moved NF trucks to T0
+Changed: Medic prise if no mobile-respawn
+Changed: default value for town purchase to 1
+Changed: no arty cooldown if EAT <= 0
+Changed: deleting units/defenses behavior
+Changed: default - Inf Marker now show icon for own units
+Changed: commander now gives squads more money
+Changed: set LOG to warning to got infos about arty ammo bug
+Changed: time to capture camps now same for all SV
+Fixed: no basic units configured in some cases
+Fixed: Town purchase param not same in all mods
+Fixed: missing rifle grenades
+Fixed: Nebelwerfer is missing
+Fixed: static missmatch for IFA and ww2 version
+Fixed: AI shoots player if nation didn't have original side
+Fixed: OPFOR didn't shoot GUER
+Fixed: HC didn't work if added after mission start
+Fixed: depot placement on MSKE
+
 V2.0_220818
 Added: Script for a better AA
 Added: Paradrop script (mousewheel option)

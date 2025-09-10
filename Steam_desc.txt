@@ -155,28 +155,62 @@ https://steamcommunity.com/groups/vio-community/discussions/0/174001225280057993
 
 
 -------------------MAPS----------------------------
-Baranow							https://steamcommunity.com/sharedfiles/filedetails/?id=2739995624				V2.0.2_c230817
-Baranow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739997580				V2.0.2_c230817
-Merderet						https://steamcommunity.com/sharedfiles/filedetails/?id=1576219036				V2.0.2_c230817
-Merderet koth					https://steamcommunity.com/sharedfiles/filedetails/?id=1903002234				V2.0.2_c230817
-Merderet V2						https://steamcommunity.com/sharedfiles/filedetails/?id=1576226166				V2.0.2_c230817
-Merderet V3						https://steamcommunity.com/sharedfiles/filedetails/?id=1903003321				V2.0.2_c230817
-Merderet Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739987351				V2.0.2_c230817
-Tobruk							https://steamcommunity.com/sharedfiles/filedetails/?id=2739988353				V2.0.2_c230817
-Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040				V2.0.2_c230817
-Neaville 						https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249				V2.0.2_c230817
-Staszow							https://steamcommunity.com/sharedfiles/filedetails/?id=2754344617				V2.0.2_c230817
-Staszow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2754346258				V2.0.2_c230817
-El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130				V2.0.2_c230817
+Baranow							https://steamcommunity.com/sharedfiles/filedetails/?id=2739995624				V2.0.6_250820
+Baranow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739997580				V2.0.6_250820
+Merderet						https://steamcommunity.com/sharedfiles/filedetails/?id=1576219036				V2.0.6_250820
+Merderet koth					https://steamcommunity.com/sharedfiles/filedetails/?id=1903002234				V2.0.6_250820
+Merderet V2						https://steamcommunity.com/sharedfiles/filedetails/?id=1576226166				V2.0.6_250820
+Merderet V3						https://steamcommunity.com/sharedfiles/filedetails/?id=1903003321				V2.0.6_250820
+Merderet Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2739987351				V2.0.6_250820
+Tobruk							https://steamcommunity.com/sharedfiles/filedetails/?id=2739988353				V2.0.6_250820
+Neaville Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2564777040				V2.0.6_250820
+Neaville 						https://steamcommunity.com/sharedfiles/filedetails/?id=2564780249				V2.0.6_250820
+Staszow							https://steamcommunity.com/sharedfiles/filedetails/?id=2754344617				V2.0.6_250820
+Staszow Winter					https://steamcommunity.com/sharedfiles/filedetails/?id=2754346258				V2.0.6_250820
+El Alamein						https://steamcommunity.com/sharedfiles/filedetails/?id=2564783130				V2.0.6_250820
 
-Normandy						https://steamcommunity.com/sharedfiles/filedetails/?id=3009609630				V2.0.2_c230817
+Normandy						https://steamcommunity.com/sharedfiles/filedetails/?id=3009609630				V2.0.6_250820
 
-Altis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588965899				V2.0.2_c230817
-Enoch							https://steamcommunity.com/sharedfiles/filedetails/?id=3010280590				V2.0.2_c230817
-Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024				V2.0.2_c230817
-Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617				V2.0.2_c230817
-Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236				V2.0.2_c230817
+Altis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588965899				V2.0.6_250820
+Enoch							https://steamcommunity.com/sharedfiles/filedetails/?id=3010280590				V2.0.6_250820
+Malden							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967024				V2.0.6_250820
+Stratis							https://steamcommunity.com/sharedfiles/filedetails/?id=2588967617				V2.0.6_250820
+Tanoa							https://steamcommunity.com/sharedfiles/filedetails/?id=2588968236				V2.0.6_250820
 
-Rosche Germany					https://steamcommunity.com/sharedfiles/filedetails/?id=2754349165				V2.0.2_c230817
+Rosche Germany					https://steamcommunity.com/sharedfiles/filedetails/?id=2754349165				V2.0.6_250820
+
+
+
+
+[h1][V2.0.6] Changelog:[/h1]
+[b]Added:[/b] Zombiemode
+[b]Added:[/b] Better Base-repair prise calculation
+[b]Added:[/b] SPE Update 1.1.2 units
+[b]Added:[/b] dmg indicator for buildings and HQ
+[b]Added:[/b] remote controll if set CTI_RESPAWN_AI >= 3
+[b]Added:[/b] new igiload cargo script
+[b]Changed:[/b] moved NF trucks to T0
+[b]Changed:[/b] Medic prise if no mobile-respawn
+[b]Changed:[/b] default value for town purchase to 1
+[b]Changed:[/b] no arty cooldown if EAT <= 0
+[b]Changed:[/b] deleting units/defenses behavior
+[b]Changed:[/b] default - Inf Marker now show icon for own units
+[b]Changed:[/b] commander now gives squads more money
+[b]Changed:[/b] set LOG to warning to got infos about arty ammo bug
+[b]Changed:[/b] time to capture camps now same for all SV
+[b]Fixed:[/b] no basic units configured in some cases
+[b]Fixed:[/b] Town purchase param not same in all mods
+[b]Fixed:[/b] missing rifle grenades
+[b]Fixed:[/b] Nebelwerfer is missing
+[b]Fixed:[/b] static missmatch for IFA and ww2 version
+[b]Fixed:[/b] AI shoots player if nation didn't have original side
+[b]Fixed:[/b] OPFOR didn't shoot GUER
+[b]Fixed:[/b] HC didn't work if added after mission start
+[b]Fixed:[/b] depot placement on MSKE
+
+
+
+
+
 
 

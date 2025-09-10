@@ -21,6 +21,7 @@ _pos = [];
 _unload = false;
 
 _local AttachTo [_veh, getPos _veh];
+_local setDir _dir;	
 
 if (isNil 'IL_PlacementCamera') then {[_veh, (_veh getVariable "load_range"), (_veh getVariable "load_range")] call IL_Create_Camera};
 
@@ -28,20 +29,19 @@ while {!IL_StructurePlaced && !IL_StructureCanceled && alive player} do {
 	_pos = screenToWorld [0.5,0.5];
 
 	_dir = _dir + (IL_StructureRotate * IL_StructureRotateMulti);
+	_local setDir _dir;	
 	_height = _height + (IL_StructureElevation * IL_StructureRotateMulti);
 	if(_height < 1) then {_height = 1};
 	_local setPos [_pos select 0, _pos select 1, _height];
-	_local setDir _dir;	
 
-	_inragne = "<t color='#F86363'>Placement: to far</t>";
-	if((_veh distance _local) <= (_veh getVariable "load_range") && (_veh distance _local) <= (_veh getVariable "load_range")) then {
-		_inragne = "<t color='#9CF863'>Placement: OK</t>";
+	if((_veh distance _local) <= (_veh getVariable "load_range")) then {
 		_local hideObject false;
 		_unload = true;
 	} else {
 		_local hideObject true;
 		_unload = false;
 	};
+	_inragne = if ((_veh distance _local) <= (_veh getVariable "load_range")) then {"<t color='#9CF863'>Placement: OK</t>"} else {"<t color='#F86363'>Placement: to far</t>"};
 
 	hintSilent parseText format ["<t size='1.3' color='#2394ef'>Information</t> <br />
 	<br />
@@ -69,8 +69,7 @@ if(!IL_StructureCanceled && _unload) then {
 	_local hideObject true;
 	detach _obj;
 	_obj setPos [_pos select 0, _pos select 1, _height];
-	if((typeOf _obj) in IL_Supported_Plane_Cargo) then {_obj setDir _dir+180;} else {_obj setDir _dir;};
-	//_obj setDir _dir;
+	_obj setDir (getDir _local);
 	if (IL_DevMod) then
 	{
 		diag_log format["[IgiLoad (%1)] IL_Move_Attach _pos <%2><%3> dmg <%4>", IL_Script_Inst, getPos _obj, getDir _obj, damage _obj];
@@ -79,6 +78,7 @@ if(!IL_StructureCanceled && _unload) then {
 };
 
 deleteVehicle _local;
+hintSilent  "";
 (findDisplay 46) displayRemoveEventHandler ["KeyDown", _dehKeyDown];
 (findDisplay 46) displayRemoveEventHandler ["KeyUp", _dehKeyUp];
 (findDisplay 46) displayRemoveEventHandler ["MouseButtonDown", _dehMouse];
